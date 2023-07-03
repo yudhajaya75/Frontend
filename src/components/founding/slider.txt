@@ -1,0 +1,61 @@
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+const founding = () => {
+    return (
+        <div className="w-[250px] mt-20">
+            <ImageSlider />
+            <div>
+
+            </div>
+        </div>
+    );
+};
+
+const ImageSlider = () => {
+
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        responsive: [
+            {
+                breakpoint: 768, // set breakpoint at 768px
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: false // hide dots on larger screens
+                }
+            }
+        ]
+    };
+
+    return (
+        <Slider {...settings}>
+            <div>
+                <img src="./images/CEO.webp" alt="Founder & CEO" />
+                <p>Founder & CEO</p>
+            </div>
+            <div>
+                <img src="./images/CTO.webp" alt="CTO" />
+                <p>CTO</p>
+            </div>
+            <div>
+                <img src="./images/psikolog.webp" alt="Psychologist" />
+                <p>Psychologist</p>
+            </div>
+            <div>
+                <img src="./images/psikolog2.webp" alt="Psychologist 2" />
+                <p>Psychologist 2</p>
+            </div>
+        </Slider>
+    );
+};
+
+export default founding

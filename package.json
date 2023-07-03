@@ -1,0 +1,75 @@
+{
+  "name": "layanan",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@ionic/react": "^7.1.1",
+    "@leecheuk/react-google-login": "^5.4.1",
+    "@mui/icons-material": "^5.11.16",
+    "@react-jvectormap/core": "^1.0.4",
+    "@react-oauth/google": "^0.11.0",
+    "@reacticons/ionicons": "^7.1.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/google.accounts": "^0.0.7",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.26",
+    "@types/react": "^18.2.5",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-slick": "^0.23.10",
+    "apexcharts": "^3.41.0",
+    "axios": "^1.4.0",
+    "jsvectormap": "^1.5.3",
+    "jwt-decode": "^3.1.2",
+    "query-string": "^8.1.0",
+    "react": "^18.2.0",
+    "react-apexcharts": "^1.4.0",
+    "react-bootstrap": "^2.8.0",
+    "react-card-slider-component": "^1.0.9",
+    "react-dom": "^18.2.0",
+    "react-gapi-auth2": "^1.0.4",
+    "react-icons": "^4.8.0",
+    "react-multi-carousel": "^2.8.3",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.14.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "strapi-sdk-javascript": "^0.3.3",
+    "typescript": "^4.9.5",
+    "typescript-react-hooks": "^0.1.0",
+    "use-history": "^1.4.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "set PORT=3000 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.3.2"
+  }
+}

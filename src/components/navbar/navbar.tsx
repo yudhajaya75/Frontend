@@ -66,8 +66,8 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                             hover:border-l-white"
                                 key={i}
                             >
-                                <Link to='/myprofile'><h3 className='font-bold'>{item.myprofile}</h3></Link>
-                                <Link to='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></Link>
+                                <a href='/profile'><h3 className='font-bold'>{item.myprofile}</h3></a>
+                                <a href='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></a>
                             </div>
                         ))}
                     </div>

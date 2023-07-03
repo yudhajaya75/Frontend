@@ -20,10 +20,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
         setNav(!nav)
     }
 
-    const profile = [
-        { myprofile: 'My Profile', logout: 'Log out' },
-    ];
-
     const logout = async () => {
         await fetch('http://localhost:8000/api/logout', {
             method: 'POST',
@@ -47,7 +43,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     } else {
 
         menu = (
-            <div className="relative inline-block text-left">
+            <div className="relative inline-block text-left left-[200px] bottom-1">
                 <a
                     href="#"
                     onClick={toggleMenu}
@@ -59,14 +55,14 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     <li style={{ marginLeft: 10 }}>{isOpenUp ? <AiOutlineCaretDown /> : <AiOutlineCaretUp />}</li>
                 </a>
                 {isOpenUp && (
-                    <div className="bg-[#FFFFFF] absolute ml-12 top-20 flex flex-col items-start rounded-lg p-2">
+                    <div className="bg-[#FFFFFF] absolute ml-[100px] top-[60px] flex flex-col items-start rounded-lg p-2">
                         {listprofile.map((item, i) => (
-                            <div className="w-[239px] justify-between text-[#074288] p-4 
+                            <div className="w-[150px] justify-between text-[#074288] p-4 
                             hover:bg-blue-300 cursor-pointer rounded-lg border-l-transparent 
                             hover:border-l-white"
                                 key={i}
                             >
-                                <Link to='/myprofile'><h3 className='font-bold'>{item.myprofile}</h3></Link>
+                                <a href='/profile'><h3 className='font-bold'>{item.myprofile}</h3></a>
                                 <Link to='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></Link>
                             </div>
                         ))}

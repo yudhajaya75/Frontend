@@ -18,6 +18,7 @@ import Blog2 from './pages/blog/blog2';
 import Blog3 from './pages/blog/blog3';
 import About from './pages/about/about';
 import Payment from './pages/payment/payment';
+import Profile from './pages/profile/profile';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -59,6 +60,7 @@ function App() {
         <Route path='/blog3' element={<Blog3 email={email} />} />
         <Route path='/about' element={<About email={email} />} />
         <Route path='/payment' element={<Payment email={email} />} />
+        <Route path='/profile' element={<Profile email={email} />} />
       </Routes>
     </>
   );

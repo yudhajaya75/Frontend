@@ -4,7 +4,7 @@
 
 @layer components {
     .navbar {
-      @apply flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4;
+      @apply flex justify-between items-center h-[100px] max-w-[1400px] mx-auto px-4;
       position: relative;
       z-index: 100;
     }
@@ -22,7 +22,7 @@
     }
 
     .teksnav1 {
-      @apply flex pl-6 pt-6 px-11 mx-10 font-bold text-lg hover:text-[#074288] active:text-[#074288] items-center justify-center
+      @apply flex pl-0 pt-6 px-6 mx-10 font-bold text-lg hover:text-[#074288] active:text-[#074288] items-center justify-center
     }
     
     .nav{
@@ -35,6 +35,10 @@
 
     .teksnav3 {
       @apply pt-6 pl-6 font-bold
+    }
+
+    .teksnav4 {
+      @apply pt-6 pl-16 font-bold
     }
 
     .buttonmasuk {

@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, Navigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
@@ -10,7 +10,16 @@ const Login = (props: { setEmail: (email: string) => void }) => {
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false); // state untuk mengontrol proses pengiriman form
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    // Mengambil data login terakhir dari local storage saat halaman dimuat
+    useEffect(() => {
+        const lastLoginData = localStorage.getItem('lastLoginData');
+        if (lastLoginData) {
+            const { email } = JSON.parse(lastLoginData);
+            setEmail(email);
+        }
+    }, []);
 
     const handleTogglePassword = () => {
         setPasswordVisible(!passwordVisible);
@@ -19,9 +28,9 @@ const Login = (props: { setEmail: (email: string) => void }) => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        if (isSubmitting) return; // menghindari double submit
+        if (isSubmitting) return;
 
-        setIsSubmitting(true); // set isSubmitting menjadi true saat proses pengiriman dimulai
+        setIsSubmitting(true);
 
         const response = await fetch('http://localhost:8000/api/login', {
             method: 'POST',
@@ -33,7 +42,7 @@ const Login = (props: { setEmail: (email: string) => void }) => {
             })
         });
 
-        setIsSubmitting(false); // set isSubmitting menjadi false setelah proses pengiriman selesai
+        setIsSubmitting(false);
 
         if (response.status === 400) {
             setShowAlert(true);
@@ -41,12 +50,17 @@ const Login = (props: { setEmail: (email: string) => void }) => {
         }
 
         props.setEmail(email);
+
+        // Menyimpan data login terakhir pada local storage
+        localStorage.setItem('lastLoginData', JSON.stringify({ email }));
+
         setRedirect(true);
     };
 
     if (redirect) {
         return <Navigate to="/home" />;
     }
+
 
     return (
         <>

@@ -63,8 +63,8 @@ const Registration = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-[150px] h-[150px] md:w-[400px] md:h-[400px] lg:w-[400px] xl:w-[500px] relative lg:mr-10 lg:mt-0">
-                    <img className="absolute -z-10 right-0 lg:top-[10px] sm-440:top-[-20px] sm-440:w-[200px] sm-440:h-[190px] lg:w-[500px] lg:h-[500px]" src='http://localhost:3000/images/bgpeople.webp' alt="background-people" />
+                <div className="w-[150px] h-[150px] md:w-[250px] md:h-[250px] lg:w-[400px] xl:w-[500px] relative lg:mr-10 lg:mt-0">
+                    <img className="absolute -z-10 right-0 lg:top-[10px] sm-440:top-[-20px] sm-440:w-[200px] sm-440:h-[190px] sm:hidden md:hidden lg:block lg:w-[500px] lg:h-[500px]" src='http://localhost:3000/images/bgpeople.webp' alt="background-people" />
                     <div style={{ backgroundImage: `url(${imageSlide[currentIndex].url})` }} className='w-full h-full lg:w-[400px] lg:h-[400px]  rounded-lg bg-center bg-cover duration-500 lg:mt-[60px] lg:ml-[50px] '></div>
                     <div className='hidden absolute group-cover:block top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 bg-black/20 text-white cursor-pointer md:text-3xl'>
                         <BsChevronCompactLeft onClick={prevSlide} />

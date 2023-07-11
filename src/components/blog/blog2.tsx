@@ -90,9 +90,10 @@ const Blog = () => {
                             </div>
                         </div>
                     </div>
+                    <div className='border-l-2 h-[2289px] absolute left-[73%] bottom-[0px]'>
+                    </div>
                 </div>
             </div>
-            <div className='border-l-2 h-[2289px] absolute left-[61%] top-[229px]'></div>
         </>
     );
 };

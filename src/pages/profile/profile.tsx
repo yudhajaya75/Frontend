@@ -13,7 +13,7 @@ const Profile = (props: { email: string }) => {
                 <Navbar accountEmail={props.email} />
                 <Content2 />
                 <Content />
-                <Content3 />
+                {/* <Content3 /> */}
                 <Footer />
             </div>
         </>

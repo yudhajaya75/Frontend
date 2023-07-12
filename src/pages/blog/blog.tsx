@@ -12,9 +12,11 @@ const Blog = (props: { email: string }) => {
         <div className='mx-auto max-w-[1910px] relative'>
             <Navbar accountEmail={props.email} />
             <Teks />
-            <Blog1 />
-            <Blog2 />
-            <Blog3 />
+            <div>
+                <Blog1 />
+                <Blog2 />
+                <Blog3 />
+            </div>
             <Footer />
         </div>
     );

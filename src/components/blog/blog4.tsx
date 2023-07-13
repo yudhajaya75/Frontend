@@ -10,7 +10,7 @@ const Blog2 = () => {
     return (
         <div>
             <div>
-                <div className=' relative left-[50px] top-[100px] flex gap-10'>
+                <div className='relative left-[50px] top-[100px] flex gap-10'>
                     <div className=''>
                         <img className='h-[460px] w-[900px]' src='./images/blog.webp' alt='' />
                     </div>

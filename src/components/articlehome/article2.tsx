@@ -143,7 +143,7 @@ const ImageSlider = () => {
                     </div>
                 </div>
             </Slider>
-            <div className="flex top-[120%] left-3 w-[95%] justify-between absolute md:hidden text-[#002157]">
+            <div className="flex top-[10%] left-3 w-[95%] justify-betwee md:hidden">
                 <SlArrowLeft size={23} />
                 <SlArrowRight size={23} />
             </div>

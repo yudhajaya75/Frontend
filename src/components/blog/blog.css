@@ -1,0 +1,7 @@
+.card {
+    @apply rounded-none;
+  
+    @media (min-width: theme('screens.sm')) {
+      height: max-content;
+    }
+  }

@@ -11,7 +11,7 @@ const Blog = () => {
         <>
             <div className='relative'>
                 <div className='grid grid-cols-1 content-start absolute left-[1000px] top-[-2290px] '>
-                    <div className=' relative left-[-10px] top-[70px]'>
+                    <div className=' relative left-[-10px] top-[70px]' style={{ width: '400px' }}>
                         <a href="#"><img className='h-[250px] w-[400px]' src='./images/blog4.webp' alt='' /></a>
                         <div className='w-[400px] z-10 relative left-[13px] bottom-[-40px]'>
                             <p className='font-bold text-[25px] relative left-[-12px]'>Lorem Ipsum has been the industry's standard dummy text.</p>
@@ -32,7 +32,7 @@ const Blog = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=' relative left-[-10px] top-[120px]'>
+                    <div className=' relative left-[-10px] top-[120px]' style={{ width: '400px' }}>
                         <a href="#"><img className='h-[250px] w-[400px]' src='./images/blog5.webp' alt='' /></a>
                         <div className='w-[400px] z-10 relative left-[13px] bottom-[-40px]'>
                             <p className='font-bold text-[25px] relative left-[-12px]'>Lorem Ipsum has been the industry's standard dummy text.</p>
@@ -53,7 +53,7 @@ const Blog = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=' relative left-[-10px] top-[170px]'>
+                    <div className=' relative left-[-10px] top-[170px]' style={{ width: '400px' }}>
                         <a href="#"><img className='h-[250px] w-[400px]' src='./images/blog6.webp' alt='' /></a>
                         <div className='w-[400px] z-10 relative left-[13px] bottom-[-40px]'>
                             <p className='font-bold text-[25px] relative left-[-12px]'>Lorem Ipsum has been the industry's standard dummy text.</p>
@@ -74,7 +74,7 @@ const Blog = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=' relative left-[-10px] top-[220px]'>
+                    <div className=' relative left-[-10px] top-[220px]' style={{ width: '400px' }}>
                         <a href="#"><img className='h-[250px] w-[400px]' src='./images/blog7.webp' alt='' /></a>
                         <div className='w-[400px] z-10 relative left-[13px] bottom-[-40px]'>
                             <p className='font-bold text-[25px] relative left-[-12px]'>Lorem Ipsum has been the industry's standard dummy text.</p>

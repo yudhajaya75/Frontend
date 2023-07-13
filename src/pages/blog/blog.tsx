@@ -9,12 +9,16 @@ import Footer from '../../components/footer/footer'
 
 const Blog = (props: { email: string }) => {
     return (
-        <div className='mx-auto max-w-[1910px] relative'>
+        <div className='mx-auto max-w-[1910px] '>
             <Navbar accountEmail={props.email} />
-            <Teks />
-            <Blog1 />
-            <Blog2 />
-            <Blog3 />
+            <div className='lg:flex lg:justify-center lg:items-center lg:mr-[120px]'>
+                <div className='flex flex-col'>
+                    <Teks />
+                    <Blog1 />
+                    <Blog2 />
+                    <Blog3 />
+                </div>
+            </div>
             <Footer />
         </div>
     );

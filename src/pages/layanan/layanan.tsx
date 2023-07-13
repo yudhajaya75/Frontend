@@ -11,7 +11,7 @@ import Footer from '../../components/footer/footer';
 
 const layanan = (props: { email: string }) => {
   return (
-    <div className='mx-auto max-w-[1910px] relative'>
+    <div className='mx-auto max-w-[1910px]'>
       <Navbar accountEmail={props.email} />
       <Banner />
       <Teks />

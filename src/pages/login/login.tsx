@@ -1,11 +1,12 @@
 import { SyntheticEvent, useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 const Login = (props: { setEmail: (email: string) => void }) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const router = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -42,11 +43,16 @@ const Login = (props: { setEmail: (email: string) => void }) => {
             })
         });
 
+        console.log(response);
+
         setIsSubmitting(false);
 
         if (response.status === 400) {
             setShowAlert(true);
             return;
+        } else if (response.status === 201) {
+            // return <Navigate to="/home" />;
+            router('/home')
         }
 
         props.setEmail(email);
@@ -54,13 +60,7 @@ const Login = (props: { setEmail: (email: string) => void }) => {
         // Menyimpan data login terakhir pada local storage
         localStorage.setItem('lastLoginData', JSON.stringify({ email }));
 
-        setRedirect(true);
     };
-
-    if (redirect) {
-        return <Navigate to="/home" />;
-    }
-
 
     return (
         <>

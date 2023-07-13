@@ -20,7 +20,7 @@ const Profile: React.FC = () => {
     return (
         <>
             <div>
-                <div>
+                <div className=''>
                     <div className="lg:max-w-[80rem] mx-auto mt-[200px] py-5">
                         <ul className="lg:flex lg:items-center lg:justify-center sm-440:flex">
                             {pages.map((page, index) => (

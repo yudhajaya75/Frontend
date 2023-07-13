@@ -11,7 +11,7 @@ const Blog = (props: { email: string }) => {
     return (
         <div className='mx-auto max-w-[1910px] '>
             <Navbar accountEmail={props.email} />
-            <div className='lg:flex lg:justify-center lg:items-center lg:mr-[120px]'>
+            <div className='lg:flex lg:justify-center lg:items-center lg:mr-[170px]'>
                 <div className='flex flex-col'>
                     <Teks />
                     <Blog1 />

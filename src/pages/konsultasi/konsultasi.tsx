@@ -16,7 +16,11 @@ const konsultasi = (props: { email: string }) => {
       <Navbar accountEmail={props.email} />
       <Banner />
       <Teks />
-      <Card />
+      <div className='lg:flex lg:justify-center lg:items-center lg:mr-[230px]'>
+        <div className='flex flex-col'>
+          <Card />
+        </div>
+      </div>
       <Teks2 />
       <Sosmed />
       <Teks3 />

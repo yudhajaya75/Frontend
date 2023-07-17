@@ -2,13 +2,16 @@ import React from 'react';
 
 const banner = () => {
     return (
-        <div className='w-full h-screen'>
-            <img className='top-0 left-0 w-full h-[600px] object-cover' src="http://localhost:3000/images/banner.webp" alt="" />
-            <div className='absolute top-3 left-0 w-full h-screen'>
-                <div className='absolute top-3 w-full h-full flex flex-col justify-center text-white'>
-                    <div className='md:left-[10%] max-w-[800px] m-auto absolute mt-[200px]'>
-                        <h1 className='font-bold text-4xl text-center sm:text-left md:text-6xl z-10'>Layanan konseling individu pasangan & keluarga</h1>
-                        <p className='max-w-[600px] text-center sm:text-left drop-shadow-2xl py-10 text-3xl z-10'>apa itu Layanan Konseling individu pasangan & keluarga dan untuk siapa. title bebas</p>
+        <div className='w-full'>
+            <img className='lg:w-full sm-440:w-full lg:h-[550px] sm-440:h-[160px] object-cover lg:mt-[-0px] lg:z-10' src="./images/banner.webp" alt="" />
+            <div className='absolute top-24 left-0 w-full h-screen'>
+                <div className='absolute top-1 w-full h-full justify-center'>
+                    <div className='md:left-[6%] absolute sm-440:left-[-50px] max-w-[900px] m-auto lg:mt-[170px] sm-440:mt-[70px]'>
+                        <h1 className='font-bold text-4xl lg:text-left sm-440:text-left sm-440:ml-20 
+                        md:text-6xl  z-10 text-white sm-440:text-[15px] '>Layanan konseling individu pasangan & keluarga</h1>
+                        <p className=' lg:max-w-[900px] sm-440:max-w-[220px] lg:text-left sm-440:text-left drop-shadow-2xl 
+                        lg:py-8 sm-440:py-0 md:text-4xl z-10 text-white sm-440:text-[11px] ml-20 '>apa itu Layanan Konseling individu
+                            pasangan & keluarga dan untuk siapa. title bebas</p>
                     </div>
                 </div>
             </div>

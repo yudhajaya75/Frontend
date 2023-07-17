@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import '../card/cardwebminar.css';
-import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 
 interface WebminarData {
     heading: string;
@@ -112,7 +111,6 @@ const Founding: React.FC = () => {
         <Card webminarData={webminarData} />
     );
 };
-
 const Card: React.FC<{ webminarData: WebminarData[] }> = ({ webminarData }) => {
     return (
         <div className='webminar-card'>
@@ -143,7 +141,6 @@ const Card: React.FC<{ webminarData: WebminarData[] }> = ({ webminarData }) => {
 
 
 const ImageSlider: React.FC<{ webminarData: WebminarData[] }> = ({ webminarData }) => {
-    const [currentIndex, setCurrentIndex] = React.useState(0);
     const settings = {
         dots: true,
         infinite: true,
@@ -171,20 +168,12 @@ const ImageSlider: React.FC<{ webminarData: WebminarData[] }> = ({ webminarData 
         ]
     };
 
-    const handlePrev = () => {
-        setCurrentIndex(prevIndex => (prevIndex === 0 ? webminarData.length - 1 : prevIndex - 1));
-    };
-
-    const handleNext = () => {
-        setCurrentIndex(prevIndex => (prevIndex === webminarData.length - 1 ? 0 : prevIndex + 1));
-    };
-
     return (
         <div className='container-slider' style={{ padding: '20px' }}>
             <Slider {...settings}>
                 {webminarData.map((data: WebminarData, index: number) => (
-                    <div className='w-[1400px] p-10 ml-50 grid grid-cols-4 gap-4 relative top-100' key={index}>
-                        <div className='w-340 rounded-lg overflow-hidden shadow-md'>
+                    <div className='w-[1400px] p-10 grid grid-cols-4 gap-4 relative' key={index}>
+                        <div className='w-[340px] rounded-lg overflow-hidden shadow-md'>
                             <div className='flex justify-center'>
                                 <div className='absolute top-[170px] left-[50px] bg-white rounded-2xl px-2 font-bold text-blue-800'>
                                     <p>{data.heading}</p>
@@ -212,27 +201,6 @@ const ImageSlider: React.FC<{ webminarData: WebminarData[] }> = ({ webminarData 
                     </div>
                 ))}
             </Slider>
-            <div className='flex items-center justify-center z-10'>
-                <div className='relative bottom-[0px]'>
-                    <div className='relative right-[200px] bottom-[300px]'>
-                        <button
-                            className="mt-10 ml-5 text-[24px] p-5 text-[#002157] cursor-pointer duration-500"
-                            style={{}}
-                            onClick={handlePrev}
-                        >
-                            <CgChevronLeft />
-                        </button>
-                    </div>
-                    <div className='relative left-[180px] bottom-[363px]'>
-                        <button
-                            className="ml-5 text-[24px] p-5 text-[#002157] rounded-md cursor-pointer duration-500"
-                            onClick={handleNext}
-                        >
-                            <CgChevronRight />
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };

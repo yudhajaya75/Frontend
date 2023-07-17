@@ -24,7 +24,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                         </div>
                     </div>
                     <div className="card-container">
@@ -41,7 +41,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                         </div>
                     </div>
                     <div className="card-container">
@@ -58,7 +58,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                         </div>
                     </div>
                     <div className="card-container">
@@ -75,7 +75,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                     </div>
                 </div>
                 <div className="card-container">
@@ -164,7 +164,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                     </div>
                 </div>
                 <div className="card-container">
@@ -181,7 +181,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                     </div>
                 </div>
                 <div className="card-container">
@@ -198,7 +198,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/payment">Pesan Sekarang</Link></button>
+                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
                     </div>
                 </div>
             </Slider>

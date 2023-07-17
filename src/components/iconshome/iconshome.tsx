@@ -70,7 +70,7 @@ const Profile: React.FC = () => {
                                     <CgChevronLeft />
                                 </button>
                             </div>
-                            <div className='lg:relative sm-440:relative lg:left-[720px] lg:bottom-[190px] sm-440:left-[190px] sm-440:bottom-[150px] lg:bottom-[70px]'>
+                            <div className='lg:relative sm-440:relative lg:left-[720px] lg:bottom-[190px] sm-440:left-[190px] sm-440:bottom-[150px]'>
                                 <button
                                     className="lg:ml-5 lg:text-[24px] lg:p-5 text-[#002157] rounded-md cursor-pointer duration-500"
                                     onClick={handleNext}

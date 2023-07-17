@@ -3,8 +3,8 @@ import '../banner/bnabout.css'
 
 const banner = () => {
     return (
-        <div className='w-full h-screen'>
-            <img className='w-full h-screen object-cover mt-[-100px] z-10' src="./images/bgabout.webp" alt="" />
+        <div className='w-full'>
+            <img className='w-full h-[800px] object-cover mt-[-100px] z-10' src="./images/bgabout.webp" alt="" />
             <div className='absolute top-24 left-0 w-full h-screen'>
                 <img className='h-[600px] relative float-right mr-[50px] mt-[100px]' style={{ maxWidth: '17%', height: 'auto' }} src="./images/bgabout1.webp" alt="" />
                 <img className='h-[300px] relative float-right mr-[50px] mt-[100px]' style={{ maxWidth: '10%', height: 'auto' }} src="./images/bgabout1.webp" alt="" />

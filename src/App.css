@@ -1,0 +1,42 @@
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .spinner-container {
+    background: #143666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .spinner {
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+
+  .spinner p {
+    padding-top: 100px;
+    margin-left: -30px;
+    font-size: 30px;
+    color: white;
+  }
+  
+  .spinner-inner {
+    box-sizing: border-box;
+    position: absolute;
+    width: 51.2px;
+    height: 51.2px;
+    margin: 6.4px;
+    border: 6.4px solid #fff;
+    border-radius: 50%;
+    animation: spinner 0.8s cubic-bezier(0.3, 0, 0.3, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  

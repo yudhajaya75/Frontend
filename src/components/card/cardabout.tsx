@@ -7,64 +7,51 @@ import '../card/cardabout.css';
 
 
 const Cards = () => {
+
+    const cards = [
+        {
+            title: 'Webinar',
+            image: './images/webminar.webp',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.asdasdas',
+            link: '/webinar'
+        },
+        {
+            title: 'Layanan konseling individu pasangan & keluarga',
+            image: './images/layanan.webp',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.asdasdas',
+            link: '/layanan'
+        },
+        {
+            title: 'Pelatihan',
+            image: './images/pelatihan.webp',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.asdasdas',
+            link: '/pelatihan'
+        },
+        {
+            title: 'Konsultasi',
+            image: './images/konsultasi.webp',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.asdasdas',
+            link: '/konsultasi'
+        }
+    ];
     return (
         <div className='cardabt'>
-            <div className='cardab'>
-                <div className='card-about'>
-                    <div className='cardbd'>
-                        <img className='card-img' src='./images/webminar.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='card-title'>Webinar</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.asdasdas</p>
-                            <a href='/webinar'>
-                                <button className='card-cta'>Lihat Selengkapnya</button>
-                            </a>
+            {cards.map((card, index) => (
+                <div className='cardab' key={index}>
+                    <div className='card-about'>
+                        <div className='cardbd'>
+                            <img className='card-img' src={card.image} alt='logo' />
+                            <div className='card-body'>
+                                <h3 className='card-title'>{card.title}</h3>
+                                <p className='card-text'>{card.text}</p>
+                                <a href={card.link}>
+                                    <button className='card-cta'>Lihat Selengkapnya</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className='cardab'>
-                <div className='card-about'>
-                    <div className='cardbd'>
-                        <img className='card-img' src='./images/layanan.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='card-title'>Layanan konseling individu pasangan & keluarga</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.asdasdas</p>
-                            <a href='/layanan'>
-                                <button className='card-cta'>Lihat Selengkapnya</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='cardab'>
-                <div className='card-about'>
-                    <div className='cardbd'>
-                        <img className='card-img' src='./images/pelatihan.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='card-title'>Pelatihan</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.asdasdas</p>
-                            <a href='/pelatihan'>
-                                <button className='card-cta'>Lihat Selengkapnya</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='cardab'>
-                <div className='card-about'>
-                    <div className='cardbd'>
-                        <img className='card-img' src='./images/konsultasi.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='card-title'>Konsultasi</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.asdasdas</p>
-                            <a href='/konsultasi'>
-                                <button className='card-cta'>Lihat Selengkapnya</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            ))}
         </div>
     );
 };
@@ -88,6 +75,32 @@ const Founding = () => {
 };
 
 const ImageSlider = () => {
+    const cards = [
+        {
+            image: './images/webminar.webp',
+            title: 'Webinar',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+            link: '/layanan/webminar'
+        },
+        {
+            image: './images/layanan.webp',
+            title: 'Layanan konseling individu pasangan & keluarga',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+            link: '/layanan/webminar'
+        },
+        {
+            image: './images/pelatihan.webp',
+            title: 'Pelatihan',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+            link: '/layanan/webminar'
+        },
+        {
+            image: './images/konsultasi.webp',
+            title: 'Konsultasi',
+            text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+            link: '/layanan/webminar'
+        }
+    ];
     const settings = {
         dots: true,
         infinite: true,
@@ -118,66 +131,24 @@ const ImageSlider = () => {
     return (
         <>
             <Slider {...settings}>
-                <div className='p-10'>
-                    <div className='border border-gray-300 rounded-lg'>
-                        <img className='h-[300px] w-[410px]' src='./images/webminar.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='relative bottom-2 text-center font-bold text-xl'>Webinar</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <Link to='/layanan/webminar'>
-                                <div className='flex items-center justify-center'>
-                                    <button className='px-8 py-2 bg-blue-500 text-white rounded-md focus:outline-none
-                                 hover:bg-blue-600 transition-colors duration-200 ease-in-out'>Lihat Selengkapnya</button>
-                                </div>
-                            </Link>
+                {cards.map((card, index) => (
+                    <div className='p-10' key={index}>
+                        <div className='border border-gray-300 rounded-lg'>
+                            <img className='h-[300px] w-[410px]' src={card.image} alt='logo' />
+                            <div className='card-body'>
+                                <h3 className='relative bottom-2 text-center font-bold text-xl'>{card.title}</h3>
+                                <p className='card-text'>{card.text}</p>
+                                <Link to={card.link}>
+                                    <div className='flex items-center justify-center'>
+                                        <button className='px-8 py-2 bg-blue-500 text-white rounded-md focus:outline-none hover:bg-blue-600 transition-colors duration-200 ease-in-out'>
+                                            Lihat Selengkapnya
+                                        </button>
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='p-10'>
-                    <div className='border border-gray-300 rounded-lg'>
-                        <img className='h-[300px] w-[410px]' src='./images/layanan.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='relative bottom-2 text-center font-bold text-xl'>Layanan konseling individu pasangan & keluarga</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <Link to='/layanan/webminar'>
-                                <div className='flex items-center justify-center'>
-                                    <button className='px-8 py-2 bg-blue-500 text-white rounded-md focus:outline-none
-                                 hover:bg-blue-600 transition-colors duration-200 ease-in-out'>Lihat Selengkapnya</button>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className='p-10'>
-                    <div className='border border-gray-300 rounded-lg'>
-                        <img className='h-[300px] w-[410px]' src='./images/pelatihan.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='relative bottom-2 text-center font-bold text-xl'>Pelatihan</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <Link to='/layanan/webminar'>
-                                <div className='flex items-center justify-center'>
-                                    <button className='px-8 py-2 bg-blue-500 text-white rounded-md focus:outline-none
-                                 hover:bg-blue-600 transition-colors duration-200 ease-in-out'>Lihat Selengkapnya</button>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className='p-10'>
-                    <div className='border border-gray-300 rounded-lg'>
-                        <img className='h-[300px] w-[410px]' src='./images/konsultasi.webp' alt='logo' />
-                        <div className='card-body'>
-                            <h3 className='relative bottom-2 text-center font-bold text-xl'>Konsultasi</h3>
-                            <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <Link to='/layanan/webminar'>
-                                <div className='flex items-center justify-center'>
-                                    <button className='px-8 py-2 bg-blue-500 text-white rounded-md focus:outline-none
-                                 hover:bg-blue-600 transition-colors duration-200 ease-in-out'>Lihat Selengkapnya</button>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </Slider>
         </>
     );

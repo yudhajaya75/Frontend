@@ -80,7 +80,7 @@ const Register = () => {
                     alt='logo'
                     className='w-[60px] h-[50px] lg:w-[70px] lg:h-[69px] my-auto mr-3'
                 />
-                <h1 className='text-white text-base lg:text-xl my-auto font-semibold leading-[20px]'>Konsultan Satir Indonesia</h1>
+                <h1 className='text-white text-base lg:text-xl my-auto font-semibold leading-[20px]'>Konseling Satir Indonesia</h1>
             </div>
 
             {/* form */}

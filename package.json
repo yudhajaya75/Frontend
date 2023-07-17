@@ -36,6 +36,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.14.0",
     "react-slick": "^0.29.0",
+    "rsuite": "^5.37.0",
     "slick-carousel": "^1.8.1",
     "strapi-sdk-javascript": "^0.3.3",
     "swiper": "^10.0.4",

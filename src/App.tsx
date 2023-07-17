@@ -20,6 +20,7 @@ import About from './pages/about/about';
 import Payment from './pages/payment/payment';
 import Profile from './pages/profile/profile';
 import Contactus from './pages/contactus/contactus';
+import Paket from './pages/paket/paket';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -63,6 +64,7 @@ function App() {
         <Route path='/payment' element={<Payment email={email} />} />
         <Route path='/profile' element={<Profile email={email} />} />
         <Route path='/contact' element={<Contactus email={email} />} />
+        <Route path='/paket' element={<Paket email={email} />} />
       </Routes>
     </>
   );

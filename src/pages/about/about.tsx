@@ -16,7 +16,11 @@ const About = (props: { email: string }) => {
             <Banner />
             <Teks />
             <Teks1 />
-            <Card />
+            <div className='lg:flex lg:justify-center lg:items-center lg:mr-[10px]'>
+                <div className='flex flex-col'>
+                    <Card />
+                </div>
+            </div>
             <Teks2 />
             <Founding />
             <Footer />

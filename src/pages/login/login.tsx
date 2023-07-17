@@ -77,7 +77,7 @@ const Login = (props: { setEmail: (email: string) => void }) => {
                 <div className="flex w-[150px] lg:w-[200px] h-[80px] my-10 ml-5 lg:ml-20">
                     <a href="/home" className="flex w-[150px] lg:w-[200px] h-[80px]">
                         <img src='http://localhost:3000/images/image-109.webp' alt="logo" className="w-[60px] h-[50px] lg:w-[70px] lg:h-[69px] my-auto mr-3" />
-                        <h1 className="text-white text-base lg:text-xl my-auto font-semibold leading-[20px]">Konsultan Satir Indonesia</h1>
+                        <h1 className="text-white text-base lg:text-xl my-auto font-semibold leading-[20px]">Konseling Satir Indonesia</h1>
                     </a>
                 </div>
 

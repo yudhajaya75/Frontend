@@ -90,9 +90,9 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                         <li>layanan</li>
                         <li style={{ marginLeft: 10 }}>
                             {isOpen ? (
-                                <AiOutlineCaretDown />
-                            ) : (
                                 <AiOutlineCaretUp />
+                            ) : (
+                                <AiOutlineCaretDown />
                             )}
                         </li>
                     </a>
@@ -104,6 +104,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                                     <a href='pelatihan'><h3 className='font-bold'>{item.pelatihan}</h3></a>
                                     <a href='layanan'><h3 className='font-bold'>{item.layanan}</h3></a>
                                     <a href='konsultasi'><h3 className='font-bold'>{item.konsultasi}</h3></a>
+                                    <a href='paket'><h3 className='font-bold'>{item.paket}</h3></a>
                                 </div>
                             ))}
                         </div>
@@ -137,9 +138,9 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                         <li className='p-4 border-b'>Layanan</li>
                         <li style={{ position: 'relative', left: 210, bottom: 35 }}>
                             {isOpen ? (
-                                <AiOutlineCaretDown />
-                            ) : (
                                 <AiOutlineCaretUp />
+                            ) : (
+                                <AiOutlineCaretDown />
                             )}
                         </li>
                     </a>
@@ -153,6 +154,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                                     <a href='pelatihan'><h3 className='font-bold'>{item.pelatihan}</h3></a>
                                     <a href='layanan'><h3 className='font-bold'>{item.layanan}</h3></a>
                                     <a href='konsultasi'><h3 className='font-bold'>{item.konsultasi}</h3></a>
+                                    <a href='paket'><h3 className='font-bold'>{item.paket}</h3></a>
                                 </div>
                             ))}
                         </div>

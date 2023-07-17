@@ -16,7 +16,7 @@ const Text1 = () => {
     return (
         <div className='p-10 font-sans font-bold 
         sm:text-left text-4xl sm:text-3xl text-[#074288] 
-        mb-[-200px]' style={{ position: 'relative', zIndex: 1 }}>
+        mb-[-200px] mt-[100px]' style={{ position: 'relative', zIndex: 1 }}>
             <div className=''>
                 <h5 className='text-center relative bottom-[100px]'>
                     Join Layanan kami yuk!

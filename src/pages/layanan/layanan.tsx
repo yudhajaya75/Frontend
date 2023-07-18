@@ -10,6 +10,7 @@ import Compslid from '../../components/compslid/compslid';
 import Footer from '../../components/footer/footer';
 
 const layanan = (props: { email: string }) => {
+  console.log(props)
   return (
     <div className='mx-auto max-w-[1800px] relative'>
       <Navbar accountEmail={props.email} />
@@ -17,7 +18,7 @@ const layanan = (props: { email: string }) => {
       <Teks />
       <div className='lg:flex lg:justify-center lg:items-center lg:mr-[230px]'>
         <div className='flex flex-col'>
-          <Card />
+          <Card accountEmail={props.email} />
         </div>
       </div>
       <Teks2 />

@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import '../card/card.css'
 
-const Card = () => {
+const Card = ({ accountEmail }: { accountEmail: string }) => {
+    const navigate = useNavigate();
+
+    const handlePesanSekarang = () => {
+        if (accountEmail !== '') {
+            navigate('/payment');
+        } else {
+            navigate('/login');
+        }
+    };
+
     return (
         <div className='mx-auto max-w-[1910px] max-h-[1728px] relative'>
             <div className='sm:pt-20 sm:pb-20 sm-440:pt-20 sm-440:pb-20'>
@@ -24,7 +35,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                            <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                         </div>
                     </div>
                     <div className="card-container">
@@ -41,7 +52,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                            <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                         </div>
                     </div>
                     <div className="card-container">
@@ -58,7 +69,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                            <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                         </div>
                     </div>
                     <div className="card-container">
@@ -75,7 +86,7 @@ const Card = () => {
                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                         </div>
                         <div className="btn">
-                            <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                            <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                         </div>
                     </div>
                 </div>
@@ -84,7 +95,7 @@ const Card = () => {
     );
 };
 
-const Founding = () => {
+const Founding = ({ accountEmail }: { accountEmail: string }) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -99,10 +110,20 @@ const Founding = () => {
         };
     }, []);
 
-    return windowWidth <= 440 ? <ImageSlider /> : <Card />;
+    return windowWidth <= 440 ? <ImageSlider accountEmail={accountEmail} /> : <Card accountEmail={accountEmail} />;
 };
 
-const ImageSlider = () => {
+
+const ImageSlider = ({ accountEmail }: { accountEmail: string }) => {
+    const navigate = useNavigate();
+
+    const handlePesanSekarang = () => {
+        if (accountEmail !== '') {
+            navigate('/payment');
+        } else {
+            navigate('/login');
+        }
+    };
     const settings = {
         dots: true,
         infinite: true,
@@ -147,7 +168,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                        <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                     </div>
                 </div>
                 <div className="card-container">
@@ -164,7 +185,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                        <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                     </div>
                 </div>
                 <div className="card-container">
@@ -181,7 +202,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                        <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                     </div>
                 </div>
                 <div className="card-container">
@@ -198,7 +219,7 @@ const ImageSlider = () => {
                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
                     </div>
                     <div className="btn">
-                        <button className="button"><Link to="/login">Pesan Sekarang</Link></button>
+                        <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
                     </div>
                 </div>
             </Slider>

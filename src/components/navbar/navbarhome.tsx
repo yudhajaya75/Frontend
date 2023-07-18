@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import './navbarhome.css'
 
 const Navbar = ({ accountEmail }: { accountEmail: string }) => {
+
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenUp, setIsOpenUp] = useState(false);
     const toggleMenu = () => {

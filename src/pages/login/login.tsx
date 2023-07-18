@@ -51,7 +51,6 @@ const Login = (props: { setEmail: (email: string) => void }) => {
             setShowAlert(true);
             return;
         } else if (response.status === 201) {
-            // return <Navigate to="/home" />;
             router('/home')
         }
 
@@ -134,11 +133,11 @@ const Login = (props: { setEmail: (email: string) => void }) => {
                 </div>
                 {/* end form */}
 
-                <div className="text-white text-4xl w-[300px] my-20 ml-5 lg:text-5xl lg:w-[400px] italic font-thin">
+                {/* <div className="text-white text-4xl w-[300px] my-20 ml-5 lg:text-5xl lg:w-[400px] italic font-thin">
                     <h1>
                         Welcome to. Konseling Satir Indonesia
                     </h1>
-                </div>
+                </div> */}
             </div>
         </>
     );

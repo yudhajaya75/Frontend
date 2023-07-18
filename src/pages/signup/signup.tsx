@@ -29,21 +29,21 @@ const Register = () => {
         document.getElementById("signOutDiv")!.hidden = false;
     }
 
-    useEffect(() => {
-        // global google
-        google.accounts!.id.initialize({
-            client_id: "548038563275-chirhiki2t042op8amukfe0df1hkb8r6.apps.googleusercontent.com",
-            callback: handleCallBackResponse
-        });
-        const docGetId = document.getElementById("signInDiv")!;
-        google.accounts.id.renderButton(docGetId, {
-            theme: "outline",
-            size: "large",
-            type: "standard"
-        })
+    // useEffect(() => {
+    //     // global google
+    //     google.accounts!.id.initialize({
+    //         client_id: "548038563275-chirhiki2t042op8amukfe0df1hkb8r6.apps.googleusercontent.com",
+    //         callback: handleCallBackResponse
+    //     });
+    //     const docGetId = document.getElementById("signInDiv")!;
+    //     google.accounts.id.renderButton(docGetId, {
+    //         theme: "outline",
+    //         size: "large",
+    //         type: "standard"
+    //     })
 
-        google.accounts.id.prompt();
-    })
+    //     google.accounts.id.prompt();
+    // })
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -71,7 +71,7 @@ const Register = () => {
     }
 
     return (
-        <div className='max-w-[1785px] h-[927px] lg:h-[1117px] mx-auto relative flex flex-col '>
+        <div className='max-w-[1785px] h-[927px] lg:h-[100vh] mx-auto relative flex flex-col '>
             <div className='w-full h-full bg-[#010d1f] absolute top-0 -z-20'></div>
             <img src='http://localhost:3000/images/Frame32.png' className='h-full absolute top-0 -z-10' alt='' />
             <div className='flex w-[150px] lg:w-[200px] h-[80px] my-10 ml-5 lg:ml-20'>

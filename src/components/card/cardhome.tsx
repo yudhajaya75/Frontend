@@ -9,30 +9,30 @@ import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 const Consultation = () => {
     return (
         <>
-            <div className="relative mt-10 xl:mt-[100px] ">
+            <div className="relative mt-10 xl:mt-[100px] font-mont">
                 <div className="p-4 w-[400px] text-center mx-auto ">
-                    <h3 className="text-2xl lg:text-3xl font-semibold text-[#002157]">Kenapa harus konsultasi di Konseling Satir</h3>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-[#002157]">Kenapa harus konsultasi di Konseling Satir</h3>
                 </div>
-                <div className="flex justify-evenly gap-10 flex-wrap mt-7 ">
-                    <div className=" w-[300px] h-[380px] shadow-lg rounded-md ">
+                <div className="max-w-[1246px] flex justify-evenly gap-10 mx-auto mt-7 ">
+                    <div className=" min-w-[25%] h-[380px] shadow-lg rounded-md ">
                         <img src='./images/home.webp' alt="" className=" w-[100%]  mb-[25px]" />
-                        <div className=" w-full h-[200px] px-2 ">
-                            <h3 className="text-xl  mb-[15px]  ">Judul</h3>
-                            <p className="text-lg ">Bisa didampingi dengan psikolog selama beberapa hari sekaligus.Lorem ipsum dolor amet.</p>
+                        <div className=" w-full h-[200px] px-6 ">
+                            <h3 className="text-xl  mb-[15px] font-bold">Judul 1</h3>
+                            <p className="text-[18px] ">Bisa didampingi dengan psikolog selama beberapa hari sekaligus.Lorem ipsum dolor amet.</p>
                         </div>
                     </div>
-                    <div className="hidden md:block w-[300px] h-[380px] shadow-lg rounded-md ">
+                    <div className="hidden md:block min-w-[25%] h-[380px] shadow-lg rounded-md ">
                         <img src='./images/home.webp' alt="" className=" w-[100%]  mb-[25px]" />
-                        <div className=" w-full h-[200px] px-2 ">
-                            <h3 className="text-xl  mb-[15px]  ">Judul</h3>
-                            <p className="text-lg ">Bisa didampingi dengan psikolog selama beberapa hari sekaligus.Lorem ipsum dolor amet.</p>
+                        <div className=" w-full h-[200px] px-6 ">
+                            <h3 className="text-xl  mb-[15px] font-bold">Judul 2</h3>
+                            <p className="text-[18px] ">Bisa didampingi dengan psikolog selama beberapa hari sekaligus.Lorem ipsum dolor amet.</p>
                         </div>
                     </div>
-                    <div className="hidden md:block w-[300px] h-[380px] shadow-lg rounded-md ">
+                    <div className="hidden md:block min-w-[25%] h-[380px] shadow-lg rounded-md ">
                         <img src='./images/home.webp' alt="" className=" w-[100%]  mb-[25px]" />
-                        <div className=" w-full h-[200px] px-2 ">
-                            <h3 className="text-xl  mb-[15px]  ">Judul</h3>
-                            <p className="text-lg ">Bisa didampingi dengan psikolog selama beberapa hari sekaligus.Lorem ipsum dolor amet.</p>
+                        <div className=" w-full h-[200px] px-6 ">
+                            <h3 className="text-xl  mb-[15px] font-bold">Judul 3</h3>
+                            <p className="text-[18px] ">Bisa didampingi dengan psikolog selama beberapa hari sekaligus.Lorem ipsum dolor amet.</p>
                         </div>
                     </div>
                 </div>

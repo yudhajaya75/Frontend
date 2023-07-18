@@ -2,15 +2,20 @@ import React, { useState, useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-
 const Blog = () => {
+    const [count, setCount] = useState(0);
+
+    const handleImageClick = () => {
+        setCount(count + 1)
+    };
+
     return (
         <>
             <div>
                 <div className='relative'>
                     <div className='grid grid-cols-1 content-start lg:w-[1300px] h-auto relative'>
                         <div className='relative left-[100px] top-[120px]'>
-                            <a href="blog3"><img className='h-[380px]' src='./images/blog.webp' alt='' /></a>
+                            <a href="blog3"><img className='h-[380px]' src='./images/blog.webp' alt='' onClick={handleImageClick} /></a>
                             <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
                                 <p className='font-bold text-[25px]'>Sed ut perspiciatis unde omnis iste natus error sit voluptate.</p>
                                 <p className='relative top-4 text-justify'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -29,13 +34,13 @@ const Blog = () => {
                                     <p>06 Maret 2023</p>
                                 </div>
                                 <div className='relative top-[0px] left-0'>
-                                    <p className='font-bold text-[25px]'>100k</p>
+                                    <p className='font-bold text-[25px]'>{count}</p>
                                     <p className='text-[#8B8B8B]'>People Saw</p>
                                 </div>
                             </div>
                         </div>
                         <div className=' relative left-[100px] bottom-[20px]'>
-                            <a href="blog3"><img className='h-[380px]' src='./images/blog2.webp' alt='' /></a>
+                            <a href="blog3"><img className='h-[380px]' src='./images/blog2.webp' alt='' onClick={handleImageClick} /></a>
                             <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
                                 <p className='font-bold text-[25px]'>Sed ut perspiciatis unde omnis iste natus error sit voluptate.</p>
                                 <p className='relative top-4 text-justify'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -54,13 +59,13 @@ const Blog = () => {
                                     <p>06 Maret 2023</p>
                                 </div>
                                 <div className='relative top-[0px] left-0'>
-                                    <p className='font-bold text-[25px]'>100k</p>
+                                    <p className='font-bold text-[25px]'>{count}</p>
                                     <p className='text-[#8B8B8B]'>People Saw</p>
                                 </div>
                             </div>
                         </div>
                         <div className=' relative left-[100px] bottom-[170px]'>
-                            <a href="blog3"><img className='h-[380px]' src='./images/blog3.webp' alt='' /></a>
+                            <a href="blog3"><img className='h-[380px]' src='./images/blog3.webp' alt='' onClick={handleImageClick} /></a>
                             <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
                                 <p className='font-bold text-[25px]'>Sed ut perspiciatis unde omnis iste natus error sit voluptate.</p>
                                 <p className='relative top-4 text-justify'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -79,7 +84,7 @@ const Blog = () => {
                                     <p>06 Maret 2023</p>
                                 </div>
                                 <div className='relative top-[0px] left-0'>
-                                    <p className='font-bold text-[25px]'>100k</p>
+                                    <p className='font-bold text-[25px]'>{count}</p>
                                     <p className='text-[#8B8B8B]'>People Saw</p>
                                 </div>
                             </div>
@@ -199,7 +204,7 @@ const Mobile = () => {
     );
 };
 
-export default Blog;
+export default Founding;
 
 
 // import React, { useState, useEffect } from 'react';

@@ -26,7 +26,7 @@ const Text1 = () => {
                     Hubungi kami melalui Whatsapp
                 </h5>
                 <div className="flex items-center justify-center relative bottom-20">
-                    <Link to=""><img className='w-[50px]' src="/images/wa.webp" alt="" /></Link>
+                    <Link to="https://wa.me/6285718053834"><img className='w-[50px]' src="/images/wa.webp" alt="" /></Link>
                 </div>
             </div>
         </div>

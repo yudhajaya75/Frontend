@@ -29,6 +29,27 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    const checkLoginStatus = () => {
+      const token = getTokenAuth(); // Implement this function to get the user token from local storage
+      if (token) {
+        setIsLoggedIn(true);
+      }
+    };
+    checkLoginStatus();
+  }, []);
+
+  const handleLogin = (loggedInEmail: any) => {
+    setEmail(loggedInEmail);
+    setIsLoggedIn(true);
+  };
+
+  // Function to handle logout
+  const handleLogout = () => {
+    // Implement logout functionality (clear token from local storage, etc.)
+    setIsLoggedIn(false);
+  };
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/user', {
@@ -70,15 +91,11 @@ function App() {
         <Route path='/about' element={<About email={email} />} />
         <Route
           path='/payment'
-          element={
-            getTokenAuth() ? <Payment email={email} /> : <Navigate to="/home" />
-          }
+          element={isLoggedIn ? <Payment email={email} /> : <Navigate to="/home" />}
         />
         <Route
           path='/profile'
-          element={
-            getTokenAuth() ? <Profile email={email} /> : <Navigate to="/home" />
-          }
+          element={isLoggedIn ? <Profile email={email} /> : <Navigate to="/home" />}
         />
         <Route path='/contact' element={<Contactus email={email} />} />
         <Route path='/paket' element={<Paket email={email} />} />

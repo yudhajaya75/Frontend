@@ -29,22 +29,6 @@ const Register = () => {
         document.getElementById("signOutDiv")!.hidden = false;
     }
 
-    // useEffect(() => {
-    //     // global google
-    //     google.accounts!.id.initialize({
-    //         client_id: "548038563275-chirhiki2t042op8amukfe0df1hkb8r6.apps.googleusercontent.com",
-    //         callback: handleCallBackResponse
-    //     });
-    //     const docGetId = document.getElementById("signInDiv")!;
-    //     google.accounts.id.renderButton(docGetId, {
-    //         theme: "outline",
-    //         size: "large",
-    //         type: "standard"
-    //     })
-
-    //     google.accounts.id.prompt();
-    // })
-
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const handleTogglePassword = () => {

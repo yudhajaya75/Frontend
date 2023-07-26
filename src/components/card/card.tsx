@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 import '../card/card.css'
 
 const Card = ({ accountEmail }: { accountEmail: string }) => {
-    const navigate = useNavigate();
+    const router = useNavigate();
 
     const handlePesanSekarang = () => {
         if (accountEmail !== '') {
-            navigate('/payment');
+            router('/payment');
         } else {
-            navigate('/login');
+            router('/webinar3');
         }
     };
 
@@ -121,7 +121,7 @@ const ImageSlider = ({ accountEmail }: { accountEmail: string }) => {
         if (accountEmail !== '') {
             navigate('/payment');
         } else {
-            navigate('/login');
+            navigate('/webinar3');
         }
     };
     const settings = {

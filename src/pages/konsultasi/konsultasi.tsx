@@ -18,7 +18,7 @@ const konsultasi = (props: { email: string }) => {
       <Teks />
       <div className='lg:flex lg:justify-center lg:items-center lg:mr-[230px]'>
         <div className='flex flex-col'>
-          <Card />
+          <Card accountEmail={props.email} />
         </div>
       </div>
       <Teks2 />

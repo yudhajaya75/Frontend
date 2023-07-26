@@ -10,7 +10,7 @@ const Text = () => {
             text-[#002157] max-w-[300px] text-center
             '>Hubungi kami melalui Whatsapp</h1>
                 <div className="flex items-center justify-center relative top-[120px]">
-                    <Link to=""><img className='w-[50px]' src="/images/wa.webp" alt="" /></Link>
+                    <Link to="https://wa.me/6285718053834" target='_blank'><img className='w-[50px]' src="/images/wa.webp" alt="" /></Link>
                 </div>
             </div>
         </>
@@ -26,7 +26,7 @@ const Text1 = () => {
                     Hubungi kami melalui Whatsapp
                 </h5>
                 <div className="flex items-center justify-center relative bottom-20">
-                    <Link to="https://wa.me/6285718053834"><img className='w-[50px]' src="/images/wa.webp" alt="" /></Link>
+                    <Link to="https://wa.me/6285718053834" target='_blank'><img className='w-[50px]' src="/images/wa.webp" alt="" /></Link>
                 </div>
             </div>
         </div>

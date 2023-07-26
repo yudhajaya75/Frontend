@@ -53,7 +53,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     >
                         {/* <img src="./images/profile.png" alt="" /> */}
                         <li>{accountEmail}</li>
-                        <li style={{ marginLeft: 10 }}>{isOpenUp ? <AiOutlineCaretDown /> : <AiOutlineCaretUp />}</li>
+                        <li style={{ marginLeft: 10 }}>{isOpenUp ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}</li>
                     </a>
                     {isOpenUp && (
                         <div className="bg-[#FFFFFF] absolute ml-[100px] top-[60px] flex flex-col items-start rounded-lg p-2">
@@ -63,7 +63,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                             hover:border-l-white"
                                     key={i}
                                 >
-                                    <a href='/profile'><h3 className='font-bold'>{item.myprofile}</h3></a>
+                                    <a href='/users'><h3 className='font-bold'>{item.myprofile}</h3></a>
                                     <Link to='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></Link>
                                 </div>
                             ))}

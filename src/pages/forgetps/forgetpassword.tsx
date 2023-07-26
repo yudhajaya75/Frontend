@@ -3,7 +3,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { setLocalStorage } from "../../helper/helper";
 
 const Login = (props: { setEmail: (email: string) => void }) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -43,6 +42,8 @@ const Login = (props: { setEmail: (email: string) => void }) => {
             })
         });
 
+        console.log(response);
+
         setIsSubmitting(false);
 
         if (response.status === 400) {
@@ -51,10 +52,10 @@ const Login = (props: { setEmail: (email: string) => void }) => {
         } else if (response.status === 201) {
             router('/home')
         }
-        let body = await response.json();
+
         props.setEmail(email);
 
-        setLocalStorage('token', body.token);
+        localStorage.setItem('lastLoginData', JSON.stringify({ email }));
 
     };
 
@@ -79,7 +80,7 @@ const Login = (props: { setEmail: (email: string) => void }) => {
 
                 {/* form */}
                 <div className='rounded-md bg-white shadow-2xl h-[600px] w-[90%] md:w-[70%] lg:w-[40%] lg:h-[500px] mx-auto flex flex-col items-center justify-center gap-10 text-[#5A5A5D] lg:mt-20'>
-                    <h2 className='text-3xl font-medium text-black'>Login to your account</h2>
+                    <h2 className='text-3xl font-medium text-black'>Enter Your Email</h2>
                     <form className="flex flex-col gap-10 lg:w-[70%]" onSubmit={submit}>
                         {/* email */}
                         <div className="flex flex-col gap-2">
@@ -91,30 +92,6 @@ const Login = (props: { setEmail: (email: string) => void }) => {
                             </div>
                         </div>
 
-                        {/* password */}
-                        <div className='flex flex-col gap-2'>
-                            <div className="flex justify-between">
-                                <label htmlFor="password" className='font-medium'>Password</label>
-                                <a href="/forget" className="text-[#007DFA] hover:underline underline-offset-1">Forget Password ?</a>
-                            </div>
-                            <div className="flex items-center lg:justify-between border-2 p-3 rounded-md hover:border-sky-400/[.5] focus:border-sky-400/[.5]">
-                                <input
-                                    type={passwordVisible ? 'text' : 'password'}
-                                    onChange={e => setPassword(e.target.value)}
-                                    placeholder="Password"
-                                    className="w-full"
-                                    style={{ outline: '0px' }}
-                                    required
-                                />
-                                <div onClick={handleTogglePassword} className="w-[15px]">
-                                    {passwordVisible ? (
-                                        <AiOutlineEyeInvisible size={20} />
-                                    ) : (
-                                        <AiOutlineEye size={20} />
-                                    )}
-                                </div>
-                            </div>
-                        </div>
                         {/* end password */}
                         <button type="submit" className='bg-[#007DFA] lg:w-[100%] text-white w-[270px] 
                 text-center font-medium p-3 rounded-md hover:bg-[#3390ed]'>

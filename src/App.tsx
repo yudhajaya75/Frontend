@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import axios from "axios";
 
 import Home from './pages/home/home';
@@ -21,9 +21,12 @@ import Payment from './pages/payment/payment';
 import Profile from './pages/profile/profile';
 import Contactus from './pages/contactus/contactus';
 import Paket from './pages/paket/paket';
+import Forget from './pages/forgetps/forgetpassword';
+import { getTokenAuth } from "./helper/helper";
 
 function App() {
   const [email, setEmail] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,11 +36,15 @@ function App() {
           withCredentials: true,
         });
 
+        console.log(await response.data);
+
         setEmail(response.data.email);
+        setIsLoggedIn(true);
       } catch (error) {
         console.error('Error:', error);
       }
     };
+    console.log(isLoggedIn)
 
     fetchData();
   }, []);
@@ -46,7 +53,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Home email={email} />} />
-        <Route path='/login' Component={() => <Login setEmail={setEmail} />} />
+        <Route path='/login' element={<Login setEmail={setEmail} />} />
         <Route path='/signup' element={<Daftar />} />
         <Route path='/home' element={<Home email={email} />} />
         <Route path='/home2' element={<Home2 email={email} />} />
@@ -61,10 +68,21 @@ function App() {
         <Route path='/blog2' element={<Blog2 email={email} />} />
         <Route path='/blog3' element={<Blog3 email={email} />} />
         <Route path='/about' element={<About email={email} />} />
-        <Route path='/payment' element={<Payment email={email} />} />
-        <Route path='/profile' element={<Profile email={email} />} />
+        <Route
+          path='/payment'
+          element={
+            getTokenAuth() ? <Payment email={email} /> : <Navigate to="/home" />
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            getTokenAuth() ? <Profile email={email} /> : <Navigate to="/home" />
+          }
+        />
         <Route path='/contact' element={<Contactus email={email} />} />
         <Route path='/paket' element={<Paket email={email} />} />
+        <Route path='/forget' element={<Forget setEmail={setEmail} />} />
       </Routes>
     </>
   );

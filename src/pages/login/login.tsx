@@ -33,7 +33,7 @@ const Login = (props: { setEmail: (email: string) => void }) => {
 
         setIsSubmitting(true);
 
-        const response = await fetch('http://localhost:8000/api/login', {
+        const response = await fetch('http://localhost:4001/user/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',

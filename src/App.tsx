@@ -28,47 +28,27 @@ function App() {
   const [email, setEmail] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const checkLoginStatus = () => {
-      const token = getTokenAuth(); // Implement this function to get the user token from local storage
-      if (token) {
-        setIsLoggedIn(true);
-      }
-    };
-    checkLoginStatus();
-  }, []);
-
-  const handleLogin = (loggedInEmail: any) => {
-    setEmail(loggedInEmail);
-    setIsLoggedIn(true);
-  };
-
-  // Function to handle logout
-  const handleLogout = () => {
-    // Implement logout functionality (clear token from local storage, etc.)
-    setIsLoggedIn(false);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4001/user/users', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'bearer ' + getTokenAuth()
+        },
+        withCredentials: true,
+      });
+      console.log(await response.data);
+      setEmail(response.data.email);
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/api/user', {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        });
-
-        console.log(await response.data);
-
-        setEmail(response.data.email);
-        setIsLoggedIn(true);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    console.log(isLoggedIn)
-
     fetchData();
-  }, []);
+    console.info("logged ", isLoggedIn)
+  }, [!isLoggedIn]);
 
   return (
     <>

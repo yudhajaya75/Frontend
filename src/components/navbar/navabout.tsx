@@ -3,12 +3,13 @@ import list from "./list.json"
 import listprofile from "./listprofile.json"
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineCaretUp, AiOutlineCaretDown } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './navbarhome.css'
 
 const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenUp, setIsOpenUp] = useState(false);
+    const router = useNavigate();
     const toggleMenu = () => {
         setIsOpenUp((prev) => !prev);
     };
@@ -20,12 +21,13 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     }
 
     const logout = async () => {
-        await fetch('http://localhost:8000/api/logout', {
+        await fetch('http://localhost:4001/user/logout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
         });
     }
+
 
     let menu: JSX.Element;
 
@@ -62,7 +64,9 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                             hover:border-l-white"
                                     key={i}
                                 >
-                                    <a href='/profile'><h3 className='font-bold'>{item.myprofile}</h3></a>
+                                    <Link to='/profile' onClick={() => {
+                                        router('/profile');
+                                    }}><h3 className='font-bold'>{item.myprofile}</h3></Link>
                                     <Link to='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></Link>
                                 </div>
                             ))}
@@ -86,7 +90,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                 </a>
                 <div>
                     <a href='#' onClick={() => setIsOpen((prev) => !prev)}
-                        className='teksnav1' style={{ color: '#4B4B4B', fontWeight: 'bold', fontSize: '20px' }}>
+                        className='teksnav1' style={{ color: '#074288' }}>
                         <li>layanan</li>
                         <li style={{ marginLeft: 10 }}>
                             {isOpen ? (
@@ -114,7 +118,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     <li className='teksnav2' style={{ color: '#4B4B4B' }}>Blog</li>
                 </a>
                 <a href="/about">
-                    <li className='teksnav3' style={{ color: '#074288' }}>About Us</li>
+                    <li className='teksnav3' style={{ color: '#4B4B4B' }}>About Us</li>
                 </a>
                 <a href="/contact">
                     <li className='teksnav4' style={{ color: '#4B4B4B' }}>Contact Us</li>

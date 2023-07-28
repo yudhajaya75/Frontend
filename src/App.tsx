@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from 'react-router-dom';
-import axios from "axios";
+import Loading from './loader/loader.json'
+import LoadingText from './loader/loadingtext.json'
+import Lottie from 'lottie-react'
+import useGetUserData from './hooks/useGetUserData'
 
 import Home from './pages/home/home';
 import Home2 from './pages/home/home2';
@@ -9,7 +11,7 @@ import Daftar from './pages/signup/signup';
 import Layanan from './pages/layanan/layanan';
 import Webinar from './pages/webminar/webinar';
 import Webinar2 from './pages/webminar/webinar2';
-import Webinar3 from './pages/webminar/webinar3';
+import Webinar3 from './pages/webminar/KonsultasiDetail';
 import Pelatihan from './pages/pelatihan/pelatihan';
 import Pelatihan2 from './pages/pelatihan/pelatihan2';
 import Konsultasi from './pages/konsultasi/konsultasi';
@@ -21,47 +23,49 @@ import Payment from './pages/payment/payment';
 import Profile from './pages/profile/profile';
 import Contactus from './pages/contactus/contactus';
 import Paket from './pages/paket/paket';
-import Forget from './pages/forgetps/forgetpassword';
-import { getTokenAuth } from "./helper/helper";
+import KonsultasiDetail from "./pages/webminar/KonsultasiDetail";
+import KonselingDetail from "./pages/webminar/KonselingDetail";
+import PelatihanDetail from "./pages/webminar/PelatihanDetail";
+
+
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('http://localhost:4001/user/users', {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'bearer ' + getTokenAuth()
-        },
-        withCredentials: true,
-      });
-      console.log(await response.data);
-      setEmail(response.data.email);
-      setIsLoggedIn(true);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+  const {
+    email,
+    setEmail,
+    isFetchingData,
+    isLoggedIn,
+    isLoading
+  } = useGetUserData();
 
-  useEffect(() => {
-    fetchData();
-    console.info("logged ", isLoggedIn)
-  }, [!isLoggedIn]);
+
+  if (isLoading || isFetchingData) {
+    return (
+      <div
+        className="min-h-screen bg-gradient-to-b from-[#00B3FF] to-[#0099CC] flex items-center justify-center">
+        <div className='relative bg-[#00B3FF]'>
+          <Lottie animationData={Loading} />
+        </div>
+      </div>
+    )
+  }
+
 
   return (
     <>
       <Routes>
         <Route path='/' element={<Home email={email} />} />
-        <Route path='/login' element={<Login setEmail={setEmail} />} />
+        <Route path='/login' Component={() => <Login setEmail={setEmail} />} />
         <Route path='/signup' element={<Daftar />} />
         <Route path='/home' element={<Home email={email} />} />
         <Route path='/home2' element={<Home2 email={email} />} />
         <Route path='/layanan' element={<Layanan email={email} />} />
         <Route path='/webinar' element={<Webinar email={email} />} />
-        <Route path='/webinar2' element={<Webinar2 email={email} />} />
-        <Route path='/webinar3' element={<Webinar3 email={email} />} />
+        <Route path='/webinar/:slug' element={<Webinar2 email={email} />} />
+        <Route path='/konseling/:slug' element={<KonselingDetail email={email} />} />
+        <Route path='/pelatihan/:slug' element={<PelatihanDetail email={email} />} />
+        <Route path='/konsultasi/:slug' element={<KonsultasiDetail email={email} />} />
         <Route path='/pelatihan' element={<Pelatihan email={email} />} />
         <Route path='/pelatihan2' element={<Pelatihan2 email={email} />} />
         <Route path='/konsultasi' element={<Konsultasi email={email} />} />
@@ -79,7 +83,6 @@ function App() {
         />
         <Route path='/contact' element={<Contactus email={email} />} />
         <Route path='/paket' element={<Paket email={email} />} />
-        <Route path='/forget' element={<Forget setEmail={setEmail} />} />
       </Routes>
     </>
   );

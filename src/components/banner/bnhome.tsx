@@ -56,10 +56,9 @@ const Registration = () => {
                     <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl font-bold text-[#002157]  ">Konseling Satir Indonesia</h1>
                     <p className=" font-extralight text-xs sm:text-lg md:text-xl lg:text-3xl text-[#5B5B5B]">Berproses & Bertumbuh Menjadi<br />  Manusia Utuh</p>
 
-                    <div className='sm-440:pt-6 lg:pt-0'>
-                        <div className="bg-[#002157] hover:bg-[#286cdb] lg:w-[200px] sm-440:w-[140px] lg:h-[50px] sm-440:h-[30px] sm-440:py-0
-                    sm-440:px-3 lg:flex rounded-xl lg:py-3">
-                            <a className=" text-slate-100 lg:text-xl sm-440:text-[15px] font-bold m-auto" href="/signup">Daftar Sekarang</a>
+                    <div className='mt-5 lg:mt-0'>
+                        <div className="bg-[#002157] hover:bg-[#286cdb] rounded-lg  py-2 px-8 sm:w-[200px] lg:w-[220px]">
+                            <a className=" text-slate-100 lg:text-xl sm-440:text-[15px] font-bold " href="/signup">Daftar Sekarang</a>
                         </div>
                     </div>
                 </div>

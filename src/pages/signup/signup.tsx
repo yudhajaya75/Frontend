@@ -1,54 +1,18 @@
-import { SyntheticEvent, useState } from "react";
-import { useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Navigate } from 'react-router-dom';
-import jwtDecode from "jwt-decode";
+import useGetRegisterData from "../../hooks/useGetRegisterData";
 
 const Register = () => {
-    interface userI {
-        name: string | null;
-        iat?: number;
-        iss?: string;
-        picture?: string;
-    }
-
-    const [user, setUser] = useState<userI>({ name: null })
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
-
-    function handleCallBackResponse(response: any) {
-        const userObject = jwtDecode(response.credential);
-
-        setUser(userObject as userI);
-        document.getElementById("signInDiv")!.hidden = true;
-    }
-
-    function handleSignout() {
-        setUser({ name: null });
-        document.getElementById("signOutDiv")!.hidden = false;
-    }
-
-    const [passwordVisible, setPasswordVisible] = useState(false);
-
-    const handleTogglePassword = () => {
-        setPasswordVisible(!passwordVisible);
-    };
-
-    const submit = async (e: SyntheticEvent) => {
-        e.preventDefault();
-
-        await fetch('http://localhost:4001/user/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-
-        setRedirect(true);
-    }
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        passwordVisible,
+        handleTogglePassword,
+        submit,
+        redirect,
+    } = useGetRegisterData();
 
     if (redirect) {
         return <Navigate to="/login" />;
@@ -117,7 +81,7 @@ const Register = () => {
                     id='signInDiv'
                     className='bg-[#E0EFFE] text-[#007DFA]  lg:w-[70%] w-[270px] text-center font-medium p-3 rounded-md flex items-center justify-center gap-2'
                 >
-                    <button type="button" className="cursor-pointer bg-blue-200" onClick={handleSignout}>
+                    <button type="button" className="cursor-pointer bg-blue-200">
                     </button>
                 </div>
                 <div className='flex gap-2'>

@@ -10,7 +10,7 @@ import Footer from '../../components/footer/footwebminar'
 
 const Webinar = (props: { email: string }) => {
     return (
-        <div className='mx-auto max-w-[1800px] relative'>
+        <div className='mx-auto max-w-[1724px] relative'>
             <Navbar accountEmail={props.email} />
             <Banner />
             <Teks />

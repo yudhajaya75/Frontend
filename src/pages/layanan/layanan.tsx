@@ -8,6 +8,7 @@ import Sosmed from '../../components/sosmed/sosmed';
 import Teks3 from '../../components/teks/teks-kerjasama';
 import Compslid from '../../components/compslid/compslid';
 import Footer from '../../components/footer/footer';
+import CardLayanan from '../../components/card/cardLayanan';
 
 const layanan = (props: { email: string }) => {
   console.log(props)
@@ -18,7 +19,7 @@ const layanan = (props: { email: string }) => {
       <Teks />
       <div className='lg:flex lg:justify-center lg:items-center lg:mr-[230px]'>
         <div className='flex flex-col'>
-          <Card accountEmail={props.email} />
+          <CardLayanan />
         </div>
       </div>
       <Teks2 />

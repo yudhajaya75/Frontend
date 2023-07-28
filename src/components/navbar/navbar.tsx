@@ -4,6 +4,7 @@ import listprofile from "./listprofile.json"
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { AiOutlineCaretUp, AiOutlineCaretDown } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
+import useGetLogoutData from '../../hooks/useGetLogoutData'
 import './navbarhome.css'
 
 const Navbar = ({ accountEmail }: { accountEmail: string }) => {
@@ -20,13 +21,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
         setNav(!nav)
     }
 
-    const logout = async () => {
-        await fetch('http://localhost:4001/user/logout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-        });
-    }
+    const { isLoggingOut, logout } = useGetLogoutData();
 
 
     let menu: JSX.Element;

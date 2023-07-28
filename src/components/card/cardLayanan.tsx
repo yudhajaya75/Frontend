@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import CardComponent from './cardComponent';
-import axios from 'axios';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import CardComponent from "./cardComponent";
+import { Link } from "react-router-dom";
 
-const CardPelatihan = () => {
+const CardLayanan = () => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/pelatihan-card';
+    const url = 'http://localhost:4001/layanan-card';
     useEffect(() => {
         axios.get(url).then((response) => {
             setContent(response.data.data);
         })
     }, [])
-
 
     return (
         <>
@@ -23,7 +23,7 @@ const CardPelatihan = () => {
                             body={res.body}
                             image={res.image}
                             slug={res.slug}
-                            link='pelatihan'
+                            link='konseling'
                         />
                     ))
                 }
@@ -32,4 +32,4 @@ const CardPelatihan = () => {
     )
 }
 
-export default CardPelatihan;
+export default CardLayanan;

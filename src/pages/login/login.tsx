@@ -1,62 +1,22 @@
-import { SyntheticEvent, useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import { setLocalStorage } from "../../helper/helper";
+import useGetLoginData from "../../hooks/useGetLoginData";
 
 const Login = (props: { setEmail: (email: string) => void }) => {
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const router = useNavigate()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
-    const [showAlert, setShowAlert] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    useEffect(() => {
-        const lastLoginData = localStorage.getItem('lastLoginData');
-        if (lastLoginData) {
-            const { email } = JSON.parse(lastLoginData);
-            setEmail(email);
-        }
-    }, []);
-
-    const handleTogglePassword = () => {
-        setPasswordVisible(!passwordVisible);
-    };
-
-    const submit = async (e: SyntheticEvent) => {
-        e.preventDefault();
-
-        if (isSubmitting) return;
-
-        setIsSubmitting(true);
-
-        const response = await fetch('http://localhost:4001/user/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-
-        setIsSubmitting(false);
-
-        if (response.status === 400) {
-            setShowAlert(true);
-            return;
-        } else if (response.status === 201) {
-            router('/home')
-        }
-        let body = await response.json();
-        props.setEmail(email);
-
-        setLocalStorage('token', body.token);
-
-    };
+    const {
+        passwordVisible,
+        handleTogglePassword,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        showAlert,
+        setShowAlert,
+        isSubmitting,
+        submit,
+    } = useGetLoginData(props);
 
     return (
         <>
@@ -128,13 +88,6 @@ const Login = (props: { setEmail: (email: string) => void }) => {
                         </Link>
                     </div>
                 </div>
-                {/* end form */}
-
-                {/* <div className="text-white text-4xl w-[300px] my-20 ml-5 lg:text-5xl lg:w-[400px] italic font-thin">
-                    <h1>
-                        Welcome to. Konseling Satir Indonesia
-                    </h1>
-                </div> */}
             </div>
         </>
     );

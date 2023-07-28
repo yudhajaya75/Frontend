@@ -6,6 +6,8 @@ import Teks1 from '../../components/teks/teksabout1'
 import Card from '../../components/card/cardabout'
 import Teks2 from '../../components/teks/teksabout-pendiri'
 import Founding from '../../components/founding/founding'
+import Compslid from '../../components/compslid/compslid'
+import Tesk3 from '../../components/teks/teks-kerjasama'
 import Footer from '../../components/footer/footabout'
 
 
@@ -22,7 +24,13 @@ const About = (props: { email: string }) => {
                 </div>
             </div>
             <Teks2 />
-            <Founding />
+            <div className='flex justify-center items-center mr-[10px]'>
+                <Founding />
+            </div>
+            <div className='relative top-[150px] left-4'>
+                <Tesk3 />
+                <Compslid />
+            </div>
             <Footer />
         </div>
 

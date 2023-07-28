@@ -1,42 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from 'react';
 import CardComponent from './cardComponent';
 import axios from 'axios';
 
-const CardKonsultasi = () => {
+const CardPelatihan = () =>{    
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/konsultasi-card';
-    useEffect(() => {
+    const url = 'http://localhost:4001/pelatihan-card';
+        useEffect(() =>{
         axios.get(url).then((response) => {
             setContent(response.data.data);
         })
     }, [])
 
-    return (
-        <>
-            <div className='flex justify-center flex-wrap gap-10 mx-auto '>
-                {
-                    content.map((res: any) => (
-                        <CardComponent
-                            title={res.title}
-                            price={res.price}
-                            body={res.body}
-                            image={res.image}
-                            slug={res.slug}
-                            link='konsultasi'
-                        />
-                    ))
-                }
+
+    return(
+        <> 
+             <div className='flex justify-center flex-wrap gap-10 mx-auto my-40 '>
+            {
+                content.map((res: any) => (
+                    <CardComponent 
+                    title={res.title}
+                    price={res.price}
+                    body={res.body}
+                    image={res.image}
+                    slug={res.slug}
+                    link='pelatihan'
+                    />
+                ))
+            }
             </div>
         </>
     )
 }
 
-export default CardKonsultasi;
-
-
+export default CardPelatihan;
 
 
 // import React, { useEffect, useState } from 'react';
@@ -58,81 +54,23 @@ export default CardKonsultasi;
 //         }
 //     };
 
+    
+
 //     return (
-//         <div className='mx-auto max-w-[1910px] max-h-[1728px] relative'>
-//             <div className='sm:pt-20 sm:pb-20 sm-440:pt-20 sm-440:pb-20'>
-//                 <div className='container-card'>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 1</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 2</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 3</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 4</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                 </div>
+//         <div className='flex justify-center flex-wrap gap-10 mx-auto my-40 '>
+//             {
+//                 content.map((res: any) => (
+//                     <CardComponent 
+//                     title={res.title}
+//                     price={res.price}
+//                     body={res.body}
+//                     image={res.image}
+//                     slug={res.slug}
+//                     link='pelatihan'
+//                     />
+//                 ))
+//             }
 //             </div>
-//         </div>
 //     );
 // };
 

@@ -1,20 +1,20 @@
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/navbar/navwebinar'
+import Banner from '../../components/banner/banwebminar3'
 import Teks4 from "../../components/teks/teks-webinar5"
 import Teks3 from '../../components/teks/teks-kata-mereka'
 import Sosmed from '../../components/sosmed/sosmed'
 import Footer from '../../components/footer/footwebminar'
-import Banner from '../../components/banner/banwebminar3'
-import TextDescComponent from '../../components/teks/TextDescComponent'
 import TextHeadingComponent from '../../components/teks/TextHeadingComponent'
-import ButtonWa from '../../components/button/ButtonWa'
-import { useEffect, useState } from 'react'
+import { ButtonPesan } from '../../components/button/ButtonPesan'
+import TextDescComponent from '../../components/teks/TextDescComponent'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 
-const Webinar = (props: { email: string }) => {
+const PelatihanDetail = (props: { email: string }) => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/product';
+    const url = 'http://localhost:4001/pelatihan-card';
     useEffect(() => {
         axios.get(url).then((response) => {
             setContent(response.data.data);
@@ -23,25 +23,28 @@ const Webinar = (props: { email: string }) => {
 
     console.log(content);
     const { slug } = useParams()
-    const webinar: any = content?.filter((item: any) => item.slug == slug)[0];
+    const layanan: any = content?.filter((item: any) => item.slug == slug)[0];
+
+
+
 
     return (
         <div className='mx-auto max-w-[1724px] relative'>
-            {/* <Navbar accountEmail={props.email} /> */}
-            <Teks4 title={webinar?.title} />
+            <Navbar accountEmail={props.email} />
+
+            <Teks4
+                title={layanan?.title} />
             <Banner
-                image={webinar?.image} />
+                image={layanan?.image} />
             <div className='flex justify-center flex-col gap-y-10 my-20'>
                 <TextHeadingComponent
-                    heading={webinar?.title}
-                />
-                <ButtonWa />
+                    heading={layanan?.title} />
+                <ButtonPesan accountEmail={props.email} />
             </div>
             <TextDescComponent
-                title='webinar ini !'
-                body={webinar?.body}
+                title='Pelatihan ini !'
+                body={layanan?.body}
             />
-
             <Teks3 />
             <Sosmed />
             <Footer />
@@ -49,4 +52,4 @@ const Webinar = (props: { email: string }) => {
     )
 }
 
-export default Webinar
+export default PelatihanDetail;

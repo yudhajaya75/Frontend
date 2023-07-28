@@ -2,13 +2,12 @@ import 'react-multi-carousel/lib/styles.css';
 import Navbar from '../../components/navbar/navbar'
 import Banner from '../../components/banner/banlayanan'
 import Teks from '../../components/teks/teks';
-import Card from '../../components/card/cardkonsultasi';
 import Teks2 from '../../components/teks/teks-kata-mereka';
 import Sosmed from '../../components/sosmed/sosmed';
 import Teks3 from '../../components/teks/teks-kerjasama';
 import Compslid1 from '../../components/compslid/compslid1';
 import Footer from '../../components/footer/footer';
-
+import CardKonsultasi from '../../components/card/cardkonsultasi';
 
 const konsultasi = (props: { email: string }) => {
   return (
@@ -16,11 +15,7 @@ const konsultasi = (props: { email: string }) => {
       <Navbar accountEmail={props.email} />
       <Banner />
       <Teks />
-      <div className='lg:flex lg:justify-center lg:items-center lg:mr-[230px]'>
-        <div className='flex flex-col'>
-          <Card />
-        </div>
-      </div>
+      <CardKonsultasi/>
       <Teks2 />
       <Sosmed />
       <Teks3 />

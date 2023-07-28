@@ -10,16 +10,12 @@ import Footer from '../../components/footer/footwebminar'
 
 const Webinar = (props: { email: string }) => {
     return (
-        <div className='mx-auto max-w-[1800px] relative'>
+        <div className='mx-auto max-w-[1724px] relative'>
             <Navbar accountEmail={props.email} />
             <Banner />
             <Teks />
             <Teks2 />
-            <div className='lg:flex lg:justify-center lg:items-center lg:mr-[80px]'>
-                <div className='flex flex-col'>
-                    <Card />
-                </div>
-            </div>
+            <Card />    
             <Teks3 />
             <Footer />
         </div>

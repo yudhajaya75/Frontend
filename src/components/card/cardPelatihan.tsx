@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from 'react';
 import CardComponent from './cardComponent';
 import axios from 'axios';
 
-const CardKonsultasi = () => {
+const CardPelatihan = () =>{    
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/konsultasi-card';
+    const url = 'http://localhost:4001/pelatihan-card';
         useEffect(() =>{
         axios.get(url).then((response) => {
             setContent(response.data.data);
         })
     }, [])
-    
-    return (
-        <>
-            <div className='flex justify-center flex-wrap gap-10 mx-auto '>
+
+
+    return(
+        <> 
+             <div className='flex justify-center flex-wrap gap-10 mx-auto my-40 '>
             {
                 content.map((res: any) => (
                     <CardComponent 
@@ -25,7 +23,7 @@ const CardKonsultasi = () => {
                     body={res.body}
                     image={res.image}
                     slug={res.slug}
-                    link='konsultasi'
+                    link='pelatihan'
                     />
                 ))
             }
@@ -34,4 +32,4 @@ const CardKonsultasi = () => {
     )
 }
 
-export default CardKonsultasi;
+export default CardPelatihan;

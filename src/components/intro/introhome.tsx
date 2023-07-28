@@ -9,7 +9,7 @@ const Content = () => {
                 <div>
                     <img src='../images/home3.webp' alt="garis-setengah-lingkaran" className="absolute w-[80%] top-[15%] lg:w-[750px] xl:top-[15%] 2xl:top-[15%]" />
                 </div>
-                <div className="absolute w-[95%] md:w-[80%] h-[200px] top-[20%] left-[3%] md:left-[10%] sm:h-[300px] lg:h-[450px] lg:top-[15%] md:h-[350px] " >
+                <div className="absolute w-[95%] md:w-[80%] h-[200px] mt-[100px] left-[3%] md:left-[10%] sm:h-[300px] lg:h-[450px] lg:top-[15%] md:h-[350px] " >
                     <iframe
                         className="w-full h-full"
                         src="https://www.youtube.com/embed/D6OSjCrO1wQ"

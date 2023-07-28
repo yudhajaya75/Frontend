@@ -4,6 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import axios from 'axios';
 
 const Founding = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -25,26 +26,39 @@ const Founding = () => {
 
 
 const SimpleAccordion = () => {
+    const [content, setContent] = useState<any>([]);
+    const url = 'http://localhost:4001/question';
+        useEffect(() =>{
+        axios.get(url).then((response) => {
+            setContent(response.data.data);
+        })
+    }, [])
     return (
         <div className='relative left-[120px]'>
             <p className='relative top-[90px] left-20 font-bold text-[#002157] text-[30px]'>FAQ</p>
             <div className='pl-[200px] pr-[200px] pb-[100px] pt-[50px]'>
-                <Accordion style={{ backgroundColor: '#F8FCFF' }}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography>Pertanyaan 1</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            malesuada lacus ex, sit amet blandit leo lobortis eget.
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion style={{ backgroundColor: '#F8FCFF' }}>
+
+
+            {
+                content.map((res: any) => (
+                    <Accordion style={{ backgroundColor: '#F8FCFF' }}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            <Typography>{res.title}</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography>
+                               {res.desc}
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                ))
+            }
+
+                {/* <Accordion style={{ backgroundColor: '#F8FCFF' }}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel2a-content"
@@ -103,7 +117,7 @@ const SimpleAccordion = () => {
                             malesuada lacus ex, sit amet blandit leo lobortis eget.
                         </Typography>
                     </AccordionDetails>
-                </Accordion>
+                </Accordion> */}
             </div>
             {/* <Accordion disabled>
                 <AccordionSummary

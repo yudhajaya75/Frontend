@@ -9,7 +9,7 @@ import Daftar from './pages/signup/signup';
 import Layanan from './pages/layanan/layanan';
 import Webinar from './pages/webminar/webinar';
 import Webinar2 from './pages/webminar/webinar2';
-import Webinar3 from './pages/webminar/webinar3';
+import Webinar3 from './pages/webminar/KonsultasiDetail';
 import Pelatihan from './pages/pelatihan/pelatihan';
 import Pelatihan2 from './pages/pelatihan/pelatihan2';
 import Konsultasi from './pages/konsultasi/konsultasi';
@@ -21,6 +21,9 @@ import Payment from './pages/payment/payment';
 import Profile from './pages/profile/profile';
 import Contactus from './pages/contactus/contactus';
 import Paket from './pages/paket/paket';
+import KonsultasiDetail from "./pages/webminar/KonsultasiDetail";
+import KonselingDetail from "./pages/webminar/KonselingDetail";
+import PelatihanDetail from "./pages/webminar/PelatihanDetail";
 
 function App() {
   const [email, setEmail] = useState('');
@@ -52,8 +55,10 @@ function App() {
         <Route path='/home2' element={<Home2 email={email} />} />
         <Route path='/layanan' element={<Layanan email={email} />} />
         <Route path='/webinar' element={<Webinar email={email} />} />
-        <Route path='/webinar2' element={<Webinar2 email={email} />} />
-        <Route path='/webinar3' element={<Webinar3 email={email} />} />
+        <Route path='/webinar/:slug' element={<Webinar2 email={email} />} />
+        <Route path='/konseling/:slug' element={<KonselingDetail email={email} />} />
+        <Route path='/pelatihan/:slug' element={<PelatihanDetail email={email} />} />
+        <Route path='/konsultasi/:slug' element={<KonsultasiDetail email={email} />} />
         <Route path='/pelatihan' element={<Pelatihan email={email} />} />
         <Route path='/pelatihan2' element={<Pelatihan2 email={email} />} />
         <Route path='/konsultasi' element={<Konsultasi email={email} />} />

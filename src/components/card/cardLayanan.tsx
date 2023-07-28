@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import CardComponent from './cardComponent';
-import axios from 'axios';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import CardComponent from "./cardComponent";
+import { Link } from "react-router-dom";
 
-const CardKonsultasi = () => {
+const CardLayanan = () => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/konsultasi-card';
+    const url = 'http://localhost:4001/layanan-card';
         useEffect(() =>{
         axios.get(url).then((response) => {
             setContent(response.data.data);
@@ -16,7 +14,7 @@ const CardKonsultasi = () => {
     
     return (
         <>
-            <div className='flex justify-center flex-wrap gap-10 mx-auto '>
+            <div className='flex justify-center flex-wrap gap-10 mx-auto my-40 '>
             {
                 content.map((res: any) => (
                     <CardComponent 
@@ -25,13 +23,13 @@ const CardKonsultasi = () => {
                     body={res.body}
                     image={res.image}
                     slug={res.slug}
-                    link='konsultasi'
+                    link='konseling'
                     />
                 ))
             }
             </div>
         </>
-    )
+    )   
 }
 
-export default CardKonsultasi;
+export default CardLayanan;

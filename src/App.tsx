@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Loading from './loader/loader.json'
-import LoadingText from './loader/loadingtext.json'
 import Lottie from 'lottie-react'
 import useGetUserData from './hooks/useGetUserData'
 
@@ -40,16 +39,16 @@ function App() {
   } = useGetUserData();
 
 
-  if (isLoading || isFetchingData) {
-    return (
-      <div
-        className="min-h-screen bg-gradient-to-b from-[#00B3FF] to-[#0099CC] flex items-center justify-center">
-        <div className='relative bg-[#00B3FF]'>
-          <Lottie animationData={Loading} />
-        </div>
-      </div>
-    )
-  }
+  // if (isLoading || isFetchingData) {
+  //   return (
+  //     <div
+  //       className="min-h-screen bg-gradient-to-b from-[#00B3FF] to-[#0099CC] flex items-center justify-center">
+  //       <div className='relative bg-[#00B3FF]'>
+  //         <Lottie animationData={Loading} />
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
 
   return (

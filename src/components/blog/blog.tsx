@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const [count, setCount] = useState(0);
 
-    const handleImageClick = () => {
+    const handleImageClick = (e: any) => {
+        e.preventDefault();
         setCount(count + 1)
+        const Eyes = {
+            eye: count
+        };
+        axios
+            .post("http://127.0.0.1:1337/api/articel-cards?populate=*", { data: Eyes })
+            // .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     };
 
     return (
@@ -15,7 +25,7 @@ const Blog = () => {
                 <div className='relative'>
                     <div className='grid grid-cols-1 content-start lg:w-[1300px] h-auto relative'>
                         <div className='relative left-[100px] top-[120px]'>
-                            <a href="blog3"><img className='h-[380px]' src='./images/blog.webp' alt='' onClick={handleImageClick} /></a>
+                            <Link to="/blog3" onClick={handleImageClick}><img className='h-[380px]' src='./images/blog.webp' alt='' /></Link>
                             <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
                                 <p className='font-bold text-[25px]'>Sed ut perspiciatis unde omnis iste natus error sit voluptate.</p>
                                 <p className='relative top-4 text-justify'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the

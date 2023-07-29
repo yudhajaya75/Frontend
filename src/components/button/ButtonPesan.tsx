@@ -8,9 +8,9 @@ export const ButtonPesan = ({ accountEmail }: { accountEmail: string }) => {
 
     const handlePesanSekarang = () => {
         if (accountEmail !== '') {
-            router('/payment');
+            router('/pelatihan2');
         } else {
-            router('/webinar3');
+            router('/login');
         }
     };
 

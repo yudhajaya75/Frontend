@@ -17,10 +17,10 @@ const Card = () => {
     console.log(content);
 
     return (
-        <div className='flex flex-wrap justify-center gap-10 mt-20'>
+        <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>
             {
                 content.map((res: any) => (
-                    <div className='shadow-lg w-[340px]  rounded-lg overflow-hidden' key={res.id} >
+                    <div className='shadow-lg w-[320px]  rounded-lg overflow-hidden' key={res.id} >
                         <div className='w-full h-[207px] '>
                             <img src={res.image} alt='/' className='h-full w-full' />
                         </div>

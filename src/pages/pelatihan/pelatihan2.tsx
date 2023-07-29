@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/navbar/navwebinar'
-import Banner from '../../components/banner/banwebminar3'
+import Banner from '../../components/banner/banwebminar4'
 import Teks4 from "../../components/teks/teks-webinar5"
 import Teks from '../../components/teks/teks-webminar5'
 import Purchase from '../../components/purchase/purchase'
@@ -16,7 +16,6 @@ const pelatihan = (props: { email: string }) => {
             <Navbar accountEmail={props.email} />
             <Teks4 />
             <Banner />
-            <Teks />
             <Purchase />
             <Teks2 />
             <Teks3 />

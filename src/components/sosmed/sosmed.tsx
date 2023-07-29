@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 
+
 interface SocialMediaProfileProps {
     name: string;
     subtitle: string;
@@ -43,7 +44,6 @@ const SocialMediaProfile: React.FC<SocialMediaProfileProps> = ({ name, subtitle,
         </>
     );
 };
-
 const Desktop = () => {
     const [content, setContent] = useState<any>([]);
     const url = 'http://localhost:4001/personal-card';

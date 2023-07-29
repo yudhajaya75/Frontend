@@ -17,7 +17,7 @@ const layanan = (props: { email: string }) => {
       <Navbar accountEmail={props.email} />
       <Banner />
       <Teks />
-      <div className='lg:flex lg:justify-center lg:items-center lg:mr-[230px]'>
+      <div className='lg:flex lg:justify-center lg:items-center lg:mr-[0px]'>
         <div className='flex flex-col'>
           <CardLayanan />
         </div>

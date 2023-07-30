@@ -26,7 +26,7 @@ const Consultation = () => {
                             <div className=" w-[300px] shadow-lg rounded-md">
                                 <img src={res.image_slider} alt="" className=" w-[100%] h-[180px]" />
                                 <div className=" w-full p-6  ">
-                                    <h3 className="text-xl  mb-[15px]  ">{res.title}.</h3>
+                                    <h3 className="text-xl  mb-[15px]">{res.title}.</h3>
                                     <p className="text-lg text-justify line-clamp-4">{res.desc}</p>
                                 </div>
                             </div>

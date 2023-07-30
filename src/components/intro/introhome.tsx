@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import '../intro/responsive.css';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation } from 'swiper/modules';
 
 const Content = () => {
     const [content, setContent] = useState<any>([]);

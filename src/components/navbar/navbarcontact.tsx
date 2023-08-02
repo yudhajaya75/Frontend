@@ -86,7 +86,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
             </h1>
             <ul className='listnav'>
                 <a href="/home">
-                    <li className='teksnav' style={{ color: '#074288' }}>Home</li>
+                    <li className='teksnav' style={{ color: '#4B4B4B' }}>Home</li>
                 </a>
                 <div>
                     <a href='#' onClick={() => setIsOpen((prev) => !prev)}

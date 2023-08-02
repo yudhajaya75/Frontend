@@ -90,7 +90,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                 </a>
                 <div>
                     <a href='#' onClick={() => setIsOpen((prev) => !prev)}
-                        className='teksnav1' style={{ color: '#074288' }}>
+                        className='teksnav1' style={{ color: '#4B4B4B' }}>
                         <li>layanan</li>
                         <li style={{ marginLeft: 10 }}>
                             {isOpen ? (

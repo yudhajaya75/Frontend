@@ -90,7 +90,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                 </a>
                 <div>
                     <a href='#' onClick={() => setIsOpen((prev) => !prev)}
-                        className='teksnav1' style={{ color: '#074288' }}>
+                        className='teksnav1' style={{ color: '#4B4B4B' }}>
                         <li>layanan</li>
                         <li style={{ marginLeft: 10 }}>
                             {isOpen ? (
@@ -115,7 +115,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     )}
                 </div>
                 <a href="/blog">
-                    <li className='teksnav2' style={{ color: '#4B4B4B' }}>Blog</li>
+                    <li className='teksnav2' style={{ color: '#074288' }}>Blog</li>
                 </a>
                 <a href="/about">
                     <li className='teksnav3' style={{ color: '#4B4B4B' }}>About Us</li>

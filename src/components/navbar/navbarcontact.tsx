@@ -86,7 +86,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
             </h1>
             <ul className='listnav'>
                 <a href="/home">
-                    <li className='teksnav' style={{ color: '#4B4B4B' }}>Home</li>
+                    <li className='teksnav' style={{ color: '#074288' }}>Home</li>
                 </a>
                 <div>
                     <a href='#' onClick={() => setIsOpen((prev) => !prev)}
@@ -118,10 +118,10 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     <li className='teksnav2' style={{ color: '#4B4B4B' }}>Blog</li>
                 </a>
                 <a href="/about">
-                    <li className='teksnav3' style={{ color: '#074288' }}>About Us</li>
+                    <li className='teksnav3' style={{ color: '#4B4B4B' }}>About Us</li>
                 </a>
                 <a href="/contact">
-                    <li className='teksnav4' style={{ color: '#4B4B4B' }}>Contact Us</li>
+                    <li className='teksnav4' style={{ color: '#074288' }}>Contact Us</li>
                 </a>
                 <div style={{ marginBottom: -30 }}>
                     {menu}

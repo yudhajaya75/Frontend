@@ -2,7 +2,7 @@ import React from 'react';
 
 const FounderCard = ({ name, title, imageUrl, position }: any) => {
     const getPositionClass = () => {
-        return position === 'top' ? 'mt-[-100px]' : 'mt-20';
+        return position === 'top' ? 'mt-[-0px]' : 'mt-20';
     };
 
     return (

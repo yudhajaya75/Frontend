@@ -1,46 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import '../content/responsive.css'
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import React, { useEffect, useState } from 'react';
+import '../intro/responsive.css';
+import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay } from 'swiper';
 
-const imageSlide = [
-    {
-        url: '../images/home9.webp'
-    },
-    {
-        url: '../images/blog7.webp'
-    },
-    {
-        url: '../images/blog6.webp'
-    },
-]
-
-
-let count: number = 0;
 const Content = () => {
+    const [content, setContent] = useState<any>([]);
+    const url = 'http://localhost:4001/gallery-tentang';
 
     useEffect(() => {
-        starSlider()
-    }, [])
-
-    const starSlider = () => {
-        setInterval(() => {
-            nextSlide();
-
-        }, 4000)
-    }
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const prevSlide = () => {
-        const imageLength = imageSlide.length;
-        count = (currentIndex + imageLength - 1) % imageLength
-        setCurrentIndex(count)
-    }
-
-    const nextSlide = () => {
-        count = (count + 1) % imageSlide.length
-        setCurrentIndex(count)
-    }
+        axios.get(url)
+            .then((response) => {
+                setContent(response.data.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    console.log(content)
 
     return (
         <section className='mt-5 lg:mt-0'>
@@ -53,13 +33,28 @@ const Content = () => {
                     </div>
                 </div>
                 <div className="w-[350px] h-[120px] relative px-5 flex items-center justify-center mt-5 sm:w-[500px] sm:h-[200px] md:mt-0 lg:w-[680px] lg:h-[350px]">
-                    <div style={{ backgroundImage: `url(${imageSlide[currentIndex].url})` }} className='w-full h-full rounded-lg bg-center bg-cover duration-500'></div>
-                    <div className='hidden absolute group-cover:block top-[50%] -translate-x-0 translate-y-[-50%] left-5 rounded-full p-2 bg-black/20 text-white cursor-pointer md:text-3xl'>
-                        <BsChevronCompactLeft onClick={prevSlide} />
-                    </div>
-                    <div className='hidden absolute group-cover:block  top-[50%] -translate-x-0 translate-y-[-50%] right-5 rounded-full p-2 bg-black/20 text-white cursor-pointer md:text-3xl'>
-                        <BsChevronCompactRight onClick={nextSlide} />
-                    </div>
+                    <Swiper
+                        spaceBetween={30}
+                        centeredSlides={true}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        modules={[Autoplay]}
+                        className="mySwiper"
+                    >
+                        {content.map((res: any) => (
+                            <SwiperSlide key={res.id}>
+                                <div>
+                                    <img src={res.image} className='w-full h-full rounded-lg bg-center bg-cover duration-500'>
+                                    </img>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
             </div>
         </section>

@@ -5,7 +5,7 @@ import Teks from '../../components/teks/teks-pelatihan'
 import Teks2 from '../../components/teks/teks-kata-mereka'
 import Sosmed from '../../components/sosmed/sosmed'
 import Teks3 from '../../components/teks/teks-kerjasama'
-import Compslid from '../../components/compslid/compslid1'
+import Compslid from '../../components/compslid/compslid'
 import Footer from '../../components/footer/footer'
 import CardPelatihan from '../../components/card/cardpelatihan'
 

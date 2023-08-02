@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/navbarhome';
 import Banner from '../../components/banner/bnhome';
-import Content from '../../components/content/content';
+import Contents from '../../components/content/content';
 import Teks from '../../components/teks/teks-kata-mereka';
 import Card from '../../components/card/cardhome';
 import Icons from '../../components/iconshome/iconshome';
@@ -16,10 +16,12 @@ const Home = (props: { email: string }) => {
         <div className='mx-auto max-w-[1910px] relative'>
             <Navbar accountEmail={props.email} />
             <Banner />
-            <Content />
+            <Contents />
             <Card />
             <Icons />
-            <Teks />
+            <div className='mt-20'>
+                <Teks />
+            </div>
             <Sosmed />
             <Intro />
             <Article2 />

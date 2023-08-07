@@ -5,6 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
+import { Skeleton } from '@mui/material';
 
 const Founding = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -24,39 +25,55 @@ const Founding = () => {
     return windowWidth <= 440 ? <Mobile /> : <SimpleAccordion />;
 };
 
-
 const SimpleAccordion = () => {
     const [content, setContent] = useState<any>([]);
+    const [loading, setLoading] = useState(true);
     const url = 'http://localhost:4001/question';
     useEffect(() => {
         axios.get(url).then((response) => {
             setContent(response.data.data);
+            setTimeout(() => setLoading(false), 4000);
         })
     }, [])
     return (
         <div className='relative left-[120px]'>
             <p className='relative top-[90px] left-20 font-bold text-[#002157] text-[30px]'>FAQ</p>
             <div className='pl-[200px] pr-[200px] pb-[100px] pt-[50px]'>
-
-
-                {
-                    content.map((res: any) => (
-                        <Accordion style={{ backgroundColor: '#F8FCFF' }}>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography>{res.title}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    {res.desc}
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                    ))
-                }
+                {loading ? (
+                    <div>
+                        {[...Array(4)].map((_, index) => (
+                            <div key={index}>
+                                <div className='relative top-[0px] p-1'>
+                                    <Skeleton variant="rectangular" width={1000} height={10} />
+                                    <Skeleton variant="rectangular" width={1000} height={10} />
+                                    <Skeleton variant="rectangular" width={1000} height={10} />
+                                    <Skeleton variant="rectangular" width={1000} height={10} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div>
+                        {
+                            content.map((res: any) => (
+                                <Accordion style={{ backgroundColor: '#F8FCFF' }}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography>{res.title}</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            {res.desc}
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                            ))
+                        }
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -1,271 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from 'react';
 import CardComponent from './cardComponent';
 import axios from 'axios';
+import { Skeleton } from '@mui/material';
 
 const CardKonsultasi = () => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/konsultasi-card';
+    const [loading, setLoading] = useState(true);
+    const url = 'http://localhost:4001/products?category=konsultasi';
     useEffect(() => {
         axios.get(url).then((response) => {
             setContent(response.data.data);
+            setTimeout(() => setLoading(false), 4000);
         })
     }, [])
 
     return (
         <>
-            <div className='flex justify-center flex-wrap gap-10 mx-auto '>
-                {
-                    content.map((res: any) => (
-                        <CardComponent
-                            title={res.title}
-                            price={res.price}
-                            body={res.body}
-                            image={res.image}
-                            slug={res.slug}
-                            link='konsultasi'
-                        />
-                    ))
-                }
+            <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>
+                {loading ? (
+                    <div className="flex justify-evenly flex-wrap gap-10 mt-[50px]">
+                        {[...Array(4)].map((_, index) => (
+                            <div key={index} className="w-[400px] sm:w-[500px] md:w-[600px] shadow-lg rounded-md">
+                                <Skeleton variant="rectangular" width={600} height={180} />
+                                <div className="w-full p-6">
+                                    <Skeleton variant="text" width={500} height={32} />
+                                    <Skeleton variant="text" width={550} height={72} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px]">
+                        {content.map((res: any, index: number) => (
+                            <CardComponent
+                                key={index}
+                                title={res.title}
+                                price={res.price}
+                                body={res.body}
+                                image={res.image}
+                                slug={res.slug}
+                                link='konsultasi'
+                            />
+                        ))
+                        }
+                    </div>
+                )}
             </div>
         </>
     )
 }
 
 export default CardKonsultasi;
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-// import { Link } from 'react-router-dom';
-// import '../card/card.css'
-
-// const Card = ({ accountEmail }: { accountEmail: string }) => {
-//     const router = useNavigate();
-
-//     const handlePesanSekarang = () => {
-//         if (accountEmail !== '') {
-//             router('/payment');
-//         } else {
-//             router('/webinar3');
-//         }
-//     };
-
-//     return (
-//         <div className='mx-auto max-w-[1910px] max-h-[1728px] relative'>
-//             <div className='sm:pt-20 sm:pb-20 sm-440:pt-20 sm-440:pb-20'>
-//                 <div className='container-card'>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 1</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 2</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 3</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                     <div className="card-container">
-//                         <div className="image-container">
-//                             <div className="heading">Rp 375.000</div>
-//                             <img src='/images/dokter.webp' alt="/" />
-//                         </div>
-//                         <div className="card-title">
-//                             <h3 className='text'>Pelatihan 4</h3>
-//                         </div>
-//                         <div className="card-body">
-//                             <p className='text'>
-//                                 <a href="/">Berisi penjelasan disini... </a>
-//                                 lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                         </div>
-//                         <div className="btn">
-//                             <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// const Founding = ({ accountEmail }: { accountEmail: string }) => {
-//     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-//     useEffect(() => {
-//         const handleResize = () => {
-//             setWindowWidth(window.innerWidth);
-//         };
-
-//         window.addEventListener('resize', handleResize);
-
-//         return () => {
-//             window.removeEventListener('resize', handleResize);
-//         };
-//     }, []);
-
-//     return windowWidth <= 440 ? <ImageSlider accountEmail={accountEmail} /> : <Card accountEmail={accountEmail} />;
-// };
-
-
-// const ImageSlider = ({ accountEmail }: { accountEmail: string }) => {
-//     const navigate = useNavigate();
-
-//     const handlePesanSekarang = () => {
-//         if (accountEmail !== '') {
-//             navigate('/payment');
-//         } else {
-//             navigate('/webinar3');
-//         }
-//     };
-//     const settings = {
-//         dots: true,
-//         infinite: true,
-//         speed: 500,
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         autoplay: true,
-//         responsive: [
-//             {
-//                 breakpoint: 768,
-//                 settings: {
-//                     slidesToShow: 1,
-//                     slidesToScroll: 1,
-//                     dots: false,
-//                 },
-//             },
-//             {
-//                 breakpoint: 440,
-//                 settings: {
-//                     slidesToShow: 1,
-//                     slidesToScroll: 1,
-//                     dots: true,
-//                 },
-//             },
-//         ],
-//     };
-
-//     return (
-//         <div className="container-slider" style={{ padding: '20px' }}>
-//             <Slider {...settings}>
-//                 <div className="card-container">
-//                     <div className="image-container">
-//                         <div className="heading">Rp 375.000</div>
-//                         <img src='/images/dokter.webp' alt="/" />
-//                     </div>
-//                     <div className="card-title">
-//                         <h3 className='text'>Pelatihan 1</h3>
-//                     </div>
-//                     <div className="card-body">
-//                         <p className='text'>
-//                             <a href="/">Berisi penjelasan disini... </a>
-//                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                     </div>
-//                     <div className="btn">
-//                         <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                     </div>
-//                 </div>
-//                 <div className="card-container">
-//                     <div className="image-container">
-//                         <div className="heading">Rp 375.000</div>
-//                         <img src='/images/dokter.webp' alt="/" />
-//                     </div>
-//                     <div className="card-title">
-//                         <h3 className='text'>Pelatihan 2</h3>
-//                     </div>
-//                     <div className="card-body">
-//                         <p className='text'>
-//                             <a href="/">Berisi penjelasan disini... </a>
-//                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                     </div>
-//                     <div className="btn">
-//                         <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                     </div>
-//                 </div>
-//                 <div className="card-container">
-//                     <div className="image-container">
-//                         <div className="heading">Rp 375.000</div>
-//                         <img src='/images/dokter.webp' alt="/" />
-//                     </div>
-//                     <div className="card-title">
-//                         <h3 className='text'>Pelatihan 3</h3>
-//                     </div>
-//                     <div className="card-body">
-//                         <p className='text'>
-//                             <a href="/">Berisi penjelasan disini... </a>
-//                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                     </div>
-//                     <div className="btn">
-//                         <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                     </div>
-//                 </div>
-//                 <div className="card-container">
-//                     <div className="image-container">
-//                         <div className="heading">Rp 375.000</div>
-//                         <img src='/images/dokter.webp' alt="/" />
-//                     </div>
-//                     <div className="card-title">
-//                         <h3 className='text'>Pelatihan 4</h3>
-//                     </div>
-//                     <div className="card-body">
-//                         <p className='text'>
-//                             <a href="/">Berisi penjelasan disini... </a>
-//                             lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor</p>
-//                     </div>
-//                     <div className="btn">
-//                         <button className="button" onClick={handlePesanSekarang}>Pesan Sekarang</button>
-//                     </div>
-//                 </div>
-//             </Slider>
-//         </div>
-//     );
-// };
-
-// export default Founding;

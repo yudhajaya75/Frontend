@@ -1,70 +1,82 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Skeleton } from "@mui/material";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import axios from "axios";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 function Compslid() {
     const [content, setContent] = useState<any>([]);
+    const [loading, setLoading] = useState(true);
     const url = 'http://localhost:4001/gallery-company';
-
-    var settings = {
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        pauseOnHover: true,
-        centerMode: true,
-        centerPadding: "0px",
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: "20px",
-                    slidesToShow: 1,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 440,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: "20px",
-                    slidesToShow: 1,
-                    dots: true
-                }
-            }
-        ]
-    };
 
     useEffect(() => {
         axios.get(url)
             .then((response) => {
                 setContent(response.data.data);
+                setTimeout(() => setLoading(false), 4000);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
+                setLoading(false);
             });
     }, []);
-    console.log(content)
 
     return (
-        <div className='py-10'>
-            <Slider {...settings}>
-                {content.map((res: any, index: number) => (
-                    <div key={index} className='bg-cover h-[250px]'>
-                        <img src={res.image} alt="" />
-                    </div>
-                ))}
-            </Slider>
+        <div className='py-10 mx-[100px]'>
+            <Swiper
+                slidesPerView={4}
+                spaceBetween={30}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: false,
+                }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                }}
+                modules={[Autoplay]}
+                className="mySwiper"
+            >
+                {loading ? (
+                    <SwiperSlide>
+                        <div className="flex gap-10 mt-[50px] ml-[-100px]">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="w-[350px] shadow-lg rounded-md">
+                                    <Skeleton variant="rectangular" width={350} height={180} />
+                                </div>
+                            ))}
+                        </div>
+                    </SwiperSlide>
+                ) : (
+                    content.map((res: any, index: number) => (
+                        <SwiperSlide key={index}>
+                            <div className="">
+                                <img src={res.image} className="w-full h-[200px]" alt="" />
+                            </div>
+                        </SwiperSlide>
+                    ))
+                )}
+            </Swiper>
         </div>
     );
 }
 
-
-export default Compslid
-
+export default Compslid;

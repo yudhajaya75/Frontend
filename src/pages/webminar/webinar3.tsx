@@ -6,7 +6,7 @@ import Teks from '../../components/teks/teks-webminar5'
 import Purchase from '../../components/purchase/purchase'
 import Teks2 from '../../components/teks/tesk-detail-webinar'
 import Teks3 from '../../components/teks/teks-kata-mereka'
-import Sosmed from '../../components/sosmed/sosmed'
+import Sosmed from '../../components/sosmed/Founding'
 import Footer from '../../components/footer/footwebminar'
 
 

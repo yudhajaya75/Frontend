@@ -5,7 +5,7 @@ import Contents from '../../components/content/content';
 import Teks from '../../components/teks/teks-kata-mereka';
 import Card from '../../components/card/cardhome';
 import Icons from '../../components/iconshome/iconshome';
-import Sosmed from '../../components/sosmed/sosmed';
+import Sosmed from '../../components/sosmed/Founding';
 import Intro from '../../components/intro/introhome';
 import Article2 from '../../components/articlehome/article2';
 import Questions from '../../components/questions/questions';

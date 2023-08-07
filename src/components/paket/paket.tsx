@@ -119,7 +119,7 @@ function paket() {
                 <div className='w-[350px] h-[740px] relative bottom-[200px] left-[100px] rounded-md mb-[100px] bg-white'
                     style={{ boxShadow: '0px 0px 10px -5px rgba(0, 0, 0, 0.75)' }}>
                     <div className='p-10'>
-                        <p className='text-[24px] font-bold text-[#103D72]'>WEBINAR</p>
+                        <p className='text-[24px] font-bold text-[#103D72]'>Konsultasi</p>
                         <p className='text-[#BFBFBF] pt-1'>Lorem Ipsum</p>
                         <p className='text-[16px] font-bold pt-2 text-[#103D72]'>Mulai Dari</p>
                         <p className='text-[48px] text-[#103D72]'>Rp 100.000</p>

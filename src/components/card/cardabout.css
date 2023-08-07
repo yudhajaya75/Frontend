@@ -12,11 +12,9 @@
   }
 
 .cardabt {
-    padding: 100px;
+    padding: 0px;
     margin-top: 300px;
     background-color: #f9fcff;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .card-about {

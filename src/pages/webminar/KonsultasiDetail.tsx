@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar/navwebinar'
 import Banner from '../../components/banner/banwebminar3'
 import Teks4 from "../../components/teks/teks-webinar5"
 import Teks3 from '../../components/teks/teks-kata-mereka'
-import Sosmed from '../../components/sosmed/sosmed'
+import Founding from '../../components/sosmed/Founding';
 import Footer from '../../components/footer/footwebminar'
 import TextHeadingComponent from '../../components/teks/TextHeadingComponent'
 import { ButtonPesan } from '../../components/button/ButtonPesan'
@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom'
 
 const Konsultasi = (props: { email: string }) => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/konsultasi-card';
+    const url = 'http://localhost:4001/products';
     useEffect(() => {
         axios.get(url).then((response) => {
             setContent(response.data.data);
@@ -24,9 +24,6 @@ const Konsultasi = (props: { email: string }) => {
     console.log(content);
     const { slug } = useParams()
     const layanan: any = content?.filter((item: any) => item.slug == slug)[0];
-
-
-
 
     return (
         <div className='mx-auto max-w-[1724px] relative'>
@@ -46,7 +43,7 @@ const Konsultasi = (props: { email: string }) => {
                 body={layanan?.body}
             />
             <Teks3 />
-            <Sosmed />
+            <Founding />
             <Footer />
         </div>
     )

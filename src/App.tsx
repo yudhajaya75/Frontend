@@ -38,19 +38,6 @@ function App() {
     isLoading
   } = useGetUserData();
 
-
-  // if (isLoading || isFetchingData) {
-  //   return (
-  //     <div
-  //       className="min-h-screen bg-gradient-to-b from-[#00B3FF] to-[#0099CC] flex items-center justify-center">
-  //       <div className='relative bg-[#00B3FF]'>
-  //         <Lottie animationData={Loading} />
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
-
   return (
     <>
       <Routes>

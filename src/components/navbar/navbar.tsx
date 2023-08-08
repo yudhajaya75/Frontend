@@ -10,6 +10,7 @@ import './navbarhome.css'
 const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenUp, setIsOpenUp] = useState(false);
+    const { logout } = useGetLogoutData();
     const router = useNavigate();
     const toggleMenu = () => {
         setIsOpenUp((prev) => !prev);
@@ -20,9 +21,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     const handleNav = () => {
         setNav(!nav)
     }
-
-    const { isLoggingOut, logout } = useGetLogoutData();
-
 
     let menu: JSX.Element;
 
@@ -62,7 +60,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                                     <Link to='/profile' onClick={() => {
                                         router('/profile');
                                     }}><h3 className='font-bold'>{item.myprofile}</h3></Link>
-                                    <Link to='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></Link>
+                                    <button onClick={logout}><Link to='/login'><h3 className='font-bold'>{item.logout}</h3></Link></button>
                                 </div>
                             ))}
                         </div>

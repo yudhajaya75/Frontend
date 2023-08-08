@@ -38,7 +38,7 @@ const Articel = () => {
                 <div>
                     <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
                         {
-                            content.slice(0,).map((res: any) => (
+                            content.slice(0, 3).map((res: any) => (
                                 <div className="h-[270px] relative text-justify" key={res.id}>
                                     <a href="blog3">
                                         <img src={res.image_articel} alt="" className=" w-[350px] h-[270px]" />

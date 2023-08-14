@@ -1,6 +1,54 @@
-import React from 'react'
+import axios from 'axios';
+import  { useState } from 'react';
+import Swal from 'sweetalert2';
 
-function contact() {
+function Contact() {
+    const [values, setValues] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: ""
+    });
+
+    const handleChange = (e : any) => {
+        const name = e.target.name
+        const value  =  e.target.value
+        setValues({
+            ...values,
+            [name]: value
+        })
+    } 
+    
+    const handleSubmit = (e: any) => {
+        e.preventDefault()
+        const contact = { 
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phone: values.phone,
+            message: values.message
+        }
+        
+        axios.post('http://127.0.0.1:1337/api/contact-uses',{
+            data: contact
+        }).catch((e) => console.log(e))
+
+        Swal.fire({
+            icon:"success",
+            title:"Terima Kasih atas saran dan masukannya!"
+        })
+        
+        return setValues({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            message: ""
+        })
+    }   
+        
+    
     return (
         <>
             <div className='pb-[300px] pt-[200px] drop-shadow-lg'>
@@ -27,52 +75,84 @@ function contact() {
                                 <a href=""><img className='float-left 2xl:mt-[100px] sm-440:mt-[150px] 2xl:ml-9 sm-440:ml-1' src="./images/discord.png" alt="" /></a>
                             </div>
                         </div>
-                        <div className='flex justify-center 2xl:pt-3 sm-440:pt-3'>
-                            <div className='2xl:p-10 sm-440:p-10 2xl:flex sm-440:flex 2xl:flex-wrap sm-440:flex-wrap gap-10 2xl:w-[700px] sm-440:w-[100px] font-medium'>
-                                <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[1px] 2xl:ml-[0px]'>
-                                    <label htmlFor="firstname" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>First Name</label>
-                                    <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
-                                        <input type="text" placeholder='First Name'
+                        <form  onSubmit={ handleSubmit }>
+                            <div className='flex justify-center 2xl:pt-3 sm-440:pt-3'>
+                                <div className='2xl:p-10 sm-440:p-10 2xl:flex sm-440:flex 2xl:flex-wrap sm-440:flex-wrap gap-10 2xl:w-[700px] sm-440:w-[100px] font-medium'>
+                                    <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[1px] 2xl:ml-[0px]'>
+                                        <label htmlFor="firstname" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>First Name</label>
+                                        <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
+                                            <input  
+                                            type="text"
+                                            placeholder='First Name'
+                                            required
+                                            value={values.firstName}
+                                            name='firstName' 
+                                            onChange={handleChange}
                                             className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
+                                        </div>
                                     </div>
+                                    <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[1px] 2xl:ml-[0px]'>
+                                        <label htmlFor="lastname" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Last Name</label>
+                                        <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
+                                            <input 
+                                                type="text" 
+                                                placeholder='Last Name'
+                                                required
+                                                value={values.lastName}
+                                                name='lastName'
+                                                onChange={handleChange}
+                                                className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
+                                        </div>
+                                    </div>
+                                    <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[10px] 2xl:ml-[0px]'>
+                                        <label htmlFor="email" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Email</label>
+                                        <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
+                                            <input 
+                                                type="text" 
+                                                placeholder='Email'
+                                                required
+                                                name='email'
+                                                onChange={handleChange}
+                                                value={values.email}
+                                                className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
+                                        </div>
+                                    </div>
+                                    <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[10px] 2xl:ml-[0px]'>
+                                        <label htmlFor="phonenumber" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Phone Number</label>
+                                        <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
+                                            <input 
+                                                type="text"
+                                                placeholder='+62xxxx xx xxx'
+                                                required
+                                                name='phone'
+                                                onChange={handleChange}
+                                                value={values.phone}
+                                                className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
+                                        </div>
+                                    </div>
+                                    <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[10px] 2xl:ml-[0px]'>
+                                        <label htmlFor="message" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Message</label>
+                                        <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
+                                            <input
+                                                type="text"
+                                                placeholder='Write your message..'
+                                                required
+                                                name='message'
+                                                onChange={handleChange}
+                                                value={values.message}
+                                                className='2xl:w-[620px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
+                                        </div>
+                                    </div>
+                                    <button  type='submit'>
+                                        <div className='bg-[#1D3A69] 2xl:w-[150px] font-bold sm-440:w-[100px] sm-440:h-[40px]
+                                        2xl:h-[40px] text-white rounded-lg pt-[6px] 2xl:relative 2xl:top-0 2xl:left-0 
+                                        sm-440:relative sm-440:bottom-5 sm-440:right-10 text-center hover:bg-[#1d4687]'>
+                                            Kirim
+                                        </div>
+                                    </button>
                                 </div>
-                                <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[1px] 2xl:ml-[0px]'>
-                                    <label htmlFor="lastname" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Last Name</label>
-                                    <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
-                                        <input type="text" placeholder='Last Name'
-                                            className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
-                                    </div>
-                                </div>
-                                <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[10px] 2xl:ml-[0px]'>
-                                    <label htmlFor="email" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Email</label>
-                                    <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
-                                        <input type="text" placeholder='Email'
-                                            className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
-                                    </div>
-                                </div>
-                                <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[10px] 2xl:ml-[0px]'>
-                                    <label htmlFor="phonenumber" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Phone Number</label>
-                                    <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
-                                        <input type="text" placeholder='+628123456789'
-                                            className='2xl:w-[290px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
-                                    </div>
-                                </div>
-                                <div className='sm-440:-ml-[70px] sm-440:-mt-[30px] 2xl:-mt-[10px] 2xl:ml-[0px]'>
-                                    <label htmlFor="message" className='font-bold 2xl:text-[17px] sm-440:text-[11px]'>Message</label>
-                                    <div className='2xl:pt-5 sm-440:pt-5 flex gap-10'>
-                                        <input type="text" placeholder='Write your message..'
-                                            className='2xl:w-[620px] sm-440:text-[10px] 2xl:text-[14px] sm-440:w-[160px] outline-none no-underline border-b-2 border-[#8D8D8D]' />
-                                    </div>
-                                </div>
-                                <button>
-                                    <div className='bg-[#1D3A69] 2xl:w-[150px] font-bold sm-440:w-[100px] sm-440:h-[40px]
-                                2xl:h-[40px] text-white rounded-lg pt-[6px] 2xl:relative 2xl:top-0 2xl:left-0 
-                                sm-440:relative sm-440:bottom-5 sm-440:right-10 text-center hover:bg-[#1d4687]'>
-                                        Kirim
-                                    </div>
-                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -80,4 +160,4 @@ function contact() {
     )
 }
 
-export default contact
+export default Contact;

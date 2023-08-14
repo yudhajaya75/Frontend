@@ -1,6 +1,4 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Loading from './loader/loader.json'
-import Lottie from 'lottie-react'
 import useGetUserData from './hooks/useGetUserData'
 
 import Home from './pages/home/home';
@@ -10,13 +8,12 @@ import Daftar from './pages/signup/signup';
 import Layanan from './pages/layanan/layanan';
 import Webinar from './pages/webminar/webinar';
 import Webinar2 from './pages/webminar/webinar2';
-import Webinar3 from './pages/webminar/KonsultasiDetail';
 import Pelatihan from './pages/pelatihan/pelatihan';
 import Pelatihan2 from './pages/pelatihan/pelatihan2';
 import Konsultasi from './pages/konsultasi/konsultasi';
 import Blog from './pages/blog/blog';
-import Blog2 from './pages/blog/blog2';
-import Blog3 from './pages/blog/blog3';
+import Blog2 from './pages/blog/beritabaru';
+import BlogPopulate from './pages/blog/beritapopulate';
 import About from './pages/about/about';
 import Payment from './pages/payment/payment';
 import Profile from './pages/profile/profile';
@@ -25,6 +22,7 @@ import Paket from './pages/paket/paket';
 import KonsultasiDetail from "./pages/webminar/KonsultasiDetail";
 import KonselingDetail from "./pages/webminar/KonselingDetail";
 import PelatihanDetail from "./pages/webminar/PelatihanDetail";
+import BlogDetail from "./pages/blog/BlogDetail";
 
 
 
@@ -50,14 +48,15 @@ function App() {
         <Route path='/webinar' element={<Webinar email={email} />} />
         <Route path='/webinar/:slug' element={<Webinar2 email={email} />} />
         <Route path='/konseling/:slug' element={<KonselingDetail email={email} />} />
+        <Route path='/blog/:slug' element={<BlogDetail email={email} />} />
         <Route path='/pelatihan/:slug' element={<PelatihanDetail email={email} />} />
         <Route path='/konsultasi/:slug' element={<KonsultasiDetail email={email} />} />
         <Route path='/pelatihan' element={<Pelatihan email={email} />} />
         <Route path='/pelatihan2' element={<Pelatihan2 email={email} />} />
         <Route path='/konsultasi' element={<Konsultasi email={email} />} />
         <Route path='/blog' element={<Blog email={email} />} />
-        <Route path='/blog2' element={<Blog2 email={email} />} />
-        <Route path='/blog3' element={<Blog3 email={email} />} />
+        <Route path='/beritabaru' element={<Blog2 email={email} />} />
+        <Route path='/beritapopulate' element={<BlogPopulate email={email} />} />
         <Route path='/about' element={<About email={email} />} />
         <Route
           path='/payment'

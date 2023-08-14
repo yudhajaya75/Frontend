@@ -8,14 +8,14 @@ import { Skeleton } from '@mui/material';
 
 const Team = () => {
     const [content, setContent] = useState([]);
-    const url = 'http://localhost:4001/founder-card';
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setContent(response.data.data);
-            setTimeout(() => setLoading(false), 4000);
-        });
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/founder-card`)
+            .then((response) => {
+                setContent(response.data.data);
+                setTimeout(() => setLoading(false), 4000);
+            });
     }, []);
 
     return (

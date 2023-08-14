@@ -33,11 +33,12 @@ const Mobile = () => {
     };
 
     const [content, setContent] = useState<any>([]);
-    const url = 'http://localhost:4001/personal-card';
+
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setContent(response.data.data);
-        })
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/personal-card`)
+            .then((response) => {
+                setContent(response.data.data);
+            })
     }, [])
 
     return (

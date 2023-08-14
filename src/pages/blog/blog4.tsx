@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/navbar/navbarblog'
 import Teks2 from '../../components/teks/teksblog2'
 import Blog from '../../components/blog/blog4'
 import Footer from '../../components/footer/footer'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
-const blog3 = (props: { email: string }) => {
+const Blog4 = (props: { email: string }) => {
+    const [content, setContent] = useState<any>([])
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
+            .then((response) => {
+                setContent(response.data.data);
+            })
+    }, [])
+
+    console.log(content);
+    const { slug } = useParams()
+    const blog: any = content?.filter((item: any) => item.slug == slug)[0];
+    console.log(blog)
+
     return (
         <div className='mx-auto max-w-[1600px]'>
             <Navbar accountEmail={props.email} />
@@ -19,4 +35,4 @@ const blog3 = (props: { email: string }) => {
     )
 }
 
-export default blog3
+export default Blog4

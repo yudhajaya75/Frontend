@@ -12,10 +12,9 @@ import 'swiper/css/navigation';
 function Compslid() {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/gallery-company';
 
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-company`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);

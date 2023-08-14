@@ -6,12 +6,13 @@ import { Skeleton } from '@mui/material';
 const CardPelatihan = () => {
     const [content, setContent] = useState<any>([])
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/products?category=pelatihan';
+
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setContent(response.data.data);
-            setTimeout(() => setLoading(false), 4000);
-        })
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/products?category=pelatihan`)
+            .then((response) => {
+                setContent(response.data.data);
+                setTimeout(() => setLoading(false), 4000);
+            })
     }, [])
     console.log(content)
 

@@ -11,10 +11,9 @@ import { Skeleton } from '@mui/material';
 const Content = () => {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/youtube';
 
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/youtube`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);

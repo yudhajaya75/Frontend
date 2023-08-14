@@ -8,10 +8,9 @@ const Profile: React.FC = () => {
     const pages = ['Webinar', 'Konsultasi', 'Layanan', 'Pelatihan'];
     const [activePage, setActivePage] = useState(0);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/hyperlink';
 
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/hyperlink`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);

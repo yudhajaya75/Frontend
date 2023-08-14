@@ -28,12 +28,13 @@ const Founding = () => {
 const SimpleAccordion = () => {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/question';
+
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setContent(response.data.data);
-            setTimeout(() => setLoading(false), 4000);
-        })
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/question`)
+            .then((response) => {
+                setContent(response.data.data);
+                setTimeout(() => setLoading(false), 4000);
+            })
     }, [])
     return (
         <div className='relative left-[120px]'>

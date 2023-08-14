@@ -10,6 +10,7 @@ import './navbarhome.css'
 const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenUp, setIsOpenUp] = useState(false);
+    const { logout } = useGetLogoutData();
     const router = useNavigate();
     const toggleMenu = () => {
         setIsOpenUp((prev) => !prev);
@@ -20,8 +21,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     const handleNav = () => {
         setNav(!nav)
     }
-
-    const { logout } = useGetLogoutData();
 
     let menu: JSX.Element;
 

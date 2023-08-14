@@ -5,11 +5,9 @@ import React, { useEffect, useState } from 'react';
 const Banner = () => {
     const [content, setContent] = useState<any>();
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/webinar-page';
 
     useEffect(() => {
-        axios
-            .get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/webinar-page`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);

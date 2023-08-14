@@ -5,7 +5,7 @@ import { Skeleton } from '@mui/material';
 import './sosmed.css';
 
 const Desktop = () => {
-    const url = 'http://localhost:4001/personal-card';
+    const url = `${process.env.REACT_APP_SCRIPTS_URL}/personal-card`;
     const { content, loading } = useDataFetching(url);
 
     return (
@@ -25,9 +25,8 @@ const Desktop = () => {
             ) : (
                 <div className="flex justify-evenly mt-10">
                     {content.map((res: any, index: number) => (
-                        <div>
+                        <div key={index}>
                             <Sosmed
-                                key={index}
                                 name={res.name}
                                 subtitle={res.title}
                                 bio={res.body}

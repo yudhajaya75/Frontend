@@ -1,18 +1,18 @@
 import React from 'react'
 import Navbar from '../../components/navbar/navbarblog'
-import Teks2 from '../../components/teks/teksblog2'
-import Blog2 from '../../components/blog/beritabaru'
+import Teks3 from '../../components/teks/teksblog3'
+import BeritaPopulate from '../../components/blog/beritapopulate'
 import Footer from '../../components/footer/footer'
 
-const blog2 = (props: { email: string }) => {
+const Blog2 = (props: { email: string }) => {
     return (
         <div className='mx-auto max-w-[1910px]'>
             <Navbar accountEmail={props.email} />
-            <Teks2 />
-            <Blog2 />
+            <Teks3 />
+            <BeritaPopulate />
             <Footer />
         </div>
     )
 }
 
-export default blog2
+export default Blog2

@@ -5,20 +5,22 @@ import { Skeleton } from '@mui/material';
 
 const Banner = () => {
     const [content, setContent] = useState<any>();
-    const url = 'http://localhost:4001/about-page';
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios
-            .get(url)
-            .then((response) => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/about-page`);
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.log('Error fetching data:', error);
-            });
+            }
+        };
+
+        fetchData();
     }, []);
+
 
     return (
         <div className='w-full'>

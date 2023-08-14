@@ -7,9 +7,9 @@ import { Skeleton } from '@mui/material';
 const Articel = () => {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/articel-card';
+
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
             .then((response) => {
                 setContent(response.data.data)
                 setTimeout(() => setLoading(false), 4000);
@@ -38,7 +38,7 @@ const Articel = () => {
                 <div>
                     <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
                         {
-                            content.slice(0, 3).map((res: any) => (
+                            content.slice(0, 4).map((res: any) => (
                                 <div className="h-[270px] relative text-justify" key={res.id}>
                                     <a href="blog3">
                                         <img src={res.image_articel} alt="" className=" w-[350px] h-[270px]" />

@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../footer/footer.css'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const footer = () => {
+const Footer = () => {
+    const [adreess, setAdreess] = useState<any>([]);
+    const [contactUs, setContactUs] = useState<any>([]);
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/footer-adress`)
+            .then((res) => {
+                setAdreess(res.data.data[0]);
+            })
+
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/footer-contact-us`)
+            .then((response) => {
+                setContactUs(response.data.data[0])
+            })
+    }, [])
+
     return (
         <div className='footer'>
             <div className='sb__footer'>
@@ -17,16 +32,18 @@ const footer = () => {
                     </div>
                     <div className='sb__footer-links_div'>
                         <div className='contact-us'>
-                            <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Contact Us</h4>
-                            <p>Jakarta 743 4646</p>
-                            <p>po box 01 8000 184646 </p>
-                            <p>Phone +62 8000 184646 </p>
+                            <div className='contact-usweb'>
+                                <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Contact Us</h4>
+                                <p>{contactUs.pobox} <span className='font-bold'>{contactUs.poboxNumber} </span> </p>
+                                <p>{contactUs.city} <span className='font-bold'>{contactUs.cityNumber}</span></p>
+                                <p>Phone <span className='font-bold'>{contactUs.phoneNumber}</span> </p>
+                            </div>
                         </div>
                     </div>
                     <div className='sb__footer-links_div'>
                         <div className="addres">
                             <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Address</h4>
-                            <p>JL K.H Abdullah No 57B Jakarta Selatan</p>
+                            <p>{adreess.street} <span className='font-bold'>{adreess.city}</span></p>
                         </div>
                     </div>
                     <div className='sb__footer-links_div'>
@@ -52,4 +69,4 @@ const footer = () => {
     )
 }
 
-export default footer
+export default Footer

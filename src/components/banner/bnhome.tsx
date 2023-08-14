@@ -13,16 +13,14 @@ const Registration = () => {
     const [content, setContent] = useState<any>();
     const [contents, setContents] = useState<any>();
     const [loading, setLoading] = useState(true);
-    const galleryUrl = 'http://localhost:4001/gallery-home';
-    const url = 'http://localhost:4001/home-page';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const galleryResponse = await axios.get(galleryUrl);
+                const galleryResponse = await axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-home`);
                 setContents(galleryResponse.data.data);
 
-                const urlResponse = await axios.get(url);
+                const urlResponse = await axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/home-page`);
                 setContent(urlResponse.data.data);
 
                 setLoading(false);

@@ -28,7 +28,6 @@ const Konsultasi = (props: { email: string }) => {
     return (
         <div className='mx-auto max-w-[1724px] relative'>
             <Navbar accountEmail={props.email} />
-
             <Teks4
                 title={layanan?.title} />
             <Banner

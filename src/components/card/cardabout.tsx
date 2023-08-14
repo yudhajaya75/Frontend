@@ -8,11 +8,10 @@ import { Skeleton } from '@mui/material';
 
 const Cards = () => {
     const [content, setContent] = useState<any>([]);
-    const url = 'http://localhost:4001/hyperlink';
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/hyperlink`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);

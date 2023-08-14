@@ -5,11 +5,9 @@ import { Skeleton } from '@mui/material';
 const Consultation = () => {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/slider-section-info';
 
     useEffect(() => {
-        axios
-            .get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/slider-section-info`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -42,11 +40,11 @@ const Consultation = () => {
                     <div className="flex justify-evenly gap-y-5 mt-20 flex-wrap">
                         {content.map((res: any, index: number) => (
                             <div key={index}>
-                                <div className="w-[300px] shadow-lg rounded-md">
+                                <div className="w-[350px] h-[400px] shadow-lg rounded-md">
                                     <img src={res.image_slider} alt="" className="w-[100%] h-[180px]" />
                                     <div className="w-full p-6">
                                         <h3 className="text-xl mb-[15px]">{res.title}.</h3>
-                                        <p className="text-lg text-justify line-clamp-4">{res.desc}</p>
+                                        <p className="text-lg text-start">{res.desc}</p>
                                     </div>
                                 </div>
                             </div>

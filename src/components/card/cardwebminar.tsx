@@ -10,12 +10,13 @@ import { Skeleton } from '@mui/material';
 const Card = () => {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/products?category=webinar';
+
     useEffect(() => {
-        axios.get(url).then((response) => {
-            setContent(response.data.data);
-            setTimeout(() => setLoading(false), 4000);
-        })
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/products?category=webinar`)
+            .then((response) => {
+                setContent(response.data.data);
+                setTimeout(() => setLoading(false), 4000);
+            })
     }, [])
     console.log(content);
 
@@ -50,11 +51,11 @@ const Card = () => {
                                     <h3 className='text-xl font-semibold text-[#002157]'>{res.title}</h3>
                                     <p className='text-[#4B465C]'>{res.price}</p>
                                 </div>
-                                <Link to={`/webinar/${res.slug}`}>
+                                <a href={`/webinar/${res.slug}`}>
                                     <div className='bg-[#002157] text-white font-semibold p-[10px] text-center rounded-md w-[90%] mx-auto'>
                                         <button className='button-webminar'>Lihat Detail</button>
                                     </div>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     ))

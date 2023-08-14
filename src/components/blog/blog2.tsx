@@ -7,10 +7,9 @@ import { Skeleton } from '@mui/material';
 const Blog = () => {
     const [content, setContent] = useState([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/articel-card';
 
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -41,7 +40,7 @@ const Blog = () => {
                                     <div className='relative left-[100px] bottom-[870px]'>
                                         <div className='w-[400px] h-[200px] p-5 z-10 rounded-lg z-10'>
                                             <div className=''>
-                                                <a href="/blog3" className='text-[30px] font-semibold'>{res.title}</a>
+                                                <a href="/blog3" className='text-[30px] font-semibold line-clamp-3'>{res.title}</a>
                                                 <div className='relative top-5 left-[0px]'>
                                                     <p className='text-[#8B8B8B]'>06 Maret 2023</p>
                                                     <hr className='relative top-3' />
@@ -82,10 +81,9 @@ const Founding = () => {
 const Mobile = () => {
     const [content, setContent] = useState([]);
     const [loading, setLoading] = useState(true);
-    const url = 'http://localhost:4001/articel-card';
 
     useEffect(() => {
-        axios.get(url)
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -109,13 +107,13 @@ const Mobile = () => {
                     </div>
                 ) : (
                     <div className='absolute'>
-                        <div className='mt-[-800px]'>
+                        <div className='mt-[-850px]'>
                             {content.slice(0, 7).map((res: any, index: number) => (
                                 <div key={index} className='flex flex-col justify-between'>
                                     <div className='relative left-[8px] bottom-[0px]'>
-                                        <div className='w-[140px] h-[110px] p-5 rounded-lg z-10'>
+                                        <div className='w-[140px] h-[110px] p-5 rounded-lg'>
                                             <div className=''>
-                                                <a href="/blog3" className='text-[9px] font-semibold'>{res.title}</a>
+                                                <a href="/blog3" className='text-[9px] font-semibold line-clamp-3'>{res.title}</a>
                                                 <div className='relative top-5 left-[0px]'>
                                                     <p className='text-[#8B8B8B] text-[6px]'>06 Maret 2023</p>
                                                     <hr className='relative top-3' />
@@ -123,7 +121,7 @@ const Mobile = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='border-l-2 h-[820px] absolute left-[100%] bottom-[0px]'></div>
+                                    <div className='border-l-2 h-[1050px] absolute left-[100%] bottom-[-170px]'></div>
                                 </div>
                             ))}
                         </div>

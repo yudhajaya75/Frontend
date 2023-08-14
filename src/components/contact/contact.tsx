@@ -1,5 +1,5 @@
 import axios from 'axios';
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
 function Contact() {
@@ -10,6 +10,8 @@ function Contact() {
         phone: "",
         message: ""
     });
+    const [content, setContent] = useState<any>([])
+    const url = 'http://localhost:4001/contact-information'
 
     const handleChange = (e : any) => {
         const name = e.target.name
@@ -45,10 +47,19 @@ function Contact() {
             email: "",
             phone: "",
             message: ""
-        })
-    }   
-        
-    
+        })    
+    }    
+
+    useEffect( () => {
+        axios.get(url)
+        .then( (res) => {
+            setContent(res.data.data[0])
+        } )
+    },[])  
+
+console.log(content);
+
+
     return (
         <>
             <div className='pb-[300px] pt-[200px] drop-shadow-lg'>
@@ -61,11 +72,11 @@ function Contact() {
                             </div>
                             <div className='2xl:p-10 sm-440:p-4 2xl:text-[16px] sm-440:text-[10px]'>
                                 <img className='2xl:relative 2xl:top-11 sm-440:relative sm-440:right-0 sm-440:top-5' src="./images/telp.png" alt="" />
-                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>Telephone (Whatsapp ) +62 81913456</p>
+                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>Telephone (Whatsapp ) <span>{ content.phone }</span></p>
                                 <img className='2xl:relative 2xl:top-11 sm-440:relative sm-440:right-0 sm-440:top-5' src="./images/email.png" alt="" />
-                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>demo@gmail.com</p>
+                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>{ content.email }</p>
                                 <img className='2xl:relative 2xl:top-11 sm-440:relative sm-440:right-0 sm-440:top-9' src="./images/lokasi.png" alt="" />
-                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:mt-4'>Jln karapitan bogor</p>
+                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:mt-4'>{ content.adress }</p>
                             </div>
                             <div className='float-right 2xl:-mr-5 2xl:-mt-6 sm-440:mt-[133px] 2xl:w-[200px] sm-440:w-[60px]'><img src="./images/lingkaran.png" alt="" /></div>
                             <div className='float-right 2xl:-mt-10 sm-440:mt-[120px] 2xl:-mr-[150px] sm-440:-mr-12 2xl:w-[200px] sm-440:w-[60px]'><img src="./images/lingkaran2.png" alt="" /></div>

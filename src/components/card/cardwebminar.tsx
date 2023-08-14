@@ -10,8 +10,9 @@ const Card= () => {
     const [content, setContent] = useState<any>([]);
     const url = 'http://localhost:4001/product';
         useEffect(() =>{
-        axios.get(url).then((response) => {
-            setContent(response.data.data   );
+        axios.get(url)
+        .then((response) => {
+            setContent( response.data.data );
         })
     }, [])
     console.log(content);

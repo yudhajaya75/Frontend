@@ -11,7 +11,7 @@ const Mobile = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         responsive: [
             {
                 breakpoint: 768,
@@ -45,8 +45,9 @@ const Mobile = () => {
         <div style={{ position: 'relative', zIndex: '0', padding: '30px' }}>
             <Slider {...settings}>
                 {
-                    content.map((res: any) => (
+                    content.map((res: any, index: number) => (
                         <SocialMediaProfile
+                            key={index}
                             name={res.name}
                             subtitle={res.title}
                             bio={res.body}

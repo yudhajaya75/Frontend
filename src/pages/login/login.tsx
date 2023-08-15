@@ -1,7 +1,5 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
 import useGetLoginData from "../../hooks/useGetLoginData";
 
 const Login = (props: { setEmail: (email: string) => void }) => {
@@ -20,13 +18,6 @@ const Login = (props: { setEmail: (email: string) => void }) => {
 
     return (
         <>
-            {showAlert && (
-                <div className="absolute top-[100px] left-[43%]">
-                    <Stack sx={{ width: '100%', }} spacing={1}>
-                        <Alert severity="error">Email & Password Salah</Alert>
-                    </Stack>
-                </div>
-            )}
             <div className='max-w-[1785px] h-[927px] lg:h-[1117px] mx-auto relative flex flex-col'>
                 <div className='w-[2100px] h-full bg-[#010d1f] absolute top-0 -z-20'></div>
                 <img src='http://localhost:3000/images/Frame32.png' className='h-full absolute top-0 -z-10' alt="" />

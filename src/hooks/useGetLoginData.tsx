@@ -1,5 +1,6 @@
 import { SyntheticEvent, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const useGetLoginData = (props: { setEmail: (email: string) => void }) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -33,6 +34,10 @@ const useGetLoginData = (props: { setEmail: (email: string) => void }) => {
         setIsSubmitting(false);
 
         if (response.status === 400) {
+            Swal.fire({
+                icon: "error",
+                title: "Email atau Password salah"
+            });
             setShowAlert(true);
             return;
         } else if (response.status === 201) {
@@ -43,6 +48,7 @@ const useGetLoginData = (props: { setEmail: (email: string) => void }) => {
         props.setEmail(email);
         localStorage.setItem('token', body.token);
     };
+
 
     return {
         passwordVisible,

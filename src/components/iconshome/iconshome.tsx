@@ -56,7 +56,7 @@ const Profile: React.FC = () => {
                         {content.map((res: any, index: number) => (
                             <div key={index} className={activePage === index ? 'flex' : 'hidden'} id={pages[index]}>
                                 <div className='flex items-center justify-center ml-[300px] mt-[80px]'>
-                                    <img src={res.image} alt="image" className="lg:w-[400px] sm-440:w-[120%]" />
+                                    <img src={res.image} alt="image" className="lg:w-[400px] sm-440:w-[120px] aspect-auto object-cover" />
                                     <div className='lg:ml-10 sm-440:ml-3'>
                                         <h1 className='lg:text-[32px] sm-440:text-[12px] lg:w-[500px] font-bold text-[#002157]' dangerouslySetInnerHTML={{ __html: res.title }}></h1>
                                         <br />

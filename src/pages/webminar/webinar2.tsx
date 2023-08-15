@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom'
 
 const Webinar = (props: { email: string }) => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/product';
+    const url = 'http://localhost:4001/products';
     useEffect(() => {
         axios.get(url).then((response) => {
             setContent(response.data.data);

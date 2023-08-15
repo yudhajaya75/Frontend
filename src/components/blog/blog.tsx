@@ -42,7 +42,7 @@ const Blog = () => {
                             <div key={index} className='grid grid-cols-1 content-start w-[1300px] h-auto relative' >
                                 <div className='relative left-[50px] top-[120px]'>
                                     <a href={`/blog/${res.slug}`}>
-                                        <img className='h-[400px] w-[430px] ' src={res.image_articel} alt='' />
+                                        <img className='h-[400px] w-[430px] aspect-auto object-cover' src={res.image_articel} alt='' />
                                     </a>
                                     <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
                                         <p className='font-bold text-[25px] line-clamp-3'>{res.title}</p>

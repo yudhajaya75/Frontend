@@ -1,19 +1,38 @@
+import { useState } from "react";
 import { NavLinkData } from "../../assets";
 import { AiFillEdit } from "react-icons/ai";
 import { BsEnvelopeCheck } from "react-icons/bs";
 
-const Jumbotron = () => {
+const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {
+    const [profilePicture, setProfilePicture] = useState(NavLinkData[0].img);
+
+    const handlePictureChange = (e: any) => {
+        const selectedPicture = URL.createObjectURL(e.target.files[0]);
+        setProfilePicture(selectedPicture);
+    };
+
     return (
         <div className="mt-10 h-[551px] w-[80rem] bg-white shadow-lg mx-auto rounded-2xl">
             <img src={NavLinkData[1].img} alt="" />
             <div className="flex justify-between">
-                <img src={NavLinkData[0].img} alt="" className="-mt-24 ml-16" />
-                <AiFillEdit size={30} className="mt-10 mr-10 cursor-pointer" />
+                <input
+                    type="file"
+                    accept="image/*"
+                    id="profile-picture"
+                    style={{ display: "none" }}
+                    onChange={handlePictureChange}
+                />
+                <label htmlFor="profile-picture">
+                    <img
+                        src={profilePicture}
+                        alt="Profile Picture"
+                        className="w-32 h-32 rounded-full border-4 border-[#002157] -mt-24 ml-16 cursor-pointer"
+                    />
+                </label>
             </div>
             <div className="ml-5 mt-2 leading-10">
-                <h1 className="text-[#002157] font-[600] text-[24px] text-['Inter']">Afif Subarkah</h1>
                 <BsEnvelopeCheck size={20} className="absolute mt-3" />
-                <p className="ml-7"><span className="text-black font-[600]">Email: </span><span className="text-[#6F6B7D]">afifsubarkah@example.com</span></p>
+                <p className="ml-7"><span className="text-black font-[600]">Email: </span><span className="text-[#6F6B7D]">{accountEmail}</span></p>
             </div>
             <div className="flex gap-4 ml-5">
                 <p className="text-black font-[600] text-['Montserrat'] text-[18px]">Member</p>
@@ -24,4 +43,4 @@ const Jumbotron = () => {
     )
 }
 
-export default Jumbotron;
+export default ProfileCard;

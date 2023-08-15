@@ -14,9 +14,10 @@ import { useParams } from 'react-router-dom'
 
 const Konsultasi = (props: { email: string }) => {
     const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/products';
+
     useEffect(() => {
-        axios.get(url).then((response) => {
+        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/products`)
+        .then((response) => {
             setContent(response.data.data);
         })
     }, [])

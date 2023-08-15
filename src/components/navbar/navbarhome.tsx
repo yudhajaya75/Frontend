@@ -59,8 +59,10 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                                 >
                                     <Link to='/profile' onClick={() => {
                                         router('/profile');
-                                    }}><h3 className='font-bold'>{item.myprofile}</h3></Link>
-                                    <Link to='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></Link>
+                                    }}>
+                                        <h3 className='font-bold'>{item.myprofile}</h3>
+                                    </Link>
+                                    <a href='/login' onClick={logout}><h3 className='font-bold'>{item.logout}</h3></a>
                                 </div>
                             ))}
                         </div>

@@ -9,7 +9,6 @@ import Layanan from './pages/layanan/layanan';
 import Webinar from './pages/webminar/webinar';
 import Webinar2 from './pages/webminar/webinar2';
 import Pelatihan from './pages/pelatihan/pelatihan';
-import Pelatihan2 from './pages/pelatihan/pelatihan2';
 import Konsultasi from './pages/konsultasi/konsultasi';
 import Blog from './pages/blog/blog';
 import Blog2 from './pages/blog/beritabaru';
@@ -52,7 +51,6 @@ function App() {
         <Route path='/pelatihan/:slug' element={<PelatihanDetail email={email} />} />
         <Route path='/konsultasi/:slug' element={<KonsultasiDetail email={email} />} />
         <Route path='/pelatihan' element={<Pelatihan email={email} />} />
-        <Route path='/pelatihan2' element={<Pelatihan2 email={email} />} />
         <Route path='/konsultasi' element={<Konsultasi email={email} />} />
         <Route path='/blog' element={<Blog email={email} />} />
         <Route path='/beritabaru' element={<Blog2 email={email} />} />

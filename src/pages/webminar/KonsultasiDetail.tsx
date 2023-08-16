@@ -10,6 +10,7 @@ import { ButtonPesan } from '../../components/button/ButtonPesan'
 import TextDescComponent from '../../components/teks/TextDescComponent'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import Purchase from '../../components/purchase/purchase'
 
 
 const Konsultasi = (props: { email: string }) => {
@@ -17,14 +18,15 @@ const Konsultasi = (props: { email: string }) => {
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/products`)
-        .then((response) => {
-            setContent(response.data.data);
-        })
+            .then((response) => {
+                setContent(response.data.data);
+            })
     }, [])
 
     console.log(content);
     const { slug } = useParams()
     const layanan: any = content?.filter((item: any) => item.slug == slug)[0];
+    const isLoggedIn = props.email !== '';
 
     return (
         <div className='mx-auto max-w-[1724px] relative'>
@@ -34,9 +36,18 @@ const Konsultasi = (props: { email: string }) => {
             <Banner
                 image={layanan?.image} />
             <div className='flex justify-center flex-col gap-y-10 my-20'>
-                <TextHeadingComponent
-                    heading={layanan?.title} />
-                <ButtonPesan accountEmail={props.email} />
+                {isLoggedIn ? (
+                    <div className='flex justify-between gap-10 mx-auto pr-[200px]'>
+                        <Purchase />
+                        <Purchase />
+                        <Purchase />
+                    </div>
+                ) : (
+                    <>
+                        <TextHeadingComponent heading={layanan?.title} />
+                        <ButtonPesan accountEmail={props.email} />
+                    </>
+                )}
             </div>
             <TextDescComponent
                 title='Pelatihan ini !'

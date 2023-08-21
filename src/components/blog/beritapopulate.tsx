@@ -40,13 +40,13 @@ const Blog2 = () => {
                     <div className='flex flex-wrap'>
                         {content.slice(0, 9).map((res: any, index: number) => (
                             <div className='flex w-[33.33%]' key={index}>
-                                <div className='relative left-[10px] top-[120px]'>
-                                    <Link to="">
+                                <div className='relative left-[40px] top-[120px]'>
+                                    <a href={`/blog/${res.slug}`}>
                                         <img className='h-[400px] w-[430px] shadow-lg rounded-md ' src={res.image_articel} alt='' />
-                                    </Link>
+                                    </a>
                                     <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
-                                        <p className='font-bold text-[25px]'>{res.title}</p>
-                                        <p className='relative top-4 text-[25px]' dangerouslySetInnerHTML={{ __html: res.body }}>
+                                        <p className='font-bold text-[25px] line-clamp-3'>{res.title}</p>
+                                        <p className='relative top-4 text-[25px] line-clamp-3' dangerouslySetInnerHTML={{ __html: res.body }}>
                                         </p>
                                         <div className='flex gap-5 relative top-10 left-[280px] z-10'>
                                             <a href="#">

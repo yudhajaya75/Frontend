@@ -12,7 +12,7 @@ const Card = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/products?category=webinar`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products?populate[0]=image&populate[1]=populate[2]=*&filters[category][$eq]=Webinar`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -36,22 +36,22 @@ const Card = () => {
                 </div>
             ) : (
                 <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
-                    {content.map((res: any) => (
-                        <div className='shadow-lg w-[320px]  rounded-lg overflow-hidden' key={res.id} >
-                            <div className='w-full h-[207px] '>
-                                <img src={res.image} alt='/' className='h-full w-full' />
+                    {content.map((res: any, index: number) => (
+                        <div className='shadow-lg w-[320px]  rounded-lg overflow-hidden' key={index}>
+                            <div className='w-full h-[207px]' key={res.id}>
+                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='/' className='h-full w-full' />
                             </div>
                             <div className='p-2'>
                                 <div className='flex gap-4 mt-[-50px] ml-4 text-[#4B465C]'>
-                                    <div className='bg-white  rounded-full px-2 py-1 ' >{res.day}</div>
+                                    <div className='bg-white  rounded-full px-2 py-1 ' >{res.attributes.eventDate}</div>
                                     <div className='bg-white  rounded-full px-2 py-1 '>{res.minute}</div>
                                     <div className='bg-white  rounded-full px-2 py-1 '>{res.sec}</div>
                                 </div>
                                 <div className='ml-3 my-5 flex flex-col gap-y-3'>
-                                    <h3 className='text-xl font-semibold text-[#002157]'>{res.title}</h3>
-                                    <p className='text-[#4B465C]'>{res.price}</p>
+                                    <h3 className='text-xl font-semibold text-[#002157]'>{res.attributes.title}</h3>
+                                    <p className='text-[#4B465C]'>Rp. {res.attributes.price}</p>
                                 </div>
-                                <a href={`/webinar/${res.slug}`}>
+                                <a href={`/webinar/${res.id}`}>
                                     <div className='bg-[#002157] text-white font-semibold p-[10px] text-center rounded-md w-[90%] mx-auto'>
                                         <button className='button-webminar'>Lihat Detail</button>
                                     </div>

@@ -1,7 +1,22 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const teks = () => {
+const Teks = () => {
+    //    const [content, setContent] = useState<any>([]);
+    //     const [loading, setLoading] = useState(true);
+
+    //     useEffect(() => {
+    //         axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/contact-information`)
+    //             .then((response) => {
+    //                 setContent(response.data.data);
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Error fetching data:', error);
+    //             });
+    //     }, []);
+    //     console.log(content)
+
     return (
         <div className='p-10 font-sans relative lg:bottom-[50px] sm-440:bottom-[30px]'>
             <p className='pt-10 text-center lg:text-[50px] sm-440:text-[18px] font-bold text-[#074288]'>Webinar Belajar Life Planning untuk Gen Z</p>
@@ -14,4 +29,4 @@ const teks = () => {
     )
 }
 
-export default teks
+export default Teks

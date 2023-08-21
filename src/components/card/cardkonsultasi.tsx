@@ -8,7 +8,7 @@ const CardKonsultasi = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/products?category=konsultasi`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products?populate[0]=image&populate[1]=populate[2]=*&filters[category][$eq]=Pelatihan`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -35,15 +35,15 @@ const CardKonsultasi = () => {
                         {content.map((res: any, index: number) => (
                             <CardComponent
                                 key={index}
-                                title={res.title}
-                                price={res.price}
-                                body={res.body}
-                                image={res.image}
-                                slug={res.slug}
-                                link='konsultasi'
+                                title={res.attributes.title}
+                                price={res.attributes.price}
+                                body={res.attributes.body}
+                                image={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                                slug={res.attributes.slug}
+                                link='webinardetail'
+                                id={res.id}
                             />
-                        ))
-                        }
+                        ))}
                     </div>
                 )}
             </div>

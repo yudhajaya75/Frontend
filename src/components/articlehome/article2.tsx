@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Skeleton } from '@mui/material';
-
-
+import useArticleData from '../../hooks/useArticleData';
 
 const Articel = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
-            .then((response) => {
-                setContent(response.data.data)
-                setTimeout(() => setLoading(false), 4000);
-            })
-    }, [])
-    console.log(content);
-
+    const { content, loading } = useArticleData();
 
     return (
         <div className="lg:mt-[100px] relative p-2">

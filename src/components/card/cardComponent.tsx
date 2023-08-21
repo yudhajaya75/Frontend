@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
@@ -16,7 +14,7 @@ const CardComponent = (props: any) => {
                 <h3 className='font-semibold text-xl mb-2'>{props.title}</h3>
                 <div dangerouslySetInnerHTML={{ __html: props.body }} className='text-[#5B5B5B] line-clamp-3' />
             </div>
-            <Link to={`/${props.link}/${props.slug}`}>
+            <Link to={`/${props.link}/${props.id}`}>
                 <div className="bg-[#002157] text-white py-3 text-center w-[80%] mx-auto rounded-lg font-semibold ">
                     <button className="button">Pesan Sekarang</button>
                 </div>

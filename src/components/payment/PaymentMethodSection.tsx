@@ -1,4 +1,6 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 
 interface PaymentMethodSectionProps {
     index: number;
@@ -8,6 +10,22 @@ interface PaymentMethodSectionProps {
 }
 
 const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, activePage, handleNext, handlePrevious }) => {
+    const [content, setContent] = useState<any>();
+    const location = useLocation();
+    const id = location.state?.id;
+    const title = location.state?.title;
+    const price = location.state?.price;
+
+    useEffect(() => {
+        if (index === 0) {
+            axios.get(`${process.env.REACT_APP_API_URL}/product-variants/${id}?populate=*`)
+                .then((response) => {
+                    setContent(response.data.data);
+                });
+        }
+    }, [index, id]);
+    console.log('test', content);
+
     if (index !== 2) return null;
 
     return (
@@ -66,6 +84,27 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, acti
                         <option value="Mandiri">JCB</option>
                     </select>
                 </div>
+            </div>
+            <div className='float-right'>
+                <div className='border-solid border-2 border-[#79ABFF] mt-[-400px] w-[460px] h-[354px]'>
+                    <div className='mx-5 my-5'>
+                        <p className='text-[18px] text-[#79ABFF] font-bold'>Paket {title ? title : 'bukan id nya'}</p>
+                        <br />
+                        <p className='text-[16px] text-[#002157]'>SubTotal <p className='float-right'>Rp.{price ? price : 'Harga tidak tersedia'}</p></p>
+                        <div className='border-b-2 border-slate-950'></div>
+                        <div className='my-2 text-[#002157]'>
+                            <p className='text-[16px] font-bold'>Total <p className='float-right'>Rp.{price ? price : 'Harga tidak tersedia'}</p></p>
+                            <br />
+                            <p className='text-[16px]'>Gunakan kode promo untuk dapatkan potongan harga </p>
+                        </div>
+                        <input type="text" placeholder='Kode Promo'
+                            className='w-[420px] p-3 no-underline border border-[#8D8D8D]' />
+                    </div>
+                </div>
+            </div>
+            <div className='mt-[100px]'>
+                <button onClick={handleNext} className='bg-[#002157] ml-[743px] left-20 relative bottom-10 text-white px-4 py-1 rounded-lg'>Next &#129058;</button>
+                <button onClick={handlePrevious} className='border-2 border-[#002157] relative bottom-[80px] left-[30px] text-[#002157] px-5 py-1 rounded-lg'>&#129056; Previous</button>
             </div>
         </div>
     )

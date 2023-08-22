@@ -27,11 +27,11 @@ const Articel = () => {
                     <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
                         {
                             content.slice(0, 4).map((res: any) => (
-                                <div className="h-[270px] relative text-justify" key={res.id}>
+                                <div className="h-[270px] relative text-justify" key={res.attributes.id}>
                                     <a href="blog3">
-                                        <img src={res.image_articel} alt="" className=" w-[350px] h-[270px]" />
+                                        <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt="" className=" w-[350px] h-[270px]" />
                                     </a>
-                                    <div dangerouslySetInnerHTML={{ __html: res.body }} className="line-clamp-4 w-[100%] h-[100px] bg-[rgba(0,0,0,0.5)] absolute bottom-0 text-slate-100 p-[15px]"  >
+                                    <div dangerouslySetInnerHTML={{ __html: res.attributes.body }} className="line-clamp-4 w-[100%] h-[100px] bg-[rgba(0,0,0,0.5)] absolute bottom-0 text-slate-100 p-[15px]"  >
                                     </div>
                                 </div>
                             ))}

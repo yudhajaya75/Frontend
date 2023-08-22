@@ -18,12 +18,11 @@ const WebinarDetail = (props: { email: string }) => {
     const isLoggedIn = props.email !== '';
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/products/${id}?populate[0]=image&populate[1]=*`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products/${id}?populate[0]=product_variants.features&populate[1]=image`)
             .then((response) => {
                 setContent(response.data.data);
             })
     }, [])
-
     console.log('test', content);
 
     return (
@@ -40,17 +39,20 @@ const WebinarDetail = (props: { email: string }) => {
                             <TextHeadingComponent heading='Pelatihan Belajar Life Planning untuk Gen Z' />
                         </div>
                         <div className='flex justify-between gap-10 mx-auto pr-[200px]'>
-                            {content.map((res: any, index: number) => (
+                            {content?.attributes.product_variants.data.map((res: any, index: number) => (
                                 <Purchase
                                     key={index}
                                     title={res.attributes.title}
+                                    content={res.attributes.content}
                                     desc={res.attributes.desc}
                                     price={res.attributes.price}
                                     features={res.attributes.features}
-                                    id={res.attributes.id}
+                                    isPopular={res.attributes.isPopuler}
+                                    id={res.id}
                                 />
                             ))}
                         </div>
+
                     </>
                 ) : (
                     <>

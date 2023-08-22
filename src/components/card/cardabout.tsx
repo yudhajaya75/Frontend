@@ -9,9 +9,10 @@ import { Skeleton } from '@mui/material';
 const Cards = () => {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
+    const url = process.env.BASE_WEB_URL
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/hyperlink`)
+        axios.get(`${process.env.REACT_APP_API_URL}/hyperlinks?populate=*`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -43,13 +44,13 @@ const Cards = () => {
                             <div className='cardab' key={index}>
                                 <div className='card-about'>
                                     <div className='cardbd'>
-                                        <img className='card-img' src={res.image} alt='logo' />
+                                        <img className='card-img' src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='logo' />
                                         <div className='card-body'>
-                                            <h3 className='card-title'>{res.title}</h3>
-                                            <p className='card-text' dangerouslySetInnerHTML={{ __html: res.body }}></p>
-                                            <Link to={res.link}>
+                                            <h3 className='card-title'>{res.attributes.title}</h3>
+                                            <p className='card-text' dangerouslySetInnerHTML={{ __html: res.attributes.body }}></p>
+                                            <a href={res.attributes.links}>
                                                 <button className='card-cta'>Lihat Selengkapnya</button>
-                                            </Link>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

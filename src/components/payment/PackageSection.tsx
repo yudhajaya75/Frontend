@@ -10,20 +10,21 @@ interface PackageSectionProps {
 }
 
 const PackageSection: React.FC<PackageSectionProps> = ({ index, activePage, handleNext, handlePrevious }) => {
-    const [content, setContent] = useState<any>()
+    const [content, setContent] = useState<any>();
     const location = useLocation();
-    const { id } = useParams()
+    const id = location.state?.id;
     const title = location.state?.title;
     const price = location.state?.price;
 
     useEffect(() => {
         if (index === 0) {
-            axios.get(`${process.env.REACT_APP_API_URL}/products/${id}?populate[0]=image&populate[1]=levelVariant.features`)
+            axios.get(`${process.env.REACT_APP_API_URL}/product-variants/${id}?populate=*`)
                 .then((response) => {
                     setContent(response.data.data);
                 });
         }
-    }, [index, id])
+    }, [index, id]);
+    console.log('test', content);
 
     if (index !== 0) return null;
 
@@ -34,7 +35,7 @@ const PackageSection: React.FC<PackageSectionProps> = ({ index, activePage, hand
                     <div className='-z-10 p-5 ml-0 w-[870px] h-[70px] rounded-lg relative bg-[#dcf6e8] text-[#28C76F]'>
                         <img src="./images/box.webp" alt="" />
                         <div className='relative left-14 bottom-10'>
-                            <p className='font-semibold text-[18px]'>{title ? title : 'bukan id nya'}</p>
+                            <p className='font-semibold text-[18px]'>Paket {title ? title : 'bukan id nya'}</p>
                             <p className='font-medium text-[15px]'>- 10% Instant Discount on Bank of Indonesia and Credit cards</p>
                         </div>
                     </div>
@@ -47,18 +48,17 @@ const PackageSection: React.FC<PackageSectionProps> = ({ index, activePage, hand
                 <div className='relative bottom-[350px] left-10 text-[15px]'>
                     <p className='p-4'>Pelatihan Life Skills Penting untuk Umur 20-an: Pendekatan Kurikulum Konseling Satir Indonesia Bersama <br /> [Nama Dokter] (Jabatan)</p>
                     <p className='p-4'>Hari/Tanggal: Minggu, 2 April 2023 <br />Waktu: 13.00 - 15.00 WIB</p>
-                    {content?.attributes.levelVariant.map((res: any, index: number) => (
-                        <div className='p-4 text-[#909090]' key={index}>
-                            <p>Benefit:</p>
-                            <ul className='list-disc p-4'>
-                                <li>{res.features}</li>
+                    <p className='mx-4'>Benefit :</p>
+                    {content?.attributes.features.map((res: any, index: number) => (
+                        <div className='text-[#909090]' key={index}>
+                            <ul className='list-disc my-1 mx-10'>
+                                <li>{res.feature}</li>
                             </ul>
                         </div>
                     ))}
-                    <button onClick={handleNext} className='bg-[#002157] ml-[743px] relative left-16 top-10 text-white px-4 py-1 rounded-lg'>
+                    <button onClick={handleNext} className='bg-[#002157] ml-[743px] relative left-16 top-[150px] text-white px-4 py-1 rounded-lg'>
                         Next &#129058;
                     </button>
-                    <button className='border-2 border-[#aaaaaa] relative top-2 left-[0px] text-[#aaaaaa] px-5 py-1 rounded-lg'>&#129056; Previous</button>
                 </div>
                 <div className='mt-[-200px]'></div>
             </div>

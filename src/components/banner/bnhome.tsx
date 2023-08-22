@@ -34,6 +34,7 @@ const Registration = () => {
 
         return () => clearTimeout(timeoutId);
     }, []);
+    console.log(content)
 
     return (
         <div>

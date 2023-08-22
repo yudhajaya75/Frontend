@@ -12,7 +12,7 @@ const Card = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/products?populate[0]=image&populate[1]=populate[2]=*&filters[category][$eq]=Webinar`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products?populate=*&filters[category][$eq]=Webinar`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -38,18 +38,26 @@ const Card = () => {
                 <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
                     {content.map((res: any, index: number) => (
                         <div className='shadow-lg w-[320px]  rounded-lg overflow-hidden' key={index}>
-                            <div className='w-full h-[207px]' key={res.id}>
+                            <div className='w-full h-[207px]' key={res.attributes.id}>
                                 <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='/' className='h-full w-full' />
                             </div>
                             <div className='p-2'>
                                 <div className='flex gap-4 mt-[-50px] ml-4 text-[#4B465C]'>
-                                    <div className='bg-white  rounded-full px-2 py-1 ' >{res.attributes.eventDate}</div>
-                                    <div className='bg-white  rounded-full px-2 py-1 '>{res.minute}</div>
-                                    <div className='bg-white  rounded-full px-2 py-1 '>{res.sec}</div>
+                                    <div className='bg-blue-600  rounded-full px-2 py-1 ' >
+                                        {res.attributes.webinar && res.attributes.webinar.eventDuration ? (
+                                            <p className='text-[#4B465C]'>{res.attributes.webinar.eventDuration}</p>
+                                        ) : (
+                                            <p className='text-[#4B465C]'>Duration Not Available</p>
+                                        )}
+                                    </div>
                                 </div>
-                                <div className='ml-3 my-5 flex flex-col gap-y-3'>
+                                <div className='ml-3 my-10 flex flex-col gap-y-3'>
                                     <h3 className='text-xl font-semibold text-[#002157]'>{res.attributes.title}</h3>
-                                    <p className='text-[#4B465C]'>Rp. {res.attributes.price}</p>
+                                    {res.attributes.webinar && res.attributes.webinar.webinarPrice !== null ? (
+                                        <p className='text-[#4B465C]'>Rp. {res.attributes.webinar.webinarPrice}</p>
+                                    ) : (
+                                        <p className='text-[#4B465C]'>Webinar Price Not Available</p>
+                                    )}
                                 </div>
                                 <a href={`/webinar/${res.id}`}>
                                     <div className='bg-[#002157] text-white font-semibold p-[10px] text-center rounded-md w-[90%] mx-auto'>

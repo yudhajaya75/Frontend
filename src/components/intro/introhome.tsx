@@ -7,22 +7,10 @@ import 'swiper/css/navigation'; // Import Swiper Navigation styles
 import 'swiper/css/pagination'; // Import Swiper Pagination styles
 import { Navigation } from 'swiper';
 import { Skeleton } from '@mui/material';
+import useYoutube from '../../hooks/useYoutube';
 
 const Content = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/youtube`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
+    const { content, loading } = useYoutube()
 
     return (
         <section className="mt-20 lg:mt-[200px] h-[500px] lg:h-[700px] sm:h-[780px] ">

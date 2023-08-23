@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/navwebinar';
-import Blog4 from '../../components/blog/blog4';
 import Teks4 from "../../components/teks/teks-blog";
 import Footer from '../../components/footer/footwebminar';
-import TextDescComponent from '../../components/teks/TextDescComponent';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import BlogDetail from '../../components/blog/blogDetail';
 
 
 const Blog = (props: { email: string }) => {
@@ -28,7 +27,7 @@ const Blog = (props: { email: string }) => {
             <Navbar accountEmail={props.email} />
             <Teks4
                 title={blog?.title} />
-            <Blog4
+            <BlogDetail
                 image={blog?.image_articel}
                 title={blog?.title}
                 body={blog?.body}

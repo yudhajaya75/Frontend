@@ -2,24 +2,11 @@ import { Skeleton } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { CgArrowTopRightO, CgChevronLeft, CgChevronRight } from 'react-icons/cg';
+import useCardHyperlink from '../../hooks/useCardHyperlink';
 
-const Profile: React.FC = () => {
-    const [content, setContent] = useState<any>([]);
+const Profile = () => {
     const pages = ['Webinar', 'Konsultasi', 'Layanan', 'Pelatihan'];
     const [activePage, setActivePage] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const url = process.env.BASE_WEB_URL
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/hyperlinks?populate=*`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
 
     const handlePrev = () => {
         setActivePage((prevPage) => (prevPage - 1 + pages.length) % pages.length);
@@ -28,6 +15,8 @@ const Profile: React.FC = () => {
     const handleNext = () => {
         setActivePage((prevPage) => (prevPage + 1) % pages.length);
     };
+
+    const { content, loading } = useCardHyperlink();
 
     console.log(content)
 

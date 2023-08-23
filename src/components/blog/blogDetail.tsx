@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../blog/slider.css'
 
-const Blog4 = (props: any) => {
+const BlogDetail = (props: any) => {
     return (
         <div>
             <div>
@@ -31,4 +31,4 @@ const Blog4 = (props: any) => {
     );
 };
 
-export default Blog4;  
+export default BlogDetail;  

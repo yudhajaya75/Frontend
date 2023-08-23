@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Skeleton } from '@mui/material';
+import useCardHome from '../../hooks/useCardHome';
 
 const Consultation = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/slider-section-info`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.log('Error fetching data:', error);
-                setLoading(false);
-            });
-    }, []);
+    const { content, loading } = useCardHome()
 
     return (
         <>

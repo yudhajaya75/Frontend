@@ -7,22 +7,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay } from 'swiper';
 import { Skeleton } from '@mui/material';
+import useContentHome from '../../hooks/useContentHome';
 
 const Content = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-tentang`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
+    const { content, loading } = useContentHome();
 
     return (
         <section className='mt-5 lg:mt-0'>

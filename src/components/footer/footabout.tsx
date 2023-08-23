@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '../footer/footer.css'
 import axios from 'axios';
+import useFooter from '../../hooks/useFooter';
 
 const Footer = () => {
-    const [adreess, setAdreess] = useState<any>([]);
-    const [contactUs, setContactUs] = useState<any>([]);
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/footer-adress`)
-            .then((res) => {
-                setAdreess(res.data.data[0]);
-            })
 
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/footer-contact-us`)
-            .then((response) => {
-                setContactUs(response.data.data[0])
-            })
-    }, [])
+    const { adreess, contactUs } = useFooter()
+
     return (
         <div className='footer' style={{ marginTop: 300 }}>
             <div className='sb__footer'>
@@ -39,7 +30,8 @@ const Footer = () => {
                     <div className='sb__footer-links_div'>
                         <div className="addres">
                             <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Address</h4>
-                            <p>JL K.H Abdullah No 57B Jakarta Selatan</p>
+                            <p>{adreess.street}</p>
+                            <p className='font-bold'>{adreess.city}</p>
                         </div>
                     </div>
                     <div className='sb__footer-links_div'>

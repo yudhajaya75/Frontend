@@ -1,40 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/swiper-bundle.min.css';
 import { Autoplay } from 'swiper';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
+import useBanHome from '../../hooks/useBanHome';
 
 const Registration = () => {
-    const [content, setContent] = useState<any>();
-    const [contents, setContents] = useState<any>();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const galleryResponse = await axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-home`);
-                setContents(galleryResponse.data.data);
-
-                const urlResponse = await axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/home-page`);
-                setContent(urlResponse.data.data);
-
-                setLoading(false);
-            } catch (error) {
-                console.log('Error fetching data:', error);
-            }
-        };
-
-        const delay = 4000; // 1 second delay
-        const timeoutId = setTimeout(fetchData, delay);
-
-        return () => clearTimeout(timeoutId);
-    }, []);
-    console.log(content)
+    const { contents, content, loading } = useBanHome();
 
     return (
         <div>
@@ -76,10 +48,10 @@ const Registration = () => {
                             <div className="w-full h-[300px] p-2 lg:h-[400px] flex justify-around mt-20 lg:m-0">
                                 <div className=' h-[120px] relative bottom-[150px] right-[350px] lg:w-[500px] lg:flex flex-col gap-8'>
                                     <h1 className="text-base sm:text-2xl md:text-3xl lg:text-5xl font-bold text-[#002157]">{content.header}</h1>
-                                    <p className=" font-extralight text-xs sm:text-lg md:text-xl lg:text-3xl text-[#5B5B5B]">{content.desc}</p>
+                                    <p className="font-extralight text-xs sm:text-lg md:text-xl lg:text-3xl text-[#5B5B5B]">{content.desc}</p>
                                     <div className='mt-5 lg:mt-0'>
-                                        <div className="bg-[#002157] hover:bg-[#286cdb] rounded-lg  py-2 px-8 sm:w-[200px] lg:w-[220px]">
-                                            <a className=" text-slate-100 lg:text-xl sm-440:text-[15px] font-bold " href="/signup">Daftar Sekarang</a>
+                                        <div className="bg-[#002157] hover:bg-[#286cdb] rounded-lg py-2 px-8 sm:w-[200px] lg:w-[220px]">
+                                            <a className="text-slate-100 lg:text-xl sm-440:text-[15px] font-bold " href="/signup">Daftar Sekarang</a>
                                         </div>
                                     </div>
                                 </div>

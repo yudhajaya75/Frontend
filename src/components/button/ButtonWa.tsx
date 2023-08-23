@@ -2,20 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BsWhatsapp } from "react-icons/bs";
 import axios from 'axios';
+import useContact from '../../hooks/useContact';
 
 const ButtonWa = () => {
-    const [content, setContent] = useState<any>([]);
+    const { content } = useContact()
 
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/contact-information`)
-            .then((response) => {
-                setContent(response.data.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
     return (
 
         <div className=" bg-[#1FAF38] mx-auto w-[300px] text-white font-medium text-2xl py-4 rounded-lg ">

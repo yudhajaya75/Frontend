@@ -1,11 +1,24 @@
-import Navbar from "../../components/navbar/navbar"
-import Paket from "../../components/paket/paket"
-import Teks from "../../components/teks/paket"
-import Background from "../../components/background/background"
-import Disc from "../../components/disc/disc"
-import Footer from "../../components/footer/footer"
+import React, { useEffect, useState } from "react";
+import Navbar from "../../components/navbar/navbar";
+import Teks from "../../components/teks/paket";
+import Background from "../../components/background/background";
+import Disc from "../../components/disc/disc";
+import Footer from "../../components/footer/footer";
+import Purchase from "../../components/purchase/purchase";
+import axios from "axios";
 
-const paket = (props: { email: string }) => {
+const Paket = (props: { email: string }) => {
+    const [content, setContent] = useState<any>()
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}/product-variants/?populate=*`)
+            .then((response) => {
+                setContent(response.data.data);
+                console.log(response.data.data);
+            })
+    }, []);
+    console.log(content)
+
     return (
         <>
             <div className='mx-auto max-w-[1800px] relative'>
@@ -15,19 +28,27 @@ const paket = (props: { email: string }) => {
                 </div>
                 <div className="relative bottom-[70px]">
                     <Teks />
-                    <div className="relative left-[20px] lg:flex lg:justify-center lg:items-center lg:mr-[230px]">
-                        <Paket />
+                    <div className='flex justify-between gap-10 mx-20 relative mt-[100px] right-[100px]'>
+                        {content?.slice(0, 3).map((res: any, index: number) => (
+                            <Purchase
+                                key={index}
+                                title={res.attributes.title}
+                                content={res.attributes.content}
+                                price={res.attributes.price}
+                                features={res.attributes.features}
+                                isPopular={res.attributes.isPopuler}
+                                id={res.id}
+                            />
+                        ))}
                     </div>
                 </div>
-                <div className="relative bottom-[250px]">
+                <div className="relative bottom-[0px]">
                     <Disc />
                 </div>
                 <Footer />
             </div>
         </>
-    )
-}
+    );
+};
 
-export default paket
-
-// 
+export default Paket;

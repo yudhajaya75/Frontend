@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/navbar/navbarblog'
 import Teks2 from '../../components/teks/teksblog2'
-import Blog from '../../components/blog/blog4'
+import Blog from '../../components/blog/blogDetail'
 import Footer from '../../components/footer/footer'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'

@@ -1,22 +1,8 @@
 import { Skeleton } from '@mui/material';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import useBanPelatihanData from '../../hooks/useBanPelatihanData';
 
 const Banner = () => {
-    const [content, setContent] = useState<any>();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/pelatihan-page`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.log('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
+    const { content, loading } = useBanPelatihanData();
 
     return (
         <div className='w-full'>

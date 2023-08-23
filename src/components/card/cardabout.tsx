@@ -5,23 +5,10 @@ import '../card/cardabout.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Skeleton } from '@mui/material';
+import useCardHyperlink from '../../hooks/useCardHyperlink';
 
 const Cards = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-    const url = process.env.BASE_WEB_URL
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/hyperlinks?populate=*`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
+    const { content, loading } = useCardHyperlink()
 
     return (
         <div className='cardabt'>

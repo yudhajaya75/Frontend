@@ -3,24 +3,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
 import '../blog/slider.css'
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
+import useArticlePopularData from '../../hooks/useArticlePopularData';
 
 const Blog2 = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card/populate`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
+    const { content, loading } = useArticlePopularData()
+
     return (
         <>
             <div>
@@ -93,20 +82,8 @@ const Founding = () => {
 };
 
 const Mobile = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
+    const { content, loading } = useArticlePopularData()
 
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card/populate`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
     return (
         <>
             <div>

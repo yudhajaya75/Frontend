@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './sosmed.css'
+import '../components/sosmed/sosmed.css'
 
 const useDataFetching = (url: string) => {
     const [content, setContent] = useState<any>([]);

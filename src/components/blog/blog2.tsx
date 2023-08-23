@@ -1,25 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
+import UseArticle from '../../hooks/UseArticle';
 
 const Blog = () => {
-    const [content, setContent] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-
-    console.log(content);
+    const { content, loading } = UseArticle()
 
     return (
         <>
@@ -79,19 +65,7 @@ const Founding = () => {
 };
 
 const Mobile = () => {
-    const [content, setContent] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
+    const { content, loading } = UseArticle()
 
     console.log(content);
     return (

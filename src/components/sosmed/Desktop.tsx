@@ -1,6 +1,6 @@
 import React from 'react';
 import Sosmed from './sosmed';
-import useDataFetching from './useDataFetching';
+import useDataFetching from '../../hooks/useDataFetching';
 import { Skeleton } from '@mui/material';
 import './sosmed.css';
 

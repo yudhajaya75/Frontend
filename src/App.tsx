@@ -18,8 +18,6 @@ import Payment from './pages/payment/payment';
 import Profile from './pages/profile/profile';
 import Contactus from './pages/contactus/contactus';
 import Paket from './pages/paket/paket';
-import KonsultasiDetail from "./pages/webminar/KonsultasiDetail";
-import KonselingDetail from "./pages/webminar/KonselingDetail";
 import WebinarDetail from "./pages/webminar/WebinarDetail";
 import BlogDetail from "./pages/blog/BlogDetail";
 
@@ -46,10 +44,8 @@ function App() {
         <Route path='/layanan' element={<Layanan email={email} />} />
         <Route path='/webinar' element={<Webinar email={email} />} />
         <Route path='/webinar/:id' element={<Webinar2 email={email} />} />
-        <Route path='/konseling/:id' element={<KonselingDetail email={email} />} />
         <Route path='/blog/:slug' element={<BlogDetail email={email} />} />
         <Route path='/webinardetail/:id' element={<WebinarDetail email={email} />} />
-        <Route path='/konsultasi/:id' element={<KonsultasiDetail email={email} />} />
         <Route path='/pelatihan' element={<Pelatihan email={email} />} />
         <Route path='/konsultasi' element={<Konsultasi email={email} />} />
         <Route path='/blog' element={<Blog email={email} />} />

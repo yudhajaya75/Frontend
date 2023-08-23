@@ -2,23 +2,12 @@ import React, { useState, useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../card/cardwebminar.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { Skeleton } from '@mui/material';
+import useCardWebinar from '../../hooks/useCardWebinar';
 
 
 const Card = () => {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/products?populate=*&filters[category][$eq]=Webinar`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-    }, [])
-    console.log(content);
+    const { content, loading, countdownTime } = useCardWebinar();
 
     return (
         <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>
@@ -43,15 +32,21 @@ const Card = () => {
                             </div>
                             <div className='p-2'>
                                 <div className='flex gap-4 mt-[-50px] ml-4 text-[#4B465C]'>
-                                    <div className='bg-blue-600  rounded-full px-2 py-1 ' >
+                                    <div className='flex gap-5 text-white font-semibold rounded-full px-2 py-1 mt-14' >
                                         {res.attributes.webinar && res.attributes.webinar.eventDuration ? (
-                                            <p className='text-[#4B465C]'>{res.attributes.webinar.eventDuration}</p>
+                                            <>
+                                                {res.attributes.webinar.eventDuration.split(',').map((res: string, index: number) => (
+                                                    <div className='bg-blue-600 rounded-full px-2 py-1' key={index}>
+                                                        {res}
+                                                    </div>
+                                                ))}
+                                            </>
                                         ) : (
-                                            <p className='text-[#4B465C]'>Duration Not Available</p>
+                                            <p>Duration Not Available</p>
                                         )}
                                     </div>
                                 </div>
-                                <div className='ml-3 my-10 flex flex-col gap-y-3'>
+                                <div className='ml-3 my-5 flex flex-col gap-y-3'>
                                     <h3 className='text-xl font-semibold text-[#002157]'>{res.attributes.title}</h3>
                                     {res.attributes.webinar && res.attributes.webinar.webinarPrice !== null ? (
                                         <p className='text-[#4B465C]'>Rp. {res.attributes.webinar.webinarPrice}</p>
@@ -66,8 +61,7 @@ const Card = () => {
                                 </a>
                             </div>
                         </div>
-                    ))
-                    }
+                    ))}
                 </div>
             )}
         </div>

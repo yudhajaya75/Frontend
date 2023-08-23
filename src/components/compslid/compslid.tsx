@@ -8,22 +8,10 @@ import "slick-carousel/slick/slick-theme.css";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import useCompanySlide from "../../hooks/useCompanySlide";
 
 function Compslid() {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-company`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            });
-    }, []);
+    const { content, loading } = useCompanySlide();
 
     return (
         <div className='py-10 mx-[100px]'>

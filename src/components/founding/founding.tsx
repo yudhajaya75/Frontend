@@ -5,18 +5,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import '../founding/slider.css';
 import axios from 'axios';
 import { Skeleton } from '@mui/material';
+import useFounding from '../../hooks/useFounding';
 
 const Team = () => {
-    const [content, setContent] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/founder-card`)
-            .then((response) => {
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            });
-    }, []);
+    const { content, loading } = useFounding()
 
     return (
         <div className='flex justify-evenly mt-[50px] flex-wrap'>

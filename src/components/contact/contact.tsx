@@ -1,63 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import useContactUs from '../../hooks/useContactUs';
 
 function Contact() {
-    const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: ""
-    });
-    const [content, setContent] = useState<any>([])
-    const url = 'http://localhost:4001/contact-information'
-
-    const handleChange = (e: any) => {
-        const name = e.target.name
-        const value = e.target.value
-        setValues({
-            ...values,
-            [name]: value
-        })
-    }
-
-    const handleSubmit = (e: any) => {
-        e.preventDefault()
-        const contact = {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            phone: values.phone,
-            message: values.message
-        }
-
-        axios.post('http://127.0.0.1:1337/api/contact-uses', {
-            data: contact
-        }).catch((e) => console.log(e))
-
-        Swal.fire({
-            icon: "success",
-            title: "Terima Kasih atas saran dan masukannya!"
-        })
-
-        return setValues({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            message: ""
-        })
-    }
-
-    useEffect(() => {
-        axios.get(url)
-            .then((res) => {
-                setContent(res.data.data[0])
-            })
-    }, [])
-
-    console.log(content);
+    const { content, handleChange, handleSubmit, values } = useContactUs()
 
 
     return (

@@ -1,25 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import '../banner/bnabout.css'
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
+import useBanAbout from '../../hooks/useBanAbout';
 
 const Banner = () => {
-    const [content, setContent] = useState<any>();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/about-page`);
-                setContent(response.data.data);
-                setTimeout(() => setLoading(false), 4000);
-            } catch (error) {
-                console.log('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const { content, loading } = useBanAbout()
 
 
     return (

@@ -54,7 +54,7 @@ function App() {
         <Route path='/about' element={<About email={email} />} />
         <Route
           path='/payment'
-          element={isLoggedIn ? <Payment email={email} /> : <Navigate to="/home" />}
+          element={isLoggedIn ? <Payment email={email} /> : <Navigate to="/login" />}
         />
         <Route
           path='/profile'

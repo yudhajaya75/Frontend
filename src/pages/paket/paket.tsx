@@ -4,7 +4,7 @@ import Teks from "../../components/teks/paket";
 import Background from "../../components/background/background";
 import Disc from "../../components/disc/disc";
 import Footer from "../../components/footer/footer";
-import Purchase from "../../components/purchase/purchase";
+import Purchase from "../../components/purchase/purchasePaket";
 import axios from "axios";
 
 const Paket = (props: { email: string }) => {
@@ -31,6 +31,7 @@ const Paket = (props: { email: string }) => {
                     <div className='flex justify-between gap-10 mx-20 relative mt-[100px] right-[100px]'>
                         {content?.slice(0, 3).map((res: any, index: number) => (
                             <Purchase
+                                accountEmail={props.email}
                                 key={index}
                                 title={res.attributes.title}
                                 content={res.attributes.content}

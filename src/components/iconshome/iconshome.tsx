@@ -55,7 +55,7 @@ const Profile = () => {
                                         <p className='lg:text-[24px] lg:w-[500px] sm-440:text-[12px]' dangerouslySetInnerHTML={{ __html: res.attributes.body }}></p>
                                         <br />
                                         <div className="text-sm md:text-lg lg:text-xl sm-440:text-[10px] font-bold text-[#002157] mt-[2px] flex items-center">
-                                            <a href={res.attributes.links}>Lihat selengkapnya</a>
+                                            <a href={res.attributes.link}>Lihat selengkapnya</a>
                                             <CgArrowTopRightO className="ml-[5px]" />
                                         </div>
                                     </div>

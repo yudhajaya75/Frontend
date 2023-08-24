@@ -35,7 +35,7 @@ const Cards = () => {
                                         <div className='card-body'>
                                             <h3 className='card-title'>{res.attributes.title}</h3>
                                             <p className='card-text' dangerouslySetInnerHTML={{ __html: res.attributes.body }}></p>
-                                            <a href={res.attributes.links}>
+                                            <a href={res.attributes.link}>
                                                 <button className='card-cta'>Lihat Selengkapnya</button>
                                             </a>
                                         </div>

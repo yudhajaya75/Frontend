@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 interface PaymentMethodSectionProps {
     index: number;
@@ -9,12 +10,23 @@ interface PaymentMethodSectionProps {
     handlePrevious: () => void;
 }
 
-const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, activePage, handleNext, handlePrevious }) => {
+const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, activePage, handlePrevious }) => {
     const [content, setContent] = useState<any>();
+    const [contents, setContents] = useState([]);
+    const navigate = useNavigate();
     const location = useLocation();
     const id = location.state?.id;
     const title = location.state?.title;
     const price = location.state?.price;
+
+    const handleNext = () => {
+        Swal.fire({
+            icon: "info",
+            title: "Proses Pembayaran Sedang Ditindak Lanjuti, Mohon Di Tunggu"
+        });
+
+        navigate('/home');
+    }
 
     useEffect(() => {
         if (index === 0) {
@@ -24,6 +36,16 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, acti
                 });
         }
     }, [index, id]);
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}/payments`)
+            .then((response) => {
+                setContents(response.data.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
     console.log('test', content);
 
     if (index !== 2) return null;
@@ -34,55 +56,17 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, acti
                 <div className='pb-5 -mt-8'>
                     <label htmlFor="" className=''>Pilih Metode Pembayaran</label>
                 </div>
-                <div className='flex flex-col'>
+                <div className='flex flex-col h-[400px]'>
                     <select name="transfer" id="transfer" className='p-2 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Back Transfer</option>
-                        <option value="BCA" className='p'>BCA</option>
-                        <option value="Mandiri">Mandiri</option>
+            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
+                        <option value="" disabled>Select an option</option>
+                        {contents.map((item: any) => (
+                            <option key={item.id}>
+                                {item.attributes.PaymentsBank}
+                            </option>
+                        ))}
                     </select>
-                    <select name="virtual" id="virtual" className='p-2 mt-5 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Transfer melalui Virtual Account</option>
-                        <option value="BCA" className='p'>BCA</option>
-                        <option value="Mandiri">Mandiri</option>
-                    </select>
-                    <select name="virtual" id="virtual" className='p-2 mt-5 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Dompet Elektronik</option>
-                        <option value="BCA" className='p'>GoPay</option>
-                        <option value="Mandiri">QRIS</option>
-                        <option value="Mandiri">Shopee Pay</option>
-                        <option value="Mandiri">DANA</option>
-                    </select>
-                    <select name="virtual" id="virtual" className='p-2 mt-5 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Dompet Elektronik</option>
-                        <option value="BCA" className='p'>GoPay</option>
-                        <option value="Mandiri">QRIS</option>
-                        <option value="Mandiri">Shopee Pay</option>
-                        <option value="Mandiri">DANA</option>
-                    </select>
-                    <select name="virtual" id="virtual" className='p-2 mt-5 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Mini Market</option>
-                        <option value="BCA" className='p'>Alfamart</option>
-                        <option value="Mandiri">indomaret</option>
-                    </select>
-                    <select name="virtual" id="virtual" className='p-2 mt-5 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Cicilan Tanpa Kartu</option>
-                        <option value="BCA" className='p'>Kredivo</option>
-                        <option value="Mandiri">Akulaku</option>
-                    </select>
-                    <select name="virtual" id="virtual" className='p-2 mt-5 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
-                            sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]'>
-                        <option value="" disabled selected>Kartu Kredit</option>
-                        <option value="BCA" className='p'>Visa</option>
-                        <option value="Mandiri">Master Card</option>
-                        <option value="Mandiri">American Express</option>
-                        <option value="Mandiri">JCB</option>
-                    </select>
+
                 </div>
             </div>
             <div className='float-right'>
@@ -103,7 +87,7 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ index, acti
                 </div>
             </div>
             <div className='mt-[100px]'>
-                <button onClick={handleNext} className='bg-[#002157] ml-[743px] left-20 relative bottom-10 text-white px-4 py-1 rounded-lg'>Next &#129058;</button>
+                <button onClick={handleNext} className='bg-[#002157] ml-[743px] left-20 relative bottom-10 text-white px-4 py-1 rounded-lg'>Done</button>
                 <button onClick={handlePrevious} className='border-2 border-[#002157] relative bottom-[80px] left-[30px] text-[#002157] px-5 py-1 rounded-lg'>&#129056; Previous</button>
             </div>
         </div>

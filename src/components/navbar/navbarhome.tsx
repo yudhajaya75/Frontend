@@ -43,7 +43,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                         href="#"
                         onClick={toggleMenu}
                         className="teksnav1"
-                        style={{ color: '#4B4B4B', fontWeight: 'bold', fontSize: '20px' }}
+                        style={{ color: '#000', fontWeight: 'bold', fontSize: '20px' }}
                     >
                         {/* <img src="./images/profile.png" alt="" /> */}
                         <li>{accountEmail}</li>
@@ -161,11 +161,8 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     <a href="/blog"><li className='p-4 border-b'>Blog</li></a>
                     <a href="/about"><li className='p-4 border-b'>About Us</li></a>
                     <a href="/contact"><li className='p-4 border-b'>Contact Us</li></a>
-                    <div className='mt-10'>
-                        <a href='/login' className='bg-[#00df9a] hover:bg-[#00c78d]
-                         text-white font-bold py-2 px-20 rounded'>
-                            Login
-                        </a>
+                    <div className='mt-0 -ml-[140px] text-[#074288]'>
+                        {menu}
                     </div>
                 </ul>
             </div>

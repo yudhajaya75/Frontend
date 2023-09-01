@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
 import useCardHome from '../../hooks/useCardHome';
 

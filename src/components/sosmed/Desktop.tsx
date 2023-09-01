@@ -23,7 +23,7 @@ const Desktop = () => {
                     ))}
                 </div>
             ) : (
-                <div className="flex justify-evenly mt-10">
+                <div className="flex justify-evenly flex-wrap gap-y-5 mt-20">
                     {content.map((res: any, index: number) => (
                         <div key={index}>
                             <Sosmed

@@ -13,7 +13,7 @@ import Footer from '../../components/footer/footer';
 
 const Home = (props: { email: string }) => {
     return (
-        <div className='mx-auto max-w-[1910px] relative'>
+        <div className='mx-auto max-w-[1710px] relative'>
             <Navbar accountEmail={props.email} />
             <Banner />
             <Contents />

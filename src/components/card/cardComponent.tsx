@@ -15,7 +15,7 @@ const CardComponent = (props: any) => {
                 <div dangerouslySetInnerHTML={{ __html: props.body }} className='text-[#5B5B5B] line-clamp-3' />
             </div>
             <a href={`/${props.link}/${props.id}`}>
-                <div className="bg-[#002157] text-white py-3 text-center w-[80%] mx-auto rounded-lg font-semibold ">
+                <div className="bg-[#002157] text-white py-3 text-center w-[80%] mx-auto rounded-lg font-semibold z-50">
                     <button className="button">Pesan Sekarang</button>
                 </div>
             </a>

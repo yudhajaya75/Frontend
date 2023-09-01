@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import CardComponent from './cardComponent';
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
 import useCardPelatihan from '../../hooks/useCardPelatihan';
 
@@ -23,7 +21,7 @@ const CardPelatihan = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px]">
+                    <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] z-50">
                         {content.map((res: any, index: number) => (
                             <CardComponent
                                 key={index}

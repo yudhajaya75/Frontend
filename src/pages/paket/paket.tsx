@@ -28,7 +28,7 @@ const Paket = (props: { email: string }) => {
                 </div>
                 <div className="relative bottom-[70px]">
                     <Teks />
-                    <div className='flex justify-between gap-10 mx-20 relative mt-[100px] right-[100px]'>
+                    <div className='flex justify-evenly flex-wrap gap-10 mx-20 relative mt-[100px] right-[100px]'>
                         {content?.slice(0, 3).map((res: any, index: number) => (
                             <Purchase
                                 accountEmail={props.email}

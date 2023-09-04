@@ -6,7 +6,7 @@ import Teks1 from '../../components/teks/teksabout1'
 import Card from '../../components/card/cardabout'
 import Teks2 from '../../components/teks/teksabout-pendiri'
 import Founding from '../../components/founding/founding'
-import Compslid from '../../components/compslid/compslid'
+import Compslid from '../../components/compslid/founding'
 import Tesk3 from '../../components/teks/teks-kerjasama'
 import Footer from '../../components/footer/footabout'
 

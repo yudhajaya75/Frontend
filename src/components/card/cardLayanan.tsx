@@ -23,7 +23,7 @@ const CardLayanan = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px]">
+                    <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] z-50 sm-440:pr-14 lg:pr-0">
                         {content.map((res: any, index: number) => (
                             <CardComponent
                                 key={index}

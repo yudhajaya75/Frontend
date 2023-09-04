@@ -8,7 +8,7 @@ function useCard() {
 
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/products/?populate[1]=populate[2]=*`)
+        fetch(`${process.env.REACT_APP_API_URL}/products/?populate=*`)
             .then((response) => response.json())
             .then((data) => {
                 setContent(data.data);

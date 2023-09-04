@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 const Text = () => {
     return (
         <div className='teks'>
-            <h1 className='font-bold left-[80px]
-            text-2xl mt-10 relative 
-            text-[#002157] max-w-[300px] text-center
+            <h1 className='font-bold sm:left-[80px] text-2xl mt-10 relative 
+            text-[#002157] max-w-[300px] text-center ml-10
             '>Join Layanan kami yuk! Cek disini</h1>
         </div>
 

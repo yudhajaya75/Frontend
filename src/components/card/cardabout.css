@@ -54,6 +54,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    margin-top: 12px;
+    font-size: 12px;
   }
   
   .card-cta:hover {

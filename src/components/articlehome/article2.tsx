@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
 import useArticleData from '../../hooks/useArticleData';
 
@@ -27,8 +25,8 @@ const Articel = () => {
                     <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
                         {
                             content.slice(0, 4).map((res: any) => (
-                                <div className="h-[270px] relative text-justify" key={res.attributes.id}>
-                                    <a href="blog3">
+                                <div className="h-[270px] relative text-justify" key={res.id}>
+                                    <a href={`/blog/${res.slug}`}>
                                         <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt="" className=" w-[350px] h-[270px]" />
                                     </a>
                                     <div dangerouslySetInnerHTML={{ __html: res.attributes.body }} className="line-clamp-4 w-[100%] h-[100px] bg-[rgba(0,0,0,0.5)] absolute bottom-0 text-slate-100 p-[15px]"  >

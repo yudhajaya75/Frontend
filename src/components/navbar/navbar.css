@@ -26,7 +26,7 @@
     }
     
     .nav{
-     @apply fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-gray-500 ease-in-out duration-500
+     @apply fixed left-0 top-0 w-[70%] h-full border-r border-r-gray-900 bg-[#074288] text-white ease-in-out duration-500
     }
 
     .teksnav2 {

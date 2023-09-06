@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,7 @@ import '../blog/slider.css'
 import { Skeleton } from '@mui/material';
 import useArticleNewData from '../../hooks/useArticleNewData';
 
-const Blog2 = () => {
+const BeritaBaru = () => {
     const { content, loading } = useArticleNewData()
     return (
         <>
@@ -24,30 +24,27 @@ const Blog2 = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className='flex flex-wrap'>
+                    <div className='grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
                         {content.slice(0, 9).map((res: any, index: number) => (
-                            <div className='flex w-[33.33%]' key={index}>
+                            <div className='flex' key={index}>
                                 <div className='relative top-[120px] mx-10'>
                                     <a href={`/blog/${res.slug}`}>
-                                        <img className='h-[400px] w-[430px] shadow-lg rounded-md bg-cover' src={res.image_articel} alt='' />
+                                        <img className='h-[400px] w-[500px] shadow-lg rounded-md bg-cover' src={res.image_articel} alt='' />
                                     </a>
-                                    <div className='w-[400px] h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
-                                        <p className='font-bold text-[25px] line-clamp-3'>{res.title}</p>
-                                        <p className='relative top-4 text-[25px] line-clamp-3' dangerouslySetInnerHTML={{ __html: res.body }}>
+                                    <div className='md:w-[400px] w-[330px] md:h-[400px] h-[300px] md:text-[25px] text-[15px] bg-cover border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[200px]'>
+                                        <p className='font-bold line-clamp-3'>{res.title}</p>
+                                        <p className='relative top-4 line-clamp-3' dangerouslySetInnerHTML={{ __html: res.body }}>
                                         </p>
-                                        <div className='flex gap-5 relative top-10 left-[280px] z-10'>
+                                        <div className='flex gap-5 relative md:top-10 top-14 md:left-[280px] left-[230px] z-10'>
                                             <a href="#">
-                                                <img src="../images/bookmark.webp" className='w-[20px]' alt="" />
+                                                <img src="../images/bookmark.webp" className='w-[10px] md:w-[20px]' alt="" />
                                             </a>
                                             <a href="#">
-                                                <img src="../images/share.webp" className='w-[25px]' alt="" />
+                                                <img src="../images/share.webp" className='w-[15px] md:w-[25px]' alt="" />
                                             </a>
                                         </div>
-                                        <div className='relative top-5 left-[150px] text-[#8B8B8B]'>
-                                            <p>06 Maret 2023</p>
-                                        </div>
-                                        <div className='relative bottom-[20px] left-0'>
-                                            <p className='font-bold text-[20px]'>{res.eye}</p>
+                                        <div className='relative md:bottom-[20px] bottom-0 md:top-[0px] top-10 left-0 md:text-[20px] text-[15px]'>
+                                            <p className='font-bold'>{res.eye}</p>
                                             <p className='text-[#8B8B8B]'>People Saw</p>
                                         </div>
                                     </div>
@@ -61,78 +58,4 @@ const Blog2 = () => {
     );
 };
 
-const Founding = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    return windowWidth <= 440 ? <Mobile /> : <Blog2 />;
-};
-
-const Mobile = () => {
-    const { content, loading } = useArticleNewData()
-
-    return (
-        <>
-            <div>
-                {loading ? (
-                    <div className="flex flex-wrap">
-                        {[...Array(9)].map((_, index) => (
-                            <div key={index} className="w-[300px] flex w-[33.33%] mt-[150px] my-5 shadow-lg rounded-md">
-                                <Skeleton variant="rectangular" width={300} height={180} />
-                                <div className="w-full p-6">
-                                    <Skeleton variant="text" width={200} height={32} />
-                                    <Skeleton variant="text" width={250} height={72} />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className='grid grid-cols-2 gap-2 max-w-[430px] relative bottom-[100px] my-[100px]'>
-                        {content.map((res: any, index: number) => (
-                            <div key={index}>
-                                <div className='relative left-[10px] top-[120px]'>
-                                    <Link to="/blog3">
-                                        <img className='w-[200px] h-full  shadow-lg rounded-md' src={res.image_articel} alt='' />
-                                    </Link>
-                                    <div className='w-[190px] max-h-[220px] border-2 bg-white p-3 rounded-lg z-10 relative left-[5px] bottom-[50px]'>
-                                        <p className='font-bold text-[12px]'>{res.title}</p>
-                                        <p className='relative top-1 text-[12px]' dangerouslySetInnerHTML={{ __html: res.body }}>
-                                        </p>
-                                        <div className='flex gap-5 relative top-10 left-[110px] z-10'>
-                                            <a href="#">
-                                                <img src="../images/bookmark.webp" className='w-[10px]' alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="../images/share.webp" className='w-[15px]' alt="" />
-                                            </a>
-                                        </div>
-                                        <div className='relative text-[12px] bottom-1 left-[0px] text-[#8B8B8B]'>
-                                            <p>06 Maret 2023</p>
-                                        </div>
-                                        <div className='relative top-[0px] left-0'>
-                                            <p className='font-bold text-[12px]'>{res.eye}</p>
-                                            <p className='text-[#8B8B8B] text-[12px]'>People Saw</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </>
-    );
-};
-
-export default Founding;  
+export default BeritaBaru;  

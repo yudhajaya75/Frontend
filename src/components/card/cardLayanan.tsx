@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import CardComponent from './cardComponent';
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
 import useCardPelatihan from '../../hooks/useCardPelatihan';
 

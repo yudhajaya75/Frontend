@@ -6,13 +6,8 @@ const Login = (props: { setEmail: (email: string) => void }) => {
     const {
         passwordVisible,
         handleTogglePassword,
-        email,
         setEmail,
-        password,
         setPassword,
-        showAlert,
-        setShowAlert,
-        isSubmitting,
         submit,
     } = useGetLoginData(props);
 

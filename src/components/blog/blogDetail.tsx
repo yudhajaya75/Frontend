@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../blog/slider.css'
@@ -7,21 +6,13 @@ const BlogDetail = (props: any) => {
     return (
         <div>
             <div>
-                <div className='relative left-[50px] top-[50px] flex gap-10'>
-                    <div className=''>
-                        <img className='max-h-[500px] min-w-[900px]' src={props.image} alt='' />
+                <div className='relative left-[50px] top-[50px] md:flex md:gap-10'>
+                    <div>
+                        <img className='md:h-[500px] h-[200px] md:w-[900px] w-[350px] aspect-auto object-cover' src={props.image} alt='' />
                     </div>
-                    <div className='w-[500px] text-justify text-[15px]'>
+                    <div className='w-[500px] flex text-justify md:text-[17px] text-[14px] md:px-0 px-20 md:-ml-0 -ml-20'>
                         <p>{props.title}</p>
                     </div>
-                </div>
-                <div className='flex gap-5 relative top-0 left-[70px]'>
-                    <a href="#">
-                        <img src="../images/bookmark.webp" className='w-[20px]' alt="" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/share.webp" className='w-[25px]' alt="" />
-                    </a>
                 </div>
                 <div className='pt-[100px] p-[50px]'>
                     <p className='text-justify' dangerouslySetInnerHTML={{ __html: props.body }}></p>

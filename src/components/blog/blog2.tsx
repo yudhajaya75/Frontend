@@ -21,6 +21,7 @@ const Blog = () => {
                 ) : (
                     <div className='absolute'>
                         <div className='mt-[-1100px]'>
+                            <p className='relative text-center bottom-[900px] left-7 font-bold text-[20px] text-[#002157]'>Category Artikel baru</p>
                             {content.slice(0, 9).map((res: any, index: number) => (
                                 <div key={index} className='flex flex-col justify-between'>
                                     <div className='relative left-[100px] bottom-[870px]'>

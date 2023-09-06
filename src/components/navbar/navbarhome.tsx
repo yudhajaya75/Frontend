@@ -130,7 +130,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                 <h1 className='w-full text-3xl font-bold mt-3'>
                     <img src="/images/Logo.webp" alt="" />
                 </h1>
-                <ul className='uppercase p-4'>
+                <ul className='uppercase p-4 mt-10'>
                     <a href="/home">
                         <li className='p-4 border-b'>Home</li></a>
                     <a href="#" onClick={() => setIsOpen((prev) => !prev)}>
@@ -146,7 +146,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     {isOpen && (
                         <div className="bg-[#FFFFFF]  absolute top-[220px] left-[-1px] flex flex-col items-start rounded-lg">
                             {list.map((item, i) => (
-                                <div className="w-full justify-between 
+                                <div className="w-[210px] justify-between 
                            p-4 hover:bg-blue-300 cursor-pointer rounded-lg text-[#074288]  
                            border-l-transparent " key={i}>
                                     <a href='webinar'><h3 className='font-bold'>{item.webinar}</h3></a>
@@ -161,7 +161,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                     <a href="/blog"><li className='p-4 border-b'>Blog</li></a>
                     <a href="/about"><li className='p-4 border-b'>About Us</li></a>
                     <a href="/contact"><li className='p-4 border-b'>Contact Us</li></a>
-                    <div className='mt-0 -ml-[140px] text-[#074288]'>
+                    <div className='- mt-10 -ml-[140px] text-[#074288]'>
                         {menu}
                     </div>
                 </ul>

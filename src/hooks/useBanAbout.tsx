@@ -5,7 +5,7 @@ function useBanAbout() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SCRIPTS_URL}/about-page`)
+        fetch(`${process.env.REACT_APP_API_URL}/about?populate=*`)
             .then((response) => response.json())
             .then((data) => {
                 setContent(data.data);
@@ -15,7 +15,7 @@ function useBanAbout() {
 
     return {
         content,
-        loading
+        loading,
     }
 }
 

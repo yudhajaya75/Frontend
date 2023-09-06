@@ -13,10 +13,9 @@ const Blog = (props: { email: string }) => {
             <Navbar accountEmail={props.email} />
             <div className='lg:flex lg:justify-center lg:items-center lg:mr-[170px]'>
                 <div className='flex flex-col'>
-                    <Teks />
                     <Blog1 />
-                    <Blog2 />
-                    <Blog3 />
+                    {/* <Blog2 /> */}
+                    {/* <Blog3 /> */}
                 </div>
             </div>
             <Footer />

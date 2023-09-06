@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
 
 function useArticlePopularData() {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
+    const [popular, setPopular] = useState<any>([]);
+    const [loadings, setLoadings] = useState(true);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card/populate`)
             .then((response) => response.json())
             .then((data) => {
-                setContent(data.data);
-                setTimeout(() => setLoading(false), 4000);
+                setPopular(data.data);
+                setTimeout(() => setLoadings(false), 4000);
             })
     }, []);
-    console.log(content)
 
     return {
-        content,
-        loading
+        popular,
+        loadings
     }
 }
 

@@ -15,7 +15,7 @@ const Footer = () => {
                         <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Hall of Collaborator</h4>
                         <a href="https://salt.id/academy">
                             <div className='logo'>
-                                <p><img src="./images/salt.webp" alt="" /></p>
+                                <p><img src="/images/salt.webp" alt="" /></p>
                             </div>
                         </a>
                     </div>

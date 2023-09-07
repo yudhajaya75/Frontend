@@ -1,5 +1,0 @@
-client-id
-1083976219127-skc6bvdd00ana72m6l2f6epv2sf0rq83.apps.googleusercontent.com
-
-client-secret
-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

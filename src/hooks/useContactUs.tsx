@@ -31,7 +31,7 @@ function useContactUs() {
             message: values.message
         }
 
-        axios.post('http://127.0.0.1:1337/api/contact-uses', {
+        axios.post(`${process.env.REACT_APP_API_URL}/contact-uses`, {
             data: contact
         }).catch((e) => console.log(e))
 
@@ -50,10 +50,10 @@ function useContactUs() {
     }
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SCRIPTS_URL}/contact-information`)
+        fetch(`${process.env.REACT_APP_API_URL}/contact-information?populate=*`)
             .then((response) => response.json())
             .then((data) => {
-                setContent(data.data[0])
+                setContent(data.data)
             })
     }, [])
 

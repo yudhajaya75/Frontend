@@ -16,11 +16,11 @@ function Contact() {
                             </div>
                             <div className='2xl:p-10 sm-440:p-4 2xl:text-[16px] sm-440:text-[10px]'>
                                 <img className='2xl:relative 2xl:top-11 sm-440:relative sm-440:right-0 sm-440:top-5' src="./images/telp.png" alt="" />
-                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>Telephone (Whatsapp ) <span>{content.phone}</span></p>
+                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>Telephone (Whatsapp ) <span>{content.attributes.phone}</span></p>
                                 <img className='2xl:relative 2xl:top-11 sm-440:relative sm-440:right-0 sm-440:top-5' src="./images/email.png" alt="" />
-                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>{content.email}</p>
+                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:-mt-1'>{content.attributes.email}</p>
                                 <img className='2xl:relative 2xl:top-11 sm-440:relative sm-440:right-0 sm-440:top-9' src="./images/lokasi.png" alt="" />
-                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:mt-4'>{content.adress}</p>
+                                <p className='text-white 2xl:p-5 sm-440:p-0 2xl:ml-10 sm-440:ml-10 sm-440:mt-4'>{content.attributes.adress}</p>
                             </div>
                             <div className='float-right 2xl:-mr-5 2xl:-mt-6 sm-440:mt-[133px] 2xl:w-[200px] sm-440:w-[60px]'><img src="./images/lingkaran.png" alt="" /></div>
                             <div className='float-right 2xl:-mt-10 sm-440:mt-[120px] 2xl:-mr-[150px] sm-440:-mr-12 2xl:w-[200px] sm-440:w-[60px]'><img src="./images/lingkaran2.png" alt="" /></div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../../components/navbar/navprofile'
 import Content from '../../components/content/content2'
 import Content2 from '../../components/content/content3'

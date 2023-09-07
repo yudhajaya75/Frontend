@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../../components/navbar/navbarblog'
 import Teks3 from '../../components/teks/teksblog3'
 import BeritaPopulate from '../../components/blog/beritapopulate'

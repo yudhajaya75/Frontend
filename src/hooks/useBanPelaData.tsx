@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function useBanPelaData() {
-    const [content, setContent] = useState<any>([]);
+    const [content, setContent] = useState<any>();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

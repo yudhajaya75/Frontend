@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function useContact() {
     const [content, setContent] = useState<any>([]);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SCRIPTS_URL}/contact-information`)
+        fetch(`${process.env.REACT_APP_API_URL}/contact-information?populate=*`)
             .then((response) => response.json())
             .then((data) => {
-                setContent(data.data);
+                setContent(data.data)
             })
-    }, []);
-    console.log(content)
+    }, [])
 
     return {
         content

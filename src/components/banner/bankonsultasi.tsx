@@ -1,6 +1,4 @@
 import { Skeleton } from '@mui/material';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import useBannerData from '../../hooks/useBanKonsulData'
 
 const Banner = () => {
@@ -14,7 +12,7 @@ const Banner = () => {
                 </div>
             ) : (
                 <div>
-                    <img className='lg:w-full sm-440:w-full lg:h-[550px] sm-440:h-[160px] object-cover lg:mt-[-0px] lg:z-10' src={`http://127.0.0.1:1337${content.attributes.image.data.attributes.url}`} alt="" />
+                    <img className='lg:w-full sm-440:w-full lg:h-[550px] sm-440:h-[160px] object-cover lg:mt-[-0px] lg:z-10' src={`${process.env.REACT_APP_UPLOAD_URL}${content.attributes.image.data.attributes.url}`} alt="" />
                     <div className='absolute top-24 left-0 w-full h-screen'>
                         <div className='absolute top-1 w-full h-full justify-center'>
                             <div className='md:left-[6%] absolute sm-440:left-[-50px] max-w-[900px] m-auto lg:mt-[170px] sm-440:mt-[70px]'>

@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import '../intro/responsive.css';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation'; // Import Swiper Navigation styles
-import 'swiper/css/pagination'; // Import Swiper Pagination styles
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { Navigation } from 'swiper';
 import { Skeleton } from '@mui/material';
 import useYoutube from '../../hooks/useYoutube';
@@ -33,8 +31,8 @@ const Content = () => {
                                     >
                                         <iframe
                                             className="w-full h-full"
-                                            src={`https://www.youtube.com/embed/${res.link}`}
-                                            title={res.title}
+                                            src={`https://www.youtube.com/embed/${res.attributes.link}`}
+                                            title={res.attributes.title}
                                             frameBorder="0"
                                             allowFullScreen
                                         ></iframe>

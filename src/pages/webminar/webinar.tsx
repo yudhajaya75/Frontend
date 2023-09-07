@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../../components/navbar/navwebinar'
 import Banner from '../../components/banner/banwebminar'
 import Teks from '../../components/teks/teks-webminar'

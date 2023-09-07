@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function useCompanySlide() {
     const [content, setContent] = useState<any>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-company`)
+        fetch(`${process.env.REACT_APP_API_URL}/gallery-companies?populate=*`)
             .then((response) => response.json())
             .then((data) => {
                 setContent(data.data);

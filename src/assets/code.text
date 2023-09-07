@@ -1,2 +1,0 @@
-// untuk assests export const logo = require("./Logo.webp")  {logo}
-// untuk local <img src="http://localhost:3000/images/Logo.webp" alt="" />

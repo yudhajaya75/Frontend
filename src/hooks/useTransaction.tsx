@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -19,7 +18,7 @@ const useTransaction = (useremail: string = 'yudha@gmail.com') => {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/transactions?populate=*&filters[users][email][$eq]=${useremail}`, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + process.env.STRAPI_ADMIN_TOKEN
+                    'Authorization': 'Bearer ' + process.env.REACT_APP_ADMIN_TOKEN
                 },
                 withCredentials: true,
             });

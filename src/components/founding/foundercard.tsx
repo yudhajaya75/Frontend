@@ -1,4 +1,3 @@
-import React from 'react';
 
 const FounderCard = ({ name, title, imageUrl, position }: any) => {
     const getPositionClass = () => {

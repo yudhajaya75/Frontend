@@ -1,5 +1,5 @@
 // Founding.tsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Desktop from './Desktop';
 import Mobile from './mobile';
 import './sosmed.css'

@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import useGetUserData from './hooks/useGetUserData'
 
 import Home from './pages/home/home';
-import Home2 from './pages/home/home2';
 import Login from './pages/login/login';
 import Daftar from './pages/signup/signup';
 import Layanan from './pages/layanan/layanan';
@@ -28,9 +27,7 @@ function App() {
   const {
     email,
     setEmail,
-    isFetchingData,
     isLoggedIn,
-    isLoading
   } = useGetUserData();
 
   return (
@@ -40,7 +37,6 @@ function App() {
         <Route path='/login' Component={() => <Login setEmail={setEmail} />} />
         <Route path='/signup' element={<Daftar />} />
         <Route path='/home' element={<Home email={email} />} />
-        <Route path='/home2' element={<Home2 email={email} />} />
         <Route path='/layanan' element={<Layanan email={email} />} />
         <Route path='/webinar' element={<Webinar email={email} />} />
         <Route path='/webinar/:id' element={<Webinar2 email={email} />} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function useBanHome() {
     const [content, setContent] = useState<any>();
@@ -7,8 +7,8 @@ function useBanHome() {
 
     useEffect(() => {
         Promise.all([
-            fetch(`${process.env.REACT_APP_SCRIPTS_URL}/gallery-home`),
-            fetch(`${process.env.REACT_APP_SCRIPTS_URL}/home-page`)
+            fetch(`${process.env.REACT_APP_API_URL}/gallery-banner-homepages?populate=*`),
+            fetch(`${process.env.REACT_APP_API_URL}/homepage?populate=*`)
         ])
             .then((responses) => Promise.all(responses.map(response => response.json())))
             .then(([galleryHome, HomePage]) => {

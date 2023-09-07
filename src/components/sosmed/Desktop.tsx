@@ -5,8 +5,7 @@ import { Skeleton } from '@mui/material';
 import './sosmed.css';
 
 const Desktop = () => {
-    const url = `${process.env.REACT_APP_SCRIPTS_URL}/personal-card`;
-    const { content, loading } = useDataFetching(url);
+    const { content, loading } = useDataFetching();
 
     return (
         <div>
@@ -27,12 +26,12 @@ const Desktop = () => {
                     {content.map((res: any, index: number) => (
                         <div key={index}>
                             <Sosmed
-                                name={res.name}
-                                subtitle={res.title}
-                                bio={res.body}
-                                image={res.image}
-                                link1={res.medsos_1}
-                                link2={res.medsos_2}
+                                name={res.attributes.name}
+                                subtitle={res.attributes.title}
+                                bio={res.attributes.body}
+                                image={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                                link1={res.attributes.medsos_1}
+                                link2={res.attributes.medsos_2}
                             />
                         </div>
                     ))}

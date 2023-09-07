@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/navbarhome';
 import Banner from '../../components/banner/bnhome';
 import Contents from '../../components/content/content';

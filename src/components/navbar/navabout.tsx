@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import list from "./list.json"
 import listprofile from "./listprofile.json"
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'

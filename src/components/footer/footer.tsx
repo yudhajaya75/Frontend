@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
 import '../footer/footer.css'
-import axios from 'axios';
 import useFooter from '../../hooks/useFooter';
 
 const Footer = () => {
@@ -22,16 +20,24 @@ const Footer = () => {
                     <div className='sb__footer-links_div'>
                         <div className='contact-us'>
                             <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Contact Us</h4>
-                            <p>{contactUs.pobox} <span className='font-bold'>{contactUs.poboxNumber} </span> </p>
-                            <p>{contactUs.city} <span className='font-bold'>{contactUs.cityNumber}</span></p>
-                            <p>Phone <span className='font-bold'>{contactUs.phoneNumber}</span> </p>
+                            {contactUs && (
+                                <>
+                                    <p>{contactUs.attributes.pobox} <span className='font-bold'>{contactUs.attributes.poboxNumber} </span> </p>
+                                    <p>{contactUs.attributes.city} <span className='font-bold'>{contactUs.attributes.cityNumber}</span></p>
+                                    <p>Phone <span className='font-bold'>{contactUs.attributes.phoneNumber}</span> </p>
+                                </>
+                            )}
                         </div>
                     </div>
                     <div className='sb__footer-links_div'>
                         <div className="addres">
                             <h4 style={{ fontWeight: 'bold', fontSize: '15px' }}>Address</h4>
-                            <p>{adreess.street}</p>
-                            <p className='font-bold'>{adreess.city}</p>
+                            {adreess && (
+                                <>
+                                    <p>{adreess.attributes.street}</p>
+                                    <p className='font-bold'>{adreess.attributes.city}</p>
+                                </>
+                            )}
                         </div>
                     </div>
                     <div className='sb__footer-links_div'>

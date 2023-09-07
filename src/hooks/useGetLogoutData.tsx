@@ -7,12 +7,10 @@ const useGetLogoutLogout = () => {
 
     const logout = async () => {
         try {
-            // Hapus token dari local storage sebelum melakukan request logout ke server
             localStorage.removeItem('token');
 
             setIsLoggingOut(true);
 
-            // Request logout ke server menggunakan fetch API
             const response = await fetch(`${process.env.REACT_APP_LOGOUT_URL}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -20,10 +18,8 @@ const useGetLogoutLogout = () => {
             });
 
             if (response.ok) {
-                // Redirect ke halaman login
                 router('/login');
             } else {
-                // Proses logout gagal, lakukan penanganan error sesuai kebutuhan
                 console.error('Logout failed:', response);
             }
             setIsLoggingOut(false);

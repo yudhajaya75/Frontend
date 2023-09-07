@@ -27,10 +27,10 @@ const Consultation = () => {
                         {content.map((res: any, index: number) => (
                             <div key={index}>
                                 <div className="w-[350px] h-[400px] shadow-lg rounded-md">
-                                    <img src={res.image_slider} alt="" className="w-[100%] h-[180px]" />
+                                    <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt="" className="w-[100%] h-[180px]" />
                                     <div className="w-full p-6">
-                                        <h3 className="text-xl mb-[15px]">{res.title}.</h3>
-                                        <p className="text-lg text-start">{res.desc}</p>
+                                        <h3 className="text-xl mb-[15px]">{res.attributes.title}.</h3>
+                                        <p className="text-lg text-start">{res.attributes.desc}</p>
                                     </div>
                                 </div>
                             </div>

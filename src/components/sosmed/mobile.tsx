@@ -35,7 +35,7 @@ const Mobile = () => {
     const [content, setContent] = useState<any>([]);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/personal-card`)
+        axios.get(`${process.env.REACT_APP_API_URL}/personal-cards?populate=*`)
             .then((response) => {
                 setContent(response.data.data);
             })
@@ -48,12 +48,12 @@ const Mobile = () => {
                     content.map((res: any, index: number) => (
                         <SocialMediaProfile
                             key={index}
-                            name={res.name}
-                            subtitle={res.title}
-                            bio={res.body}
-                            image={res.image}
-                            link1={res.medsos_1}
-                            link2={res.medsos_2}
+                            name={res.attributes.name}
+                            subtitle={res.attributes.title}
+                            bio={res.attributes.body}
+                            image={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                            link1={res.attributes.medsos_1}
+                            link2={res.attributes.medsos_2}
                         />
 
                     ))

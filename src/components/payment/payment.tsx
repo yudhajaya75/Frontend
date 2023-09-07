@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import pages from './pages';
 import PaymentMethodSection from './PaymentMethodSection';

@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../../components/navbar/navbar'
 import Banner from '../../components/banner/banpelatihan'
 import Teks from '../../components/teks/teks-pelatihan'

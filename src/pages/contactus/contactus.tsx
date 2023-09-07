@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/navbarcontact';
 import Teks from '../../components/teks/contactus';
 import Teks2 from '../../components/teks/contactus2';

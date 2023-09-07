@@ -1,12 +1,12 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Skeleton } from '@mui/material';
-import UseArticle from '../../hooks/UseArticle';
 import useArticlePopularData from '../../hooks/useArticlePopularData';
+import useArticleData from '../../hooks/useArticleData';
 
 const Blog = () => {
 
-    const { content, loading } = UseArticle()
+    const { content, loading } = useArticleData()
     const { popular, loadings } = useArticlePopularData()
 
     return (
@@ -34,12 +34,12 @@ const Blog = () => {
                             {content.slice(0, 3).map((res: any, index: number) => (
                                 <div key={index} className='grid grid-cols-1 content-start h-auto relative mx-auto ' >
                                     <div className='relative left-[50px] top-[120px]'>
-                                        <a href={`/blog/${res.slug}`}>
-                                            <img className='h-[250px] w-[300px] md:w-[430px] md:h-[400px] aspect-auto object-cover' src={res.image_articel} alt='' />
+                                        <a href={`/blog/${res.attributes.slug}`}>
+                                            <img className='h-[250px] w-[300px] md:w-[430px] md:h-[400px] aspect-auto object-cover' src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='' />
                                         </a>
                                         <div className='w-[270px] h-[200px] md:w-[400px] md:h-[400px] border-2 bg-white p-5 rounded-lg z-10 relative left-[13px] bottom-[80px] md:bottom-[200px]'>
-                                            <p className='font-bold text-[12px] md:text-[25px] line-clamp-3'>{res.title}</p>
-                                            <p className='relative top-4 text-[10px] md:text-[25px] line-clamp-3' dangerouslySetInnerHTML={{ __html: res.body }}>
+                                            <p className='font-bold text-[12px] md:text-[25px] line-clamp-3'>{res.attributes.title}</p>
+                                            <p className='relative top-4 text-[10px] md:text-[25px] line-clamp-3' dangerouslySetInnerHTML={{ __html: res.attributes.body }}>
                                             </p>
                                             <div className='flex gap-5 relative top-10 left-[180px] md:left-[280px] z-10'>
                                                 <a href="#">
@@ -53,7 +53,7 @@ const Blog = () => {
                                                 <p>06 Maret 2023</p>
                                             </div>
                                             <div className='relative bottom-[0px] md:bottom-[20px] left-0 text-[10px] md:text-[20px]'>
-                                                <p className='font-bold'>{res.eye}</p>
+                                                <p className='font-bold'>{res.attributes.eye}</p>
                                                 <p className='text-[#8B8B8B]'>People Saw</p>
                                             </div>
                                         </div>
@@ -85,8 +85,8 @@ const Blog = () => {
                                         <div className='relative left-0 md:left-[100px] bottom-0 md:bottom-[870px]'>
                                             <div className='w-[400px] h-[200px] p-5 z-10 rounded-lg z-10'>
                                                 <div className=''>
-                                                    <a href={`/blog/${res.slug}`}
-                                                        className='text-[30px] font-semibold line-clamp-3'>{res.title}</a>
+                                                    <a href={`/blog/${res.attributes.slug}`}
+                                                        className='text-[30px] font-semibold line-clamp-3'>{res.attributes.title}</a>
                                                     <div className='relative top-5 left-[0px]'>
                                                         <p className='text-[#8B8B8B]'>06 Maret 2023</p>
                                                         <hr className='relative top-3' />
@@ -127,13 +127,13 @@ const Blog = () => {
                                     {popular.slice(0, 4).map((res: any, index: number) => (
                                         <div key={index} className='flex flex-col justify-between'>
                                             <div className='relative left-[1000px] bottom-[280px]'>
-                                                <a href={`/blog/${res.slug}`}>
-                                                    <img className='h-[250px] w-[400px] rounded-lg bg-cover' src={res.image_articel} alt='' />
+                                                <a href={`/blog/${res.attributes.slug}`}>
+                                                    <img className='h-[250px] w-[400px] rounded-lg bg-cover' src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='' />
                                                 </a>
                                                 <div className='w-[400px] z-10 relative left-[13px] bottom-[-40px]'>
-                                                    <p className='font-bold text-[25px] relative left-[-12px] line-clamp-3' dangerouslySetInnerHTML={{ __html: res.body }}></p>
+                                                    <p className='font-bold text-[25px] relative left-[-12px] line-clamp-3' dangerouslySetInnerHTML={{ __html: res.attributes.body }}></p>
                                                     <div className='relative bottom-[20px] pt-10 left-[-10px]'>
-                                                        <p className='font-bold text-[25px]'>{res.eye}</p>
+                                                        <p className='font-bold text-[25px]'>{res.attributes.eye}</p>
                                                         <p className='text-[#8B8B8B]'>People Saw</p>
                                                     </div>
                                                     <div className='flex gap-5 relative bottom-[55px] left-[325px] w-[100px]'>

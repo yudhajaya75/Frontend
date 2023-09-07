@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
 import '../intro/responsive.css';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -44,7 +42,7 @@ const Content = () => {
                             {content.map((res: any) => (
                                 <SwiperSlide key={res.id}>
                                     <div>
-                                        <img src={res.image} className='w-full h-full lg:w-full lg:h-full sm-440:w-[400px] sm-440:h-[150px] sm:w-[500px] sm:h-[200px] rounded-lg bg-center bg-cover duration-500'>
+                                        <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className='w-full h-full lg:w-full lg:h-full sm-440:w-[400px] sm-440:h-[150px] sm:w-[500px] sm:h-[200px] rounded-lg bg-center bg-cover duration-500'>
                                         </img>
                                     </div>
                                 </SwiperSlide>

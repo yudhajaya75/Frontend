@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import FounderCard from './foundercard';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../founding/slider.css';
-import axios from 'axios';
 import { Skeleton } from '@mui/material';
 import useFounding from '../../hooks/useFounding';
 
@@ -29,9 +27,9 @@ const Team = () => {
                     {content.map((res: any, index) => (
                         <FounderCard
                             key={index}
-                            name={res.name}
-                            title={res.title}
-                            imageUrl={res.image}
+                            name={res.attributes.name}
+                            title={res.attributes.title}
+                            imageUrl={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
                             position={index % 2 === 0 ? 'top' : 'bottom'}
                         />
                     ))}

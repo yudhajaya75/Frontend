@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -12,7 +12,7 @@ const Dekstop = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/question`)
+        axios.get(`${process.env.REACT_APP_API_URL}/questions?populate=*`)
             .then((response) => {
                 setContent(response.data.data);
                 setTimeout(() => setLoading(false), 4000);
@@ -46,11 +46,11 @@ const Dekstop = () => {
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                     >
-                                        <Typography>{res.title}</Typography>
+                                        <Typography>{res.attributes.title}</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
-                                            {res.desc}
+                                            {res.attributes.desc}
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

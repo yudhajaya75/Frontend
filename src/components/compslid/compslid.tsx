@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Skeleton } from "@mui/material";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Autoplay } from 'swiper';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'swiper/css';
@@ -56,7 +54,7 @@ function Compslid() {
                     content.map((res: any, index: number) => (
                         <SwiperSlide key={index}>
                             <div className="">
-                                <img src={res.image} className="w-full h-[200px]" alt="" />
+                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className="w-full h-[200px]" alt="" />
                             </div>
                         </SwiperSlide>
                     ))

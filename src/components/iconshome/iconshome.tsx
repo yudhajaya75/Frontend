@@ -1,6 +1,5 @@
 import { Skeleton } from '@mui/material';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CgArrowTopRightO, CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 import useCardHyperlink from '../../hooks/useCardHyperlink';
 

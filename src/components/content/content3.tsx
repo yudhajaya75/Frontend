@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLinkData } from "../../assets";
-import { AiFillEdit } from "react-icons/ai";
 import { BsEnvelopeCheck } from "react-icons/bs";
 
 const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {

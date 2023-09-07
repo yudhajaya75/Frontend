@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
 
 function useContactUs() {
-    const [content, setContent] = useState<any>([])
+    const [content, setContent] = useState<any>()
     const [values, setValues] = useState({
         firstName: "",
         lastName: "",

@@ -31,7 +31,7 @@ const useGetUserData = () => {
             "Content-Type": "application/json",
             Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
           },
-          withCredentials: true,
+          //   withCredentials: true,
         }
       );
       //   console.log(await response.data);

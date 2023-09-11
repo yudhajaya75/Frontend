@@ -8,6 +8,7 @@ import useGetLogoutData from '../../hooks/useGetLogoutData'
 import './navbarhome.css'
 
 const Navbar = ({ accountEmail }: { accountEmail: string }) => {
+    const username = localStorage.getItem("user")
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenUp, setIsOpenUp] = useState(false);
     const router = useNavigate();
@@ -25,7 +26,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
 
     let menu: JSX.Element;
 
-    if (accountEmail === '') {
+    if (username === null) {
         menu = (
             <div>
                 <div style={{ marginTop: 20 }}>
@@ -47,7 +48,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                         style={{ color: '#4B4B4B', fontWeight: 'bold', fontSize: '20px' }}
                     >
                         {/* <img src="./images/profile.png" alt="" /> */}
-                        <li>{accountEmail}</li>
+                        <li>{username}</li>
                         <li style={{ marginLeft: 10 }}>{isOpenUp ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}</li>
                     </a>
                     {isOpenUp && (

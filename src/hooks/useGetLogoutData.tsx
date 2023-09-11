@@ -7,24 +7,25 @@ const useGetLogoutLogout = () => {
 
     const logout = async () => {
         try {
-            localStorage.removeItem('token');
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
 
             setIsLoggingOut(true);
 
-            const response = await fetch(`${process.env.REACT_APP_LOGOUT_URL}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-            });
+            // const response = await fetch(`${process.env.REACT_APP_LOGOUT_URL}`, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     credentials: 'include',
+            // });
 
-            if (response.ok) {
-                router('/login');
-            } else {
-                console.error('Logout failed:', response);
-            }
+            // if (response.ok) {
+            router("/login");
+            // } else {
+            //     console.error('Logout failed:', response);
+            // }
             setIsLoggingOut(false);
         } catch (error) {
-            console.error('Logout error:', error);
+            console.error("Logout error:", error);
             setIsLoggingOut(false);
         }
     };

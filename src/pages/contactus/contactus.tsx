@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navbarcontact';
+import Navbar from '../../components/navbar/navbar';
 import Teks from '../../components/teks/contactus';
 import Teks2 from '../../components/teks/contactus2';
 import ContactUs from '../../components/contact/contact';

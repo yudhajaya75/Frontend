@@ -1,4 +1,4 @@
-import '../intro/responsive.css';
+import './responsive.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';

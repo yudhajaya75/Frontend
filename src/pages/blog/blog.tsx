@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navbarblog'
+import Navbar from '../../components/navbar/navbar'
 import Blog1 from '../../components/blog/blog'
 import Footer from '../../components/footer/footer'
 

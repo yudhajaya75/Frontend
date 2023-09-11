@@ -7,7 +7,7 @@ import Sosmed from '../../components/sosmed/Founding';
 import Teks3 from '../../components/teks/teks-kerjasama';
 import Compslid from '../../components/compslid/founding'
 import Footer from '../../components/footer/footer';
-import CardKonsultasi from '../../components/card/cardkonsultasi';
+import Card from '../../components/card/card';
 
 
 const konsultasi = (props: { email: string }) => {
@@ -18,7 +18,7 @@ const konsultasi = (props: { email: string }) => {
       <Teks />
       <div className='lg:flex lg:justify-center lg:items-center lg:mr-[0px]'>
         <div className='flex flex-col'>
-          <CardKonsultasi />
+          <Card />
         </div>
       </div>
       <div className='mt-20'>

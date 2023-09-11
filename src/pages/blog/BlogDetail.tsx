@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Navbar from '../../components/navbar/navwebinar';
+import Navbar from '../../components/navbar/navbar';
 import Teks4 from "../../components/teks/teks-blog";
 import Footer from '../../components/footer/footwebminar';
 import axios from 'axios';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Navbar from '../../components/navbar/navwebinar'
+import Navbar from '../../components/navbar/navbar'
 import Banner from '../../components/banner/banwebminar3'
 import Teks4 from "../../components/teks/teks-webinar5"
 import Teks3 from '../../components/teks/teks-kata-mereka'

@@ -51,6 +51,7 @@ const useLogin = (props: { setEmail: (email: string) => void }) => {
                 // Store the JWT token in local storage
                 localStorage.setItem("token", data.jwt);
                 localStorage.setItem("user", data.user.username);
+                localStorage.setItem("email", data.user.email);
 
                 // Redirect to the home page
                 router("/home");

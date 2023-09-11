@@ -1,6 +1,5 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import '../card/cardwebminar.css';
 import { Skeleton } from '@mui/material';
 import useCardWebinar from '../../hooks/useCardWebinar';
 

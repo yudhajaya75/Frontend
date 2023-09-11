@@ -10,32 +10,10 @@ const useGetUserData = () => {
   const [isFetchingData, setIsFetchingData] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
-    try {
-      const res = await handlerApi("/users");
-      setEmail(res.email);
-      setIsLoggedIn(true);
-      setIsFetchingData(false);
-    } catch (error) {
-      console.error("Error:", error);
-      setIsFetchingData(false);
-    }
-  };
-
-  //   const fetchUserData = async () => {
+  //   const fetchData = async () => {
   //     try {
-  //       const response = await axios.get(
-  //         `${process.env.REACT_APP_API_URL}/users`,
-  //         {
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-  //           },
-  //           withCredentials: true,
-  //         }
-  //       );
-  //       //   console.log(await response.data);
-  //       setEmail(response.data.email);
+  //       const res = await handlerApi("/users");
+  //       setEmail(res.email);
   //       setIsLoggedIn(true);
   //       setIsFetchingData(false);
   //     } catch (error) {
@@ -44,9 +22,31 @@ const useGetUserData = () => {
   //     }
   //   };
 
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+          },
+          withCredentials: true,
+        }
+      );
+      //   console.log(await response.data);
+      setEmail(response.data.email);
+      setIsLoggedIn(true);
+      setIsFetchingData(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setIsFetchingData(false);
+    }
+  };
+
   useEffect(() => {
-    // fetchUserData();
-    fetchData();
+    fetchUserData();
+    // fetchData();
   }, []);
 
   console.log(email);

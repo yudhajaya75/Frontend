@@ -8,6 +8,7 @@ const useGetLogoutLogout = () => {
   const logout = async () => {
     try {
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
 
       setIsLoggingOut(true);
 

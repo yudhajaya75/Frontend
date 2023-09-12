@@ -11,6 +11,7 @@ import useCompanySlide from "../../hooks/useCompanySlide";
 function Compslid() {
     const { content, loading } = useCompanySlide();
 
+    if (!content) return <div>No Data</div>
     return (
         <div className='py-10 mx-[100px]'>
             <Swiper

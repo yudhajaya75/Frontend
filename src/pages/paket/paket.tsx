@@ -5,19 +5,21 @@ import Background from "../../components/background/background";
 import Disc from "../../components/disc/disc";
 import Footer from "../../components/footer/footer";
 import Purchase from "../../components/purchase/purchasePaket";
-import axios from "axios";
+import { HTTPAruna } from "../../services/handlerApi";
 
 const Paket = (props: { email: string }) => {
     const [content, setContent] = useState<any>()
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/product-variants/?populate=*`)
-            .then((response) => {
-                setContent(response.data.data);
-                console.log(response.data.data);
-            })
+        HTTPAruna.get("/product-variants/?populate=*").then((res) => {
+            console.log("PRODUCT", res)
+            setContent(res.data)
+        }).catch((err) =>{
+            console.log(err)
+        })
     }, []);
-    console.log(content)
+    
+    if (!content) return <div>No Data</div>
 
     return (
         <>

@@ -4,6 +4,7 @@ import useBanPelaData from '../../hooks/useBanPelaData';
 const Banner = () => {
     const { content, loading } = useBanPelaData();
 
+    if (!content) return <div>No Data</div>
     return (
         <div className='w-full'>
             {loading ? (

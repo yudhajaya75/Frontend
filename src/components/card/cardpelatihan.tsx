@@ -5,6 +5,7 @@ import useCardPelatihan from '../../hooks/useCardPelatihan';
 const CardPelatihan = () => {
     const { content, loading } = useCardPelatihan()
 
+    if (!content) return <div>No data</div>
     return (
         <>
             <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>

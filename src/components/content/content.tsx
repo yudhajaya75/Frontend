@@ -10,6 +10,8 @@ import useContentHome from '../../hooks/useContentHome';
 const Content = () => {
     const { content, loading } = useContentHome();
 
+    if (!content) return <div>No Data</div>
+    
     return (
         <section className='mt-5 lg:mt-0'>
             {loading ? (

@@ -6,8 +6,9 @@ import useCardWebinar from '../../hooks/useCardWebinar';
 
 
 const Card = () => {
-    const { content, loading, countdownTime } = useCardWebinar();
+    const { content, loading } = useCardWebinar();
 
+    if (!content) return <div>No Data</div>
     return (
         <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>
             {loading ? (

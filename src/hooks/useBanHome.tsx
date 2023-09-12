@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { GalleryBanner } from "../@types/GalleryBanner";
 
 function useBanHome() {
   const [content, setContent] = useState<any>();
-  const [contents, setContents] = useState<any>();
+  const [banner, setBanner] = useState<GalleryBanner[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ function useBanHome() {
       )
       .then(([galleryHome, HomePage]) => {
         setContent(HomePage.data);
-        setContents(galleryHome.data);
+        setBanner(galleryHome.data);
         setTimeout(() => setLoading(false), 4000);
       })
       .catch((error) => {
@@ -41,7 +42,7 @@ function useBanHome() {
 
   return {
     content,
-    contents,
+    banner,
     loading,
   };
 }

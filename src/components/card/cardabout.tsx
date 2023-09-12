@@ -3,6 +3,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import '../card/cardabout.css';
 import { Skeleton } from '@mui/material';
 import useCardHyperlink from '../../hooks/useCardHyperlink';
+import { server } from '../../config/server';
 
 const Cards = () => {
     const { content, loading } = useCardHyperlink()
@@ -28,7 +29,7 @@ const Cards = () => {
                             <div className='cardab' key={index}>
                                 <div className='lg:w-[600px] sm-440:w-96 rounded-md overflow-hidden shadow-lg'>
                                     <div className='flex flex-col md:flex-row border border-gray-300 rounded-md overflow-hidden'>
-                                        <img className='lg:w-[220px] lg:h-[250px] md:w-1/3 object-cover' src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='logo' />
+                                        <img className='lg:w-[220px] lg:h-[250px] md:w-1/3 object-cover' src={`${server.BASE_URL}${res.attributes.image.data.attributes.url}`} alt='logo' />
                                         <div className='w-full md:w-2/3 card-body p-4 md:p-6'>
                                             <h3 className='card-title'>{res.attributes.title}</h3>
                                             <p className='card-text' dangerouslySetInnerHTML={{ __html: res.attributes.body }}></p>

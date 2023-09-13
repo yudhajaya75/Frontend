@@ -1,25 +1,19 @@
-import React from "react";
 import Container from "../global/container";
-import useCardPelatihan from "../../hooks/useCardPelatihan";
 import useContentHome from "../../hooks/useContentHome";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { Autoplay } from "swiper";
-import { Skeleton } from "@mui/material";
-import "../youtube/responsive.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "../global/Image";
 
 const AboutCard = () => {
-  const { tentangkonseling, loading } = useContentHome();
+  const { tentangkonseling } = useContentHome();
 
   return (
     <Container
+      boxed
       orientation="horizontal"
-      isDebug
+      customClass="gap-5 lg:gap-[75px]"
       firstElement={
         <Swiper
-          spaceBetween={30}
           centeredSlides={true}
           autoplay={{
             delay: 2500,
@@ -29,27 +23,24 @@ const AboutCard = () => {
             clickable: true,
           }}
           modules={[Autoplay]}
-          className="mySwiper"
         >
           {!tentangkonseling ? (
             <div>No Data</div>
           ) : (
-            tentangkonseling.map((res) => (
-              <SwiperSlide key={res.id}>
-                <div>
-                  <img
-                    src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
-                    className="w-full h-full lg:w-full lg:h-full rounded-lg bg-center bg-cover duration-500"
-                    alt="Konseling Image"
-                  />
-                </div>
+            tentangkonseling.map((res, index) => (
+              <SwiperSlide className="!w-full" key={index}>
+                <Image
+                  src={res.attributes.image.data.attributes.url}
+                  customClass="w-full rounded-lg bg-center bg-cover duration-500 h-[350px]"
+                  alt="Konseling Image"
+                />
               </SwiperSlide>
             ))
           )}
         </Swiper>
       }
       secondElement={
-        <div className="w-full  flex flex-col gap-1 lg:gap-10 ">
+        <div className="flex flex-col gap-1 lg:gap-10 ">
           <h3 className="text-lg font-semibold text-[#002157] sm-440:text-sm sm:text-xl md:text-2xl lg:text-3xl">
             Tentang Konseling Satir
           </h3>

@@ -8,7 +8,7 @@ import useQuestions from "../../hooks/useQuestions";
 
 const Dekstop = () => {
   const { questions, loading } = useQuestions();
-  if (!questions && !questions) return <div>No Data</div>
+  if (!questions && !questions) return <div>No Data</div>;
 
   return (
     <div className="relative left-[120px] md:left-[0px]">
@@ -34,7 +34,7 @@ const Dekstop = () => {
             {questions.map((res, index: number) => (
               <Accordion
                 style={{ backgroundColor: "#F8FCFF" }}
-                className="relative sm:w-[1200px] md:left-[200px] right-24 w-[400px]"
+                className=" w-full "
                 key={index}
               >
                 <AccordionSummary

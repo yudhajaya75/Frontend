@@ -6,7 +6,7 @@ import Sosmed from '../../components/sosmed/Founding';
 import Teks3 from '../../components/teks/teks-kerjasama'
 import Compslid from '../../components/compslid/founding'
 import Footer from '../../components/footer/footer'
-import CardPelatihan from '../../components/card/cardpelatihan'
+import Card from '../../components/card/card'
 
 const pelatihan = (props: { email: string }) => {
     return (
@@ -16,7 +16,7 @@ const pelatihan = (props: { email: string }) => {
             <Teks />
             <div className='lg:flex lg:justify-center lg:items-center lg:mr-[0px]'>
                 <div className='flex flex-col'>
-                    <CardPelatihan />
+                    <Card />
                 </div>
             </div>
             <Teks2 />

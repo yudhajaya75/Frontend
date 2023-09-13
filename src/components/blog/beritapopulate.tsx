@@ -7,6 +7,7 @@ import useArticlePopularData from '../../hooks/useArticlePopularData';
 const BlogPopulate = () => {
 
     const { popular, loadings } = useArticlePopularData()
+    if (!popular && !popular) return <div>No data</div>;
 
     return (
         <>
@@ -25,7 +26,7 @@ const BlogPopulate = () => {
                     </div>
                 ) : (
                     <div className='grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
-                        {popular.slice(0, 9).map((res: any, index: number) => (
+                        {popular.slice(0, 9).map((res, index: number) => (
                             <div className='flex' key={index}>
                                 <div className='relative top-[120px] mx-10'>
                                     <a href={`/blog/${res.attributes.slug}`}>

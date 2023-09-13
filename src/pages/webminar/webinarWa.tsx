@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navwebinar'
+import Navbar from '../../components/navbar/navbar'
 import Teks4 from "../../components/teks/teks-webinar5"
 import Teks3 from '../../components/teks/teks-kata-mereka'
 import Sosmed from '../../components/sosmed/Founding'

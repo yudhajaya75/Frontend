@@ -1,25 +1,17 @@
-import { useEffect, useState } from 'react';
-import Navbar from '../../components/navbar/navwebinar';
+import Navbar from '../../components/navbar/navbar'
 import Teks4 from "../../components/teks/teks-blog";
 import Footer from '../../components/footer/footwebminar';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BlogDetail from '../../components/blog/blogDetail';
+import useArticleData from '../../hooks/useArticleData';
 
 
 const Blog = (props: { email: string }) => {
-    const [content, setContent] = useState<any>([])
-
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SCRIPTS_URL}/articel-card`)
-            .then((response) => {
-                setContent(response.data.data);
-            })
-    }, [])
-
-    console.log(content);
     const { slug } = useParams()
-    const blog: any = content?.filter((item: any) => item.slug == slug)[0];
+    const { article, loading } = useArticleData()
+    if (!article && !article) return <div>No data</div>;
+
+    const blog: any = article?.filter((item: any) => item.slug == slug)[0];
     console.log(blog)
 
     return (
@@ -28,7 +20,7 @@ const Blog = (props: { email: string }) => {
             <Teks4
                 title={blog?.title} />
             <BlogDetail
-                image={blog?.image_articel}
+                image={`${process.env.REACT_APP_UPLOAD_URL}${blog?.attributes.image.data.attributes.url}`}
                 title={blog?.title}
                 body={blog?.body}
             />

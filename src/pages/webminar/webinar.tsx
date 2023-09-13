@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navwebinar'
+import Navbar from '../../components/navbar/navbar'
 import Banner from '../../components/banner/banwebminar'
 import Teks from '../../components/teks/teks-webminar'
 import Teks2 from '../../components/teks/teks-webminar1'

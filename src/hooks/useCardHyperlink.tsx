@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { HyperLink } from "../@types/HyperLink";
 
 function useCardHyperlink() {
-  const [content, setContent] = useState<any>([]);
+  const [hyperlink, setHyperLinks] = useState<HyperLink[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,16 +15,16 @@ function useCardHyperlink() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.data);
+        setHyperLinks(data.data);
         setTimeout(() => setLoading(false), 4000);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(content);
+
   return {
-    content,
+    hyperlink,
     loading,
   };
 }

@@ -6,7 +6,8 @@ import useCardHyperlink from '../../hooks/useCardHyperlink';
 import { server } from '../../config/server';
 
 const Cards = () => {
-    const { content, loading } = useCardHyperlink()
+    const { hyperlink, loading } = useCardHyperlink()
+    if (!hyperlink && !hyperlink) return <div>No data</div>;
 
     return (
         <div className='cardabt'>
@@ -25,7 +26,7 @@ const Cards = () => {
                     </div>
                 ) : (
                     <div className="font-extralight flex justify-evenly flex-wrap gap-10 ml-14 z-50 sm-440:pr-14 lg:pr-0">
-                        {content.map((res: any, index: number) => (
+                        {hyperlink.map((res, index: number) => (
                             <div className='cardab' key={index}>
                                 <div className='lg:w-[600px] sm-440:w-96 rounded-md overflow-hidden shadow-lg'>
                                     <div className='flex flex-col md:flex-row border border-gray-300 rounded-md overflow-hidden'>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { ArticlePopular } from "../@types/ArticlePopular";
 
 function useArticlePopularData() {
-  const [popular, setPopular] = useState<any>([]);
+  const [popular, setPopular] = useState<ArticlePopular[]>();
   const [loadings, setLoadings] = useState(true);
 
   useEffect(() => {

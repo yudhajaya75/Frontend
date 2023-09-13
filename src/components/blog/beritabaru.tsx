@@ -5,7 +5,9 @@ import { Skeleton } from '@mui/material';
 import useArticleData from '../../hooks/useArticleData';
 
 const BeritaBaru = () => {
-    const { content, loading } = useArticleData()
+    const { article, loading } = useArticleData()
+    if (!article && !article) return <div>No data</div>;
+
     return (
         <>
             <div>
@@ -23,7 +25,7 @@ const BeritaBaru = () => {
                     </div>
                 ) : (
                     <div className='grid gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
-                        {content.slice(0, 9).map((res: any, index: number) => (
+                        {article.slice(0, 9).map((res, index: number) => (
                             <div className='flex' key={index}>
                                 <div className='relative top-[120px] mx-10'>
                                     <a href={`/blog/${res.attributes.slug}`}>

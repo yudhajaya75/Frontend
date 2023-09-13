@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Youtube } from "../@types/Youtube";
 
 function useYoutube() {
-  const [content, setContent] = useState<any>([]);
+  const [youtube, setContent] = useState<Youtube[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,10 +22,9 @@ function useYoutube() {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(content);
 
   return {
-    content,
+    youtube,
     loading,
   };
 }

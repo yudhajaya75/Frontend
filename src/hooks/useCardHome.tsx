@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { CardHome } from "../@types/CardHome";
 
 function useCardHome() {
-  const [content, setContent] = useState<any>([]);
+  const [cardhome, setCardHome] = useState<CardHome[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ function useCardHome() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.data);
+        setCardHome(data.data);
         setTimeout(() => setLoading(false), 4000);
       })
       .catch((error) => {
@@ -22,8 +23,9 @@ function useCardHome() {
         setLoading(false);
       });
   }, []);
+
   return {
-    content,
+    cardhome,
     loading,
   };
 }

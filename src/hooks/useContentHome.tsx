@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { GalleryTentangKonseling } from "../@types/GalleryTentangKonseling";
 
 function useContentHome() {
-  const [content, setContent] = useState<any>([]);
+  const [tentangkonseling, setTentangKonseling] = useState<GalleryTentangKonseling[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,17 +18,17 @@ function useContentHome() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.data);
+        setTentangKonseling(data.data);
         setTimeout(() => setLoading(false), 4000);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(content);
+  console.log(tentangkonseling);
 
   return {
-    content,
+    tentangkonseling,
     loading,
   };
 }

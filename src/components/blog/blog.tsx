@@ -6,8 +6,11 @@ import useArticleData from '../../hooks/useArticleData';
 
 const Blog = () => {
 
-    const { content, loading } = useArticleData()
+    const { article, loading } = useArticleData()
     const { popular, loadings } = useArticlePopularData()
+    if (!article && !article) return <div>No data</div>;
+    if (!popular && !popular) return <div>No data</div>;
+
 
     return (
         <>
@@ -31,8 +34,8 @@ const Blog = () => {
                                 <p className='relative top-6 md:top-7 font-bold left-[0px] text-[#002157]'>Berita Terbaru</p>
                                 <a className='text-[#002157] font-bold relative left-[200px] top-1 md:top-0 md:left-[300px] z-10' href="/beritabaru">See more...</a>
                             </div>
-                            {content.slice(0, 3).map((res: any, index: number) => (
-                                <div key={index} className='grid grid-cols-1 content-start h-auto relative mx-auto ' >
+                            {article.slice(0, 3).map((res, index: number) => (
+                                <div key={index} className='grid grid-cols-1 article-start h-auto relative mx-auto ' >
                                     <div className='relative left-[50px] top-[120px]'>
                                         <a href={`/blog/${res.attributes.slug}`}>
                                             <img className='h-[250px] w-[300px] md:w-[430px] md:h-[400px] aspect-auto object-cover' src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='' />
@@ -80,8 +83,8 @@ const Blog = () => {
                                 <div className='relative text-center md:bottom-[900px] bottom-0 md:left-7 left-0 font-bold text-[20px] text-[#002157]'>
                                     <p>Category Artikel baru</p>
                                 </div>
-                                {content.slice(0, 9).map((res: any, index: number) => (
-                                    <div key={index} className='grid grid-cols-1 content-start mx-auto '>
+                                {article.slice(0, 9).map((res, index: number) => (
+                                    <div key={index} className='grid grid-cols-1 article-start mx-auto '>
                                         <div className='relative left-0 md:left-[100px] bottom-0 md:bottom-[870px]'>
                                             <div className='w-[400px] h-[200px] p-5 z-10 rounded-lg z-10'>
                                                 <div className=''>
@@ -124,7 +127,7 @@ const Blog = () => {
                                     <a className='text-[#002157] font-bold relative left-[200px] top-1 md:top-0 md:left-[300px] z-10' href="/beritapopulate">See more...</a>
                                 </div>
                                 <div className='mt-[-2000px]'>
-                                    {popular.slice(0, 4).map((res: any, index: number) => (
+                                    {popular.slice(0, 4).map((res, index: number) => (
                                         <div key={index} className='flex flex-col justify-between'>
                                             <div className='relative left-[1000px] bottom-[280px]'>
                                                 <a href={`/blog/${res.attributes.slug}`}>

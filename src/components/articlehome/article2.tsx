@@ -2,12 +2,11 @@ import { Skeleton } from '@mui/material';
 import useArticleData from '../../hooks/useArticleData';
 
 const Articel = () => {
-    const { content, loading } = useArticleData();
+    const { article, loading } = useArticleData();
 
     return (
         <div className="lg:mt-[100px] relative p-2">
             <h2 className="text-5xl lg:text-3xl text-center font-semibold text-[#002157]">Artikel</h2>
-
             {loading ? (
                 <div className="flex justify-evenly gap-y-5 mt-[200px] flex-wrap">
                     {[...Array(4)].map((_, index) => (
@@ -23,8 +22,10 @@ const Articel = () => {
             ) : (
                 <div>
                     <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] ">
-                        {
-                            content.slice(0, 4).map((res: any) => (
+                        {!article ? (
+                            <div>no Data</div>
+                        ) :
+                            article.slice(0, 4).map((res: any) => (
                                 <div className="h-[270px] relative text-justify" key={res.id}>
                                     <a href={`/blog/${res.slug}`}>
                                         <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt="" className=" w-[350px] h-[270px]" />

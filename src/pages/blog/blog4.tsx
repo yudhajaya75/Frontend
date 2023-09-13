@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Navbar from '../../components/navbar/navbarblog'
+import Navbar from '../../components/navbar/navbar'
 import Teks2 from '../../components/teks/teksblog2'
 import Blog from '../../components/blog/blogDetail'
 import Footer from '../../components/footer/footer'

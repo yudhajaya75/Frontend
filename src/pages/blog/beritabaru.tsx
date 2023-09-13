@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/navbarblog'
+import Navbar from '../../components/navbar/navbar'
 import Teks2 from '../../components/teks/teksblog2'
 import BeritaTerbaru from '../../components/blog/beritabaru'
 import Footer from '../../components/footer/footer'

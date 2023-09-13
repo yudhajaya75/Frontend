@@ -1,14 +1,12 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import '../card/cardwebminar.css';
 import { Skeleton } from '@mui/material';
 import useCardWebinar from '../../hooks/useCardWebinar';
 
 
 const Card = () => {
-    const { content, loading } = useCardWebinar();
+    const { content, loading, countdownTime } = useCardWebinar();
 
-    if (!content) return <div>No Data</div>
     return (
         <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>
             {loading ? (

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Article } from "../@types/Article";
 
 function useArticleData() {
-  const [content, setContent] = useState<any>([]);
+  const [article, setArticle] = useState<Article[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,14 +15,13 @@ function useArticleData() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.data);
+        setArticle(data.data);
         setTimeout(() => setLoading(false), 4000);
       });
   }, []);
-  console.log(content);
 
   return {
-    content,
+    article,
     loading,
   };
 }

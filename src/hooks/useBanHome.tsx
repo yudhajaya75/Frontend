@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { GalleryBanner } from "../@types/GalleryBanner";
+import { BannerHome } from "../@types/BannerHome";
 
 function useBanHome() {
-  const [content, setContent] = useState<any>();
-  const [banner, setBanner] = useState<GalleryBanner[]>();
+  const [sliderhome, setSliderHome] = useState<GalleryBanner[]>();
+  const [banner, setBanner] = useState<BannerHome>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,8 +31,8 @@ function useBanHome() {
         Promise.all(responses.map((response) => response.json()))
       )
       .then(([galleryHome, HomePage]) => {
-        setContent(HomePage.data);
-        setBanner(galleryHome.data);
+        setBanner(HomePage.data);
+        setSliderHome(galleryHome.data);
         setTimeout(() => setLoading(false), 4000);
       })
       .catch((error) => {
@@ -40,8 +41,10 @@ function useBanHome() {
       });
   }, []);
 
+  console.log(banner)
+
   return {
-    content,
+    sliderhome,
     banner,
     loading,
   };

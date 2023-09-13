@@ -2,10 +2,9 @@ import CardComponent from './cardComponent';
 import { Skeleton } from '@mui/material';
 import useCardPelatihan from '../../hooks/useCardPelatihan';
 
-const CardPelatihan = () => {
+const Card = () => {
     const { content, loading } = useCardPelatihan()
 
-    if (!content) return <div>No data</div>
     return (
         <>
             <div className='flex flex-wrap justify-center gap-10 mt-20 ml-14'>
@@ -41,4 +40,4 @@ const CardPelatihan = () => {
         </>
     )
 }
-export default CardPelatihan;
+export default Card;

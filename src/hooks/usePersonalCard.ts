@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { PersonalCard } from "../@types/PersonalCard";
 
-const useDataFetching = () => {
-  const [content, setContent] = useState<any>();
+const usePersonalCard = () => {
+  const [personalcard, setPersonalCard] = useState<PersonalCard[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const useDataFetching = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.data);
+        setPersonalCard(data.data);
         setTimeout(() => setLoading(false), 4000);
       })
       .catch((error) => {
@@ -22,7 +23,7 @@ const useDataFetching = () => {
       });
   }, []);
 
-  return { content, loading };
+  return { personalcard, loading };
 };
 
-export default useDataFetching;
+export default usePersonalCard;

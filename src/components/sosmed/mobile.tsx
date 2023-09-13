@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import SocialMediaProfile from "./sosmed";
 import "./sosmed.css";
+import usePersonalCard from "../../hooks/usePersonalCard";
 
 const Mobile = () => {
   const settings = {
@@ -31,27 +32,14 @@ const Mobile = () => {
       },
     ],
   };
-
-  const [content, setContent] = useState<any>([]);
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/personal-cards?populate=*`, {
-        method: "GET",
-        headers: {
-          Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        setContent(response.data.data);
-      });
-  }, []);
+  const { personalcard, loading } = usePersonalCard();
 
   return (
     <div style={{ position: "relative", zIndex: "0", padding: "30px" }}>
       <Slider {...settings}>
-        {content.map((res: any, index: number) => (
+        {!personalcard ? (
+          <div>No Data</div>
+        ) : personalcard.map((res, index: number) => (
           <SocialMediaProfile
             key={index}
             name={res.attributes.name}

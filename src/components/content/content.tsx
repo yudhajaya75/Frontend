@@ -1,4 +1,4 @@
-import '../intro/responsive.css';
+import '../youtube/responsive.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -8,10 +8,8 @@ import { Skeleton } from '@mui/material';
 import useContentHome from '../../hooks/useContentHome';
 
 const Content = () => {
-    const { content, loading } = useContentHome();
+    const { tentangkonseling, loading } = useContentHome();
 
-    if (!content) return <div>No Data</div>
-    
     return (
         <section className='mt-5 lg:mt-0'>
             {loading ? (
@@ -41,14 +39,21 @@ const Content = () => {
                             modules={[Autoplay]}
                             className="mySwiper"
                         >
-                            {content.map((res: any) => (
-                                <SwiperSlide key={res.id}>
-                                    <div>
-                                        <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className='w-full h-full lg:w-full lg:h-full sm-440:w-[400px] sm-440:h-[150px] sm:w-[500px] sm:h-[200px] rounded-lg bg-center bg-cover duration-500'>
-                                        </img>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
+                            {!tentangkonseling ? (
+                                <div>No Data</div>
+                            ) : (
+                                tentangkonseling.map((res) => (
+                                    <SwiperSlide key={res.id}>
+                                        <div>
+                                            <img
+                                                src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                                                className='w-full h-full lg:w-full lg:h-full sm-440:w-[400px] sm-440:h-[150px] sm:w-[500px] sm:h-[200px] rounded-lg bg-center bg-cover duration-500'
+                                                alt='Konseling Image'
+                                            />
+                                        </div>
+                                    </SwiperSlide>
+                                ))
+                            )}
                         </Swiper>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import Sosmed from './sosmed';
-import useDataFetching from '../../hooks/useDataFetching';
+import usePersonalCard from '../../hooks/usePersonalCard';
 import { Skeleton } from '@mui/material';
 import './sosmed.css';
 
 const Desktop = () => {
-    const { content, loading } = useDataFetching();
+    const { personalcard, loading } = usePersonalCard();
 
     return (
         <div>
@@ -23,18 +23,21 @@ const Desktop = () => {
                 </div>
             ) : (
                 <div className="flex justify-evenly flex-wrap gap-y-5 mt-20">
-                    {content.map((res: any, index: number) => (
-                        <div key={index}>
-                            <Sosmed
-                                name={res.attributes.name}
-                                subtitle={res.attributes.title}
-                                bio={res.attributes.body}
-                                image={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
-                                link1={res.attributes.medsos_1}
-                                link2={res.attributes.medsos_2}
-                            />
-                        </div>
-                    ))}
+                    {!personalcard ? (
+                        <div>No Data</div>
+                    ) :
+                        personalcard.map((res, index: number) => (
+                            <div key={index}>
+                                <Sosmed
+                                    name={res.attributes.name}
+                                    subtitle={res.attributes.title}
+                                    bio={res.attributes.body}
+                                    image={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                                    link1={res.attributes.medsos_1}
+                                    link2={res.attributes.medsos_2}
+                                />
+                            </div>
+                        ))}
                 </div>
             )}
         </div>

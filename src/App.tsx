@@ -19,7 +19,6 @@ import Contactus from "./pages/contactus/contactus";
 import Paket from "./pages/paket/paket";
 import WebinarDetail from "./pages/webminar/WebinarDetail";
 import BlogDetail from "./pages/blog/BlogDetail";
-import Navbar from "./components/navbar/navbarhome";
 
 function App() {
   const { email, setEmail, isLoggedIn } = useGetUserData();

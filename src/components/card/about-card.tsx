@@ -11,7 +11,7 @@ const AboutCard = () => {
     <Container
       boxed
       orientation="horizontal"
-      customClass="gap-5 lg:gap-[75px]"
+      customClass="gap-5 lg:gap-[75px] mt-[90px]"
       firstElement={
         <Swiper
           centeredSlides={true}

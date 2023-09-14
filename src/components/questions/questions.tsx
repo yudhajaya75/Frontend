@@ -11,10 +11,8 @@ const Dekstop = () => {
   if (!questions && !questions) return <div>No Data</div>;
 
   return (
-    <div className="relative left-[120px] md:left-[0px]">
-      <p className="relative lg:top-[120px] sm-440:top-7 left-20 font-bold text-[#002157] text-[30px]">
-        FAQ
-      </p>
+    <div className="px-10 md:px-20">
+      <p className="font-bold text-[#002157] text-[30px]">FAQ</p>
       <div className="lg:mx-[0px] px-[0px] sm:px-[0px] pt-20">
         {loading ? (
           <div>

@@ -7,7 +7,7 @@ import {
 } from "react-icons/cg";
 import useCardHyperlink from "../../hooks/useCardHyperlink";
 
-const Profile = () => {
+const Layanan = () => {
   const pages = ["Webinar", "Konsultasi", "Layanan", "Pelatihan"];
   const { hyperlink, loading } = useCardHyperlink();
   const [activePage, setActivePage] = useState(0);
@@ -23,16 +23,16 @@ const Profile = () => {
   if (!hyperlink && !hyperlink) return <div>No data</div>;
 
   return (
-    <div>
+    <div className="">
       {loading ? (
-        <div className="relative top-[100px]">
+        <div className="">
           <Skeleton variant="rectangular" width={1600} height={500} />
         </div>
       ) : (
         <>
-          <div>
-            <div className="mx-auto mt-[200px] py-5">
-              <ul className="flex items-center justify-center sm-440:flex">
+          <div className="">
+            <div className="mx-auto mt-[200px] py-8">
+              <ul className="flex items-center justify-center flex-wrap">
                 {pages.map((page, index) => (
                   <li
                     key={index}
@@ -51,20 +51,22 @@ const Profile = () => {
               </ul>
             </div>
           </div>
-          <div>
+          <div className="mx-10 md:mx-20">
             {hyperlink.map((res, index: number) => (
               <div
                 key={index}
                 className={activePage === index ? "flex" : "hidden"}
                 id={pages[index]}
               >
-                <div className="flex items-center justify-center relative ml-[300px] mt-[80px] lg:mx-[300px] sm-440:mx-20 sm-440:bottom-[50px]">
-                  <img
-                    src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
-                    alt="image"
-                    className="lg:w-[400px] sm-440:w-[120px] sm:w-[200px] md:w-[300px] aspect-auto object-cover"
-                  />
-                  <div className="lg:ml-10 sm-440:ml-3">
+                <div className="mx-auto flex-col md:flex-row flex items-center justify-center ">
+                  <div className="w-full md:w-[400px] md:h-[250px] xl:w-[600px] xl:h-[350px]">
+                    <img
+                      src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                      alt="image"
+                      className="w-full h-full aspect-auto object-cover"
+                    />
+                  </div>
+                  <div className="mt-8 md:mt-0 mx-10">
                     <h1
                       className="lg:text-[32px] sm-440:text-[12px] sm:text-[25px] lg:w-[500px] font-bold text-[#002157]"
                       dangerouslySetInnerHTML={{ __html: res.attributes.title }}
@@ -84,19 +86,19 @@ const Profile = () => {
               </div>
             ))}
           </div>
-          <div className="flex items-center justify-center">
-            <div className="relative lg:bottom-[250px] sm-440:bottom-5">
-              <div className="relative sm-440:hidden sm:hidden lg:block lg:bottom-[120px] lg:right-[720px]">
+          <div className="w-full relative">
+            <div className="flex justify-between w-full absolute -top-56 md:-top-44">
+              <div className="">
                 <button
-                  className="lg:mt-10 lg:ml-5 lg:text-[24px] lg:p-5 text-[#002157] rounded-md cursor-pointer duration-500"
+                  className="text-[#002157] lg:text-[24px] rounded-md cursor-pointer duration-500"
                   onClick={handlePrev}
                 >
                   <CgChevronLeft />
                 </button>
               </div>
-              <div className="relative sm-440:hidden lg:block sm-440:relative lg:left-[720px] lg:bottom-[190px]">
+              <div className="">
                 <button
-                  className="lg:ml-5 lg:text-[24px] lg:p-5 text-[#002157] rounded-md cursor-pointer duration-500"
+                  className="lg:text-[24px] text-[#002157] rounded-md cursor-pointer duration-500"
                   onClick={handleNext}
                 >
                   <CgChevronRight />
@@ -110,4 +112,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Layanan;

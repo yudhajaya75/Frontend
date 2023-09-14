@@ -43,10 +43,10 @@ const About = (props: { email: string }) => {
       firstElement={
         <>
           <h1 className="text-base md:text-3xl lg:text-5xl sm-440:text-sm sm:text-xl font-bold text-[#002157]">
-            {content.attributes.header}
+            {content.attributes.header && content.attributes.header}
           </h1>
           <p className="font-extralight text-xs sm:text-lg sm-440:text-[10px] md:text-xl lg:text-3xl text-[#5B5B5B]">
-            {content.attributes.desc}
+            {content.attributes.desc && content.attributes.desc}
           </p>
         </>
       }

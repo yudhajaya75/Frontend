@@ -22,11 +22,11 @@
   }
 
   .teksnav1 {
-    @apply flex pl-0 pt-6 px-6 mx-10 font-bold text-lg hover:text-[#074288] active:text-[#074288] items-center justify-center;
+    @apply flex pl-0 pt-6 px-6 ml-[120px] font-bold text-lg hover:text-[#074288] active:text-[#074288] items-center justify-center;
   }
 
   .nav {
-    @apply fixed left-0 top-0 w-[70%] h-full border-r border-r-gray-900 bg-[#074288] text-white ease-in-out duration-500;
+    @apply fixed left-0 top-0 w-[70%] h-full md:hidden border-r border-r-gray-900 bg-[#074288] text-white ease-in-out duration-500;
   }
 
   .teksnav2 {

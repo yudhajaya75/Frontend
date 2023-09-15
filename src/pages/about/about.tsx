@@ -6,7 +6,7 @@ import Teks1 from "../../components/teks/teksabout1";
 import Card from "../../components/card/cardabout";
 import Teks2 from "../../components/teks/teksabout-pendiri";
 import Founding from "../../components/founding/founding";
-import Compslid from "../../components/compslid/founding";
+import Compslid from "../../components/compslid/compslid";
 import Tesk3 from "../../components/teks/teks-kerjasama";
 import Footer from "../../components/footer/footabout";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
@@ -42,10 +42,10 @@ const About = (props: { email: string }) => {
       accountEmail={props.email}
       firstElement={
         <>
-          <h1 className="text-base md:text-3xl lg:text-5xl sm-440:text-sm sm:text-xl font-bold text-[#002157]">
+          <h1 className="text-5xl font-bold text-[#002157]">
             {content.attributes.header && content.attributes.header}
           </h1>
-          <p className="font-extralight text-xs sm:text-lg sm-440:text-[10px] md:text-xl lg:text-3xl text-[#5B5B5B]">
+          <p className="font-extralight text-4xl text-[#5B5B5B]">
             {content.attributes.desc && content.attributes.desc}
           </p>
         </>

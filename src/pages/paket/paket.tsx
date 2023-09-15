@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/navbar";
 import Teks from "../../components/teks/paket";
 import Background from "../../components/background/background";
 import Disc from "../../components/disc/disc";
 import Footer from "../../components/footer/footer";
 import Purchase from "../../components/purchase/purchasePaket";
-import { HTTPAruna } from "../../services/handlerApi";
+import usePaket from "../../hooks/usePaket";
 
 const Paket = (props: { email: string }) => {
-    const [content, setContent] = useState<any>()
+    const { paket, loading } = usePaket();
 
-    useEffect(() => {
-        HTTPAruna.get("/product-variants/?populate=*").then((res) => {
-            console.log("PRODUCT", res)
-            setContent(res.data)
-        }).catch((err) =>{
-            console.log(err)
-        })
-    }, []);
-    
-    if (!content) return <div>No Data</div>
+    if (!paket) return <div>No Data</div>
 
     return (
         <>
@@ -31,7 +21,7 @@ const Paket = (props: { email: string }) => {
                 <div className="relative bottom-[70px]">
                     <Teks />
                     <div className='flex justify-evenly flex-wrap gap-10 mx-20 relative mt-[100px] right-[100px]'>
-                        {content?.slice(0, 3).map((res: any, index: number) => (
+                        {paket?.slice(0, 3).map((res: any, index: number) => (
                             <Purchase
                                 accountEmail={props.email}
                                 key={index}

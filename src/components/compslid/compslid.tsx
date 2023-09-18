@@ -53,8 +53,8 @@ function Compslid() {
                 ) : (
                     content.map((res: any, index: number) => (
                         <SwiperSlide key={index}>
-                            <div>
-                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className="w-full h-[200px]" alt="" />
+                            <div className="">
+                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className="w-full h-[200px] object-contain" alt="" />
                             </div>
                         </SwiperSlide>
                     ))

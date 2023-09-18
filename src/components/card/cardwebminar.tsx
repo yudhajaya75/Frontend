@@ -26,7 +26,7 @@ const Card = () => {
                     {content.map((res: any, index: number) => (
                         <div className='shadow-lg w-full rounded-lg overflow-hidden' key={index} >
                             <div className='w-full h-[207px]' key={res.attributes.id}>
-                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='/' className='h-full w-full' />
+                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='/' className='h-full w-full object-contain' />
                             </div>
                             <div className='p-2'>
                                 <div className='flex gap-4 mt-[-50px] ml-4 text-[#4B465C]'>

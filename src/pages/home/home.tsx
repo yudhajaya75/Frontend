@@ -17,6 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import { Autoplay } from "swiper";
 
+
 const Home = (props: { email: string }) => {
   const { banner, sliderhome, loading } = useBanHome();
 

@@ -1,0 +1,52 @@
+{
+  "menuList": [
+    {
+      "pathName": "Home",
+      "url": "/"
+    },
+    {
+      "pathName": "Layanan",
+      "url": "#",
+      "children": [
+        {
+          "pathName": "Webinar",
+          "url": "/webinar"
+        },
+        {
+          "pathName": "Pelatihan",
+          "url": "/pelatihan"
+        },
+        {
+          "pathName": "Layanan konseling individu pasangan & keluarga",
+          "url": "/layanan"
+        },
+        {
+          "pathName": "Konsultasi",
+          "url": "/konsultasi"
+        }
+      ]
+    },
+    {
+      "pathName": "Blog",
+      "url": "/blog"
+    },
+    {
+      "pathName": "About Us",
+      "url": "/about"
+    },
+    {
+      "pathName": "Contact Us",
+      "url": "/contact"
+    }
+  ],
+  "badgeList": [
+    {
+      "pathName": "My Profile",
+      "url": "/profile"
+    },
+    {
+      "pathName": "Logout",
+      "url": "/logout"
+    }
+  ]
+}

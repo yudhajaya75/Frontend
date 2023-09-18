@@ -19,6 +19,7 @@ import Contactus from "./pages/contactus/contactus";
 import Paket from "./pages/paket/paket";
 import WebinarDetail from "./pages/webminar/WebinarDetail";
 import BlogDetail from "./pages/blog/BlogDetail";
+import Logout from "./pages/profile/Logout";
 
 function App() {
   const { email, setEmail, isLoggedIn } = useGetUserData();
@@ -61,6 +62,7 @@ function App() {
         />
         <Route path="/contact" element={<Contactus email={email} />} />
         <Route path="/paket" element={<Paket email={email} />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </>
   );

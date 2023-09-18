@@ -1,29 +1,39 @@
-import Navbar from '../../components/navbar/navbar'
-import Banner from '../../components/banner/banpelatihan'
 import Teks from '../../components/teks/teks-pelatihan'
 import Teks2 from '../../components/teks/teks-kata-mereka'
 import Sosmed from '../../components/sosmed/Founding';
 import Teks3 from '../../components/teks/teks-kerjasama'
-import Compslid from '../../components/compslid/founding'
-import Footer from '../../components/footer/footer'
+// import Compslid from '../../components/compslid/founding'
 import Card from '../../components/card/card'
+import LayoutWithBanner from '../../layouts/LayoutWithBanner';
+import Compslid from '../../components/compslid/compslid';
 
 const pelatihan = (props: { email: string }) => {
     return (
         <div className='mx-auto max-w-[1800px] relative'>
-            <Navbar accountEmail={props.email} />
-            <Banner />
-            <Teks />
-            <div className='lg:flex lg:justify-center lg:items-center lg:mr-[0px]'>
-                <div className='flex flex-col'>
-                    <Card />
-                </div>
-            </div>
-            <Teks2 />
-            <Sosmed />
-            <Teks3 />
-            <Compslid />
-            <Footer />
+            <LayoutWithBanner
+                bgImage={"bg-Pelatihan"}
+                accountEmail={props.email}
+                firstElement={
+                    <>
+                        <div className=' text-center -ml-10 md:text-left md:ml-0 p-5 grid gap-6 text-slate-50'>
+                            <h1 className="text-5xl mb-5 sm:mb-0 md:text-6xl font-bold ">
+                                Pelatihan
+                            </h1>
+                            <p className="font-extralight text-3xl sm:text-lg md:text-xl lg:text-4xl ">
+                                apa itu pelatihan dan untuk siapa. title bebas
+                            </p>
+                        </div>
+                    </>
+                }
+                secondElement=''
+            >
+                <Teks />
+                <Card />
+                <Teks2 />
+                <Sosmed />
+                <Teks3 />
+                <Compslid/>
+            </LayoutWithBanner>
         </div>
     )
 }

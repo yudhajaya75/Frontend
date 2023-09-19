@@ -10,6 +10,7 @@ import ButtonWa from '../../components/button/ButtonWa'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import GlobalLayout from '../../layouts/GlobalLayout'
 
 
 const Webinar = (props: { email: string }) => {
@@ -27,23 +28,28 @@ const Webinar = (props: { email: string }) => {
 
     return (
         <div className='mx-auto max-w-[1724px] relative'>
-            <Navbar accountEmail={props.email} />
+            {/* <Navbar accountEmail={props.email} /> */}
             <Teks4 title={content?.attributes.title} />
+            <GlobalLayout
+            accountEmail={props.email}
+            >
             <Banner
-                image={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`} />
-            <div className='flex justify-center flex-col gap-y-10 my-20'>
-                <TextHeadingComponent
-                    heading={content?.attributes.title}
+            image={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`} />
+                <div className='flex justify-center flex-col gap-y-10 my-20'>
+                    <TextHeadingComponent
+                        heading={content?.attributes.title}
+                    />
+                    <ButtonWa />
+                </div>
+                <TextDescComponent
+                    title='Webinar ini ?'
+                    body={content?.attributes.body}
                 />
-                <ButtonWa />
-            </div>
-            <TextDescComponent
-                title='Webinar ini ?'
-                body={content?.attributes.body}
-            />
-            <Teks3 />
-            <Sosmed />
-            <Footer />
+                <Teks3 />
+                <Sosmed />
+
+            </GlobalLayout>
+            {/* <Footer /> */}
         </div>
     )
 }

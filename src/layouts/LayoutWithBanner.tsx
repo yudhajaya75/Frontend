@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import GlobalBanner from "../components/banner/banner-v2/GlobalBanner";
+import NewNavbar from "../components/navbar/newNavbar";
 
 type props = {
   bgImage: string;
@@ -20,7 +21,7 @@ const LayoutWithBanner = ({
 }: props) => {
   return (
     <div className="mx-auto max-w-[1710px]">
-      <Navbar accountEmail={accountEmail} />
+      <NewNavbar />
       <GlobalBanner
         bgImage={bgImage}
         firstElement={firstElement}

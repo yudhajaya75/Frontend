@@ -1,3 +1,7 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+
+import Banner from "../../components/banner/bnhome";
 import Teks from "../../components/teks/teks-kata-mereka";
 import Card from "../../components/card/cardhome";
 import Icons from "../../components/iconshome/iconshome";
@@ -12,9 +16,7 @@ import Layanan from "../../components/iconshome/Layanan";
 import BannerHome from "../../components/banner/banner-v2/BannerHome";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import useBanHome from "../../hooks/useBanHome";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
-import { Autoplay } from "swiper";
 import Image from "../../components/global/Image";
 
 

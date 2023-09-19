@@ -22,7 +22,6 @@ const LayoutWithBanner = ({
   return (
     <div className="mx-auto max-w-[1710px]">
       <NewNavbar />
-      {/* <Navbar accountEmail={accountEmail} /> */}
       <GlobalBanner
         bgImage={bgImage}
         firstElement={firstElement}

@@ -48,7 +48,7 @@ const About = (props: { email: string }) => {
       <div className="flex justify-center items-center mr-[10px]">
         <Founding />
       </div>
-      <div className="">
+      <div>
         <Tesk3 />
         <Compslid />
       </div>

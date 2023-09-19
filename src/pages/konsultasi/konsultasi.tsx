@@ -1,7 +1,7 @@
 import 'react-multi-carousel/lib/styles.css';
 import Teks from '../../components/teks/teks';
 import Teks2 from '../../components/teks/teks-kata-mereka';
-import Sosmed from '../../components/sosmed/Founding';
+import Sosmed from '../../components/sosmed/Desktop';
 import Teks3 from '../../components/teks/teks-kerjasama';
 import Card from '../../components/card/card';
 import LayoutWithBanner from '../../layouts/LayoutWithBanner';

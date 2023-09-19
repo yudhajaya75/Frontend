@@ -1,6 +1,6 @@
 import Teks from '../../components/teks/teks-pelatihan'
 import Teks2 from '../../components/teks/teks-kata-mereka'
-import Sosmed from '../../components/sosmed/Founding';
+import Sosmed from '../../components/sosmed/Desktop';
 import Teks3 from '../../components/teks/teks-kerjasama'
 import Card from '../../components/card/card'
 import LayoutWithBanner from '../../layouts/LayoutWithBanner';

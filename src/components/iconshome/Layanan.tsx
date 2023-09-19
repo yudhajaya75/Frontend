@@ -36,6 +36,7 @@ const Layanan = () => {
                 {pages.map((page, index) => (
                   <li
                     key={index}
+                    id={page}
                     className={`ml-5 lg:text-[24px] sm-440:text-[10px] sm:text-[18px] sm-440:font-bold p-5 ${
                       activePage === index
                         ? "text-[#ffffff] bg-[#002157]"

@@ -12,7 +12,7 @@ const Home = (props: { email: string }) => {
                 <Teks />
                 <Teks2 />
             </div>
-            <div className='-mt-[200px]'>
+            <div>
                 <ContactUs />
             </div>
             <Footer />

@@ -9,7 +9,7 @@
     "@ionic/react": "^7.1.1",
     "@leecheuk/react-google-login": "^5.4.1",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.14.2",
+    "@mui/material": "^5.14.10",
     "@nestjs/jwt": "^10.1.0",
     "@nestjs/passport": "^10.0.0",
     "@react-jvectormap/core": "^1.0.4",

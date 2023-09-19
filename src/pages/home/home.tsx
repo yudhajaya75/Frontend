@@ -1,19 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 
-import Banner from "../../components/banner/bnhome";
 import Teks from "../../components/teks/teks-kata-mereka";
 import Card from "../../components/card/cardhome";
-import Icons from "../../components/iconshome/iconshome";
 import Sosmed from "../../components/sosmed/Founding";
 import Youtube from "../../components/youtube/youtube";
 import Article2 from "../../components/articlehome/article2";
 import Questions from "../../components/questions/questions";
-import GlobalLayout from "../../layouts/GlobalLayout";
 import AboutCard from "../../components/card/about-card";
-import GlobalBanner from "../../components/banner/banner-v2/GlobalBanner";
 import Layanan from "../../components/iconshome/Layanan";
-import BannerHome from "../../components/banner/banner-v2/BannerHome";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import useBanHome from "../../hooks/useBanHome";
 import "swiper/swiper-bundle.min.css";
@@ -65,7 +60,7 @@ const Home = (props: { email: string }) => {
             <SwiperSlide key={res.id}>
               <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
                 <Image
-                  src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                  src={res.attributes.image.data.attributes.url}
                   alt="background-people"
                   customClass="h-full w-full mt-10 rounded-[10%]"
                 />

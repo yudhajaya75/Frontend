@@ -10,19 +10,19 @@ const Desktop = () => {
     return (
         <div>
             {loading ? (
-                <div className="flex justify-evenly mt-10 flex-wrap">
+                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3justify-items-center p-2">
                     {[...Array(3)].map((_, index) => (
-                        <div key={index} className="w-[300px] shadow-lg rounded-md">
-                            <Skeleton variant="rectangular" width={300} height={180} />
-                            <div className="w-full p-6">
-                                <Skeleton variant="text" width={200} height={32} />
-                                <Skeleton variant="text" width={250} height={72} />
+                        <div key={index} className="w-full shadow-lg rounded-md">
+                            <Skeleton variant="rectangular" height={180} />
+                            <div className="w-full">
+                                <Skeleton variant="text" className="w-full" height={32} />
+                                <Skeleton variant="text" className="w-full" height={72} />
                             </div>
                         </div>
                     ))}
                 </div>
             ) : (
-                <div className="flex justify-evenly flex-wrap gap-y-5 mt-20">
+                <div className="mt-20 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-32 justify-items-center p-2">
                     {!personalcard ? (
                         <div>No Data</div>
                     ) :

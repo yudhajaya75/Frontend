@@ -23,6 +23,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     setNav(!nav);
   };
 
+
   const isActive = (path: string) => {
     return location.pathname === path ? "text-[#074288]" : "text-black";
   };
@@ -75,6 +76,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                   <a href="/login" onClick={logout}>
                     <h3 className="font-bold">{item.logout}</h3>
                   </a>
+
                 </div>
               ))}
             </div>
@@ -204,6 +206,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
       </div>
     </div>
   );
+
 };
 
 export default Navbar;

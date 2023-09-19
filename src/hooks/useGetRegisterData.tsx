@@ -1,41 +1,38 @@
-import { SyntheticEvent, useState } from "react";
-import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { handlerApi } from "../services/handlerApi";
 
-const useGetRegisterData = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
-    const [passwordVisible, setPasswordVisible] = useState(false);
+const useGetUserData = () => {
+    const [email, setEmail] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isFetchingData, setIsFetchingData] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const handleTogglePassword = () => {
-        setPasswordVisible(!passwordVisible);
+    const fetchData = async () => {
+        try {
+            const res = await handlerApi("/users");
+            setEmail(res.email);
+            setIsLoggedIn(true);
+            setIsFetchingData(false);
+        } catch (error) {
+            console.error("Error:", error);
+            setIsFetchingData(false);
+        }
     };
 
-    const submit = async (e: SyntheticEvent) => {
-        e.preventDefault();
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-        await fetch(`${process.env.REACT_APP_SIGNUP_URL}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-
-        setRedirect(true);
-    };
+    console.log(email);
 
     return {
         email,
         setEmail,
-        password,
-        setPassword,
-        passwordVisible,
-        handleTogglePassword,
-        submit,
-        redirect,
+        isFetchingData,
+        isLoggedIn,
+        isLoading,
     };
 };
 
-export default useGetRegisterData;
+export default useGetUserData;

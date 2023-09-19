@@ -20,11 +20,11 @@ const SocialMediaProfile: React.FC<SocialMediaProfileProps> = ({
 }) => {
     return (
         <div className="flex justify-center items-center">
-            <div className="bg-white my-12 pb-6 m-10 w-full overflow-hidden md:max-w-sm rounded-lg drop-shadow-xl">
-                <div className="relative h-[150px]"></div>
-                <div className="relative mx-auto h-24 w-24 -my-20 bottom-10">
+            <div className="bg-white pb-6 w-full overflow-hidden md:max-w-sm rounded-lg drop-shadow-xl">
+                <div className="h-[150px]"></div>
+                <div className="mx-auto h-24 w-24 -my-20 bottom-10">
                     <div className="object-cover w-full h-full">
-                        <img src={image} alt="" />
+                        <img src={image} />
                     </div>
                 </div>
                 <div className="mt-20 p-5">

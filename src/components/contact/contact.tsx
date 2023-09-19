@@ -8,7 +8,7 @@ function Contact() {
         <>
             <div className='pb-[300px] pt-[200px] drop-shadow-lg'>
                 <div className='p-10 lg:mx-20 md:mx-0 sm-440:mx-0 sm320:mx-0'>
-                    <div className='sm-440:w-[380px] 2xl:w-[1200px] lg:w-auto md:w-auto lg:h-[660px] sm-440:h-[500px] sm320:h-[310px] bg-[#ffffff] rounded-lg'>
+                    <div className='sm-440:w-[380px] 2xl:w-[1200px] lg:w-[1200px] md:w-auto lg:h-[660px] sm-440:h-[500px] sm320:h-[310px] bg-[#ffffff] rounded-lg'>
                         <div className=' float-left lg:w-[500px] md:w-auto sm-440:w-[180px] sm320:w-[125px] h-full bg-[#1D3A69] rounded-lg'>
                             <div className='text-white lg:text-[28px] sm-440:text-[20px] sm320:text-[10px] lg:p-10 sm-440:p-5 sm320:p-5'>
                                 <p className='font-semibold'>Contact Information</p>

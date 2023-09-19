@@ -23,6 +23,7 @@ const Desktop = () => {
                 </div>
             ) : (
                 <div className="grid md:grid-cols-3 gap-5 gap-y-5">
+
                     {!personalcard ? (
                         <div>No Data</div>
                     ) :

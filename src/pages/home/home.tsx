@@ -1,17 +1,22 @@
 import Teks from "../../components/teks/teks-kata-mereka";
 import Card from "../../components/card/cardhome";
+import Icons from "../../components/iconshome/iconshome";
 import Sosmed from "../../components/sosmed/Founding";
 import Youtube from "../../components/youtube/youtube";
 import Article2 from "../../components/articlehome/article2";
 import Questions from "../../components/questions/questions";
+import GlobalLayout from "../../layouts/GlobalLayout";
 import AboutCard from "../../components/card/about-card";
+import GlobalBanner from "../../components/banner/banner-v2/GlobalBanner";
 import Layanan from "../../components/iconshome/Layanan";
+import BannerHome from "../../components/banner/banner-v2/BannerHome";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import useBanHome from "../../hooks/useBanHome";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import { Autoplay } from "swiper";
 import Image from "../../components/global/Image";
+
 
 const Home = (props: { email: string }) => {
   const { banner, sliderhome } = useBanHome();

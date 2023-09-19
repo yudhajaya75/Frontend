@@ -32,7 +32,7 @@ const SocialMediaProfile: React.FC<SocialMediaProfileProps> = ({
                     <p className="text-sm text-gray-600 text-left my-4">{subtitle}</p>
                     <p className="text-sm text-gray-600 text-justify">{bio}</p>
                 </div>
-                <div className="mt-6 pt-3 flex flex-wrap mx-6 border-t">
+                <div className="mt-6 pt-3 flex border-t">
                     <div className="text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 cursor-default">
                         <a href={link1}>Sosial Media</a>
                     </div>

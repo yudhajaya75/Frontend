@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper";
 import { Skeleton } from "@mui/material";
 import useContentHome from "../../hooks/useContentHome";
-import React from "react";
+
 
 const Content = () => {
   const { tentangkonseling, loading } = useContentHome();

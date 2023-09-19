@@ -9,6 +9,10 @@
       "url": "#",
       "children": [
         {
+          "pathName": "Daftar Harga",
+          "url": "/paket"
+        },
+        {
           "pathName": "Webinar",
           "url": "/webinar"
         },

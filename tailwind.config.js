@@ -17,6 +17,7 @@ module.exports = {
         Pelatihan:"url('/public/images/banpelatihan.webp')",
         Layanan: "url('/public/images/banner.webp')",
         Konsultasi: "url('/public/images/bannerKonsultasi.webp')",
+
       },
     },
   },

@@ -29,7 +29,7 @@ const Card = () => {
                                 <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='/' className='h-full w-full object-contain' />
                             </div>
                             <div className='p-2'>
-                                <div className='flex gap-4 mt-[-50px] ml-4 text-[#4B465C]'>
+                                <div className='flex gap-4 mt-[-70px] ml-4 text-[#4B465C]'>
                                     <div className='' >
                                         {res.attributes.webinar && res.attributes.webinar.eventDuration ? (
                                             <>
@@ -44,7 +44,7 @@ const Card = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className='ml-3 my-7 flex flex-col gap-y-3'>
+                                <div className='ml-3 my-7 mt-10 flex flex-col gap-y-3'>
                                     <h3 className='text-xl font-semibold text-[#002157]'>{res.attributes.title}</h3>
                                     {res.attributes.webinar && res.attributes.webinar.webinarPrice !== null ? (
                                         <p className='text-[#4B465C]'>Rp. {res.attributes.webinar.webinarPrice}</p>

@@ -25,7 +25,7 @@ function Compslid() {
                     clickable: false,
                 }}
                 breakpoints={{
-                    340: {
+                    320: {
                         slidesPerView: 1,
                         spaceBetween: 10,
                     },
@@ -63,7 +63,7 @@ function Compslid() {
                     content.map((res: any, index: number) => (
                         <SwiperSlide key={index}>
                             <div className="">
-                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className="w-full h-[200px]" alt="" />
+                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} className="w-full h-[200px] object-contain" alt="" />
                             </div>
                         </SwiperSlide>
                     ))

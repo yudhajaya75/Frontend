@@ -8,6 +8,7 @@ module.exports = {
       },
       screens: {
         "sm-440": "440px",
+        "sm320": "320px",
       },
       backgroundImage: {
         heroPattern: "url('/src/assets/bg-banner.png')",

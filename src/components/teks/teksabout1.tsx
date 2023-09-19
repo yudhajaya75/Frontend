@@ -5,7 +5,7 @@ const Text = () => {
         <div className='teks'>
             <h1 className='font-bold left-[80px]
             text-2xl mt-10 relative 
-            text-[#002157] max-w-[300px] text-center
+            text-[#002157] max-w-[200px] text-center
             '>Join Layanan kami yuk! Cek disini</h1>
         </div>
 

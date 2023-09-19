@@ -47,7 +47,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
             href="#"
             onClick={toggleMenu}
             className="teksnav1"
-            style={{ color: "#fff", fontWeight: "bold", fontSize: "20px" }}
+            style={{ color: "#000", fontWeight: "bold", fontSize: "20px" }}
           >
             {/* <img src="./images/profile.png" alt="" /> */}
             <li>{username}</li>

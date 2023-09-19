@@ -1,4 +1,3 @@
-import Banner from "../../components/banner/bnhome";
 import Teks from "../../components/teks/teks-kata-mereka";
 import Card from "../../components/card/cardhome";
 import Icons from "../../components/iconshome/iconshome";
@@ -16,10 +15,11 @@ import useBanHome from "../../hooks/useBanHome";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import { Autoplay } from "swiper";
+import Image from "../../components/global/Image";
 
 
 const Home = (props: { email: string }) => {
-  const { banner, sliderhome, loading } = useBanHome();
+  const { banner, sliderhome } = useBanHome();
 
   return (
     <LayoutWithBanner
@@ -60,13 +60,12 @@ const Home = (props: { email: string }) => {
           className="mySwiper bg-people bg-contain bg-no-repeat w-[300px] h-[300px]  sm:w-[400px] sm:h-[400px] xl:w-[500px] xl:h-[500px] overflow-hidden"
         >
           {sliderhome?.map((res) => (
-            <SwiperSlide key={res.id} className="">
+            <SwiperSlide key={res.id}>
               <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
-                <img
+                <Image
                   src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
                   alt="background-people"
-                  className="h-full w-full mt-10"
-                  style={{ borderRadius: "10%" }}
+                  customClass="h-full w-full mt-10 rounded-[10%]"
                 />
               </div>
             </SwiperSlide>
@@ -76,7 +75,6 @@ const Home = (props: { email: string }) => {
     >
       <AboutCard />
       <Card />
-      {/* <Icons /> */}
       <Layanan />
       <div className="mt-20">
         <Teks />

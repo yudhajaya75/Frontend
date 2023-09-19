@@ -8,21 +8,22 @@ const Desktop = () => {
     const { personalcard, loading } = usePersonalCard();
 
     return (
-        <div>
+        <div className='px-5 lg:px-24 mt-20'>
             {loading ? (
-                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3justify-items-center p-2">
+                <div className="grid md:grid-cols-3 gap-5">
                     {[...Array(3)].map((_, index) => (
                         <div key={index} className="w-full shadow-lg rounded-md">
-                            <Skeleton variant="rectangular" height={180} />
-                            <div className="w-full">
-                                <Skeleton variant="text" className="w-full" height={32} />
-                                <Skeleton variant="text" className="w-full" height={72} />
+                            <Skeleton variant="rectangular" width="100%" height={180} />
+                            <div className="w-full p-6">
+                                <Skeleton variant="text" width="100%" height={32} />
+                                <Skeleton variant="text" width="100%" height={72} />
                             </div>
                         </div>
                     ))}
                 </div>
             ) : (
-                <div className="mt-20 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-32 justify-items-center p-2">
+                <div className="grid md:grid-cols-3 gap-5 gap-y-5">
+
                     {!personalcard ? (
                         <div>No Data</div>
                     ) :

@@ -1,20 +1,17 @@
-import Navbar from '../../components/navbar/navbar'
-import Teks from '../../components/teks/contactus';
-import Teks2 from '../../components/teks/contactus2';
-import ContactUs from '../../components/contact/contact';
-import Footer from '../../components/footer/footer';
+import Navbar from "../../components/navbar/navbar";
+import ContactUs from "../../components/contact/contact";
+import Footer from "../../components/footer/footer";
+import Heading from "../../components/global/Heading";
+import Text from "../../components/global/Text";
 
 const Home = (props: { email: string }) => {
     return (
-        <div className='mx-auto max-w-[1910px] relative'>
+        <div className="mx-auto max-w-[1910px]">
             <Navbar accountEmail={props.email} />
-            <div className='py-5'>
-                <Teks />
-                <Teks2 />
-            </div>
-            <div className='-mt-[200px]'>
-                <ContactUs />
-            </div>
+            <Heading>Contact</Heading>
+            <Text>Any question or remarks? Just write us a message!</Text>
+            <div className="-mt-[200px]">{/* <ContactUs /> */}</div>
+            <ContactUs />
             <Footer />
         </div>
     );

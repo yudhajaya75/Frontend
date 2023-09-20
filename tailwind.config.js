@@ -14,6 +14,7 @@ module.exports = {
         heroPattern: "url('/src/assets/bg-banner.png')",
         people: "url('/public/images/bgpeople.webp')",
         About: "url('/src/assets/bg-about.png')",
+        formbg: "url('/src/assets/img/form-bg.svg')",
       },
     },
   },

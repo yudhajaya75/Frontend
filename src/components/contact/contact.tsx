@@ -9,7 +9,7 @@ function Contact() {
     
     return (
         <Container
-        customClass="bg-white shadow-lg mt-[250px] md:h-[667px]"
+        customClass="bg-white shadow-lg md:h-[667px]"
         orientation="horizontal"
         firstElement={
             <div className="h-full grid justify-between bg-formbg bg-cover bg-center rounded-lg p-5 lg:p-10 gap-24 md:gap-10">

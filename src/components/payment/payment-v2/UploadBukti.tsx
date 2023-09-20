@@ -64,7 +64,9 @@ const UploadBukti = ({
     <div className="">
       <input type="file" name="file" id="file" onChange={handleFileChange} />
       <button onClick={postPayment}>Kirim Bukti Pembayaran</button>
-      <button onClick={() => setFile(null)}>clear</button>
+      <button onClick={() => setFile(null)} className="ml-2">
+        clear
+      </button>
       {error && <p className="text-red-400">{error}</p>}
     </div>
   );

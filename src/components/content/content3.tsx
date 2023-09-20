@@ -3,6 +3,7 @@ import { NavLinkData } from "../../assets";
 import { BsEnvelopeCheck } from "react-icons/bs";
 
 const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {
+    const email = localStorage.getItem("email");
     const [profilePicture, setProfilePicture] = useState(NavLinkData[0].img);
 
     const handlePictureChange = (e: any) => {
@@ -31,7 +32,7 @@ const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {
             </div>
             <div className="ml-5 mt-2 leading-10">
                 <BsEnvelopeCheck size={20} className="absolute mt-3" />
-                <p className="ml-7"><span className="text-black font-[600]">Email: </span><span className="text-[#6F6B7D]">{accountEmail}</span></p>
+                <p className="ml-7"><span className="text-black font-[600]">Email: </span><span className="text-[#6F6B7D]">{email}</span></p>
             </div>
             <div className="flex gap-4 ml-5">
                 <p className="text-black font-[600] text-['Montserrat'] text-[18px]">Member</p>

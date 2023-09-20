@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import SocialMediaProfile from "./sosmed";
 import "./sosmed.css";
@@ -32,10 +30,10 @@ const Mobile = () => {
       },
     ],
   };
-  const { personalcard, loading } = usePersonalCard();
+  const { personalcard } = usePersonalCard();
 
   return (
-    <div style={{ position: "relative", zIndex: "0", padding: "30px" }}>
+    <div className="px-20">
       <Slider {...settings}>
         {!personalcard ? (
           <div>No Data</div>

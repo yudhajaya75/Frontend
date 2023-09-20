@@ -20,11 +20,11 @@ const SocialMediaProfile: React.FC<SocialMediaProfileProps> = ({
 }) => {
     return (
         <div className="flex justify-center items-center">
-            <div className="bg-white my-12 pb-6 m-10 w-full overflow-hidden md:max-w-sm rounded-lg drop-shadow-xl">
-                <div className="relative h-[150px]"></div>
-                <div className="relative mx-auto h-24 w-24 -my-20 bottom-10">
+            <div className="bg-white pb-6 w-full overflow-hidden md:max-w-sm rounded-lg drop-shadow-xl">
+                <div className="h-[150px]"></div>
+                <div className="mx-auto h-24 w-24 -my-20 bottom-10">
                     <div className="object-cover w-full h-full">
-                        <img src={image} alt="" />
+                        <img src={image} />
                     </div>
                 </div>
                 <div className="mt-20 p-5">
@@ -32,7 +32,7 @@ const SocialMediaProfile: React.FC<SocialMediaProfileProps> = ({
                     <p className="text-sm text-gray-600 text-left my-4">{subtitle}</p>
                     <p className="text-sm text-gray-600 text-justify">{bio}</p>
                 </div>
-                <div className="mt-6 pt-3 flex flex-wrap mx-6 border-t">
+                <div className="mt-6 pt-3 flex border-t">
                     <div className="text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 cursor-default">
                         <a href={link1}>Sosial Media</a>
                     </div>

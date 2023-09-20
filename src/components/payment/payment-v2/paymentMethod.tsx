@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import useTransaction from "../../hooks/useTransaction";
+import useTransaction from "../../../hooks/useTransaction";
+import UploadBukti from "./UploadBukti";
 
 interface PaymentMethodSectionProps {
   index: number;
@@ -10,45 +11,72 @@ interface PaymentMethodSectionProps {
   handlePrevious: () => void;
 }
 
-const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
+interface Payment {
+  id: number;
+  attributes: {
+    PaymentsBank: string;
+    provider: string;
+    providerAccount: string;
+    qrisScan: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
+  };
+}
+
+const PaymentMethod: React.FC<PaymentMethodSectionProps> = ({
   index,
   activePage,
   handlePrevious,
 }) => {
-  const [content, setContent] = useState<any>();
-  const [contents, setContents] = useState([]);
   const location = useLocation();
   const { email, setEmail, isFetchingData, isLoggedIn, handleNext } =
     useTransaction();
   const id = location.state?.id;
   const title = location.state?.title;
   const price = location.state?.price;
+  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [imageURL, setImageURL] = useState<string | null>(null);
+  const [contents, setContents] = useState<Payment[]>([]);
+  const [providerAcc, setProviderAcc] = useState<string>("");
 
   useEffect(() => {
-    if (index === 0) {
-      axios
-        .get(
-          `${process.env.REACT_APP_API_URL}/product-variants/${id}?populate=*`
-        )
-        .then((response) => {
-          setContent(response.data.data);
-        });
-    }
-  }, [index, id]);
-  useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/payments`)
+      .get(`${process.env.REACT_APP_API_URL}/payments?populate=*`)
       .then((response) => {
+        console.log("response", response);
+
         setContents(response.data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
       });
   }, []);
 
-  console.log("test", content);
+  const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
 
-  if (index !== 2) return null;
+    // Cari gambar yang sesuai dengan pilihan
+    const selectedContent = contents.find(
+      (item) => item.attributes.provider === selectedValue
+    );
+
+    console.log("select content", selectedContent);
+
+    if (selectedContent) {
+      setImageURL(selectedContent.attributes.qrisScan.data.attributes.url);
+      setProviderAcc(selectedContent.attributes.providerAccount);
+    } else {
+      setImageURL(null);
+    }
+  };
+
+  console.log("test", contents);
+  console.log("test, selectedOption", selectedOption);
+  console.log("test, imageURL", imageURL);
+
+  //!upload file
 
   return (
     <div>
@@ -62,6 +90,8 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
           <select
             name="transfer"
             id="transfer"
+            value={selectedOption}
+            onChange={handleOptionChange}
             className="p-2 2xl:w-[400px] sm-440:text-[10px] 2xl:text-[14px] 
             sm-440:w-[160px] outline-none no-underline rounded-md border border-[#8D8D8D]"
           >
@@ -69,12 +99,33 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
               Select an option
             </option>
             {contents.map((item: any) => (
-              <option key={item.id}>{item.attributes.PaymentsBank}</option>
+              <option key={item.id}>{item.attributes.provider}</option>
             ))}
           </select>
-          <input type="file" name="file" id="file" />
+          {imageURL && (
+            <div className="w-[200px] h-[200px]">
+              <img
+                src={`${process.env.REACT_APP_UPLOAD_URL}${imageURL}`}
+                alt={selectedOption}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          {providerAcc && (
+            <div className="w-[200px] h-[200px]">
+              <p className="text-[20px] font-bold">No. Rekening</p>
+              <p className="text-[20px] font-bold">{providerAcc}</p>
+            </div>
+          )}
         </div>
       </div>
+
+      <UploadBukti
+        strapiRef={"api::transaction.transaction"}
+        field={"paymentReceiptImage"}
+        transectionId={"6"}
+      />
+
       <div className="float-right">
         <div className="border-solid border-2 border-[#79ABFF] mt-[-400px] w-[460px] h-[354px]">
           <div className="mx-5 my-5">
@@ -124,4 +175,4 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
   );
 };
 
-export default PaymentMethodSection;
+export default PaymentMethod;

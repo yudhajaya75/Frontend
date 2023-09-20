@@ -7,24 +7,24 @@ const Card = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-10 mt-20 ml-14">
+      <div className="">
         {loading ? (
-          <div className="flex justify-evenly flex-wrap gap-10 mt-[50px]">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 ">
             {[...Array(4)].map((_, index) => (
               <div
                 key={index}
-                className="w-[400px] sm:w-[500px] md:w-[600px] shadow-lg rounded-md"
+                className="w-full shadow-lg rounded-md"
               >
-                <Skeleton variant="rectangular" width={600} height={180} />
+                <Skeleton variant="rectangular" className='w-full'height={180} />
                 <div className="w-full p-6">
-                  <Skeleton variant="text" width={500} height={32} />
-                  <Skeleton variant="text" width={550} height={72} />
+                  <Skeleton variant="text" className='w-full' height={32} />
+                  <Skeleton variant="text" className='w-full' height={72} />
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="font-extralight flex justify-evenly flex-wrap gap-10 mt-[50px] z-50 sm-440:pr-14 lg:pr-0">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 p-2 md:p-32 ">
             {content.map((res: any, index: number) => (
               <CardComponent
                 key={index}

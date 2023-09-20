@@ -6,7 +6,6 @@ import SocialList from "./SocialList";
 
 function Contact() {
     const { content, handleChange, handleSubmit, values } = useContactUs();
-    console.log("VALUE: ", values)
     
     return (
         <Container
@@ -54,7 +53,7 @@ function Contact() {
                 onChange={handleChange}
                 value={values.lastname}
             />
-            <Input label="Phone Number" onChange={handleChange} type="tel" value={values.phone}/>
+            <Input label="Phone Number" onChange={handleChange} type="tel" value={values.phonenumber}/>
             <Input label="Email" onChange={handleChange} type="email" value={values.email} />
             <Input
                 label="message"

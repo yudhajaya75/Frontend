@@ -8,7 +8,7 @@ function useContactUs() {
         firstname: "",
         lastname: "",
         email: "",
-        phone: "",
+        phonenumber: "",
         message: ""
     });
 
@@ -24,10 +24,10 @@ function useContactUs() {
     const handleSubmit = (e: any) => {
         e.preventDefault()
         const contact = {
-            firstname: values.firstname,
-            lastname: values.lastname,
+            firstName: values.firstname,
+            lastName: values.lastname,
             email: values.email,
-            phone: values.phone,
+            phone: values.phonenumber,
             message: values.message
         }
 
@@ -44,7 +44,7 @@ function useContactUs() {
             firstname: "",
             lastname: "",
             email: "",
-            phone: "",
+            phonenumber: "",
             message: ""
         })
     }

@@ -18,8 +18,8 @@ const Input = ({
   const inputName = label.replace(" ", "").toLocaleLowerCase();
 
   return (
-    <div className={`grid ${customClass}`}>
-      <label htmlFor={inputName} className="font-bold">
+    <div className={`grid gap-y-3 ${customClass}`}>
+      <label htmlFor={inputName} className="font-bold w-full">
         {label}
       </label>
       <input
@@ -29,7 +29,7 @@ const Input = ({
         value={value}
         name={inputName}
         onChange={onChange}
-        className="border-b-2 outline-none border-[#8D8D8D]"
+        className="border-b-2 outline-none border-[#8D8D8D] w-full"
       />
     </div>
   );

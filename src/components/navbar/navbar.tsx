@@ -1,8 +1,7 @@
 import { useState } from "react";
 import list from "./list.json";
 import listprofile from "./listprofile.json";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineCaretUp, AiOutlineCaretDown  } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useGetLogoutData from "../../hooks/useGetLogoutData";
 
@@ -42,14 +41,13 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
   } else {
     menu = (
       <>
-        <div className="relative inline-block text-left left-[100px] bottom-1">
+        <div className="text-left left-[100px] bottom-1">
           <a
             href="#"
             onClick={toggleMenu}
             className="teksnav1"
             style={{ color: "#000", fontWeight: "bold", fontSize: "20px" }}
           >
-            {/* <img src="./images/profile.png" alt="" /> */}
             <li>{username}</li>
             <li style={{ marginLeft: 10 }}>
               {isOpenUp ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
@@ -88,7 +86,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     <div className="navbar">
       <h1 className="logo">
         <a href="/home">
-          <img src="http://localhost:3000/images/Logo.webp" alt="" />
+          <img src="http://localhost:3000/images/Logo.webp" alt="Logo Konseling Satir" />
         </a>
       </h1>
       <ul className="listnav">

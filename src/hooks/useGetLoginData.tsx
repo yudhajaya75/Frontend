@@ -10,6 +10,7 @@ const useGetLoginData = (props: { setEmail: (email: string) => void }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+
   const handleTogglePassword = () => {
     setPasswordVisible(!passwordVisible);
   };

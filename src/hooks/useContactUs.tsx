@@ -5,8 +5,8 @@ import Swal from 'sweetalert2';
 function useContactUs() {
     const [content, setContent] = useState<any>()
     const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         email: "",
         phone: "",
         message: ""
@@ -24,8 +24,8 @@ function useContactUs() {
     const handleSubmit = (e: any) => {
         e.preventDefault()
         const contact = {
-            firstName: values.firstName,
-            lastName: values.lastName,
+            firstname: values.firstname,
+            lastname: values.lastname,
             email: values.email,
             phone: values.phone,
             message: values.message
@@ -41,8 +41,8 @@ function useContactUs() {
         })
 
         return setValues({
-            firstName: "",
-            lastName: "",
+            firstname: "",
+            lastname: "",
             email: "",
             phone: "",
             message: ""

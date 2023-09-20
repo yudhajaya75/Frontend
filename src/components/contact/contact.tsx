@@ -6,7 +6,8 @@ import SocialList from "./SocialList";
 
 function Contact() {
     const { content, handleChange, handleSubmit, values } = useContactUs();
-
+    console.log("VALUE: ", values)
+    
     return (
         <Container
         customClass="bg-white shadow-lg mt-[250px] md:h-[667px]"
@@ -47,19 +48,20 @@ function Contact() {
             onSubmit={handleSubmit}
             className="p-5 lg:p-10 grid grid-cols-2 gap-5 gap-y-11 my-10"
             >
-            <Input label="First Name" onChange={handleChange} />
+            <Input label="First Name" onChange={handleChange} value={values.firstname} />
             <Input
                 label="Last Name"
                 onChange={handleChange}
-                value={values.lastName}
+                value={values.lastname}
             />
-            <Input label="Phone Number" onChange={handleChange} />
-            <Input label="Email" onChange={handleChange} />
+            <Input label="Phone Number" onChange={handleChange} type="tel" value={values.phone}/>
+            <Input label="Email" onChange={handleChange} type="email" value={values.email} />
             <Input
                 label="message"
                 onChange={handleChange}
                 placeholder="Write your message..."
                 customClass="col-span-2"
+                value={values.message}
             />
             <button
                 type="submit"

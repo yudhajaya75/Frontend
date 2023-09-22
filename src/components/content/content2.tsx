@@ -41,31 +41,25 @@ const Profile: React.FC = () => {
     setOpen(false);
   };
 
-  console.log("filter", filterData);
-  console.log("transactionId", transactionId);
-
   return (
     <>
       {filterData.map((item, index) => (
         <>
-          <div>
-            <div className="bg-white w-[80rem] mx-auto mt-5 rounded-lg shadow-lg py-5">
-              <ul className="flex">
-                <li
-                  className={`ml-5 text-[24px] p-5 ${
-                    activePage === "riwayat"
-                      ? "text-[#002157] bg-[#f0f2f5]"
-                      : "text-[#002157]"
-                  } rounded-md cursor-pointer duration-500`}
-                  onClick={() => handleNavbarClick("riwayat")}
-                >
-                  <Button onClick={() => handleOpenModal(item.id.toFixed())}>
-                    Riwayat Pembelian{" "}
-                    {item.attributes.users.data.attributes.email}
-                  </Button>
-                </li>
-              </ul>
-            </div>
+          <div className="bg-white mx-10 md:mx-20 mt-5 rounded-lg shadow-lg py-5">
+            <ul className="flex">
+              <li
+                className={`mx-5 text-[24px] p-2 ${
+                  activePage === "riwayat"
+                    ? "text-[#002157] bg-[#f0f2f5]"
+                    : "text-[#002157]"
+                } rounded-md cursor-pointer duration-500`}
+                onClick={() => handleNavbarClick("riwayat")}
+              >
+                <Button onClick={() => handleOpenModal(item.id.toFixed())}>
+                  Riwayat Pembelian {index + 1}
+                </Button>
+              </li>
+            </ul>
           </div>
         </>
       ))}

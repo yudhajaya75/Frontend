@@ -77,7 +77,7 @@ function Payment(props: any) {
               </ul>
             </div>
             <div className="p-3 border-r-2 ml-6"></div>
-            <div>
+            {/* <div>
               {pages.map((page, index) => (
                 <div
                   key={index}
@@ -106,7 +106,7 @@ function Payment(props: any) {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

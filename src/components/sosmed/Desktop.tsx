@@ -1,4 +1,3 @@
-import React from 'react';
 import Sosmed from './sosmed';
 import usePersonalCard from '../../hooks/usePersonalCard';
 import { Skeleton } from '@mui/material';
@@ -23,7 +22,6 @@ const Desktop = () => {
                 </div>
             ) : (
                 <div className="grid md:grid-cols-3 gap-5 gap-y-5">
-
                     {!personalcard ? (
                         <div>No Data</div>
                     ) :

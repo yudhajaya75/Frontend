@@ -1,26 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { HTTPAruna } from "../services/handlerApi";
+import { CompanySliderResponse } from "../@types/CompanySlider";
 
 function useCompanySlide() {
-    const [content, setContent] = useState<any>([]);
+    const [content, setContent] = useState<CompanySliderResponse | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/gallery-companies?populate=*`)
-            .then((response) => response.json())
-            .then((data) => {
-                setContent(data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            });
+        HTTPAruna.get("/api/gallery-companies?populate=*")
+        .then((response) => {
+            const data: CompanySliderResponse = response.data;
+            setContent(data);
+            setLoading(false);
+        })
+        .catch((error: any) => {
+            console.log(error, __dirname);
+            setLoading(false);
+            setContent(null);
+        });
     }, []);
 
     return {
         content,
-        loading
-    }
+        loading,
+    };
 }
 
-export default useCompanySlide
+export default useCompanySlide;

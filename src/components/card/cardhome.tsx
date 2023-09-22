@@ -1,4 +1,5 @@
 import { Skeleton } from "@mui/material";
+
 import useCardHome from "../../hooks/useCardHome";
 import Image from "../global/Image";
 

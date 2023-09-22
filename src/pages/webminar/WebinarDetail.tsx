@@ -9,7 +9,7 @@ import TextHeadingComponent from '../../components/teks/TextHeadingComponent'
 import { ButtonPesan } from '../../components/button/ButtonPesan'
 import TextDescComponent from '../../components/teks/TextDescComponent'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Purchase from '../../components/purchase/purchase'
 
 const WebinarDetail = (props: { email: string }) => {
@@ -22,8 +22,7 @@ const WebinarDetail = (props: { email: string }) => {
             .then((response) => {
                 setContent(response.data.data);
             })
-    }, [])
-    console.log('test', content);
+    })
 
     return (
         <div className='mx-auto max-w-[1724px] relative'>
@@ -39,7 +38,7 @@ const WebinarDetail = (props: { email: string }) => {
                             <TextHeadingComponent heading='Pelatihan Belajar Life Planning untuk Gen Z' />
                         </div>
                         <div className='flex justify-between gap-10 mx-auto pr-[200px]'>
-                            {content?.attributes.product_variants.data.map((res: any, index: number) => (
+                            {content && content.attributes.product_variants.data.map((res: any, index: number) => (
                                 <Purchase
                                     key={index}
                                     title={res.attributes.title}

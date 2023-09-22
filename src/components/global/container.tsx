@@ -31,7 +31,7 @@ const Container = ({
     default:
       orientation = "horizontal";
   }
-
+  
   const finalClasses = `${orientationClasses && orientationClasses} ${customClass && customClass} ${
     boxed && "lg:max-w-[1444px] lg:px-28 md:px-6 px-2"
   }`;

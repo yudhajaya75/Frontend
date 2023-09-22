@@ -1,13 +1,10 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Navigate } from "react-router-dom";
-import useGetRegisterData from "../../hooks/useGetRegisterData";
 import useSignUp from "../../hooks/lib/useSignUp";
 
 const Register = () => {
   const {
-    email,
     setEmail,
-    password,
     setUsername,
     setPassword,
     passwordVisible,

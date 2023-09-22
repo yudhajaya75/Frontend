@@ -20,6 +20,7 @@ import Paket from "./pages/paket/paket";
 import WebinarDetail from "./pages/webminar/WebinarDetail";
 import BlogDetail from "./pages/blog/BlogDetail";
 import Logout from "./pages/profile/Logout";
+import Product from "./pages/detail/Product";
 
 function App() {
   const { email, setEmail, isLoggedIn } = useGetUserData();
@@ -33,7 +34,6 @@ function App() {
         <Route path="/home" element={<Home email={email} />} />
         <Route path="/layanan" element={<Layanan email={email} />} />
         <Route path="/webinar" element={<Webinar email={email} />} />
-        <Route path="/webinar/:id" element={<Webinar2 email={email} />} />
         <Route path="/blog/:slug" element={<BlogDetail email={email} />} />
         <Route
           path="/webinardetail/:id"
@@ -60,6 +60,10 @@ function App() {
             isLoggedIn ? <Profile email={email} /> : <Navigate to="/home" />
           }
         />
+        <Route path="/pelatihan/:slug" element={<Product type="Pelatihan" />} />
+        <Route path="/layanan/:slug" element={<Product type="Layanan" />} />
+        <Route path="/konsultasi/:slug" element={<Product type="Konsultasi" />} />
+        <Route path="/webinar/:slug" element={<Product type="Webinar" />} />
         <Route path="/contact" element={<Contactus email={email} />} />
         <Route path="/paket" element={<Paket email={email} />} />
         <Route path="/logout" element={<Logout />} />

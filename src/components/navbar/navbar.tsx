@@ -27,7 +27,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
   };
 
   let menu: JSX.Element;
-
   if (username === null) {
     menu = (
       <div>
@@ -41,7 +40,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
   } else {
     menu = (
       <>
-        <div className="text-left left-[100px] bottom-1">
+        <div className="relative inline-block text-left left-[100px] bottom-1">
           <a
             href="#"
             onClick={toggleMenu}
@@ -54,7 +53,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
             </li>
           </a>
           {isOpenUp && (
-            <div className="bg-[#FFFFFF] absolute left-20 top-[60px] flex flex-col items-start rounded-lg p-2">
+            <div className="bg-[#FFFFFF] absolute ml-[0px] top-[60px] flex flex-col items-start rounded-lg p-2">
               {listprofile.map((item, i) => (
                 <div
                   className="w-[150px] justify-between text-[#074288] p-4 
@@ -150,7 +149,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
         <h1 className="w-full text-3xl font-bold mt-3">
           <img src="/images/Logo.webp" alt="" />
         </h1>
-        <ul className="uppercase p-4 mt-0">
+        <ul className="uppercase p-4 mt-10">
           <a href="/home">
             <li className="p-4 border-b">Home</li>
           </a>
@@ -161,12 +160,12 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
             </li>
           </a>
           {isOpen && (
-            <div className="bg-[#FFFFFF]  absolute top-[180px] left-[-1px] flex flex-col items-start rounded-lg">
+            <div className="bg-[#FFFFFF]  absolute top-[220px] left-[-1px] flex flex-col items-start rounded-lg">
               {list.map((item, i) => (
                 <div
                   className="w-[210px] justify-between 
                            p-4 hover:bg-blue-300 cursor-pointer rounded-lg text-[#074288]  
-                           border-l-transparent text-xs"
+                           border-l-transparent "
                   key={i}
                 >
                   <a href="webinar">
@@ -197,7 +196,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
           <a href="/contact">
             <li className="p-4 border-b">Contact Us</li>
           </a>
-          <div className="mt-7 -ml-[160px] text-[#074288]">{menu}</div>
+          <div className="- mt-10 -ml-[140px] text-[#074288]">{menu}</div>
         </ul>
       </div>
     </div>

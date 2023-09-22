@@ -25,7 +25,6 @@ function useContentHome() {
         console.error("Error fetching data:", error);
       });
   }, []);
-  console.log(tentangkonseling);
 
   return {
     tentangkonseling,

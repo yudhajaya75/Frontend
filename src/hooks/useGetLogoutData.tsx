@@ -9,6 +9,8 @@ const useGetLogoutLogout = () => {
     try {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      localStorage.removeItem("email");
+      localStorage.removeItem("id");
 
       setIsLoggingOut(true);
 

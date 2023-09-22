@@ -31,22 +31,22 @@ const Container = ({
     default:
       orientation = "horizontal";
   }
-
-  const finalClasses = `${orientationClasses} ${customClass} ${
+  
+  const finalClasses = `${orientationClasses && orientationClasses} ${customClass && customClass} ${
     boxed && "lg:max-w-[1444px] lg:px-28 md:px-6 px-2"
   }`;
 
   return (
     <section className={`w-full flex flex-col ${finalClasses}`}>
       <div
-        className={`w-full ${firstElementClasses} ${
+        className={`w-full ${firstElementClasses && firstElementClasses} ${
           isDebug && "border border-lime-300 bg-slate-400"
         }`}
       >
         {firstElement}
       </div>
       <div
-        className={`w-full ${secondElementClasses} ${
+        className={`w-full ${secondElementClasses && secondElementClasses} ${
           isDebug && "border border-orange-500 bg-slate-500"
         }`}
       >

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import list from "./list.json";
 import listprofile from "./listprofile.json";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineCaretUp, AiOutlineCaretDown  } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useGetLogoutData from "../../hooks/useGetLogoutData";
 
@@ -23,13 +22,11 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     setNav(!nav);
   };
 
-
   const isActive = (path: string) => {
     return location.pathname === path ? "text-[#074288]" : "text-black";
   };
 
   let menu: JSX.Element;
-
   if (username === null) {
     menu = (
       <div>
@@ -50,7 +47,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
             className="teksnav1"
             style={{ color: "#000", fontWeight: "bold", fontSize: "20px" }}
           >
-            {/* <img src="./images/profile.png" alt="" /> */}
             <li>{username}</li>
             <li style={{ marginLeft: 10 }}>
               {isOpenUp ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
@@ -76,7 +72,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
                   <a href="/login" onClick={logout}>
                     <h3 className="font-bold">{item.logout}</h3>
                   </a>
-
                 </div>
               ))}
             </div>
@@ -90,7 +85,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
     <div className="navbar">
       <h1 className="logo">
         <a href="/home">
-          <img src="http://localhost:3000/images/Logo.webp" alt="" />
+          <img src="http://localhost:3000/images/Logo.webp" alt="Logo Konseling Satir" />
         </a>
       </h1>
       <ul className="listnav">
@@ -206,7 +201,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
       </div>
     </div>
   );
-
 };
 
 export default Navbar;

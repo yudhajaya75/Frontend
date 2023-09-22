@@ -9,7 +9,7 @@ import Tesk3 from "../../components/teks/teks-kerjasama";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import useBanAbout from "../../hooks/useBanAbout";
 import Heading from "../../components/global/Heading";
-
+        
 const About = (props: { email: string }) => {
   const { content } = useBanAbout();
 
@@ -45,7 +45,7 @@ const About = (props: { email: string }) => {
       <div className="flex justify-center items-center mr-[10px]">
         <Founding />
       </div>
-      <div className="relative top-[150px] left-4">
+      <div>
         <Tesk3 />
         <Compslid />
       </div>

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'swiper/css';
+// import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import useCompanySlide from "../../hooks/useCompanySlide";
@@ -13,12 +13,11 @@ function Compslid() {
 
     if (!content) return <div>No Data</div>
     return (
-        <div className='py-10 mx-[100px]'>
+        <div className='mt-5'>
             <Swiper
-                slidesPerView={4}
                 spaceBetween={30}
                 autoplay={{
-                    delay: 2500,
+                    delay: 1500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -51,10 +50,10 @@ function Compslid() {
             >
                 {loading ? (
                     <SwiperSlide>
-                        <div className="flex gap-10 mt-[50px] ml-[-100px]">
+                        <div className="">
                             {[...Array(4)].map((_, index) => (
-                                <div key={index} className="w-[350px] shadow-lg rounded-md">
-                                    <Skeleton variant="rectangular" width={350} height={180} />
+                                <div key={index} className="shadow-lg rounded-md  grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                                    <Skeleton variant="rectangular" className="w-full" height={180} />
                                 </div>
                             ))}
                         </div>

@@ -5,7 +5,7 @@ import GlobalLayout from "../../layouts/GlobalLayout";
 
 const Home = (props: { email: string }) => {
     return (
-        <GlobalLayout accountEmail={props.email}>
+        <GlobalLayout>
             <main className="px-5 lg:px-16">
                 <Heading customClass="mt-16">Contact</Heading>
                 <Text customClass="mb-16">Any question or remarks? Just write us a message!</Text>

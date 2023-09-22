@@ -3,8 +3,8 @@ import { GalleryBanner } from "../@types/GalleryBanner";
 import { BannerHome } from "../@types/BannerHome";
 
 function useBanHome() {
-  const [sliderhome, setSliderHome] = useState<GalleryBanner[]>();
-  const [banner, setBanner] = useState<BannerHome>();
+  const [sliderhome, setSliderHome] = useState<GalleryBanner[] | null>(null);
+  const [banner, setBanner] = useState<BannerHome | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,8 +40,6 @@ function useBanHome() {
         setTimeout(() => setLoading(false), 4000);
       });
   }, []);
-
-  console.log(banner)
 
   return {
     sliderhome,

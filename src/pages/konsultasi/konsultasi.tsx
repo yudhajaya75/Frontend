@@ -3,8 +3,6 @@ import Teks from '../../components/teks/teks';
 import Teks2 from '../../components/teks/teks-kata-mereka';
 import Sosmed from '../../components/sosmed/Desktop';
 import Teks3 from '../../components/teks/teks-kerjasama';
-import Compslid from '../../components/compslid/compslid'
-import Footer from '../../components/footer/footer';
 import Card from '../../components/card/card';
 import LayoutWithBanner from '../../layouts/LayoutWithBanner';
 import Compslid from '../../components/compslid/compslid';
@@ -27,15 +25,17 @@ const konsultasi = (props: { email: string }) => {
                     </p>     
                   </div>
             </>
-       }
-       secondElement=''
+      }
+      secondElement
       >
-        <Teks />
-        <Card />
-        <Teks2 />
-        <Sosmed />
-        <Teks3 />
-        <Compslid />
+        <main className='px-5 lg:px-24'>
+          <Teks />
+          <Card type='Konsultasi' prefixLink='konsultasi' />
+          <Teks2 />
+          <Sosmed />
+          <Teks3 />
+          <Compslid />
+        </main>
       </LayoutWithBanner>
     </div>
   );

@@ -22,7 +22,7 @@ function useWindowSize(isDebug?: boolean) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  });
 
   return windowSize;
 }

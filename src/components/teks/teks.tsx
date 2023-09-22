@@ -8,7 +8,7 @@ const Teks = () => {
         <div className='p-10 font-sans relative bottom-[0px]'>
             {loading ? (
                 <div className='relative top-[0px] right-10'>
-                    <Skeleton variant="rectangular" width={1600} height={300} />
+                    <Skeleton variant="rectangular" width={"100%"} height={300} />
                 </div>
             ) : (
                 <div>

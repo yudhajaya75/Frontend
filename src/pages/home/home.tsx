@@ -56,8 +56,8 @@ const Home = (props: { email: string }) => {
           modules={[Autoplay]}
           className="mySwiper bg-people bg-contain bg-no-repeat w-[300px] h-[300px]  sm:w-[400px] sm:h-[400px] xl:w-[500px] xl:h-[500px] overflow-hidden"
         >
-          {sliderhome?.map((res) => (
-            <SwiperSlide key={res.id}>
+          {sliderhome && sliderhome.map((res, index) => (
+            <SwiperSlide key={index}>
               <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
                 <Image
                   src={res.attributes.image.data.attributes.url}

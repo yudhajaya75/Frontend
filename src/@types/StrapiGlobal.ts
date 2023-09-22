@@ -6,3 +6,15 @@ export type MediaType = {
     };
   };
 };
+
+export interface MetaData {
+  data: {};
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}

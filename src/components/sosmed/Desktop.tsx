@@ -1,4 +1,3 @@
-import React from 'react';
 import Sosmed from './sosmed';
 import usePersonalCard from '../../hooks/usePersonalCard';
 import { Skeleton } from '@mui/material';

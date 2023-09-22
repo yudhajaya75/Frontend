@@ -9,7 +9,7 @@ import useCard from "../../hooks/useCard"
 const Payment2 = (props: { email: string }) => {
     const { content } = useCard()
     const { slug } = useParams()
-    const payment: any = content?.filter((item: any) => item.slug == slug)[0];
+    const payment: any = content?.filter((item: any) => item.slug === slug)[0];
 
     return (
         <>

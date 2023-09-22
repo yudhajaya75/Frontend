@@ -3,10 +3,11 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Skeleton } from '@mui/material';
 
 import useCardWebinar from '../../hooks/useCardWebinar';
+import Image from '../global/Image';
 
 
 const Card = () => {
-    const { content, loading, countdownTime } = useCardWebinar();
+    const { content, loading } = useCardWebinar();
 
     return (
         <div className='mt-20 p-5'>
@@ -24,10 +25,10 @@ const Card = () => {
                 </div>
             ) : (
                 <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-                    {content.map((res: any, index: number) => (
+                    {content && content.data.map((res, index: number) => (
                         <div className='shadow-lg w-full rounded-lg overflow-hidden' key={index} >
-                            <div className='w-full h-[207px]' key={res.attributes.id}>
-                                <img src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`} alt='/' className='h-full w-full object-contain' />
+                            <div className='w-full h-[207px]' key={res.id}>
+                                <Image src={res.attributes.image.data.attributes.url} alt={res.attributes.title} customClass='h-full w-full object-contain' />
                             </div>
                             <div className='p-2'>
                                 <div className='flex gap-4 mt-[-70px] ml-4 text-[#4B465C]'>
@@ -53,7 +54,7 @@ const Card = () => {
                                         <p className='text-[#4B465C]'>Webinar Price Not Available</p>
                                     )}
                                 </div>
-                                <a href={`/webinar/${res.id}`}>
+                                <a href={`/webinar/${res.attributes.slug}`}>
                                     <div className='bg-[#002157] text-white font-semibold p-[10px] text-center rounded-md w-[90%] mx-auto'>
                                         <button className='button-webminar'>Lihat Detail</button>
                                     </div>

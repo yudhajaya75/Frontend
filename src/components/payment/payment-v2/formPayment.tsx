@@ -1,4 +1,3 @@
-import React from "react";
 import PackageSection from "../PackageSection";
 import PersonalInfoSection from "../PersonalInfoSection";
 import PaymentMethod from "./paymentMethod";

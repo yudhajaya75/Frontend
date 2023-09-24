@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Payment } from "../../../@types/Payment";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
+import { Payment } from "../../../@types/Payment";
 
 const PaymentMethod: React.FC = ({}) => {
   const location = useLocation();
-  const id = location.state?.id;
+  const navigation = useNavigate();
   const title = location.state?.title;
   const price = location.state?.price;
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -49,7 +50,7 @@ const PaymentMethod: React.FC = ({}) => {
       },
     };
     try {
-      const req = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_API_URL}/transactions?populate=*`,
         dataToSend,
         {
@@ -63,6 +64,7 @@ const PaymentMethod: React.FC = ({}) => {
         "Transaksi berhasil diproses, lanjutkan di riwayat profile, untuk upload bukti pembayaran",
         "success"
       );
+      navigation("/profile");
     } catch (error) {
       Swal.fire("Oops...", "Terjadi kesalahan", "error");
     }

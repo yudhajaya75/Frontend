@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 function useCard() {
   const [content, setContent] = useState<any>([]);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/products/?populate=*`, {

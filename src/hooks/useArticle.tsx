@@ -29,7 +29,6 @@ const useArticle = (query?: "Popular" | "Newest") => {
         setLoading(false);
         console.log("ERROR", __dirname);
       }
-      console.log(datas, "FROM DATA");
     });
   }, [query, strapiQuery]);
 

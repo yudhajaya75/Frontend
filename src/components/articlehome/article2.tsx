@@ -32,7 +32,7 @@ const Articel = () => {
                 <div className="h-[270px] relative text-justify" key={res.id}>
                   <a href={`/article/${res.attributes.slug}`}>
                     <Image
-                      src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                      src={res.attributes.image.data.attributes.url}
                       alt={res.attributes.title}
                       customClass=" w-[350px] h-[270px]"
                     />

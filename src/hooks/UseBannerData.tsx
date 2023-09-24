@@ -18,8 +18,6 @@ function useBannerData() {
         setTimeout(() => setLoading(false), 4000);
       });
   }, []);
-  console.log(content);
-
   return {
     content,
     loading,

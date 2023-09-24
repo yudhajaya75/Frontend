@@ -28,7 +28,7 @@ const Filtered = ({ type }: Props) => {
               return (
                 <ArticleCard
                   banner={article.attributes.image.data.attributes.url}
-                  url={"/article/" + article.attributes.slug}
+                  url={article.attributes.slug}
                   key={index}
                   viewCount={article.attributes.eye}
                   body={article.attributes.body}

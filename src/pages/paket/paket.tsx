@@ -1,56 +1,37 @@
-import { useEffect, useState } from "react";
-import Navbar from "../../components/navbar/navbar";
-import Teks from "../../components/teks/paket";
-import Background from "../../components/background/background";
-import Disc from "../../components/disc/disc";
-import Footer from "../../components/footer/footer";
+// import Disc from "../../components/disc/disc";
 import Purchase from "../../components/purchase/purchasePaket";
-import { HTTPAruna } from "../../services/handlerApi";
+import usePaket from "../../hooks/usePaket";
+import GlobalLayout from "../../layouts/GlobalLayout";
+import Heading from "../../components/global/Heading";
 
 const Paket = (props: { email: string }) => {
-    const [content, setContent] = useState<any>()
+    const { paket } = usePaket();
 
-    useEffect(() => {
-        HTTPAruna.get("/product-variants/?populate=*").then((res) => {
-            console.log("PRODUCT", res)
-            setContent(res.data)
-        }).catch((err) =>{
-            console.log(err)
-        })
-    }, []);
-    
-    if (!content) return <div>No Data</div>
+    if (!paket) return <div>No Data</div>;
 
     return (
-        <>
-            <div className='mx-auto max-w-[1800px] relative'>
-                <Navbar accountEmail={props.email} />
-                <div className="bg-[#efefef] relative h-[100px]">
-                    <Background />
-                </div>
-                <div className="relative bottom-[70px]">
-                    <Teks />
-                    <div className='flex justify-evenly flex-wrap gap-10 mx-20 relative mt-[100px] right-[100px]'>
-                        {content?.slice(0, 3).map((res: any, index: number) => (
-                            <Purchase
-                                accountEmail={props.email}
-                                key={index}
-                                title={res.attributes.title}
-                                content={res.attributes.content}
-                                price={res.attributes.price}
-                                features={res.attributes.features}
-                                isPopular={res.attributes.isPopuler}
-                                id={res.id}
-                            />
-                        ))}
-                    </div>
-                </div>
-                <div className="relative bottom-[0px]">
-                    <Disc />
-                </div>
-                <Footer />
+        <GlobalLayout>
+            <Heading customClass="mt-16">Semua layanan konseling satir</Heading>
+            <p className="text-center mb-20">Temukan layanan Satu Persen yang sesuai untuk kamu.</p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 px-5 lg:px-14">
+                {paket &&
+                    paket
+                    .slice(0, 3)
+                    .map((res, index) => (
+                        <Purchase
+                            accountEmail={props.email}
+                            key={index}
+                            title={res.attributes.title}
+                            content={res.attributes.content}
+                            price={res.attributes.price}
+                            feature={res.attributes.features}
+                            isPopular={res.attributes.isPopuler}
+                            id={res.id}
+                        />
+                    ))}
             </div>
-        </>
+            <div className="bg-[#efefef] absolute top-0 right-0 bottom-0 left-0 h-[90%] -z-10"></div>
+        </GlobalLayout>
     );
 };
 

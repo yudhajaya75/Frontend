@@ -1,18 +1,15 @@
 import 'react-multi-carousel/lib/styles.css';
-import Teks from '../../components/teks/teks';
 import Teks2 from '../../components/teks/teks-kata-mereka';
 import Sosmed from '../../components/sosmed/Desktop';
-import Teks3 from '../../components/teks/teks-kerjasama';
 import Card from '../../components/card/card';
 import LayoutWithBanner from '../../layouts/LayoutWithBanner';
 import Compslid from '../../components/compslid/compslid';
+import Heading from '../../components/global/Heading';
 
 
 const layanan = (props: { email: string }) => {
-  console.log(props)
   return (
-    <div className='mx-auto max-w-[1800px] relative'>
-     <LayoutWithBanner
+    <LayoutWithBanner
       bgImage={"bg-Layanan"}
       accountEmail={props.email}
       firstElement={
@@ -27,16 +24,17 @@ const layanan = (props: { email: string }) => {
           </>
       }
       secondElement=''
-     >
-         
-        <Teks />
-        <Card />
+      >
+      <main className='px-5 lg:px-24 py-20'>
+        <Heading customClass='text-start pb-5'>Layanan konseling individu pasangan & keluarga</Heading>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum suscipit iure asperiores quaerat rerum earum assumenda deleniti delectus nam excepturi.</p>
+        <Card type='Layanan' prefixLink='layanan' />
         <Teks2 />
         <Sosmed />
-        <Teks3 />
+        <Heading customClass='py-10'>Kerjasama Kami</Heading>
         <Compslid/>
-     </LayoutWithBanner>
-    </div>
+      </main>
+    </LayoutWithBanner>
   );
 }
 

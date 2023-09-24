@@ -1,64 +1,34 @@
 import { useEffect, useState } from "react";
 
-function useCardPelatihan() {
-  const [content, setContent] = useState<any>();
+import { HTTPAruna } from "../services/handlerApi";
+import { PelatihanResponse } from "../@types/Pelatihan";
+
+function useCardPelatihan(
+  category?: "Pelatihan" | "Layanan" | "Konsultasi" | "Webinar"
+) {
+  const [content, setContent] = useState<PelatihanResponse | null>();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_API_URL}/products?populate[0]=image&populate[1]=populate[2]=*&filters[category][$eq]=Pelatihan`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-          "Content-Type": "application/json",
-        },
+    HTTPAruna.get(
+      `/api/products?populate[0]=image&populate[1]=product_variants&populate[2]=webinar&filters[category][$eq]=${
+        category ? category : "Pelatihan"
+      }`
+    ).then((response) => {
+      const data: PelatihanResponse = response.data;
+      if (data.data.length < 0) {
+        setError("No Content");
       }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const dataz = data.data;
-        let dataPushed = [] as any;
-        dataz.forEach((data: any, index: any) => {
-          dataPushed.push(Object.assign(data, { price: "" }));
-        });
-
-        fetch(
-          `${process.env.REACT_APP_API_URL}/products?populate[]=product_variants.features&filters[category][$eq]=Pelatihan`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-              "Content-Type": "application/json",
-            },
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            let dataInputted = [] as any;
-            const dataMapped = data.data.map((d: any, i: number) => {
-              return d.attributes.product_variants.data.map((e: any) => {
-                return e.attributes.price;
-              });
-            });
-            dataMapped.forEach((d: any) => {
-              dataInputted.push(Math.min(...d));
-            });
-            console.log(dataMapped, dataInputted);
-            dataPushed.map((dati: any, i: number) => {
-              dati.price = dataInputted[i];
-            });
-            setContent(dataPushed);
-            setTimeout(() => {
-              setLoading(false);
-            }, 4000);
-          });
-      });
-  }, []);
+      setContent(data);
+      setLoading(false);
+    });
+  }, [category]);
 
   return {
     content,
     loading,
+    error,
   };
 }
 

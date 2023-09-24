@@ -27,7 +27,6 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
   };
 
   let menu: JSX.Element;
-
   if (username === null) {
     menu = (
       <div>
@@ -41,7 +40,7 @@ const Navbar = ({ accountEmail }: { accountEmail: string }) => {
   } else {
     menu = (
       <>
-        <div className="text-left left-[100px] bottom-1">
+        <div className="relative inline-block text-left left-[100px] bottom-1">
           <a
             href="#"
             onClick={toggleMenu}

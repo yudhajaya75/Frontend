@@ -31,14 +31,16 @@ const NewNavbar = () => {
         menuOpen && "fixed flex flex-col h-screen w-screen bg-[#074188b0] z-50"
       } md:h-auto md:flex px-4 py-4 lg:px-0 justify-between lg:justify-around md:items-center md:py-8 md:bg-white`}
     >
-      <Link to="/" className="flex w-full md:w-auto justify-between items-center">
-        <Image
-          alt="Logo Satir"
-          src="images/Logo.webp"
-          isExternal
-          customClass="h-[55px]"
-        />
-        <div className="md:hidden">
+      <div className="flex w-full md:w-auto justify-between items-center">
+        <Link to="/">
+          <Image
+            alt="Logo Satir"
+            src="images/Logo.webp"
+            isExternal
+            customClass="h-[55px]"
+          />
+        </Link>
+        <div className="md:hidden cursor-pointer">
           {menuOpen ? (
             <AiOutlineClose
               className={menuOpen ? "text-white" : ""}
@@ -57,7 +59,7 @@ const NewNavbar = () => {
             />
           )}
         </div>
-      </Link>
+      </div>
       <ul
         className={`w-full md:w-auto md:flex gap-1 md:gap-5 lg:gap-10 ${
           menuOpen ? "grid" : "hidden"
@@ -65,7 +67,7 @@ const NewNavbar = () => {
       >
         {menuList.map((value, index) => {
           if (value.pathName === "Layanan")
-            return <Dropdown menu={value.children!} parentMenu={"Layanan"} />;
+            return <Dropdown menu={value.children!} parentMenu={"Layanan"} key={index} />;
           return (
             <Link
               key={index}

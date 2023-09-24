@@ -8,11 +8,13 @@ module.exports = {
       },
       screens: {
         "sm-440": "440px",
+        "sm320": "320px",
       },
       backgroundImage: {
         heroPattern: "url('/src/assets/bg-banner.png')",
         people: "url('/public/images/bgpeople.webp')",
         About: "url('/src/assets/bg-about.png')",
+        formbg: "url('/src/assets/img/form-bg.svg')",
         Webinar: "url('/public/images/banwebminar.webp')",
         Pelatihan: "url('/public/images/banpelatihan.webp')",
         Layanan: "url('/public/images/banner.webp')",

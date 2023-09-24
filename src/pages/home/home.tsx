@@ -14,7 +14,6 @@ import useBanHome from "../../hooks/useBanHome";
 import "swiper/swiper-bundle.min.css";
 import Image from "../../components/global/Image";
 
-
 const Home = (props: { email: string }) => {
   const { banner, sliderhome } = useBanHome();
 
@@ -56,17 +55,18 @@ const Home = (props: { email: string }) => {
           modules={[Autoplay]}
           className="mySwiper bg-people bg-contain bg-no-repeat w-[300px] h-[300px]  sm:w-[400px] sm:h-[400px] xl:w-[500px] xl:h-[500px] overflow-hidden"
         >
-          {sliderhome && sliderhome.map((res, index) => (
-            <SwiperSlide key={index}>
-              <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
-                <Image
-                  src={res.attributes.image.data.attributes.url}
-                  alt="background-people"
-                  customClass="h-full w-full mt-10 rounded-[10%]"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {sliderhome &&
+            sliderhome.map((res, index) => (
+              <SwiperSlide key={index}>
+                <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
+                  <Image
+                    src={res.attributes.image.data.attributes.url}
+                    alt="background-people"
+                    customClass="h-full w-full mt-10 rounded-[10%]"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
       }
     >

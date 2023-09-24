@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { ArticleResponse } from '../@types/Article';
-import { HTTPAruna } from '../services/handlerApi';
+import { useEffect, useState } from "react";
+import { ArticleResponse } from "../@types/Article";
+import { HTTPAruna } from "../services/handlerApi";
 
 const useArticle = (query?: "Popular" | "Newest") => {
   const [content, setContent] = useState<ArticleResponse | null>(null);
@@ -9,13 +9,13 @@ const useArticle = (query?: "Popular" | "Newest") => {
 
   switch (query) {
     case "Newest":
-      strapiQuery = "/articel-cards?sort=createdAt:desc&populate=*"
+      strapiQuery = "/articel-cards?sort=createdAt:desc&populate=*";
       break;
     case "Popular":
-      strapiQuery = "/articel-cards?sort=eye:desc&populate=*"
+      strapiQuery = "/articel-cards?sort=eye:desc&populate=*";
       break;
     default:
-      strapiQuery = "/articel-cards?populate=*"
+      strapiQuery = "/articel-cards?populate=*";
       break;
   }
 
@@ -27,13 +27,13 @@ const useArticle = (query?: "Popular" | "Newest") => {
         setLoading(false);
       } else {
         setLoading(false);
-        console.log("ERROR", __dirname)
+        console.log("ERROR", __dirname);
       }
       console.log(datas, "FROM DATA");
     });
-  }, [query]);
+  }, [query, strapiQuery]);
 
-  return { content, loading }
-}
+  return { content, loading };
+};
 
-export default useArticle
+export default useArticle;

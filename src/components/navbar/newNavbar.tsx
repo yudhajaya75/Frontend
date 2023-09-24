@@ -35,7 +35,7 @@ const NewNavbar = () => {
         <Link to="/">
           <Image
             alt="Logo Satir"
-            src="images/Logo.webp"
+            src="/images/Logo.webp"
             isExternal
             customClass="h-[55px]"
           />
@@ -67,7 +67,13 @@ const NewNavbar = () => {
       >
         {menuList.map((value, index) => {
           if (value.pathName === "Layanan")
-            return <Dropdown menu={value.children!} parentMenu={"Layanan"} key={index} />;
+            return (
+              <Dropdown
+                menu={value.children!}
+                parentMenu={"Layanan"}
+                key={index}
+              />
+            );
           return (
             <Link
               key={index}
@@ -79,7 +85,9 @@ const NewNavbar = () => {
           );
         })}
       </ul>
-      <section className={`md:flex w-full md:w-fit ${menuOpen ? "flex" : "hidden"}`}>
+      <section
+        className={`md:flex w-full md:w-fit ${menuOpen ? "flex" : "hidden"}`}
+      >
         {userName ? (
           <Badge email={userName} menu={badgeList} />
         ) : (

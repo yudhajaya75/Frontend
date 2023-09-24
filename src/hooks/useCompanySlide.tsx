@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { HTTPAruna } from "../services/handlerApi";
 import { CompanySliderResponse } from "../@types/CompanySlider";
 

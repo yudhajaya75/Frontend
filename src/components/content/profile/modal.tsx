@@ -14,16 +14,11 @@ type Props = {
 };
 
 const ModalSection: React.FC<Props> = ({ open, onClose, transactionId }) => {
-  // const [selectedTransaction, setSelectedTransaction] = useState<Transaction>()
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
   const [data, setData] = useState<Transaction>();
   const getTransaction = async () => {
     try {
       const res = await HTTPAruna.get(
-        `/api/transactions/${transactionId}?populate=*`
+        `/api/transactions/${transactionId}?populate[0]=orders.product&populate[1]=payment.payment&populate[2]=paymentReceiptImage`
       );
       setData(res.data.data);
 
@@ -37,7 +32,10 @@ const ModalSection: React.FC<Props> = ({ open, onClose, transactionId }) => {
     getTransaction();
   }, [transactionId]);
 
-  console.log("data detail", data);
+  const handleUploadComplete = () => {
+    // Tutup modal setelah unggahan selesai
+    onClose();
+  };
 
   return (
     <Modal
@@ -48,25 +46,28 @@ const ModalSection: React.FC<Props> = ({ open, onClose, transactionId }) => {
     >
       <Box sx={style}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          <div>
-            <p>ID Transaksi: {data?.id}</p>
-            <p>
+          <div className="">
+            <Typography>ID Transaksi: {data?.id}</Typography>
+            <Typography className="py-3">
               Product:{" "}
-              {data?.attributes.orders.map((item, index) => item.amount)}
-            </p>
-            <p>Jumlah: {data?.attributes.payment.totalPrice}</p>
+              {data?.attributes.orders.map(
+                (item) => item.product.data.attributes.title
+              )}
+            </Typography>
+            <Typography>
+              Jumlah: {data?.attributes.payment.totalPrice}
+            </Typography>
             <div className="my-6">
               <UploadBukti
-                strapiRef={""}
-                field={""}
+                complete={handleUploadComplete}
+                strapiRef={"api::transaction.transaction"}
+                field={"paymentReceiptImage"}
                 transectionId={transactionId || ""}
               />
             </div>
           </div>
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography>
       </Box>
     </Modal>
   );

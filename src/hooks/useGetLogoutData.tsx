@@ -11,6 +11,7 @@ const useGetLogoutLogout = () => {
       localStorage.removeItem("user");
       localStorage.removeItem("email");
       localStorage.removeItem("id");
+      localStorage.removeItem("product_id");
 
       setIsLoggingOut(true);
 

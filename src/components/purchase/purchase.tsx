@@ -6,7 +6,7 @@ const Purchase = (props: any) => {
   return (
     <>
       <div
-        className={`w-[430px] h-[740px] relative bottom-[0px] left-[100px] rounded-md mb-[100px] ${
+        className={`mx-12 lg:mx-0 md:w-[430px] xl:w-[430px] h-[740px] rounded-md mb-[100px] ${
           isPopular ? "bg-[#1D3A69]" : "bg-white"
         }`}
         style={{ boxShadow: "0px 0px 10px -5px rgba(0, 0, 0, 0.75)" }}
@@ -25,7 +25,7 @@ const Purchase = (props: any) => {
           <p className="text-[48px]">Rp.{props.price}</p>
           <div className="pt-5 font-bold">
             <Link
-              to="/payment"
+              to={`${localStorage.getItem("token") ? "/payment" : "/login"}`}
               state={{
                 id: props.id,
                 title: props.title,
@@ -40,15 +40,9 @@ const Purchase = (props: any) => {
           </div>
           <p className="text-[20px] pt-7 pb-7">Fitur :</p>
           {props.features.map((feature: any, index: number) => (
-            <div key={index}>
-              <img
-                src="../images/ceklis.webp"
-                className="relative top-0 left-2 w-[20px]"
-                alt=""
-              />
-              <p className="text-[20px] relative bottom-7 left-10">
-                {feature.feature}
-              </p>
+            <div key={index} className="flex py-2">
+              <img src="../images/ceklis.webp" className="w-[20px]" alt="" />
+              <p className="text-[20px] ml-2">{feature.feature}</p>
             </div>
           ))}
         </div>

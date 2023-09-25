@@ -1,14 +1,25 @@
 import CardComponent from "./cardComponent";
 import { Skeleton } from "@mui/material";
 import useCardPelatihan from "../../hooks/useCardPelatihan";
+import ButtonPagination from "../button/ButtonPagination";
 
 type Props = {
   type?: "Pelatihan" | "Layanan" | "Konsultasi" | "Webinar";
-  prefixLink?: string
+  prefixLink?: string;
 };
 
 const Card = ({ type, prefixLink }: Props) => {
-  const { content, loading } = useCardPelatihan(type);
+  const {
+    content,
+    loading,
+    currentPage,
+    paginationMeta,
+    handleNextClick,
+    handlePrevClick,
+  } = useCardPelatihan(type, 1, 4);
+
+  const showPagination =
+    paginationMeta?.pageCount && paginationMeta?.pageCount > 1;
 
   return (
     <div className="pt-40">
@@ -40,12 +51,22 @@ const Card = ({ type, prefixLink }: Props) => {
                 body={res.attributes.body}
                 image={res.attributes.image.data.attributes.url}
                 slug={res.attributes.slug}
-                link={prefixLink ? prefixLink : "training" }
+                link={prefixLink ? prefixLink : "training"}
               />
             ))
           ) : (
             <p>Error while fetching data :0</p>
           )}
+        </div>
+      )}
+      {showPagination && (
+        <div className="flex justify-start ml-10 md:ml-20 mt-8 md:mt-14">
+          <ButtonPagination
+            handlePrev={handlePrevClick}
+            handleNext={handleNextClick}
+            page={currentPage}
+            totalPages={paginationMeta?.pageCount || 0}
+          />
         </div>
       )}
     </div>

@@ -3,15 +3,21 @@ import GlobalLayout from "../../layouts/GlobalLayout";
 import CardSkeleton from "../../components/card/CardSkeleton";
 import ArticleCard from "./ArticleCard";
 import Heading from "../../components/global/Heading";
+import ButtonPagination from "../../components/button/ButtonPagination";
 
 type Props = {
   type: "Popular" | "Newest";
 };
 
 const Filtered = ({ type }: Props) => {
-  const { content, loading } = useArticle(
-    type === "Popular" ? "Popular" : "Newest"
-  );
+  const {
+    content,
+    loading,
+    currentPage,
+    paginationMeta,
+    handlePrevClick,
+    handleNextClick,
+  } = useArticle(type === "Popular" ? "Popular" : "Newest", 1, 6);
 
   return (
     <GlobalLayout>
@@ -39,6 +45,14 @@ const Filtered = ({ type }: Props) => {
             })
           : "No Article"}
       </main>
+      <div className="flex justify-start ml-10 md:ml-20 mt-8 md:mt-14">
+        <ButtonPagination
+          handlePrev={handlePrevClick}
+          handleNext={handleNextClick}
+          page={currentPage}
+          totalPages={paginationMeta?.pageCount || 0}
+        />
+      </div>
     </GlobalLayout>
   );
 };

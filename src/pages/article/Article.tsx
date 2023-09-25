@@ -6,9 +6,12 @@ import useArticle from "../../hooks/useArticle";
 import CardSkeleton from "../../components/card/CardSkeleton";
 
 const ArticlePage = () => {
-  const newestArticle = useArticle("Newest").content;
+  const newestArticle = useArticle("Newest", 1, 5).content;
   const defaultArticle = useArticle().content;
-  const popularArticle = useArticle("Popular").content;
+  const popularArticle = useArticle("Popular", 1, 5).content;
+
+  const popularArticleData = popularArticle?.data.slice(0, 5);
+  const newestArticleData = newestArticle?.data.slice(0, 5);
 
   return (
     <GlobalLayout>
@@ -19,8 +22,8 @@ const ArticlePage = () => {
             <Link to="/article/newest">See More...</Link>
           </div>
           <div className="grid gap-5">
-            {newestArticle
-              ? newestArticle.data.map((article, index) => {
+            {newestArticleData
+              ? newestArticleData?.map((article, index) => {
                   return (
                     <ArticleCard
                       banner={article.attributes.image.data.attributes.url}
@@ -66,8 +69,8 @@ const ArticlePage = () => {
             </Link>
           </div>
           <div className="grid gap-5">
-            {popularArticle
-              ? popularArticle.data.map((article, index) => {
+            {popularArticleData
+              ? popularArticleData?.map((article, index) => {
                   return (
                     <ArticleCard
                       banner={article.attributes.image.data.attributes.url}

@@ -62,12 +62,6 @@ const Login = (props: { setEmail: (email: string) => void }) => {
                 <label htmlFor="password" className="font-medium">
                   Password
                 </label>
-                <a
-                  href="/forget"
-                  className="text-[#007DFA] hover:underline underline-offset-1"
-                >
-                  Forget Password ?
-                </a>
               </div>
               <div className="flex items-center lg:justify-between border-2 p-3 rounded-md hover:border-sky-400/[.5] focus:border-sky-400/[.5]">
                 <input

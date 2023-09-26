@@ -16,7 +16,7 @@ const usePersonalCard = () => {
       .then((response) => response.json())
       .then((data) => {
         setPersonalCard(data.data);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

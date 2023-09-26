@@ -1,37 +1,23 @@
-import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Transaction, style } from "./style";
-import { HTTPAruna } from "../../../services/handlerApi";
+import { style } from "./style";
 import UploadBukti from "../../payment/payment-v2/UploadBukti";
+import { ITransaction } from "../../../@types/Transaction";
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  transactionId: string | null;
+  transactionId: string;
+  detail?: ITransaction;
 };
 
-const ModalSection: React.FC<Props> = ({ open, onClose, transactionId }) => {
-  const [data, setData] = useState<Transaction>();
-  const getTransaction = async () => {
-    try {
-      const res = await HTTPAruna.get(
-        `/api/transactions/${transactionId}?populate[0]=orders.product&populate[1]=payment.payment&populate[2]=paymentReceiptImage`
-      );
-      setData(res.data.data);
-
-      if (res.status === 404) {
-        return null;
-      }
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    getTransaction();
-  }, [transactionId]);
-
+const ModalSection: React.FC<Props> = ({
+  open,
+  onClose,
+  transactionId,
+  detail,
+}) => {
   const handleUploadComplete = () => {
     // Tutup modal setelah unggahan selesai
     onClose();
@@ -47,22 +33,22 @@ const ModalSection: React.FC<Props> = ({ open, onClose, transactionId }) => {
       <Box sx={style}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
           <div className="">
-            <Typography>ID Transaksi: {data?.id}</Typography>
+            <Typography>ID Transaksi: {detail?.id}</Typography>
             <Typography className="py-3">
               Product:{" "}
-              {data?.attributes.orders.map(
+              {detail?.attributes.orders.map(
                 (item) => item.product.data.attributes.title
               )}
             </Typography>
             <Typography>
-              Jumlah: {data?.attributes.payment.totalPrice}
+              Jumlah: {detail?.attributes.payment.totalPrice}
             </Typography>
             <div className="my-6">
               <UploadBukti
                 complete={handleUploadComplete}
                 strapiRef={"api::transaction.transaction"}
                 field={"paymentReceiptImage"}
-                transectionId={transactionId || ""}
+                transectionId={transactionId}
               />
             </div>
           </div>

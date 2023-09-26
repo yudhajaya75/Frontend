@@ -9,22 +9,20 @@ import Picture from "./profile/changePicture";
 const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {
   const userId = localStorage.getItem("id");
   const email = localStorage.getItem("email");
-  const [profilePicture, setProfilePicture] = useState(NavLinkData[0].img);
-  const [data, setData] = useState<User>();
+  const [data, setData] = useState<User | null>(null);
   const [open, setOpen] = useState(false);
 
-  const getProfilePicture = async () => {
-    try {
-      const res = await HTTPAruna.get(`/api/users/${userId}?populate=*`);
-      setData(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const getProfilePicture = async () => {
+      try {
+        const res = await HTTPAruna.get(`/api/users/${userId}?populate=*`);
+        setData(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getProfilePicture();
-  }, [data]);
+  }, [userId]);
 
   const handleOpenModal = () => {
     setOpen(true);
@@ -35,17 +33,17 @@ const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {
   };
 
   return (
-    <div className="mt-10 mx-10 md:mx-20 h-[331px] md:h-[551px] bg-white shadow-lg rounded-2xl">
-      <img src={NavLinkData[1].img} alt="" className="" />
+    <div className="mt-10 mx-10 md:mx-20 pb-20 bg-white shadow-lg rounded-2xl">
+      <img src={NavLinkData[1].img} alt={NavLinkData[1].img} />
       <div className="flex justify-center md:justify-start">
         <label htmlFor="profile-picture">
           <img
             src={
               data?.avatar
                 ? `${process.env.REACT_APP_UPLOAD_URL}${data.avatar.url}`
-                : profilePicture
+                : NavLinkData[1].img
             }
-            alt="Profile Picture"
+            alt={NavLinkData[1].img}
             className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#002157] -mt-14 md:-mt-24 ml-0 md:ml-16 cursor-pointer object-cover object-center"
           />
         </label>
@@ -65,7 +63,6 @@ const ProfileCard = ({ accountEmail }: { accountEmail: string }) => {
         <p className="w-[50px] h-[28px] rounded bg-slate-500 px-1 text-white">
           Active
         </p>
-        {/* <p className="text-[#808080] text-[18px] font-[400]">24 June 2021</p> */}
       </div>
       <Picture open={open} onClose={handleCloseModal} />
     </div>

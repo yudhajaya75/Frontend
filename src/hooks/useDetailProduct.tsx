@@ -21,9 +21,8 @@ const useDetailProduct = (
         setLoading(false);
       } else {
         setLoading(false);
-        console.log("ERROR", __dirname)
+        console.log("ERROR", __dirname);
       }
-      console.log(datas, "FROM DATA");
     });
   }, [slug]);
 

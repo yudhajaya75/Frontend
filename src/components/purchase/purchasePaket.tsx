@@ -12,7 +12,6 @@ type Props = {
 };
 
 const PurchasePaket = (props: Props) => {
-  console.log("Purchase", props.feature)
   const isPopular = props.isPopular;
   const router = useNavigate();
   const accountEmail = "";

@@ -28,8 +28,6 @@ const Product = ({ type }: Props) => {
     },
   ];
 
-  console.log("PRODUCT PAGE", slug);
-
   if (!content)
     return (
       <GlobalLayout>

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 import { Payment } from "../../../@types/Payment";
 
-const PaymentMethod: React.FC = ({}) => {
+const PaymentMethod: React.FC = () => {
   const location = useLocation();
   const navigation = useNavigate();
   const title = location.state?.title;
@@ -44,7 +44,7 @@ const PaymentMethod: React.FC = ({}) => {
         ],
         payment: {
           payment: payment,
-          statusPayment: "paid",
+          statusPayment: "Unpaid",
           totalPrice: price.toString(),
         },
       },

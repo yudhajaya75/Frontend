@@ -19,7 +19,9 @@ const Dropdown = ({ menu, parentMenu }: Props) => {
   return (
     <div>
       <div className="flex gap-2 items-center">
-        <span className="hover:text-[#074288]">{parentMenu}</span>
+        <span className="hover:text-[#8DA9C4] text-white md:text-black">
+          {parentMenu}
+        </span>
         {active ? (
           <AiOutlineCaretUp
             onClick={() => {

@@ -33,11 +33,11 @@ function useBanHome() {
       .then(([galleryHome, HomePage]) => {
         setBanner(HomePage.data);
         setSliderHome(galleryHome.data);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       });
   }, []);
 

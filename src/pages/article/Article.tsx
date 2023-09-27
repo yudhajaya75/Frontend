@@ -80,6 +80,7 @@ const ArticlePage = () => {
                       body={article.attributes.body}
                       date={article.attributes.createdAt}
                       title={article.attributes.title}
+                      version="card"
                     />
                   );
                 })

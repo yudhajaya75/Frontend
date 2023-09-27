@@ -9,7 +9,7 @@ import Tesk3 from "../../components/teks/teks-kerjasama";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import useBanAbout from "../../hooks/useBanAbout";
 import Heading from "../../components/global/Heading";
-        
+
 const About = (props: { email: string }) => {
   const { content } = useBanAbout();
 

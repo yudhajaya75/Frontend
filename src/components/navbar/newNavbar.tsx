@@ -29,7 +29,7 @@ const NewNavbar = () => {
     <nav
       className={`w-full ${
         menuOpen &&
-        "fixed  top-0flex flex-col h-screen w-screen bg-[#074188] z-50"
+        "fixed  top-0 flex flex-col h-screen w-screen bg-[#074188] z-50"
       } md:h-auto md:flex px-4 py-4 lg:px-0 justify-between lg:justify-around md:items-center md:py-8 md:bg-white`}
     >
       <div className="flex w-full md:w-auto justify-between items-center">

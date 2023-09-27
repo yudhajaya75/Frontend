@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../../components/button/Button";
 import HistoryCard from "../../components/content/HistoryCard";
 import Content2 from "../../components/content/content3";
@@ -5,9 +6,11 @@ import usePersonalTransactions from "../../hooks/usePersonalTransactions";
 import GlobalLayout from "../../layouts/GlobalLayout";
 
 const Profile = (props: { email: string }) => {
+  const [currentPage, setCurrentPage] = useState(1);
   const userEmail = localStorage.getItem("email");
   const { content, error } = usePersonalTransactions(
-    props.email || userEmail || ""
+    props.email || userEmail || "",
+    currentPage
   );
 
   return (
@@ -27,9 +30,30 @@ const Profile = (props: { email: string }) => {
             <h1>{error}</h1>
           )}
         </div>
-        <div className="flex justify-center mt-10">
-          {content && content.meta.pagination.pageCount === 1 && (
-            <Button>Load More</Button>
+        <div className="flex justify-center mt-10 gap-5">
+          {content && content.meta.pagination.pageCount > 1 && (
+            <>
+              <Button
+                action={() => {
+                  setCurrentPage(
+                    currentPage > 1 ? currentPage - 1 : currentPage
+                  );
+                }}
+              >
+                Previous Page
+              </Button>
+              <Button
+                action={() => {
+                  setCurrentPage(
+                    currentPage < content.meta.pagination.pageCount
+                      ? currentPage + 1
+                      : currentPage
+                  );
+                }}
+              >
+                Next Page
+              </Button>
+            </>
           )}
         </div>
       </GlobalLayout>

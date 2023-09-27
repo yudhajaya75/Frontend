@@ -1,6 +1,7 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Navigate } from "react-router-dom";
 import useSignUp from "../../hooks/lib/useSignUp";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -112,20 +113,14 @@ const Register = () => {
             <p>Create Account</p>
           </button>
         </form>
-        <div
-          id="signInDiv"
-          className="bg-[#E0EFFE] text-[#007DFA]  lg:w-[70%] w-[270px] text-center font-medium p-3 rounded-md flex items-center justify-center gap-2"
-        >
-          <button type="button" className="cursor-pointer bg-blue-200"></button>
-        </div>
         <div className="flex gap-2">
           <p className="">Already Have An Account ?</p>
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="text-[#007DFA] hover:underline underline-offset-1"
           >
             Log in
-          </a>
+          </Link>
         </div>
       </div>
       {/* end form */}

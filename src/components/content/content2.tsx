@@ -45,7 +45,10 @@ const Profile: React.FC = () => {
     <>
       {filterData.map((item, index) => (
         <>
-          <div className="bg-white mx-10 md:mx-20 mt-5 rounded-lg shadow-lg py-5">
+          <div
+            className="bg-white mx-10 md:mx-20 mt-5 rounded-lg shadow-lg py-5"
+            key={item.id}
+          >
             <ul className="flex">
               <li
                 className={`mx-5 text-[24px] p-2 ${

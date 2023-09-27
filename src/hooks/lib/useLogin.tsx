@@ -17,6 +17,13 @@ const useLogin = (props: { setEmail: (email: string) => void }) => {
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
+    if (password.length < 6) {
+      return Swal.fire({
+        icon: "error",
+        title: "Password harus lebih dari 6 karakter",
+      });
+    }
+
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -28,7 +35,7 @@ const useLogin = (props: { setEmail: (email: string) => void }) => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            identifier: email, // Use "identifier" instead of "email"
+            identifier: email,
             password,
           }),
         }
@@ -44,17 +51,14 @@ const useLogin = (props: { setEmail: (email: string) => void }) => {
         setShowAlert(true);
         return;
       } else if (response.status === 200) {
-        // Change to 200 for successful login
         const data = await response.json();
         props.setEmail(data.user.email);
 
-        // Store the JWT token in local storage
         localStorage.setItem("token", data.jwt);
         localStorage.setItem("user", data.user.username);
         localStorage.setItem("email", data.user.email);
         localStorage.setItem("id", data.user.id);
 
-        // Redirect to the home page
         router("/home");
       } else if (response.status === 403) {
         Swal.fire({
@@ -82,7 +86,6 @@ const useLogin = (props: { setEmail: (email: string) => void }) => {
     isSubmitting,
     submit,
   };
-
 };
 
 export default useLogin;

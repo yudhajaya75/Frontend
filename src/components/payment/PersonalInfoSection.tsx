@@ -1,13 +1,13 @@
 import React, { SyntheticEvent, useState } from "react";
-import SelectDay from "./selectDay";
-import SelectMonth from "./selectMonth";
-import SelectYear from "./selectYear";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const PersonalInfoSection: React.FC = () => {
   const [name, setName] = useState(localStorage.getItem("user") || "");
   const [email, setEmail] = useState(localStorage.getItem("email") || "");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -17,6 +17,9 @@ const PersonalInfoSection: React.FC = () => {
         {
           username: name,
           email: email,
+          phoneNumber: phone,
+          gender: gender,
+          dateOfBirth: dateOfBirth,
         },
         {
           headers: {
@@ -37,7 +40,7 @@ const PersonalInfoSection: React.FC = () => {
         // handleNext();
         return res;
       } else {
-        Swal.fire("Oops...", "Terjadi kesalahan", "error");
+        Swal.fire("Oops...", "Terjadi kesalahan ini", "error");
       }
     } catch (error) {
       Swal.fire("Oops...", "Terjadi kesalahan", "error");
@@ -83,6 +86,8 @@ const PersonalInfoSection: React.FC = () => {
                   required
                   type="text"
                   placeholder="+62"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="p-3 text-[14px] 
                 w-full outline-none no-underline rounded-md border border-[#8D8D8D]"
                 />
@@ -97,26 +102,39 @@ const PersonalInfoSection: React.FC = () => {
               </div>
               <div>
                 <select
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
                   name="gender"
                   id="gender"
                   className="p-3 text-[14px] 
                             w-full outline-none no-underline rounded-md border border-[#8D8D8D]"
                 >
-                  <option value="Laki-Laki">Laki-Laki</option>
+                  <option value="" disabled selected>
+                    Jenis Kelamin
+                  </option>
+                  <option value="Laki - Laki">Laki-Laki</option>
                   <option value="Perempuan">Perempuan</option>
                 </select>
               </div>
             </div>
             <div className="">
               <div className="pb-5">
-                <label htmlFor="" className="">
+                <label htmlFor="dateOfBirth" className="">
                   Tanggal Lahir
                 </label>
               </div>
-              <div className="">
-                <SelectDay />
-                <SelectMonth />
-                <SelectYear />
+              <div>
+                <input
+                  type="date"
+                  value={
+                    dateOfBirth ? dateOfBirth.toISOString().split("T")[0] : ""
+                  }
+                  onChange={(e) => setDateOfBirth(new Date(e.target.value))}
+                  name="dateOfBirth"
+                  id="dateOfBirth"
+                  className="p-3 text-[14px] 
+                            w-full outline-none no-underline rounded-md border border-[#8D8D8D]"
+                />
               </div>
             </div>
             <div className="">

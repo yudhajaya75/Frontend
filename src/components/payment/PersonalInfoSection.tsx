@@ -5,7 +5,7 @@ import SelectYear from "./selectYear";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const PersonalInfoSection: React.FC = ({}) => {
+const PersonalInfoSection: React.FC = () => {
   const [name, setName] = useState(localStorage.getItem("user") || "");
   const [email, setEmail] = useState(localStorage.getItem("email") || "");
 

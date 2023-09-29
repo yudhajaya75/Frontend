@@ -1,14 +1,23 @@
 import { MediaType, MetaData } from "./StrapiGlobal";
 
-interface IOrder {
-  id: number;
-  product: {
-    data: {
-      attributes: {
-        title: string;
-      };
+interface IProduct {
+  data: {
+    id: number;
+    attributes: {
+      title: string;
+      body: string;
+      category: string;
+      slug: string;
+      createdAt: Date;
+      updatedAt: Date;
+      publishedAt: Date;
     };
   };
+}
+
+interface IOrder {
+  id: number;
+  product: IProduct;
   amount: string;
 }
 
@@ -37,4 +46,4 @@ interface TransactionResponse extends MetaData {
   data: ITransaction[];
 }
 
-export { TransactionResponse, ITransaction, IOrder };
+export { TransactionResponse, ITransaction, IOrder, IProduct };

@@ -34,11 +34,19 @@ const ModalSection: React.FC<Props> = ({
         <Typography id="modal-modal-title" variant="h6" component="h2">
           <div className="">
             <Typography>ID Transaksi: {detail?.id}</Typography>
-            <Typography className="py-3">
+            <Typography className="py-3 font-bold">
               Product:{" "}
-              {detail?.attributes.orders.map(
-                (item) => item.product.data.attributes.title
-              )}
+              <div className="py-2 font-normal">
+                {detail?.attributes.orders.map(
+                  (item) =>
+                    item.product.data && (
+                      <div className="flex gap-2">
+                        <span>{item.product.data.id}</span>
+                        <span>{item.product.data.attributes.title}</span>
+                      </div>
+                    )
+                )}
+              </div>
             </Typography>
             <Typography>
               Jumlah: {detail?.attributes.payment.totalPrice}

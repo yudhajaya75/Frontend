@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const PackageSection: React.FC = () => {
   const [content, setContent] = useState<any>();
@@ -25,7 +25,7 @@ const PackageSection: React.FC = () => {
         setContent(response.data.data);
         localStorage.setItem("product_id", id);
       });
-  }, []);
+  });
 
   const date = new Date(content?.attributes.eventDate).toLocaleDateString();
   const dateTime = new Date(content?.attributes.eventDate).toLocaleTimeString();

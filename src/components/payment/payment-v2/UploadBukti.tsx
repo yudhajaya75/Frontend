@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { HTTPAruna } from "../../../services/handlerApi";
 import Swal from "sweetalert2";
@@ -41,7 +40,7 @@ const UploadBukti = ({
         formData.append("files", file);
         setError("");
 
-        const response = await HTTPAruna.post(`/api/upload`, formData, {
+        await HTTPAruna.post(`/api/upload`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

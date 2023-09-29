@@ -1,7 +1,7 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../card/card.css";
-import Image from "../global/Image";
+
 import { Link } from "react-router-dom";
 import { server } from "../../config/server";
 

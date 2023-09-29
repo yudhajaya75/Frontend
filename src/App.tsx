@@ -13,7 +13,6 @@ import Payment from "./pages/payment/payment";
 import Profile from "./pages/profile/profile";
 import Contactus from "./pages/contactus/contactus";
 import Paket from "./pages/paket/paket";
-import WebinarDetail from "./pages/webminar/WebinarDetail";
 import Logout from "./pages/profile/Logout";
 import Product from "./pages/detail/Product";
 import ArticlePage from "./pages/article/Article";
@@ -32,10 +31,6 @@ function App() {
         <Route path="/home" element={<Home email={email} />} />
         <Route path="/layanan" element={<Layanan email={email} />} />
         <Route path="/webinar" element={<Webinar email={email} />} />
-        <Route
-          path="/webinardetail/:id"
-          element={<WebinarDetail email={email} />}
-        />
         <Route path="/pelatihan" element={<Pelatihan email={email} />} />
         <Route path="/konsultasi" element={<Konsultasi email={email} />} />
         <Route path="/about" element={<About email={email} />} />

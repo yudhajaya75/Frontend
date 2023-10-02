@@ -4,6 +4,7 @@ import Image from "../global/Image";
 import ModalSection from "./profile/modal";
 import Button from "../button/Button";
 import { formatRupiah } from "../../helper/currencyFormatter";
+// import { HTTPAruna } from "../../services/handlerApi";
 
 type Props = {
   detail: ITransaction;
@@ -14,11 +15,15 @@ const HistoryCard = ({ detail }: Props) => {
 
   return (
     <article className="py-5 border-b grid gap-2">
-      <h3>Transaction ID: {detail.id}</h3>
+      <h3 className="font-bold text-3xl">
+        {detail.attributes.product_variant.data.attributes.title}
+      </h3>
+      <p>Transaction ID: {detail.id}</p>
       {detail.attributes.paymentReceiptImage.data && (
         <div>
           <p className="font-bold">Bukti Pembayaran</p>
           <Image
+            isExternal
             src={detail.attributes.paymentReceiptImage.data.attributes.url}
           />
         </div>
@@ -40,13 +45,22 @@ const HistoryCard = ({ detail }: Props) => {
         {new Date(detail.attributes.createdAt).toDateString()}
       </p>
       <p>Total Pesanan: {formatRupiah(detail.attributes.payment.totalPrice)}</p>
-      <Button
-        action={() => {
-          setOpen(true);
-        }}
-      >
-        Upload Bukti
-      </Button>
+      {detail.attributes.payment.statusPayment === "paid" ? (
+        <p
+          className="py-5 bg-gray-300 rounded-md px-2"
+          dangerouslySetInnerHTML={{
+            __html: detail.attributes.product_variant.data.attributes.access,
+          }}
+        ></p>
+      ) : (
+        <Button
+          action={() => {
+            setOpen(true);
+          }}
+        >
+          Upload Bukti
+        </Button>
+      )}
       <ModalSection
         detail={detail}
         open={open}

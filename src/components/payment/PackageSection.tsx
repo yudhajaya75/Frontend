@@ -1,34 +1,33 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { ProductVariantSingleResponse } from "../../@types/ProductVariant";
+import { HTTPAruna } from "../../services/handlerApi";
 
 const PackageSection: React.FC = () => {
-  const [content, setContent] = useState<any>();
+  const [content, setContent] = useState<ProductVariantSingleResponse>();
   const location = useLocation();
   const id = location.state?.id;
   const title = location.state?.title;
   const price = location.state?.price;
 
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/product-variants/${id}?populate=*`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        setContent(response.data.data);
-        localStorage.setItem("product_id", id);
-      });
-  });
+    const getProductVariant = async () => {
+      const res: ProductVariantSingleResponse = (
+        await HTTPAruna.get(`/api/product-variants/${id}?populate=*`)
+      ).data;
+      setContent(res);
+    };
+    getProductVariant();
+  }, [id]);
 
-  const date = new Date(content?.attributes.eventDate).toLocaleDateString();
-  const dateTime = new Date(content?.attributes.eventDate).toLocaleTimeString();
+  if (!content) return <div>Loading...</div>;
+
+  const date = new Date(
+    content!.data.attributes.eventDate
+  ).toLocaleDateString();
+  const dateTime = new Date(
+    content!.data.attributes.eventDate
+  ).toLocaleTimeString();
 
   return (
     <div className="p-4 border-2 border-[#79ACFF] h-auto rounded-lg mb-20">
@@ -50,7 +49,9 @@ const PackageSection: React.FC = () => {
       <div className="text-[15px]">
         <p
           className="p-4"
-          dangerouslySetInnerHTML={{ __html: content?.attributes?.content }}
+          dangerouslySetInnerHTML={{
+            __html: content!.data.attributes?.content,
+          }}
         ></p>
         <p className="p-4">
           Hari/Tanggal : {date}
@@ -58,7 +59,7 @@ const PackageSection: React.FC = () => {
           Waktu : {dateTime}
         </p>
         <p className="mx-4">Benefit :</p>
-        {content?.attributes.features.map((res: any, index: number) => (
+        {content!.data.attributes.features.map((res: any, index: number) => (
           <div className="text-[#909090]" key={index}>
             <ul className="list-disc my-1 mx-10">
               <li>{res.feature}</li>

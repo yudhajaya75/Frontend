@@ -12,7 +12,7 @@ const usePersonalTransactions = (
 
   useEffect(() => {
     HTTPAruna.get(
-      `api/transactions?sort=createdAt:desc&filters[users][email][$eq]=${userEmail}&pagination[page]=${currentPage}&pagination[pageSize]=${limit}&populate[0]=orders.product&populate[1]=payment.payment&populate[2]=paymentReceiptImage`
+      `api/transactions?sort=createdAt:desc&filters[users][email][$eq]=${userEmail}&pagination[page]=${currentPage}&pagination[pageSize]=${limit}&populate[0]=product_variant.features&populate[1]=payment.payment&populate[2]=paymentReceiptImage`
     )
       .then((res) => {
         const datas: TransactionResponse = res.data;

@@ -9,6 +9,7 @@ type Props = {
   title?: string;
   content?: string;
   price?: number;
+  paket?: boolean;
 };
 
 const PurchasePaket = (props: Props) => {
@@ -27,7 +28,9 @@ const PurchasePaket = (props: Props) => {
     if (accountEmail !== "") {
       router(`/login`);
     } else {
-      router(`/payment`, { state: paymentData });
+      props.paket
+        ? router("/coming-soon", { state: paymentData })
+        : router(`/payment`, { state: paymentData });
     }
   };
 

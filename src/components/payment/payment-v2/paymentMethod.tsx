@@ -10,6 +10,7 @@ const PaymentMethod: React.FC = () => {
   const navigation = useNavigate();
   const title = location.state?.title;
   const price = location.state?.price;
+  const id = location.state?.id;
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [imageURL, setImageURL] = useState<string | null>(null);
   const [contents, setContents] = useState<Payment[]>([]);
@@ -38,7 +39,7 @@ const PaymentMethod: React.FC = () => {
         },
         orders: [
           {
-            product: localStorage.getItem("product_id"),
+            product: id,
             amount: price.toString(),
           },
         ],
@@ -47,7 +48,7 @@ const PaymentMethod: React.FC = () => {
           statusPayment: "Unpaid",
           totalPrice: price.toString(),
         },
-        product_variant: localStorage.getItem("product_id"),
+        product_variant: id,
       },
     };
     try {

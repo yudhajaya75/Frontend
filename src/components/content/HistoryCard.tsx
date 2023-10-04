@@ -16,14 +16,15 @@ const HistoryCard = ({ detail }: Props) => {
   return (
     <article className="py-5 border-b grid gap-2">
       <h3 className="font-bold text-3xl">
-        {detail.attributes.product_variant.data.attributes.title}
+        {detail.attributes &&
+          detail.attributes.product_variant.data.attributes.title}
       </h3>
       <p>Transaction ID: {detail.id}</p>
       {detail.attributes.paymentReceiptImage.data && (
         <div>
           <p className="font-bold">Bukti Pembayaran</p>
           <Image
-            isExternal
+            customClass="w-full h-[280px] object-none "
             src={detail.attributes.paymentReceiptImage.data.attributes.url}
           />
         </div>
@@ -31,7 +32,7 @@ const HistoryCard = ({ detail }: Props) => {
       <p>
         Status Pembayaran:{" "}
         <span
-          className={`p-1 inline-block rounded-xl ${
+          className={`p-1 inline-block mt-5 rounded-xl ${
             detail.attributes.payment.statusPayment === "paid"
               ? "bg-green-500"
               : "bg-yellow-500"

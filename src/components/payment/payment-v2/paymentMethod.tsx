@@ -47,6 +47,7 @@ const PaymentMethod: React.FC = () => {
           statusPayment: "Unpaid",
           totalPrice: price.toString(),
         },
+        product_variant: localStorage.getItem("product_id"),
       },
     };
     try {

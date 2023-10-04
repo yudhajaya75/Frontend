@@ -18,6 +18,7 @@ import Product from "./pages/detail/Product";
 import ArticlePage from "./pages/article/Article";
 import ArticleDetail from "./pages/article/ArticleDetail";
 import Filtered from "./pages/article/Filtered";
+import ComingSoon from "./pages/misc/ComingSoon";
 
 function App() {
   const { email, setEmail, isLoggedIn } = useGetUserData();
@@ -60,6 +61,7 @@ function App() {
         <Route path="/contact" element={<Contactus email={email} />} />
         <Route path="/paket" element={<Paket email={email} />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/coming-soon" element={<ComingSoon />} />
       </Routes>
     </>
   );

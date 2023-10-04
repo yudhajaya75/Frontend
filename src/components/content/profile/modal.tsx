@@ -37,12 +37,12 @@ const ModalSection: React.FC<Props> = ({
             <Typography className="py-3 font-bold">
               Product:{" "}
               <div className="py-2 font-normal">
-                {detail?.attributes.orders.map(
+                {detail?.attributes.product_variant.data.attributes.features.map(
                   (item) =>
-                    item.product.data && (
-                      <div className="flex gap-2">
-                        <span>{item.product.data.id}</span>
-                        <span>{item.product.data.attributes.title}</span>
+                    item.feature && (
+                      <div className="flex gap-2" key={item.id}>
+                        <span>{item.id}</span>
+                        <span>{item.feature}</span>
                       </div>
                     )
                 )}

@@ -1,3 +1,4 @@
+import { Feature, IVariant } from "./ProductVariant";
 import { MediaType, MetaData } from "./StrapiGlobal";
 
 interface IProduct {
@@ -37,6 +38,23 @@ interface ITransaction {
       id: number;
       statusPayment: "paid" | "unpaid";
       totalPrice: number;
+    };
+    product_variant: {
+      data: {
+        id: number;
+        attributes: {
+          title: string;
+          price: number;
+          isPopuler: Boolean;
+          eventDate: Date;
+          content: string;
+          createdAt: Date;
+          updatedAt: Date;
+          publishedAt: Date;
+          access: string;
+          features: Feature[];
+        };
+      };
     };
     paymentReceiptImage: MediaType;
   };

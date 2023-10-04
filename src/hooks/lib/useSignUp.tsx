@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from "react";
-import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const useGetRegisterData = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +14,12 @@ const useGetRegisterData = () => {
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    if (password.length < 6) {
+      return Swal.fire({
+        icon: "error",
+        title: "Password harus lebih dari 6 karakter",
+      });
+    }
 
     await fetch(`${process.env.REACT_APP_API_URL}/auth/local/register`, {
       method: "POST",

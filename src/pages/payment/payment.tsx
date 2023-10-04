@@ -1,32 +1,29 @@
-import Navbar from "../../components/navbar/navbar"
-import Teks from "../../components/teks/tekspayment"
-import Payment from "../../components/payment/payment"
-import Disc from "../../components/disc/disc"
-import Footer from "../../components/footer/footer"
-import { useParams } from "react-router-dom"
-import useCard from "../../hooks/useCard"
+import { useNavigate } from "react-router-dom";
+
+import GlobalLayout from "../../layouts/GlobalLayout";
+import FormPayment from "../../components/payment/payment-v2/formPayment";
+import { getTokenAuth } from "../../helper/helper";
+import Swal from "sweetalert2";
 
 const Payment2 = (props: { email: string }) => {
-    const { content } = useCard()
-    const { slug } = useParams()
-    const payment: any = content?.filter((item: any) => item.slug == slug)[0];
+  const loggedIn = getTokenAuth();
+  const navigation = useNavigate();
 
-    return (
-        <>
-            <div className='mx-auto max-w-[1910px] relative'>
-                <Navbar accountEmail={props.email} />
-                <Teks
-                    title={payment?.attributes.category} />
-                <Payment />
-                <div className="relative top-[120px]">
-                    <Disc />
-                </div>
-                <div className="relative top-[200px]">
-                    <Footer />
-                </div>
-            </div>
-        </>
-    )
-}
+  if (!loggedIn) {
+    Swal.fire({
+      title: "Please login!",
+      icon: "info",
+    });
+    navigation("/login");
+  }
 
-export default Payment2
+  return (
+    <>
+      <GlobalLayout>
+        <FormPayment />
+      </GlobalLayout>
+    </>
+  );
+};
+
+export default Payment2;

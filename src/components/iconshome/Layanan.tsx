@@ -6,6 +6,7 @@ import {
   CgChevronRight,
 } from "react-icons/cg";
 import useCardHyperlink from "../../hooks/useCardHyperlink";
+import Image from "../global/Image";
 
 const Layanan = () => {
   const pages = ["Webinar", "Konsultasi", "Layanan", "Pelatihan"];
@@ -61,10 +62,9 @@ const Layanan = () => {
               >
                 <div className="mx-auto flex-col md:flex-row flex items-center justify-center ">
                   <div className="w-full md:w-[400px] md:h-[250px] xl:w-[600px] xl:h-[350px]">
-                    <img
+                    <Image
                       src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
-                      alt="image"
-                      className="w-full h-full aspect-auto object-cover"
+                      customClass="w-full h-full aspect-auto object-cover"
                     />
                   </div>
                   <div className="mt-8 md:mt-0 mx-10">

@@ -28,7 +28,14 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
     if (index === 0) {
       axios
         .get(
-          `${process.env.REACT_APP_API_URL}/product-variants/${id}?populate=*`
+          `${process.env.REACT_APP_API_URL}/product-variants/${id}?populate=*`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+              "Content-Type": "application/json",
+            },
+          }
         )
         .then((response) => {
           setContent(response.data.data);

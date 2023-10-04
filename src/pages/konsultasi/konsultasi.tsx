@@ -25,15 +25,17 @@ const konsultasi = (props: { email: string }) => {
                     </p>     
                   </div>
             </>
-       }
-       secondElement=''
+      }
+      secondElement
       >
-        <Teks />
-        <Card />
-        <Teks2 />
-        <Sosmed />
-        <Teks3 />
-        <Compslid />
+        <main className='px-5 lg:px-24'>
+          <Teks />
+          <Card type='Konsultasi' prefixLink='konsultasi' />
+          <Teks2 />
+          <Sosmed />
+          <Teks3 />
+          <Compslid />
+        </main>
       </LayoutWithBanner>
     </div>
   );

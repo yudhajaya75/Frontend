@@ -3,8 +3,8 @@ import { GalleryBanner } from "../@types/GalleryBanner";
 import { BannerHome } from "../@types/BannerHome";
 
 function useBanHome() {
-  const [sliderhome, setSliderHome] = useState<GalleryBanner[]>();
-  const [banner, setBanner] = useState<BannerHome>();
+  const [sliderhome, setSliderHome] = useState<GalleryBanner[] | null>(null);
+  const [banner, setBanner] = useState<BannerHome | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,15 +33,13 @@ function useBanHome() {
       .then(([galleryHome, HomePage]) => {
         setBanner(HomePage.data);
         setSliderHome(galleryHome.data);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       });
   }, []);
-
-  console.log(banner)
 
   return {
     sliderhome,

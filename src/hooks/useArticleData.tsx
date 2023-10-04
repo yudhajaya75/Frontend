@@ -16,7 +16,7 @@ function useArticleData() {
       .then((response) => response.json())
       .then((data) => {
         setArticle(data.data);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       });
   }, []);
 

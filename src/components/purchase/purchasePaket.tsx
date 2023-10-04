@@ -1,6 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import Image from "../global/Image";
 
-const PurchasePaket = (props: any) => {
+type Props = {
+  accountEmail?: string;
+  isPopular?: boolean;
+  id?: number;
+  feature?: { id: number; feature: string }[];
+  title?: string;
+  content?: string;
+  price?: number;
+};
+
+const PurchasePaket = (props: Props) => {
   const isPopular = props.isPopular;
   const router = useNavigate();
   const accountEmail = "";
@@ -21,49 +32,46 @@ const PurchasePaket = (props: any) => {
   };
 
   return (
-    <>
-      <div
-        className={`w-[430px] h-[740px] relative bottom-[0px] left-[100px] rounded-md mb-[100px] ${
-          isPopular ? "bg-[#1D3A69]" : "bg-white"
-        }`}
-        style={{ boxShadow: "0px 0px 10px -5px rgba(0, 0, 0, 0.75)" }}
-      >
-        <div
-          className={`text-[16px] p-10 font-bold ${
-            isPopular ? "text-white" : "text-[#103D72]"
-          }`}
+    <div
+      className={`w-full p-3 lg:px-10 lg:py-6 rounded-md text-[16px] font-bold mb-auto ${
+        isPopular ? "bg-[#1D3A69] text-white" : "bg-white text-[#103D72]"
+      }`}
+      style={{ boxShadow: "0px 0px 10px -5px rgba(0, 0, 0, 0.75)" }}
+    >
+      <h3 className="lg:text-[25px] text-base font-bold">
+        {props.title ? props.title : "Insert Your Title"}
+      </h3>
+      <p
+        className="text-[#BFBFBF] pt-1 text-[14px]"
+        dangerouslySetInnerHTML={{
+          __html: props.content ? props.content : "Insert Body Content",
+        }}
+      ></p>
+      <p className="text-[16px] font-bold pt-2">Mulai Dari</p>
+      <p className="text-3xl lg:text-[48px]">Rp.{props.price}</p>
+      <div className="pt-5 font-bold">
+        <button
+          onClick={handlePesanSekarang}
+          className="bg-[#F3440D] rounded-lg text-white w-full py-3 hover:bg-[#ef592b]"
         >
-          <p className="text-[25px] font-bold pt-2">{props.title}</p>
-          <p
-            className="text-[#BFBFBF] pt-1 text-[14px]"
-            dangerouslySetInnerHTML={{ __html: props.content }}
-          ></p>
-          <p className="text-[16px] font-bold pt-2">Mulai Dari</p>
-          <p className="text-[48px]">Rp.{props.price}</p>
-          <div className="pt-5 font-bold">
-            <button
-              onClick={handlePesanSekarang}
-              className="bg-[#F3440D] rounded-lg text-white py-2 px-[110px] hover:bg-[#ef592b]"
-            >
-              Daftar sekarang
-            </button>
-          </div>
-          <p className="text-[20px] pt-7 pb-7">Fitur :</p>
-          {props.features.map((feature: any, index: number) => (
-            <div key={index}>
-              <img
-                src="../images/ceklis.webp"
-                className="relative top-0 left-2 w-[20px]"
-                alt=""
-              />
-              <p className="text-[20px] relative bottom-7 left-10">
-                {feature.feature}
-              </p>
-            </div>
-          ))}
-        </div>
+          Daftar sekarang
+        </button>
       </div>
-    </>
+      <p className="lg:text-[20px] py-7">Fitur :</p>
+      {props.feature &&
+        props.feature.length > 0 &&
+        props.feature.map((feature, index) => (
+          <div key={index} className="flex gap-2 items-center">
+            <Image
+              isExternal
+              src="../images/ceklis.webp"
+              customClass="h-full"
+              alt={feature.feature}
+            />
+            <p>{feature.feature}</p>
+          </div>
+        ))}
+    </div>
   );
 };
 

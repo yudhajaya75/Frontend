@@ -27,17 +27,13 @@ const GlobalBanner = ({
 
   return (
     <div
-      className={`h-[725px] ${bgImage} bg-cover bg-center flex-col-reverse flex md:flex-row justify-center md:items-center`}
+      className={`h-[725px] ${bgImage} bg-cover bg-center flex-col-reverse flex md:flex-row justify-evenly md:items-center gap-10`}
     >
-      <div className="lg:w-2/4 mt-12 lg:mt-0 ml-10 lg:ml-20 xl:ml-[184px] lg:pr-12 xl:pr-14">
-        <div className="h-full lg:flex flex-col gap-8">
-          {firstElement}
-        </div>
+      <div className="lg:w-2/4 lg:mt-0 ml-10 lg:ml-20 xl:ml-[184px] lg:pr-12 xl:pr-14">
+        <div className="h-full lg:flex flex-col gap-8">{firstElement}</div>
       </div>
 
-      <div className="sm:mr-10 md:w-2/4 md:h-auto">
-        {secondElement}
-      </div>
+      <div className="sm:mr-10 md:w-2/4 md:h-auto">{secondElement}</div>
     </div>
   );
 };

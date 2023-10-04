@@ -1,16 +1,17 @@
 import "react-multi-carousel/lib/styles.css";
+
 import Teks from "../../components/teks/teksabout";
-import Teks1 from "../../components/teks/teksabout1";
 import Card from "../../components/card/cardabout";
 import Teks2 from "../../components/teks/teksabout-pendiri";
 import Founding from "../../components/founding/founding";
+import Compslid from "../../components/compslid/compslid";
 import Tesk3 from "../../components/teks/teks-kerjasama";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import useBanAbout from "../../hooks/useBanAbout";
-import Compslid from "../../components/compslid/compslid";
+import Heading from "../../components/global/Heading";
 
 const About = (props: { email: string }) => {
-  const { content, loading } = useBanAbout();
+  const { content } = useBanAbout();
 
   if (!content) return <div>No Data</div>;
   return (
@@ -19,11 +20,11 @@ const About = (props: { email: string }) => {
       accountEmail={props.email}
       firstElement={
         <>
-          <h1 className="text-base md:text-3xl lg:text-5xl sm-440:text-sm sm:text-xl font-bold text-[#002157]">
-            {content.attributes.header}
+          <h1 className="text-5xl font-bold text-[#002157]">
+            {content.attributes.header && content.attributes.header}
           </h1>
-          <p className="font-extralight text-xs sm:text-lg sm-440:text-[10px] md:text-xl lg:text-3xl text-[#5B5B5B]">
-            {content.attributes.desc}
+          <p className="font-extralight text-4xl text-[#5B5B5B]">
+            {content.attributes.desc && content.attributes.desc}
           </p>
         </>
       }
@@ -38,12 +39,8 @@ const About = (props: { email: string }) => {
       }
     >
       <Teks />
-      <Teks1 />
-      <div className="lg:flex lg:justify-center lg:items-center lg:mr-[10px]">
-        <div className="flex flex-col">
-          <Card />
-        </div>
-      </div>
+      <Heading customClass="mb-16">Join Layanan kami yuk! Cek disini</Heading>
+      <Card />
       <Teks2 />
       <div className="flex justify-center items-center mr-[10px]">
         <Founding />

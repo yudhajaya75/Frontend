@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "../components/footer/footer";
 import GlobalBanner from "../components/banner/banner-v2/GlobalBanner";
 import NewNavbar from "../components/navbar/newNavbar";

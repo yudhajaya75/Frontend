@@ -16,8 +16,8 @@ const NewNavbar = () => {
   const location = useLocation();
   const isActive = (path: string) => {
     return location.pathname === path
-      ? "text-[#074288] font-bold"
-      : "text-black";
+      ? "text-[#8DA9C4] md:text-[#074288] font-bold underline"
+      : "text-white md:text-black";
   };
   const { badgeList, menuList } = data;
 
@@ -28,17 +28,20 @@ const NewNavbar = () => {
   return (
     <nav
       className={`w-full ${
-        menuOpen && "fixed flex flex-col h-screen w-screen bg-[#074188b0] z-50"
+        menuOpen &&
+        "fixed  top-0 flex flex-col h-screen w-screen bg-[#074188] z-50"
       } md:h-auto md:flex px-4 py-4 lg:px-0 justify-between lg:justify-around md:items-center md:py-8 md:bg-white`}
     >
-      <Link to="/" className="flex w-full md:w-auto justify-between items-center">
-        <Image
-          alt="Logo Satir"
-          src="images/Logo.webp"
-          isExternal
-          customClass="h-[55px]"
-        />
-        <div className="md:hidden">
+      <div className="flex w-full md:w-auto justify-between items-center">
+        <Link to="/">
+          <Image
+            alt="Logo Satir"
+            src="/images/Logo.webp"
+            isExternal
+            customClass="h-[55px]"
+          />
+        </Link>
+        <div className="md:hidden cursor-pointer">
           {menuOpen ? (
             <AiOutlineClose
               className={menuOpen ? "text-white" : ""}
@@ -57,15 +60,21 @@ const NewNavbar = () => {
             />
           )}
         </div>
-      </Link>
+      </div>
       <ul
-        className={`w-full md:w-auto md:flex gap-1 md:gap-5 lg:gap-10 ${
+        className={`w-full md:w-auto md:flex gap-4 md:gap-5 lg:gap-10 text-2xl md:text-base ${
           menuOpen ? "grid" : "hidden"
         }`}
       >
         {menuList.map((value, index) => {
           if (value.pathName === "Layanan")
-            return <Dropdown menu={value.children!} parentMenu={"Layanan"} />;
+            return (
+              <Dropdown
+                menu={value.children!}
+                parentMenu={"Layanan"}
+                key={index}
+              />
+            );
           return (
             <Link
               key={index}
@@ -77,11 +86,17 @@ const NewNavbar = () => {
           );
         })}
       </ul>
-      <section className={`md:flex w-full md:w-fit ${menuOpen ? "flex" : "hidden"}`}>
+      <section
+        className={`md:flex w-full md:w-fit text-2xl md:text-base ${
+          menuOpen ? "flex" : "hidden"
+        }`}
+      >
         {userName ? (
           <Badge email={userName} menu={badgeList} />
         ) : (
-          <CLink url="/login">Masuk</CLink>
+          <CLink url="/login" customClass="w-full">
+            Masuk
+          </CLink>
         )}
       </section>
     </nav>

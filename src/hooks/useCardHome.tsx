@@ -16,7 +16,7 @@ function useCardHome() {
       .then((response) => response.json())
       .then((data) => {
         setCardHome(data.data);
-        setTimeout(() => setLoading(false), 4000);
+        setTimeout(() => setLoading(false), 500);
       })
       .catch((error) => {
         console.log("Error fetching data:", error);

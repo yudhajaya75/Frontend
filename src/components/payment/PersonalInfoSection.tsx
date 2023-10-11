@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -8,6 +8,29 @@ const PersonalInfoSection: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [gender, setGender] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${localStorage.getItem("id")}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const data = res.data;
+      setPhone(data.phoneNumber);
+      setGender(data.gender);
+      setDateOfBirth(new Date(data.dateOfBirth));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -86,7 +109,7 @@ const PersonalInfoSection: React.FC = () => {
                   required
                   type="text"
                   placeholder="+62"
-                  value={phone}
+                  value={phone ? phone : ""}
                   onChange={(e) => setPhone(e.target.value)}
                   className="p-3 text-[14px] 
                 w-full outline-none no-underline rounded-md border border-[#8D8D8D]"

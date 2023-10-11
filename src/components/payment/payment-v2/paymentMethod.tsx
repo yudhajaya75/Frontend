@@ -32,44 +32,55 @@ const PaymentMethod: React.FC = () => {
   }, []);
 
   const transaction = async () => {
-    const dataToSend = {
-      data: {
-        users: {
-          id: localStorage.getItem("id"),
-        },
-        orders: [
-          {
-            product: id,
-            amount: price.toString(),
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, create the transaction!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const dataToSend = {
+          data: {
+            users: {
+              id: localStorage.getItem("id"),
+            },
+            orders: [
+              {
+                product: id,
+                amount: price.toString(),
+              },
+            ],
+            payment: {
+              payment: payment,
+              statusPayment: "Unpaid",
+              totalPrice: price.toString(),
+            },
+            product_variant: id,
           },
-        ],
-        payment: {
-          payment: payment,
-          statusPayment: "Unpaid",
-          totalPrice: price.toString(),
-        },
-        product_variant: id,
-      },
-    };
-    try {
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/transactions?populate=*`,
-        dataToSend,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_ADMIN_TOKEN}`,
-          },
+        };
+        try {
+          await axios.post(
+            `${process.env.REACT_APP_API_URL}/transactions?populate=*`,
+            dataToSend,
+            {
+              headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_ADMIN_TOKEN}`,
+              },
+            }
+          );
+          Swal.fire(
+            "Good job!",
+            "Transaksi berhasil diproses, lanjutkan di riwayat profile, untuk upload bukti pembayaran",
+            "success"
+          );
+          navigation("/profile");
+        } catch (error) {
+          Swal.fire("Oops...", "Terjadi kesalahan", "error");
         }
-      );
-      Swal.fire(
-        "Good job!",
-        "Transaksi berhasil diproses, lanjutkan di riwayat profile, untuk upload bukti pembayaran",
-        "success"
-      );
-      navigation("/profile");
-    } catch (error) {
-      Swal.fire("Oops...", "Terjadi kesalahan", "error");
-    }
+      }
+    });
   };
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

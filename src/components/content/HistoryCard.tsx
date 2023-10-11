@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ITransaction } from "../../@types/Transaction";
 import Image from "../global/Image";
 import ModalSection from "./profile/modal";
 import Button from "../button/Button";
 import { formatRupiah } from "../../helper/currencyFormatter";
-// import { HTTPAruna } from "../../services/handlerApi";
 
 type Props = {
   detail: ITransaction;
@@ -46,6 +45,17 @@ const HistoryCard = ({ detail }: Props) => {
         {new Date(detail.attributes.createdAt).toDateString()}
       </p>
       <p>Total Pesanan: {formatRupiah(detail.attributes.payment.totalPrice)}</p>
+
+      {detail.attributes.payment.statusPayment !== "paid" && (
+        <>
+          <hr></hr>
+          <p>Catatan : </p>
+          <p>
+            Pembelian masih dalam proses, Jika sudah kirim bukti dan Status
+            Unpaid, mohon tunggu atau hubungi CS
+          </p>
+        </>
+      )}
       {detail.attributes.payment.statusPayment === "paid" ? (
         <p
           className="py-5 bg-gray-300 rounded-md px-2"

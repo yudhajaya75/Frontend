@@ -24,7 +24,7 @@ const Product = ({ type }: Props) => {
     { pageName: type, link: "/" },
     {
       pageName: content ? content.attributes.title : "Home",
-      link: "/konseling/" + slug,
+      link: "/layanan/" + slug,
     },
   ];
 

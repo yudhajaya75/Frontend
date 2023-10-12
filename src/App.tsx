@@ -52,7 +52,7 @@ function App() {
         <Route path="/article/newest" element={<Filtered type="Newest" />} />
         <Route path="/article/:slug" element={<ArticleDetail />} />
         <Route path="/pelatihan/:slug" element={<Product type="Pelatihan" />} />
-        <Route path="/konseling/:slug" element={<Product type="Konseling" />} />
+        <Route path="/layanan/:slug" element={<Product type="Konseling" />} />
         <Route
           path="/konsultasi/:slug"
           element={<Product type="Konsultasi" />}

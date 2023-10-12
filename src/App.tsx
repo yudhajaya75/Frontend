@@ -41,12 +41,7 @@ function App() {
             isLoggedIn ? <Payment email={email} /> : <Navigate to="/login" />
           }
         />
-        <Route
-          path="/profile"
-          element={
-            isLoggedIn ? <Profile email={email} /> : <Navigate to="/home" />
-          }
-        />
+        <Route path="/profile" element={<Profile email={email} />} />
         <Route path="/article" element={<ArticlePage />} />
         <Route path="/article/popular" element={<Filtered type="Popular" />} />
         <Route path="/article/newest" element={<Filtered type="Newest" />} />

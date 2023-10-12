@@ -37,17 +37,19 @@ const Mobile = () => {
       <Slider {...settings}>
         {!personalcard ? (
           <div>No Data</div>
-        ) : personalcard.map((res, index: number) => (
-          <SocialMediaProfile
-            key={index}
-            name={res.attributes.name}
-            subtitle={res.attributes.title}
-            bio={res.attributes.body}
-            image={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
-            link1={res.attributes.medsos_1}
-            link2={res.attributes.medsos_2}
-          />
-        ))}
+        ) : (
+          personalcard.map((res, index: number) => (
+            <SocialMediaProfile
+              key={index}
+              name={res.attributes.name}
+              subtitle={res.attributes.title}
+              bio={res.attributes.body}
+              image={`${res.attributes.image.data.attributes.url}`}
+              link1={res.attributes.medsos_1}
+              link2={res.attributes.medsos_2}
+            />
+          ))
+        )}
       </Slider>
     </div>
   );

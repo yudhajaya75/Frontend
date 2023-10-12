@@ -63,7 +63,7 @@ const Layanan = () => {
                 <div className="mx-auto flex-col md:flex-row flex items-center justify-center ">
                   <div className="w-full md:w-[400px] md:h-[250px] xl:w-[600px] xl:h-[350px]">
                     <Image
-                      src={`${process.env.REACT_APP_UPLOAD_URL}${res.attributes.image.data.attributes.url}`}
+                      src={`${res.attributes.image.data.attributes.url}`}
                       customClass="w-full h-full aspect-auto object-cover"
                     />
                   </div>

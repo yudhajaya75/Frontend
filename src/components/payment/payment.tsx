@@ -1,10 +1,6 @@
 import { useState } from "react";
 
 import pages from "./pages";
-import PaymentMethodSection from "./PaymentMethodSection";
-import PersonalInfoSection from "./PersonalInfoSection";
-import Packagesection from "./PackageSection";
-import PaymentMethod from "./payment-v2/paymentMethod";
 
 function Payment(props: any) {
   const [activePage, setActivePage] = useState(0);

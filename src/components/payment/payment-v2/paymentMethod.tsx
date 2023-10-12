@@ -32,6 +32,9 @@ const PaymentMethod: React.FC = () => {
   }, []);
 
   const transaction = async () => {
+    if (selectedOption === "") {
+      return Swal.fire("Oops...", "Pilih metode pembayaran", "error");
+    }
     Swal.fire({
       title: "Are you sure?",
       icon: "question",
@@ -94,9 +97,6 @@ const PaymentMethod: React.FC = () => {
 
     setPayment(selectedContent?.id);
 
-    console.log("select content", selectedContent);
-    console.log("content id", selectedContent?.id);
-
     if (selectedContent) {
       setImageURL(selectedContent.attributes.qrisScan.data.attributes.url);
       setProviderAcc(selectedContent.attributes.providerAccount);
@@ -153,10 +153,10 @@ const PaymentMethod: React.FC = () => {
               Paket {title ? title : "bukan id nya"}
             </p>
             <br />
-            <p className="text-[16px] text-[#002157]">
+            <div className="text-[16px] text-[#002157]">
               SubTotal{" "}
               <p className="">Rp.{price ? price : "Harga tidak tersedia"}</p>
-            </p>
+            </div>
             <div className="border-b-2 border-slate-950"></div>
             <div className="my-2 text-[#002157]">
               <div className="text-[16px] font-bold">

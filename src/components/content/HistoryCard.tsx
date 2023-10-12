@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ITransaction } from "../../@types/Transaction";
 import Image from "../global/Image";
 import ModalSection from "./profile/modal";
@@ -11,6 +11,22 @@ type Props = {
 
 const HistoryCard = ({ detail }: Props) => {
   const [open, setOpen] = useState(false);
+
+  const Catatan = () => {
+    if (
+      detail.attributes.paymentReceiptImage?.data !== null &&
+      detail.attributes.payment.statusPayment !== "paid"
+    ) {
+      return (
+        <div>
+          <hr></hr>
+          <p>Catatan : </p>
+          <p>Pembelian masih dalam proses, mohon tunggu atau hubungi CS</p>
+        </div>
+      );
+    }
+    return <></>;
+  };
 
   return (
     <article className="py-5 border-b grid gap-2">
@@ -45,17 +61,7 @@ const HistoryCard = ({ detail }: Props) => {
         {new Date(detail.attributes.createdAt).toDateString()}
       </p>
       <p>Total Pesanan: {formatRupiah(detail.attributes.payment.totalPrice)}</p>
-
-      {detail.attributes.payment.statusPayment !== "paid" && (
-        <>
-          <hr></hr>
-          <p>Catatan : </p>
-          <p>
-            Pembelian masih dalam proses, Jika sudah kirim bukti dan Status
-            Unpaid, mohon tunggu atau hubungi CS
-          </p>
-        </>
-      )}
+      {<Catatan />}
       {detail.attributes.payment.statusPayment === "paid" ? (
         <p
           className="py-5 bg-gray-300 rounded-md px-2"

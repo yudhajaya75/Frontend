@@ -35,7 +35,7 @@ const layanan = (props: { email: string }) => {
           iure asperiores quaerat rerum earum assumenda deleniti delectus nam
           excepturi.
         </p>
-        <Card type="Layanan" prefixLink="layanan" />
+        <Card type="Konseling" prefixLink="konseling" />
         <Teks2 />
         <Sosmed />
         <Heading customClass="py-10">Kerjasama Kami</Heading>

@@ -10,7 +10,7 @@ import CLink from "../../components/button/CLink";
 import { BsWhatsapp } from "react-icons/bs";
 
 type Props = {
-  type: "Pelatihan" | "Layanan" | "Konsultasi" | "Webinar";
+  type: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar";
 };
 
 const Product = ({ type }: Props) => {
@@ -24,7 +24,7 @@ const Product = ({ type }: Props) => {
     { pageName: type, link: "/" },
     {
       pageName: content ? content.attributes.title : "Home",
-      link: "/layanan/" + slug,
+      link: "/konseling/" + slug,
     },
   ];
 

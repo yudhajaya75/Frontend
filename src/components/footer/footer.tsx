@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="sb__footer-links">
           <div className="sb__footer-links_div">
             <h4 style={{ fontWeight: "bold", fontSize: "15px" }}>
-              Hall of Collaborator
+              Powered By
             </h4>
             <a href="https://salt.id/academy">
               <div className="logo">
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           <div className="sb__footer-links_div">
             <h4 style={{ fontWeight: "bold", fontSize: "13px" }}>
-              Social media bawahnya
+              Our Social Media
             </h4>
             <div className="socialmedia">
               <a href="https://www.facebook.com/konselingsatir.id/">
@@ -77,7 +77,7 @@ const Footer = () => {
 
         <div className="sb__footer-below">
           <div className="sb__footer-copyright">
-            <p>Copyright © 2021 Konseling Satir Indonesia</p>
+            <p>Copyright © 2023 Konseling Satir Indonesia</p>
           </div>
         </div>
       </div>

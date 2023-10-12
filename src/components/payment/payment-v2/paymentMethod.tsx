@@ -159,10 +159,12 @@ const PaymentMethod: React.FC = () => {
             </p>
             <div className="border-b-2 border-slate-950"></div>
             <div className="my-2 text-[#002157]">
-              <p className="text-[16px] font-bold">
+              <div className="text-[16px] font-bold">
                 Total{" "}
-                <p className="">Rp.{price ? price : "Harga tidak tersedia"}</p>
-              </p>
+                <span className="">
+                  Rp.{price ? price : "Harga tidak tersedia"}
+                </span>
+              </div>
               <br />
             </div>
           </div>

@@ -17,7 +17,7 @@ const About = (props: { email: string }) => {
   if (!content) return <div>No Data</div>;
   return (
     <LayoutWithBanner
-      bgImage={"bg-About"}
+      bgImage={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`}
       accountEmail={props.email}
       firstElement={
         <>

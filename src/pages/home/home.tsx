@@ -20,7 +20,7 @@ const Home = (props: { email: string }) => {
 
   return (
     <LayoutWithBanner
-      bgImage={"bg-heroPattern"}
+      bgImage={`${banner?.attributes.image.data.attributes.url}`}
       accountEmail={props.email}
       firstElement={
         <div className="flex flex-col gap-5">

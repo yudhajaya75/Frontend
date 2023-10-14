@@ -12,6 +12,7 @@ import Heading from "../../components/global/Heading";
 
 const About = (props: { email: string }) => {
   const { content } = useBanAbout();
+  
 
   if (!content) return <div>No Data</div>;
   return (
@@ -38,7 +39,9 @@ const About = (props: { email: string }) => {
         </div>
       }
     >
-      <Teks />
+      <Teks 
+      title={content.attributes.title && content.attributes.title }
+      body={content.attributes.body && content.attributes.body }/>
       <Heading customClass="mb-16">Join Layanan kami yuk! Cek disini</Heading>
       <Card />
       <Teks2 />

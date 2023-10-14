@@ -10,6 +10,7 @@ const PaymentMethod: React.FC = () => {
   const navigation = useNavigate();
   const title = location.state?.title;
   const price = location.state?.price;
+  const id = location.state?.id;
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [imageURL, setImageURL] = useState<string | null>(null);
   const [contents, setContents] = useState<Payment[]>([]);
@@ -31,44 +32,58 @@ const PaymentMethod: React.FC = () => {
   }, []);
 
   const transaction = async () => {
-    const dataToSend = {
-      data: {
-        users: {
-          id: localStorage.getItem("id"),
-        },
-        orders: [
-          {
-            product: localStorage.getItem("product_id"),
-            amount: price.toString(),
-          },
-        ],
-        payment: {
-          payment: payment,
-          statusPayment: "Unpaid",
-          totalPrice: price.toString(),
-        },
-        product_variant: localStorage.getItem("product_id"),
-      },
-    };
-    try {
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/transactions?populate=*`,
-        dataToSend,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_ADMIN_TOKEN}`,
-          },
-        }
-      );
-      Swal.fire(
-        "Good job!",
-        "Transaksi berhasil diproses, lanjutkan di riwayat profile, untuk upload bukti pembayaran",
-        "success"
-      );
-      navigation("/profile");
-    } catch (error) {
-      Swal.fire("Oops...", "Terjadi kesalahan", "error");
+    if (selectedOption === "") {
+      return Swal.fire("Oops...", "Pilih metode pembayaran", "error");
     }
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, create the transaction!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const dataToSend = {
+          data: {
+            users: {
+              id: localStorage.getItem("id"),
+            },
+            orders: [
+              {
+                product: id,
+                amount: price.toString(),
+              },
+            ],
+            payment: {
+              payment: payment,
+              statusPayment: "Unpaid",
+              totalPrice: price.toString(),
+            },
+            product_variant: id,
+          },
+        };
+        try {
+          await axios.post(
+            `${process.env.REACT_APP_API_URL}/transactions?populate=*`,
+            dataToSend,
+            {
+              headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_ADMIN_TOKEN}`,
+              },
+            }
+          );
+          Swal.fire(
+            "Good job!",
+            "Transaksi berhasil diproses, lanjutkan di riwayat profile, untuk upload bukti pembayaran",
+            "success"
+          );
+          navigation("/profile");
+        } catch (error) {
+          Swal.fire("Oops...", "Terjadi kesalahan", "error");
+        }
+      }
+    });
   };
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -81,9 +96,6 @@ const PaymentMethod: React.FC = () => {
     );
 
     setPayment(selectedContent?.id);
-
-    console.log("select content", selectedContent);
-    console.log("content id", selectedContent?.id);
 
     if (selectedContent) {
       setImageURL(selectedContent.attributes.qrisScan.data.attributes.url);
@@ -141,16 +153,18 @@ const PaymentMethod: React.FC = () => {
               Paket {title ? title : "bukan id nya"}
             </p>
             <br />
-            <p className="text-[16px] text-[#002157]">
+            <div className="text-[16px] text-[#002157]">
               SubTotal{" "}
               <p className="">Rp.{price ? price : "Harga tidak tersedia"}</p>
-            </p>
+            </div>
             <div className="border-b-2 border-slate-950"></div>
             <div className="my-2 text-[#002157]">
-              <p className="text-[16px] font-bold">
+              <div className="text-[16px] font-bold">
                 Total{" "}
-                <p className="">Rp.{price ? price : "Harga tidak tersedia"}</p>
-              </p>
+                <span className="">
+                  Rp.{price ? price : "Harga tidak tersedia"}
+                </span>
+              </div>
               <br />
             </div>
           </div>

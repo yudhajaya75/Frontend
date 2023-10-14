@@ -2,11 +2,12 @@ import Purchase from "../../components/purchase/purchasePaket";
 import usePaket from "../../hooks/usePaket";
 import GlobalLayout from "../../layouts/GlobalLayout";
 import Heading from "../../components/global/Heading";
-import usePackage from "../../hooks/usePackage";
+import useCardPelatihan from "../../hooks/useCardPelatihan";
 
 const Paket = (props: { email: string }) => {
   const { paket } = usePaket();
-  const { contents } = usePackage();
+
+  const { content } = useCardPelatihan("Paket", 1, 25);
 
   if (!paket) return <div>No Data</div>;
 
@@ -17,18 +18,21 @@ const Paket = (props: { email: string }) => {
         Temukan layanan Satu Persen yang sesuai untuk kamu.
       </p>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 px-5 lg:px-14">
-        {contents &&
-          contents.data.map((res, index) => (
+        {content &&
+          content?.data.map((res, index) => (
             <Purchase
               accountEmail={props.email}
               key={index}
               title={res.attributes.title}
-              content={res.attributes.shortDescription}
-              price={res.attributes.price}
-              feature={res.attributes.features}
-              isPopular={res.attributes.isPopular}
-              id={res.id}
-              paket
+              content={res.attributes.body}
+              price={res.attributes.product_variants.data[0].attributes.price}
+              feature={
+                res.attributes.product_variants.data[0].attributes.features
+              }
+              isPopular={
+                res.attributes.product_variants.data[0].attributes.isPopuler
+              }
+              id={res.attributes.product_variants.data[0].id}
             />
           ))}
       </div>

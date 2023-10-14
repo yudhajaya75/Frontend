@@ -47,6 +47,7 @@ const UploadBukti = ({
         });
         setFile(null);
         Swal.fire("Good job!", "File berhasil diunggah.", "success");
+        window.location.reload();
         complete();
       }
     } catch (error) {

@@ -104,12 +104,7 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({
                 </p>
               </p>
               <br />
-              {/* <p className="text-[16px]">
-                Gunakan kode promo untuk dapatkan potongan harga{" "}
-              </p> */}
             </div>
-            {/* <input type="text" placeholder='Kode Promo'
-                            className='w-[420px] p-3 no-underline border border-[#8D8D8D]' /> */}
           </div>
         </div>
       </div>

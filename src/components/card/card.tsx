@@ -4,7 +4,7 @@ import useCardPelatihan from "../../hooks/useCardPelatihan";
 import ButtonPagination from "../button/ButtonPagination";
 
 type Props = {
-  type?: "Pelatihan" | "Layanan" | "Konsultasi" | "Webinar";
+  type?: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar";
   prefixLink?: string;
 };
 

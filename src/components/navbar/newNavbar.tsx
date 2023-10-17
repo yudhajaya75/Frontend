@@ -27,10 +27,9 @@ const NewNavbar = () => {
 
   return (
     <nav
-      className={`w-full ${
-        menuOpen &&
+      className={`w-full ${menuOpen &&
         "fixed  top-0 flex flex-col h-screen w-screen bg-[#074188] z-50"
-      } md:h-auto md:flex px-4 py-4 lg:px-0 justify-between lg:justify-around md:items-center md:py-8 md:bg-white`}
+        } md:h-auto md:flex px-4 py-4 lg:px-0 justify-between lg:justify-around md:items-center md:py-8 md:bg-white`}
     >
       <div className="flex w-full md:w-auto justify-between items-center">
         <Link to="/">
@@ -62,9 +61,8 @@ const NewNavbar = () => {
         </div>
       </div>
       <ul
-        className={`w-full md:w-auto md:flex gap-4 md:gap-5 lg:gap-10 text-2xl md:text-base ${
-          menuOpen ? "grid" : "hidden"
-        }`}
+        className={`w-full md:w-auto md:flex gap-4 md:gap-5 lg:gap-10 text-2xl md:text-base ${menuOpen ? "grid" : "hidden"
+          }`}
       >
         {menuList.map((value, index) => {
           if (value.pathName === "Layanan")
@@ -87,9 +85,8 @@ const NewNavbar = () => {
         })}
       </ul>
       <section
-        className={`md:flex w-full md:w-fit text-2xl md:text-base ${
-          menuOpen ? "flex" : "hidden"
-        }`}
+        className={`md:flex w-full md:w-fit text-2xl md:text-base ${menuOpen ? "flex" : "hidden"
+          }`}
       >
         {userName ? (
           <Badge email={userName} menu={badgeList} />

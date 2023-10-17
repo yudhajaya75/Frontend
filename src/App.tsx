@@ -4,7 +4,7 @@ import useGetUserData from "./hooks/useGetUserData";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Daftar from "./pages/signup/signup";
-import Layanan from "./pages/layanan/layanan";
+import Konseling from "./pages/konseling/konseling";
 import Webinar from "./pages/webminar/webinar";
 import Pelatihan from "./pages/pelatihan/pelatihan";
 import Konsultasi from "./pages/konsultasi/konsultasi";
@@ -30,7 +30,7 @@ function App() {
         <Route path="/login" Component={() => <Login setEmail={setEmail} />} />
         <Route path="/signup" element={<Daftar />} />
         <Route path="/home" element={<Home email={email} />} />
-        <Route path="/layanan" element={<Layanan email={email} />} />
+        <Route path="/konseling" element={<Konseling email={email} />} />
         <Route path="/webinar" element={<Webinar email={email} />} />
         <Route path="/pelatihan" element={<Pelatihan email={email} />} />
         <Route path="/konsultasi" element={<Konsultasi email={email} />} />
@@ -47,7 +47,7 @@ function App() {
         <Route path="/article/newest" element={<Filtered type="Newest" />} />
         <Route path="/article/:slug" element={<ArticleDetail />} />
         <Route path="/pelatihan/:slug" element={<Product type="Pelatihan" />} />
-        <Route path="/layanan/:slug" element={<Product type="Layanan" />} />
+        <Route path="/konseling/:slug" element={<Product type="Konseling" />} />
         <Route
           path="/konsultasi/:slug"
           element={<Product type="Konsultasi" />}

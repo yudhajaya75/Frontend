@@ -9,7 +9,7 @@ import useCardHyperlink from "../../hooks/useCardHyperlink";
 import Image from "../global/Image";
 
 const Layanan = () => {
-  const pages = ["Webinar", "Konsultasi", "Layanan", "Pelatihan"];
+  const pages = ["Webinar", "Pelatihan", "Layanan", "Konsultasi"];
   const { hyperlink, loading } = useCardHyperlink();
   const [activePage, setActivePage] = useState(0);
 
@@ -38,11 +38,10 @@ const Layanan = () => {
                   <li
                     key={index}
                     id={page}
-                    className={`ml-5 lg:text-[24px] sm-440:text-[10px] sm:text-[18px] sm-440:font-bold p-5 ${
-                      activePage === index
+                    className={`ml-5 lg:text-[24px] sm-440:text-[10px] sm:text-[18px] sm-440:font-bold p-5 ${activePage === index
                         ? "text-[#ffffff] bg-[#002157]"
                         : "text-[#002157]"
-                    } rounded-md cursor-pointer duration-500`}
+                      } rounded-md cursor-pointer duration-500`}
                     onClick={() => setActivePage(index)}
                   >
                     <a id="hyperlink" href={`#${page}`}>

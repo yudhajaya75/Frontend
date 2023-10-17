@@ -4,7 +4,7 @@ import { HTTPAruna } from "../services/handlerApi";
 import { PelatihanResponse } from "../@types/Pelatihan";
 
 function useCardPelatihan(
-  category?: "Pelatihan" | "Layanan" | "Konsultasi" | "Webinar" | "Paket",
+  category?: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar" | "Paket",
   page?: number,
   limit?: number
 ) {

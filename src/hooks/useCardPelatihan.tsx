@@ -4,7 +4,7 @@ import { HTTPAruna } from "../services/handlerApi";
 import { PelatihanResponse } from "../@types/Pelatihan";
 
 function useCardPelatihan(
-  category?: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar",
+  category?: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar" | "Paket",
   page?: number,
   limit?: number
 ) {
@@ -21,7 +21,8 @@ function useCardPelatihan(
 
   useEffect(() => {
     HTTPAruna.get(
-      `/api/products?populate[0]=image&populate[1]=product_variants&populate[2]=webinar&filters[category][$eq]=${category ? category : "Pelatihan"
+      `/api/products?populate[0]=image&populate[1]=product_variants.features&populate[2]=webinar&filters[category][$eq]=${
+        category ? category : "Pelatihan"
       }&pagination[page]=${currentPage}&pagination[pageSize]=${limit}`
     ).then((response) => {
       const data: PelatihanResponse = response.data;

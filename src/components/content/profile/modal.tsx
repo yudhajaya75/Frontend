@@ -38,10 +38,10 @@ const ModalSection: React.FC<Props> = ({
               Product:{" "}
               <div className="py-2 font-normal">
                 {detail?.attributes.product_variant.data.attributes.features.map(
-                  (item) =>
+                  (item, index) =>
                     item.feature && (
                       <div className="flex gap-2" key={item.id}>
-                        <span>{item.id}</span>
+                        <span>{index + 1}</span>
                         <span>{item.feature}</span>
                       </div>
                     )

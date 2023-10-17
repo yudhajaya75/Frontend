@@ -1,27 +1,30 @@
 import 'react-multi-carousel/lib/styles.css';
-import Teks from '../../components/teks/teks';
+import Teks from '../../components/teks/teksabout';
 import Teks2 from '../../components/teks/teks-kata-mereka';
 import Sosmed from '../../components/sosmed/Desktop';
 import Teks3 from '../../components/teks/teks-kerjasama';
 import Card from '../../components/card/card';
 import LayoutWithBanner from '../../layouts/LayoutWithBanner';
 import Compslid from '../../components/compslid/compslid';
+import useBanKonsulData from '../../hooks/useBanKonsulData';
+import { logDOM } from '@testing-library/react';
 
 
-const konsultasi = (props: { email: string }) => {
+const Konsultasi = (props: { email: string }) => {
+  const { content } = useBanKonsulData();
   return (
     <div className='mx-auto max-w-[1910px] relative'>
       <LayoutWithBanner
-        bgImage={"bg-Konsultasi"}
+        bgImage={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`}
         accountEmail={props.email}
         firstElement={
             <>
                 <div className=' text-center -ml-10 md:text-left md:ml-0 p-5 grid gap-6 text-[#FFFFFF]'>
                     <h1 className="text-5xl mb-5 sm:mb-0 md:text-6xl font-bold ">
-                    Konsultasi
+                    {content?.attributes.header && content?.attributes.header}
                     </h1>
                     <p className="font-extralight text-3xl sm:text-lg md:text-xl lg:text-4xl">
-                    apa itu Layanan Konseling individu pasangan & keluarga dan untuk siapa. title bebas
+                    {content?.attributes.desc && content?.attributes.desc} 
                     </p>     
                   </div>
             </>
@@ -29,7 +32,10 @@ const konsultasi = (props: { email: string }) => {
       secondElement
       >
         <main className='px-5 lg:px-24'>
-          <Teks />
+          <Teks
+            title={content?.attributes.title && content?.attributes.title}
+            body={content?.attributes.body && content?.attributes.body}
+          />
           <Card type='Konsultasi' prefixLink='konsultasi' />
           <Teks2 />
           <Sosmed />
@@ -41,4 +47,4 @@ const konsultasi = (props: { email: string }) => {
   );
 }
 
-export default konsultasi;
+export default Konsultasi;

@@ -5,7 +5,13 @@ function useBanPelaData() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/pelatihan?populate=*`)
+    fetch(`${process.env.REACT_APP_API_URL}/pelatihan?populate=*`, {
+      method: "GET",
+      headers: {
+        Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setContent(data.data);

@@ -1,8 +1,11 @@
 import "../footer/footer.css";
 import useFooter from "../../hooks/useFooter";
+import SocialList from "../contact/SocialList";
+import useContactUs from "../../hooks/useContactUs";
 
 const Footer = () => {
-  const { adreess, contactUs } = useFooter();
+  const { adreess } = useFooter();
+  const { content } = useContactUs()
 
   return (
     <div className="footer" style={{ marginTop: 300 }}>
@@ -25,28 +28,30 @@ const Footer = () => {
               <h4 style={{ fontWeight: "bold", fontSize: "15px" }}>
                 Contact Us
               </h4>
-              {contactUs && (
-                <>
-                  <p>
-                    {contactUs.attributes.pobox}{" "}
-                    <span className="font-bold">
-                      {contactUs.attributes.poboxNumber}{" "}
-                    </span>{" "}
-                  </p>
-                  <p>
-                    {contactUs.attributes.city}{" "}
-                    <span className="font-bold">
-                      {contactUs.attributes.cityNumber}
-                    </span>
-                  </p>
-                  <p>
-                    Phone{" "}
-                    <span className="font-bold">
-                      {contactUs.attributes.phoneNumber}
-                    </span>{" "}
-                  </p>
-                </>
-              )}
+              {content && (
+            <ul className="grid gap-1">
+              <a href={content.data.attributes.phone}>
+                <SocialList
+                content={
+                  "Whatsapp"
+                }
+                imageSource="./images/telp.png"
+                />
+              </a>
+              <a href={content.data.attributes.email}>
+                <SocialList
+                  content='Our Email'
+                  imageSource="./images/email.png"
+                />
+              </a>
+              <a href={content.data.attributes.adress}>
+                <SocialList
+                  content='Our Addresss'
+                  imageSource="./images/lokasi.png"
+                />
+              </a>
+            </ul>
+          )}
             </div>
           </div>
           <div className="sb__footer-links_div">
@@ -64,13 +69,13 @@ const Footer = () => {
             <h4 style={{ fontWeight: "bold", fontSize: "13px" }}>
               Our Social Media
             </h4>
-            <div className="socialmedia">
+            <div className="  flex gap-7 justify-center items-center">
               <a href="https://www.facebook.com/konselingsatir.id/">
                 <img src="/images/fb.webp" alt="" />
               </a>
-              <p>
+              <a href="https://www.instagram.com/konselingsatir.id/">
                 <img src="./images/ig.webp" alt="" />
-              </p>
+              </a>
             </div>
           </div>
         </div>

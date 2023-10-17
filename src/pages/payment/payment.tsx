@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
 import GlobalLayout from "../../layouts/GlobalLayout";
-import FormPayment from "../../components/payment/payment-v2/formPayment";
 import { getTokenAuth } from "../../helper/helper";
 import Swal from "sweetalert2";
+import FormPayment from "../../components/payment/payment-v2/formPayment";
 
 const Payment2 = (props: { email: string }) => {
   const loggedIn = getTokenAuth();
@@ -15,6 +15,7 @@ const Payment2 = (props: { email: string }) => {
       icon: "info",
     });
     navigation("/login");
+    window.location.reload()
   }
 
   return (

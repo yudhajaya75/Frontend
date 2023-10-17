@@ -6,7 +6,7 @@ function useArticleData() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/articel-cards?populate=*`, {
+    fetch(`${process.env.REACT_APP_API_URL}/articel-cards?populate=*&sort[0]=createdAt:desc`, {
       method: "GET",
       headers: {
         Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,

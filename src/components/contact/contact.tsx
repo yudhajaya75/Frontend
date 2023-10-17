@@ -21,26 +21,30 @@ function Contact() {
           </div>
           {content && (
             <ul className="grid gap-5">
-              <SocialList
+             <a href={content.data.attributes.phone}>
+                <SocialList
                 content={
-                  "Telephone (Whatsapp) " + content.data.attributes.phone
+                  "Whatsapp"
                 }
                 imageSource="./images/telp.png"
-              />
-              <SocialList
-                content={content.data.attributes.email}
-                imageSource="./images/email.png"
-              />
-              <SocialList
-                content={content.data.attributes.adress}
-                imageSource="./images/lokasi.png"
-              />
+                />
+              </a>
+              <a href={content.data.attributes.email}>
+                <SocialList
+                  content='Our Email'
+                  imageSource="./images/email.png"
+                />
+              </a>
+              <a href={content.data.attributes.adress}>
+                <SocialList
+                  content='Our Addresss'
+                  imageSource="./images/lokasi.png"
+                />
+              </a>
             </ul>
           )}
           <ul className="flex gap-5 items-end">
-            <SocialBubble link="#" imageSource="./images/twiter.png" />
-            <SocialBubble link="#" imageSource="./images/instagram.png" />
-            <SocialBubble link="#" imageSource="./images/discord.png" />
+            <SocialBubble link="https://www.instagram.com/konselingsatir.id/" imageSource="./images/instagram.png" />
           </ul>
         </div>
       }

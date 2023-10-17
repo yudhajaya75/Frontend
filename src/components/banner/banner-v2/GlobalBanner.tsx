@@ -9,7 +9,7 @@ type Props = {
 };
 
 const GlobalBanner = ({
-  bgImage = "bg-heroPattern",
+  bgImage,
   firstElement,
   secondElement,
 }: Props) => {
@@ -27,7 +27,8 @@ const GlobalBanner = ({
 
   return (
     <div
-      className={`h-[725px] ${bgImage} bg-cover bg-center flex-col-reverse flex md:flex-row justify-evenly md:items-center gap-10`}
+    style={{backgroundImage: `url(${bgImage})`}}
+      className={`h-[725px] bg-cover bg-center flex-col-reverse flex md:flex-row justify-evenly md:items-center gap-10`}
     >
       <div className="lg:w-2/4 lg:mt-0 ml-10 lg:ml-20 xl:ml-[184px] lg:pr-12 xl:pr-14">
         <div className="h-full lg:flex flex-col gap-8">{firstElement}</div>

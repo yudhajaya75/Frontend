@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function useBannerData() {
-  const [content, setContent] = useState<any>([]);
+  const [content, setContent] = useState<any>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,6 +18,7 @@ function useBannerData() {
         setTimeout(() => setLoading(false), 500);
       });
   }, []);
+
   return {
     content,
     loading,

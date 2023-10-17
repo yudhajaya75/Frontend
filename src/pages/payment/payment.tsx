@@ -15,6 +15,7 @@ const Payment2 = (props: { email: string }) => {
       icon: "info",
     });
     navigation("/login");
+    window.location.reload()
   }
 
   return (

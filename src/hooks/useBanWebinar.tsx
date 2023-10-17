@@ -5,7 +5,13 @@ function useBanWebinar() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/webinar?populate=*`)
+    fetch(`${process.env.REACT_APP_API_URL}/webinar?populate=*`, {
+      method: "GET",
+      headers: {
+        Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setContent(data.data);

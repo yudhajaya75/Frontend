@@ -17,10 +17,10 @@ import CLink from "../../components/button/CLink";
 
 const Home = (props: { email: string }) => {
   const { banner, sliderhome } = useBanHome();
-
+  
   return (
     <LayoutWithBanner
-      bgImage={"bg-heroPattern"}
+      bgImage={`${process.env.REACT_APP_UPLOAD_URL}${banner?.attributes.image.data.attributes.url}`}
       accountEmail={props.email}
       firstElement={
         <div className="flex flex-col gap-5">

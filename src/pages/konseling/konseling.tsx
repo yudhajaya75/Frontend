@@ -5,8 +5,12 @@ import Card from "../../components/card/card";
 import LayoutWithBanner from "../../layouts/LayoutWithBanner";
 import Compslid from "../../components/compslid/compslid";
 import Heading from "../../components/global/Heading";
+import useBannerData from "../../hooks/UseBannerData";
+import Teks from "../../components/teks/teksabout";
 
-const layanan = (props: { email: string }) => {
+const Konseling = (props: { email: string }) => {
+  const { content } = useBannerData();
+
   return (
     <LayoutWithBanner
       bgImage={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`}

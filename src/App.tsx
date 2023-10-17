@@ -4,7 +4,6 @@ import useGetUserData from "./hooks/useGetUserData";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Daftar from "./pages/signup/signup";
-import Konseling from "./pages/konseling/konseling";
 import Webinar from "./pages/webminar/webinar";
 import Pelatihan from "./pages/pelatihan/pelatihan";
 import Konsultasi from "./pages/konsultasi/konsultasi";

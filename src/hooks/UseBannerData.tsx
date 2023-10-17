@@ -5,7 +5,7 @@ function useBannerData() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/layanan?populate=*`, {
+    fetch(`${process.env.REACT_APP_API_URL}/konseling?populate=*`, {
       method: "GET",
       headers: {
         Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,

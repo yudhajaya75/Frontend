@@ -4,7 +4,13 @@ import { HTTPAruna } from "../services/handlerApi";
 
 const useDetailProduct = (
   slug: string,
-  contentType: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar"
+  contentType:
+    | "Pelatihan"
+    | "Layanan"
+    | "Konsultasi"
+    | "Webinar"
+    | "Paket"
+    | "Konseling"
 ) => {
   const [content, setContent] = useState<IPelatihan | null>(null);
   const [loading, setLoading] = useState(false);

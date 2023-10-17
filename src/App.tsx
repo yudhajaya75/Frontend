@@ -19,6 +19,7 @@ import ArticlePage from "./pages/article/Article";
 import ArticleDetail from "./pages/article/ArticleDetail";
 import Filtered from "./pages/article/Filtered";
 import ComingSoon from "./pages/misc/ComingSoon";
+import Konseling from "./pages/konseling/konseling";
 
 function App() {
   const { email, setEmail, isLoggedIn } = useGetUserData();
@@ -43,6 +44,7 @@ function App() {
         />
         <Route path="/profile" element={<Profile email={email} />} />
         <Route path="/article" element={<ArticlePage />} />
+        <Route path="/konseling" element={<Konseling email={email} />} />
         <Route path="/article/popular" element={<Filtered type="Popular" />} />
         <Route path="/article/newest" element={<Filtered type="Newest" />} />
         <Route path="/article/:slug" element={<ArticleDetail />} />

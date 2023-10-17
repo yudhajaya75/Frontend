@@ -9,32 +9,27 @@ import Heading from "../../components/global/Heading";
 const layanan = (props: { email: string }) => {
   return (
     <LayoutWithBanner
-      bgImage={"bg-Layanan"}
+      bgImage={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`}
       accountEmail={props.email}
       firstElement={
         <>
           <div className=" text-center -ml-10 md:text-left md:ml-0 p-5 grid gap-6 text-slate-50">
             <h1 className="text-5xl mb-5 sm:mb-0 md:text-6xl font-bold ">
-              Layanan konseling individu pasangan & keluarga
+              {content?.attributes.header && content?.attributes.header}
             </h1>
             <p className="font-extralight text-3xl sm:text-lg md:text-xl lg:text-4xl">
-              apa itu Layanan Konseling individu pasangan & keluarga dan untuk
-              siapa. title bebas
-            </p>{" "}
+              {content?.attributes.desc && content?.attributes.desc}
+            </p>
           </div>
         </>
       }
       secondElement=""
     >
       <main className="px-5 lg:px-24 py-20">
-        <Heading customClass="text-start pb-5">
-          Layanan konseling individu pasangan & keluarga
-        </Heading>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum suscipit
-          iure asperiores quaerat rerum earum assumenda deleniti delectus nam
-          excepturi.
-        </p>
+        <Teks
+          title={content?.attributes.title && content?.attributes.title}
+          body={content?.attributes.body && content?.attributes.body}
+        />
         <Card type="Konseling" prefixLink="konseling" />
         <Teks2 />
         <Sosmed />
@@ -45,4 +40,4 @@ const layanan = (props: { email: string }) => {
   );
 };
 
-export default layanan;
+export default Konseling;

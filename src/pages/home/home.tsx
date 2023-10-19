@@ -17,7 +17,7 @@ import CLink from "../../components/button/CLink";
 
 const Home = (props: { email: string }) => {
   const { banner, sliderhome } = useBanHome();
-  
+
   return (
     <LayoutWithBanner
       bgImage={`${process.env.REACT_APP_UPLOAD_URL}${banner?.attributes.image.data.attributes.url}`}
@@ -47,16 +47,16 @@ const Home = (props: { email: string }) => {
             clickable: true,
           }}
           modules={[Autoplay]}
-          className="mySwiper bg-people bg-contain bg-no-repeat w-[300px] h-[300px]  sm:w-[400px] sm:h-[400px] xl:w-[500px] xl:h-[500px] overflow-hidden"
+          className="mySwiper bg-people bg-contain bg-no-repeat w-full h-auto sm:w-[400px] sm:h-[400px] xl:w-[500px] xl:h-[500px] overflow-hidden"
         >
           {sliderhome &&
             sliderhome.map((res, index) => (
               <SwiperSlide key={index}>
-                <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
+                <div className="w-full rounded p-[4%]">
                   <Image
                     src={res.attributes.image.data.attributes.url}
                     alt="background-people"
-                    customClass="h-full w-full mt-10 rounded-[10%]"
+                    customClass="h-full w-full rounded-[10%]"
                   />
                 </div>
               </SwiperSlide>

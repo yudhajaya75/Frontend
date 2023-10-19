@@ -8,11 +8,7 @@ type Props = {
   secondElement?: React.ReactNode;
 };
 
-const GlobalBanner = ({
-  bgImage,
-  firstElement,
-  secondElement,
-}: Props) => {
+const GlobalBanner = ({ bgImage, firstElement, secondElement }: Props) => {
   const { banner, sliderhome, loading } = useBanHome();
 
   if (!banner && !banner) return <div>No data</div>;
@@ -27,14 +23,13 @@ const GlobalBanner = ({
 
   return (
     <div
-    style={{backgroundImage: `url(${bgImage})`}}
-      className={`h-[725px] bg-cover bg-center flex-col-reverse flex md:flex-row justify-evenly md:items-center gap-10`}
+      style={{ backgroundImage: `url(${bgImage})` }}
+      className={`md:h-[725px] bg-cover object-contain aspect-auto bg-center flex-col-reverse flex md:flex-row px-[5%] md:items-center justify-between py-[20%] gap-10 md:gap-0`}
     >
-      <div className="lg:w-2/4 lg:mt-0 ml-10 lg:ml-20 xl:ml-[184px] lg:pr-12 xl:pr-14">
-        <div className="h-full lg:flex flex-col gap-8">{firstElement}</div>
+      <div className="w-full md:w-[40%] lg:flex flex-col gap-8 justify-center">
+        {firstElement}
       </div>
-
-      <div className="sm:mr-10 md:w-2/4 md:h-auto">{secondElement}</div>
+      <div className="w-full md:w-fit">{secondElement}</div>
     </div>
   );
 };

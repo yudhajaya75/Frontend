@@ -38,7 +38,9 @@ const Articel = () => {
                     />
                   </a>
                   <div
-                    dangerouslySetInnerHTML={{ __html: res.attributes.body }}
+                    dangerouslySetInnerHTML={{
+                      __html: res.attributes.body.substring(0, 150),
+                    }}
                     className="line-clamp-4 w-[100%] h-[100px] bg-[rgba(0,0,0,0.5)] absolute bottom-0 text-slate-100 p-[15px]"
                   ></div>
                 </div>

@@ -12,7 +12,6 @@ import Heading from "../../components/global/Heading";
 
 const About = (props: { email: string }) => {
   const { content } = useBanAbout();
-  
 
   if (!content) return <div>No Data</div>;
   return (
@@ -29,19 +28,12 @@ const About = (props: { email: string }) => {
           </p>
         </>
       }
-      secondElement={
-        <div className="w-[225px] h-[225px] sm:w-[325px] sm:h-[325px] xl:w-[425px] xl:h-[425px] rounded mx-auto">
-          <img
-            src="./images/Group 39.svg"
-            alt="background-people"
-            className="h-full w-full mt-10"
-          />
-        </div>
-      }
+      secondElement
     >
-      <Teks 
-      title={content.attributes.title && content.attributes.title }
-      body={content.attributes.body && content.attributes.body }/>
+      <Teks
+        title={content.attributes.title && content.attributes.title}
+        body={content.attributes.body && content.attributes.body}
+      />
       <Heading customClass="mb-16">Join Layanan kami yuk! Cek disini</Heading>
       <Card />
       <Teks2 />

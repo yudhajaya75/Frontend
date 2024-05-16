@@ -8,6 +8,7 @@ import useFounding from '../../hooks/useFounding';
 const Team = () => {
     const { content, loading } = useFounding()
 
+    if (!content) return <div>No Data</div>
     return (
         <div className='flex justify-evenly mt-[50px] flex-wrap'>
             {loading ? (

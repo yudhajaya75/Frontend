@@ -1,0 +1,56 @@
+{
+  "menuList": [
+    {
+      "pathName": "Home",
+      "url": "/"
+    },
+    {
+      "pathName": "Layanan",
+      "url": "#",
+      "children": [
+        {
+          "pathName": "Daftar Harga",
+          "url": "/paket"
+        },
+        {
+          "pathName": "Webinar",
+          "url": "/webinar"
+        },
+        {
+          "pathName": "Pelatihan",
+          "url": "/pelatihan"
+        },
+        {
+          "pathName": "Konseling",
+          "url": "/konseling"
+        },
+        {
+          "pathName": "Konsultasi",
+          "url": "/konsultasi"
+        }
+      ]
+    },
+    {
+      "pathName": "Blog",
+      "url": "/article"
+    },
+    {
+      "pathName": "About Us",
+      "url": "/about"
+    },
+    {
+      "pathName": "Contact Us",
+      "url": "/contact"
+    }
+  ],
+  "badgeList": [
+    {
+      "pathName": "My Profile",
+      "url": "/profile"
+    },
+    {
+      "pathName": "Logout",
+      "url": "/logout"
+    }
+  ]
+}

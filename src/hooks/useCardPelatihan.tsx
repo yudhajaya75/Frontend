@@ -1,47 +1,67 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-function useCardPelatihan() {
-    const [content, setContent] = useState<any>()
-    const [loading, setLoading] = useState(true);
+import { HTTPAruna } from "../services/handlerApi";
+import { PelatihanResponse } from "../@types/Pelatihan";
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/products?populate[0]=image&populate[1]=populate[2]=*&filters[category][$eq]=Pelatihan`)
-            .then((response) => response.json())
-            .then((data) => {
-                const dataz = data.data;
-                let dataPushed = [] as any;
-                dataz.forEach((data: any, index: any) => {
-                    dataPushed.push(Object.assign(data, { price: "" }))
-                })
+function useCardPelatihan(
+  category?: "Pelatihan" | "Konseling" | "Konsultasi" | "Webinar" | "Paket",
+  page?: number,
+  limit?: number
+) {
+  const [content, setContent] = useState<PelatihanResponse | null>();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(page || 1);
+  const [paginationMeta, setPaginationMeta] = useState<{
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  } | null>(null);
 
-                fetch(`${process.env.REACT_APP_API_URL}/products?populate[]=product_variants.features&filters[category][$eq]=Pelatihan`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        let dataInputted = [] as any;
-                        const dataMapped = data.data.map((d: any, i: number) => {
-                            return d.attributes.product_variants.data.map((e: any) => {
-                                return e.attributes.price
-                            })
-                        });
-                        dataMapped.forEach((d: any) => {
-                            dataInputted.push(Math.min(...d));
-                        })
-                        console.log(dataMapped, dataInputted)
-                        dataPushed.map((dati: any, i: number) => {
-                            dati.price = dataInputted[i]
-                        })
-                        setContent(dataPushed);
-                        setTimeout(() => {
-                            setLoading(false);
-                        }, 4000);
-                    })
-            })
-    }, [])
+  useEffect(() => {
+    HTTPAruna.get(
+      `/api/products?populate[0]=image&populate[1]=product_variants.features&populate[2]=webinar&filters[category][$eq]=${
+        category ? category : "Pelatihan"
+      }&pagination[page]=${currentPage}&pagination[pageSize]=${limit}`
+    ).then((response) => {
+      const data: PelatihanResponse = response.data;
+      if (data.data.length < 0) {
+        setError("No Content");
+      }
+      setContent(data);
+      setPaginationMeta(response.data.meta.pagination);
+      setLoading(false);
+    });
+  }, [category, currentPage, limit]);
 
-    return {
-        content,
-        loading
+  useEffect(() => {
+    if (page !== undefined) {
+      setCurrentPage(page);
     }
+  }, [page]);
+
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (paginationMeta && currentPage < paginationMeta.pageCount) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  return {
+    content,
+    loading,
+    error,
+    currentPage,
+    paginationMeta,
+    handlePrevClick,
+    handleNextClick,
+  };
 }
 
-export default useCardPelatihan
+export default useCardPelatihan;

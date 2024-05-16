@@ -1,26 +1,36 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { GalleryTentangKonseling } from "../@types/GalleryTentangKonseling";
 
 function useContentHome() {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
+  const [tentangkonseling, setTentangKonseling] =
+    useState<GalleryTentangKonseling[]>();
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/gallery-tentang-konselings?populate=*`)
-            .then((response) => response.json())
-            .then((data) => {
-                setContent(data.data);
-                setTimeout(() => setLoading(false), 4000);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
-    console.log(content)
+  useEffect(() => {
+    fetch(
+      `${process.env.REACT_APP_API_URL}/gallery-tentang-konselings?populate=*`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: "bearer " + process.env.REACT_APP_ADMIN_TOKEN,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTentangKonseling(data.data);
+        setTimeout(() => setLoading(false), 500);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-    return {
-        content,
-        loading
-    }
+  return {
+    tentangkonseling,
+    loading,
+  };
 }
 
-export default useContentHome
+export default useContentHome;

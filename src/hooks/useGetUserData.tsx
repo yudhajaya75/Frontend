@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import axios from "axios";
 import { handlerApi } from "../services/handlerApi";
 
@@ -71,6 +72,40 @@ const useGetUserData = () => {
         isLoggedIn,
         isLoading,
     };
+=======
+import { HTTPAruna } from "../services/handlerApi";
+
+const useGetUserData = () => {
+  const [email, setEmail] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isFetchingData, setIsFetchingData] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await HTTPAruna.get(`api/users`);
+      setEmail(response.data.email);
+      setIsLoading(false);
+      setIsLoggedIn(true);
+      setIsFetchingData(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setIsFetchingData(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  return {
+    email,
+    setEmail,
+    isFetchingData,
+    isLoggedIn,
+    isLoading,
+  };
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 };
 
 export default useGetUserData;

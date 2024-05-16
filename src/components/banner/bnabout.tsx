@@ -5,7 +5,7 @@ import useBanAbout from '../../hooks/useBanAbout';
 const Banner = () => {
     const { content, loading } = useBanAbout()
 
-
+    if (!content) return <div>No Data</div>
     return (
         <div className='w-full'>
             {loading ? (

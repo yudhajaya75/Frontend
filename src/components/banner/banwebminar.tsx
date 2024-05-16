@@ -4,6 +4,7 @@ import useBanWebinar from '../../hooks/useBanWebinar';
 const Banner = () => {
     const { content, loading } = useBanWebinar();
 
+    if (!content) return <div>No Data</div>
     return (
         <div className='w-full'>
             {loading ? (

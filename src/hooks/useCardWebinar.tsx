@@ -1,39 +1,54 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { HTTPAruna } from "../services/handlerApi";
+import { WebinarResponse } from "../@types/Webinar";
 
-function useCardWebinar() {
-    const [content, setContent] = useState<any>([]);
-    const [loading, setLoading] = useState(true);
-    const [countdownTime, setCountdownTime] = useState<number | null>(null);
+function useCardWebinar(page?: number, limit?: number) {
+  const [content, setContent] = useState<WebinarResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(page || 1);
+  const [paginationMeta, setPaginationMeta] = useState<{
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  } | null>(null);
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/products?populate=*&filters[category][$eq]=Webinar`)
-            .then((response) => response.json())
-            .then((data) => {
-                setContent(data.data);
-                setTimeout(() => setLoading(false), 4000);
+  useEffect(() => {
+    HTTPAruna.get(
+      `api/products?populate=*&filters[category][$eq]=Webinar&pagination[page]=${currentPage}&pagination[pageSize]=${limit}`
+    ).then((res) => {
+      setContent(res.data);
+      setPaginationMeta(res.data.meta.pagination);
+      setLoading(false);
+    });
+  }, [currentPage, limit]);
 
-                const calculateCountdown = () => {
-                    const currentTime = new Date();
-                    const webinarStartTime = new Date("2023-08-31T12:00:00");
-                    const timeRemaining = webinarStartTime.getTime() - currentTime.getTime();
-
-                    setCountdownTime(timeRemaining);
-                };
-
-                calculateCountdown();
-                const interval = setInterval(calculateCountdown, 1000);
-
-                return () => {
-                    clearInterval(interval);
-                };
-            })
-    }, []);
-
-    return {
-        content,
-        loading,
-        countdownTime
+  useEffect(() => {
+    if (page !== undefined) {
+      setCurrentPage(page);
     }
+  }, [page]);
+
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (paginationMeta && currentPage < paginationMeta.pageCount) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  return {
+    content,
+    loading,
+    currentPage,
+    paginationMeta,
+    handlePrevClick,
+    handleNextClick,
+  };
 }
 
-export default useCardWebinar
+export default useCardWebinar;

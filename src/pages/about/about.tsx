@@ -1,4 +1,18 @@
+<<<<<<< HEAD
+import 'react-multi-carousel/lib/styles.css';
+import Navbar from '../../components/navbar/navbar'
+import Banner from '../../components/banner/bnabout'
+import Teks from '../../components/teks/teksabout'
+import Teks1 from '../../components/teks/teksabout1'
+import Card from '../../components/card/cardabout'
+import Teks2 from '../../components/teks/teksabout-pendiri'
+import Founding from '../../components/founding/founding'
+import Compslid from '../../components/compslid/founding'
+import Tesk3 from '../../components/teks/teks-kerjasama'
+import Footer from '../../components/footer/footabout'
+=======
 import "react-multi-carousel/lib/styles.css";
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 import Teks from "../../components/teks/teksabout";
 import Card from "../../components/card/cardabout";

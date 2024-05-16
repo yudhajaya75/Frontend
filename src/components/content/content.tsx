@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import '../youtube/responsive.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay } from 'swiper';
+import { Skeleton } from '@mui/material';
+import useContentHome from '../../hooks/useContentHome';
+=======
 import "../youtube/responsive.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,6 +18,7 @@ import { Skeleton } from "@mui/material";
 
 import useContentHome from "../../hooks/useContentHome";
 
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 const Content = () => {
   const { tentangkonseling, loading } = useContentHome();

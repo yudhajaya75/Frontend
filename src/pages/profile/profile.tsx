@@ -1,9 +1,16 @@
+<<<<<<< HEAD
+import Navbar from '../../components/navbar/navbar'
+import Content from '../../components/content/content2'
+import Content2 from '../../components/content/content3'
+import Footer from '../../components/footer/footer'
+=======
 import { useState } from "react";
 import Button from "../../components/button/Button";
 import HistoryCard from "../../components/content/HistoryCard";
 import Content2 from "../../components/content/content3";
 import usePersonalTransactions from "../../hooks/usePersonalTransactions";
 import GlobalLayout from "../../layouts/GlobalLayout";
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 const Profile = (props: { email: string }) => {
   const [currentPage, setCurrentPage] = useState(1);

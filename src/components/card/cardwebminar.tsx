@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Skeleton } from '@mui/material';
+import useCardWebinar from '../../hooks/useCardWebinar';
+=======
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Skeleton } from "@mui/material";
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 import useCardWebinar from "../../hooks/useCardWebinar";
 import Image from "../global/Image";

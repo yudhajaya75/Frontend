@@ -3,17 +3,40 @@ import Teks from '../../components/teks/teksabout';
 import Teks2 from '../../components/teks/teks-kata-mereka';
 import Sosmed from '../../components/sosmed/Desktop';
 import Teks3 from '../../components/teks/teks-kerjasama';
+<<<<<<< HEAD
+import Compslid from '../../components/compslid/founding'
+import Footer from '../../components/footer/footer';
+import Card from '../../components/card/card';
+=======
 import Card from '../../components/card/card';
 import LayoutWithBanner from '../../layouts/LayoutWithBanner';
 import Compslid from '../../components/compslid/compslid';
 import useBanKonsulData from '../../hooks/useBanKonsulData';
 import { logDOM } from '@testing-library/react';
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 
 const Konsultasi = (props: { email: string }) => {
   const { content } = useBanKonsulData();
   return (
     <div className='mx-auto max-w-[1910px] relative'>
+<<<<<<< HEAD
+      <Navbar accountEmail={props.email} />
+      <Banner />
+      <Teks />
+      <div className='lg:flex lg:justify-center lg:items-center lg:mr-[0px]'>
+        <div className='flex flex-col'>
+          <Card />
+        </div>
+      </div>
+      <div className='mt-20'>
+        <Teks2 />
+      </div>
+      <Sosmed />
+      <Teks3 />
+      <Compslid />
+      <Footer />
+=======
       <LayoutWithBanner
         bgImage={`${process.env.REACT_APP_UPLOAD_URL}${content?.attributes.image.data.attributes.url}`}
         accountEmail={props.email}
@@ -43,6 +66,7 @@ const Konsultasi = (props: { email: string }) => {
           <Compslid />
         </main>
       </LayoutWithBanner>
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
     </div>
   );
 }

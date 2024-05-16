@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+import Navbar from '../../components/navbar/navbar';
+import Banner from '../../components/banner/bnhome';
+import Contents from '../../components/content/content';
+import Teks from '../../components/teks/teks-kata-mereka';
+import Card from '../../components/card/cardhome';
+import Icons from '../../components/iconshome/iconshome';
+import Sosmed from '../../components/sosmed/Founding';
+import Intro from '../../components/youtube/youtube';
+import Article2 from '../../components/articlehome/article2';
+import Questions from '../../components/questions/questions';
+import Footer from '../../components/footer/footer';
+=======
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 
@@ -14,6 +27,7 @@ import useBanHome from "../../hooks/useBanHome";
 import "swiper/swiper-bundle.min.css";
 import Image from "../../components/global/Image";
 import CLink from "../../components/button/CLink";
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 const Home = (props: { email: string }) => {
   const { banner, sliderhome } = useBanHome();

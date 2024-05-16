@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import Navbar from '../../components/navbar/navbar'
+import Teks4 from "../../components/teks/teks-webinar5"
+import Teks3 from '../../components/teks/teks-kata-mereka'
+import Sosmed from '../../components/sosmed/Founding'
+import Footer from '../../components/footer/footwebminar'
+import Banner from '../../components/banner/banwebminar3'
+import TextDescComponent from '../../components/teks/TextDescComponent'
+import TextHeadingComponent from '../../components/teks/TextHeadingComponent'
+import ButtonWa from '../../components/button/ButtonWa'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+
+=======
 import Teks4 from "../../components/teks/teks-webinar5";
 import Teks3 from "../../components/teks/teks-kata-mereka";
 import Sosmed from "../../components/sosmed/Desktop";
@@ -9,6 +24,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import GlobalLayout from "../../layouts/GlobalLayout";
+>>>>>>> de797207b16d27cfe93b5f586117095663289e4e
 
 const Webinar = (props: { email: string }) => {
   const [content, setContent] = useState<any>();
